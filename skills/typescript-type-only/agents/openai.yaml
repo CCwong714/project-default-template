@@ -1,0 +1,3 @@
+display_name: TypeScript Type-Only
+short_description: Enforce type over interface, with all type names starting with T.
+default_prompt: Enforce a TypeScript convention where interface is disallowed and every type alias name must begin with T.
