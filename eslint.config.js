@@ -15,7 +15,8 @@ const restrictedInternalImportsRule = [
     patterns: [
       {
         group: ['./*', './**', '../*', '../**', '@/*', '@/**'],
-        message: 'Use imports rooted at src/... instead of relative paths or aliases.',
+        message:
+          'Use imports rooted at src/... instead of relative paths or aliases.',
       },
     ],
   },
@@ -66,12 +67,7 @@ const typeAwareRules = {
 }
 
 export default defineConfig([
-  globalIgnores([
-    'dist',
-    'coverage',
-    'node_modules',
-    '*.d.ts',
-  ]),
+  globalIgnores(['dist', 'coverage', 'node_modules', '*.d.ts']),
   {
     linterOptions: {
       reportUnusedDisableDirectives: 'error',

@@ -24,15 +24,15 @@ description: Enforce a project convention that internal imports must not use rel
 Use the current file's location to resolve each relative import to an absolute path under `src`, then express it as a `src/...` import.
 
 ```ts
-import { env } from "../../shared/lib/env";
-import { homePageData } from "./homePageData";
+import { env } from '../../shared/lib/env'
+import { homePageData } from './homePageData'
 ```
 
 becomes:
 
 ```ts
-import { env } from "src/shared/lib/env";
-import { homePageData } from "src/features/home/homePageData";
+import { env } from 'src/shared/lib/env'
+import { homePageData } from 'src/features/home/homePageData'
 ```
 
 ## Guardrails

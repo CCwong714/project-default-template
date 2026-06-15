@@ -1,4 +1,4 @@
 interface:
-  display_name: "Separate Hardcoded Data"
-  short_description: "Move static UI data into modules"
-  default_prompt: "Use $separate-hardcoded-data to move hardcoded component data into a feature-local data module without changing behavior."
+  display_name: 'Separate Hardcoded Data'
+  short_description: 'Move static UI data into modules'
+  default_prompt: 'Use $separate-hardcoded-data to move hardcoded component data into a feature-local data module without changing behavior.'

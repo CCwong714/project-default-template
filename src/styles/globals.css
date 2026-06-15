@@ -1,8 +1,7 @@
-@import "tailwindcss";
+@import 'tailwindcss';
 
 @theme {
-  --font-sans:
-    "Satoshi", "Avenir Next", "Segoe UI", system-ui, sans-serif;
+  --font-sans: 'Satoshi', 'Avenir Next', 'Segoe UI', system-ui, sans-serif;
 }
 
 :root {
