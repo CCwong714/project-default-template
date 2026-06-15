@@ -1,0 +1,7 @@
+<svg width="38" height="42" viewBox="0 0 38 42" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path d="M4 2H34V31.2L19 40L4 31.2V2Z" fill="white"/>
+  <path d="M6.6 4.6H31.4V29.7L19 36.9L6.6 29.7V4.6Z" fill="white"/>
+  <text x="19" y="15.4" text-anchor="middle" fill="#111217" font-family="Arial Black, Arial, sans-serif" font-size="9.2" font-weight="900" letter-spacing="-0.75">EPIC</text>
+  <path d="M9.2 19.35H28.8" stroke="#111217" stroke-width="1.25" stroke-linecap="round"/>
+  <text x="19" y="27.8" text-anchor="middle" fill="#111217" font-family="Arial Black, Arial, sans-serif" font-size="6.4" font-weight="900" letter-spacing="-0.35">GAMES</text>
+</svg>

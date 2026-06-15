@@ -4,12 +4,12 @@ import { describe, expect, it } from 'vitest'
 import { App } from '@/app/App'
 
 describe('App', () => {
-  it('renders the project base home page', () => {
+  it('renders the Unreal Engine 5 landing page', () => {
     render(<App />)
 
     expect(
       screen.getByRole('heading', {
-        name: /build the first real feature here/i,
+        name: /bigger worlds\. bigger stories\.more unreal\./i,
       }),
     ).toBeInTheDocument()
   })
