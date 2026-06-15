@@ -1,4 +1,4 @@
-import { env } from '@/shared/lib/env'
+import { env } from 'src/shared/lib/env'
 
 export function HomePage() {
   return (

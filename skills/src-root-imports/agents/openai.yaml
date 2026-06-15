@@ -1,0 +1,4 @@
+interface:
+  display_name: "Src Root Imports"
+  short_description: "Require imports from the src root"
+  default_prompt: "Use $src-root-imports to replace relative project imports with imports rooted at the src alias."

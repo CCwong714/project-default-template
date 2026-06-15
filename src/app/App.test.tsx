@@ -1,7 +1,6 @@
 import { render, screen } from '@testing-library/react'
+import { App } from 'src/app/App'
 import { describe, expect, it } from 'vitest'
-
-import { App } from '@/app/App'
 
 describe('App', () => {
   it('renders the project base home page', () => {

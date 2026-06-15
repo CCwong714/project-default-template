@@ -1,1 +1,1 @@
-export { HomePage } from '@/features/home/HomePage'
+export { HomePage } from 'src/features/home/HomePage'

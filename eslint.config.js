@@ -9,6 +9,18 @@ import tseslint from 'typescript-eslint'
 import unusedImports from 'eslint-plugin-unused-imports'
 import { defineConfig, globalIgnores } from 'eslint/config'
 
+const restrictedInternalImportsRule = [
+  'error',
+  {
+    patterns: [
+      {
+        group: ['./*', './**', '../*', '../**', '@/*', '@/**'],
+        message: 'Use imports rooted at src/... instead of relative paths or aliases.',
+      },
+    ],
+  },
+]
+
 const typeAwareRules = {
   '@typescript-eslint/await-thenable': 'error',
   '@typescript-eslint/consistent-type-imports': [
@@ -111,6 +123,7 @@ export default defineConfig([
       'import/no-duplicates': 'error',
       'import/order': 'off',
       'import/no-unresolved': 'off',
+      'no-restricted-imports': restrictedInternalImportsRule,
       'react-refresh/only-export-components': [
         'warn',
         { allowConstantExport: true },
@@ -173,6 +186,7 @@ export default defineConfig([
       'import/no-duplicates': 'error',
       'import/order': 'off',
       'import/no-unresolved': 'off',
+      'no-restricted-imports': restrictedInternalImportsRule,
       'simple-import-sort/exports': 'error',
       'simple-import-sort/imports': 'error',
       'sort-imports': 'off',

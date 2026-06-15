@@ -1,6 +1,6 @@
-import { AppProviders } from '@/app/providers/AppProviders'
-import { AppRouter } from '@/app/router/AppRouter'
-import { ErrorBoundary } from '@/shared/errors/ErrorBoundary'
+import { AppProviders } from 'src/app/providers/AppProviders'
+import { AppRouter } from 'src/app/router/AppRouter'
+import { ErrorBoundary } from 'src/shared/errors/ErrorBoundary'
 
 export function App() {
   return (
