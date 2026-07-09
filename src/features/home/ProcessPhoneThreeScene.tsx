@@ -7,6 +7,7 @@ type TProcessPhoneThreeSceneProps = {
 }
 
 type TProcessPhoneMotionDetail = {
+  resultProgress?: number
   rotationY?: number
   screen?: number
   visible?: boolean
@@ -42,14 +43,20 @@ const mainflowVideoSources = {
   choose: '/assets/elva/mainflow/1_1_m.mp4',
   polish: '/assets/elva/mainflow/1_3_m.mp4',
   prompt: '/assets/elva/mainflow/1_2_m.mp4',
+  result: '/assets/elva/mainflow/1_5_m.mp4',
   share: '/assets/elva/mainflow/1_41_m.mp4',
 } as const
 const mainflowFrameTimes = {
   choose: 3,
   polish: 1.1,
   prompt: 0.9,
+  result: 0,
   share: 1,
 } as const
+
+function clamp01(value: number) {
+  return Math.min(1, Math.max(0, value))
+}
 
 function createRoundedRectShape(width: number, height: number, radius: number) {
   const halfWidth = width / 2
@@ -597,6 +604,13 @@ function createShareTexture() {
   )
 }
 
+function createResultTexture() {
+  return createMainflowVideoTexture(
+    mainflowVideoSources.result,
+    mainflowFrameTimes.result,
+  )
+}
+
 function disposeMainflowVideo(screen: TMainflowVideoTexture) {
   screen.video.pause()
   screen.video.removeAttribute('src')
@@ -657,6 +671,7 @@ function createPhoneScene(canvas: HTMLCanvasElement) {
     halo: createFrameHaloTexture(),
     polish: createPolishTexture(),
     prompt: createPromptTexture(),
+    result: createResultTexture(),
     share: createShareTexture(),
   }
   const bodyMaterial = new THREE.MeshPhysicalMaterial({
@@ -687,6 +702,14 @@ function createPhoneScene(canvas: HTMLCanvasElement) {
     depthWrite: false,
     map: textures.choose.texture,
     opacity: 1,
+    side: THREE.DoubleSide,
+    toneMapped: false,
+    transparent: true,
+  })
+  const resultMaterial = new THREE.MeshBasicMaterial({
+    depthWrite: false,
+    map: textures.result.texture,
+    opacity: 0,
     side: THREE.DoubleSide,
     toneMapped: false,
     transparent: true,
@@ -746,6 +769,10 @@ function createPhoneScene(canvas: HTMLCanvasElement) {
   const screen = new THREE.Mesh(
     createRoundedPlaneGeometry(screenWidth, screenHeight, 0.36),
     screenMaterial,
+  )
+  const resultScreen = new THREE.Mesh(
+    new THREE.PlaneGeometry(screenWidth, screenHeight),
+    resultMaterial,
   )
   const screenBezel = new THREE.Mesh(
     createRoundedPlaneGeometry(
@@ -820,13 +847,15 @@ function createPhoneScene(canvas: HTMLCanvasElement) {
   back.renderOrder = 2
   screenBezel.renderOrder = 3
   screen.renderOrder = 4
-  frontGlass.renderOrder = 5
-  notch.renderOrder = 6
+  resultScreen.renderOrder = 5
+  frontGlass.renderOrder = 6
+  notch.renderOrder = 7
 
   rearHalo.position.z = -phoneDepth / 2 - 0.032
   screenBezel.position.z = phoneDepth / 2 + phoneScreenOffset - 0.012
   frontGlass.position.z = phoneDepth / 2 + phoneGlassOffset
   screen.position.z = phoneDepth / 2 + phoneScreenOffset
+  resultScreen.position.z = phoneDepth / 2 + phoneScreenOffset + 0.004
   notch.position.set(0, phoneHeight / 2 - 0.5, phoneDepth / 2 + 0.126)
   back.position.z = -phoneDepth / 2 - phoneGlassOffset
   back.rotation.y = Math.PI
@@ -843,6 +872,7 @@ function createPhoneScene(canvas: HTMLCanvasElement) {
     screenBezel,
     frontGlass,
     screen,
+    resultScreen,
     notch,
     volumeUpper,
     volumeLower,
@@ -856,6 +886,7 @@ function createPhoneScene(canvas: HTMLCanvasElement) {
     backMaterial,
     bezelMaterial,
     bodyMaterial,
+    buttonMaterial,
     camera,
     glassMaterial,
     haloMaterial,
@@ -863,6 +894,8 @@ function createPhoneScene(canvas: HTMLCanvasElement) {
     phone,
     refractionLayers: [refractionMain, refractionWide],
     renderer,
+    resultMaterial,
+    resultScreen,
     scene,
     screenMaterial,
     textures,
@@ -898,9 +931,11 @@ export function ProcessPhoneThreeScene({
       sceneState.textures.prompt,
       sceneState.textures.polish,
       sceneState.textures.share,
+      sceneState.textures.result,
     ]
     let activeScreen = 0
     let isPhoneVisible = false
+    let resultProgress = 0
     let rafId = 0
 
     const syncActiveVideoPlayback = (restart = false) => {
@@ -931,7 +966,20 @@ export function ProcessPhoneThreeScene({
       const phoneFacing = Math.cos(sceneState.phone.rotation.y)
       const frontVisibility = isPhoneVisible ? Math.max(0, phoneFacing) : 0
       const backVisibility = isPhoneVisible ? Math.max(0, -phoneFacing) : 0
-      const refractionVisibility = Math.pow(backVisibility, 1.18)
+      const resultReveal = isPhoneVisible ? clamp01(resultProgress) : 0
+      const resultBeamVisibility =
+        resultReveal *
+        (1 - clamp01((resultReveal - 0.68) / 0.32)) *
+        (0.74 + Math.sin(resultReveal * Math.PI) * 0.26)
+      const shellVisibility = 1 - clamp01((resultReveal - 0.52) / 0.38)
+      const resultRectangleVisibility = clamp01((resultReveal - 0.62) / 0.26)
+      const resultExpand = clamp01((resultReveal - 0.72) / 0.28)
+      const resultScale = 1 + resultExpand * 0.14
+      const backRefractionVisibility = Math.pow(backVisibility, 1.18)
+      const refractionVisibility = Math.max(
+        backRefractionVisibility,
+        resultBeamVisibility,
+      )
       const screenOpacity = Math.min(1, Math.max(0, frontVisibility * 1.25))
       const seconds = time * 0.001
 
@@ -939,13 +987,22 @@ export function ProcessPhoneThreeScene({
         activeTexture.texture.needsUpdate = true
       }
 
-      sceneState.screenMaterial.opacity = screenOpacity
-      sceneState.bezelMaterial.opacity = 0.92 * screenOpacity
-      sceneState.notchMaterial.opacity = 0.96 * screenOpacity
-      sceneState.bodyMaterial.opacity = 0.018 + refractionVisibility * 0.024
+      sceneState.screenMaterial.opacity =
+        screenOpacity * (1 - resultRectangleVisibility)
+      sceneState.resultMaterial.opacity =
+        screenOpacity * resultRectangleVisibility
+      sceneState.resultScreen.scale.set(resultScale, resultScale, 1)
+      sceneState.bezelMaterial.opacity =
+        0.92 * screenOpacity * (0.12 + shellVisibility * 0.88)
+      sceneState.notchMaterial.opacity = 0.96 * screenOpacity * shellVisibility
+      sceneState.bodyMaterial.opacity =
+        (0.018 + backRefractionVisibility * 0.024) * shellVisibility
+      sceneState.buttonMaterial.opacity = 0.11 * shellVisibility
       sceneState.glassMaterial.opacity =
-        frontVisibility * 0.022 + refractionVisibility * 0.005
-      sceneState.backMaterial.opacity = refractionVisibility * 0.48
+        (frontVisibility * 0.022 + backRefractionVisibility * 0.005) *
+        shellVisibility
+      sceneState.backMaterial.opacity =
+        backRefractionVisibility * 0.48 * shellVisibility
 
       if (refractionVisibility > 0.01) {
         sceneState.textures.back.draw(seconds, refractionVisibility)
@@ -960,12 +1017,14 @@ export function ProcessPhoneThreeScene({
             (0.86 + Math.sin(seconds * (3.2 + index * 0.8)) * 0.14)
         })
         sceneState.haloMaterial.opacity =
-          0.08 + refractionVisibility * (0.12 + Math.sin(seconds * 5.1) * 0.025)
+          shellVisibility *
+          (0.08 +
+            refractionVisibility * (0.12 + Math.sin(seconds * 5.1) * 0.025))
       } else {
         sceneState.refractionLayers.forEach((layer) => {
           layer.material.opacity = 0
         })
-        sceneState.haloMaterial.opacity = 0.1
+        sceneState.haloMaterial.opacity = 0.1 * shellVisibility
       }
 
       sceneState.renderer.render(sceneState.scene, sceneState.camera)
@@ -991,6 +1050,10 @@ export function ProcessPhoneThreeScene({
         if (wasVisible !== isPhoneVisible) {
           syncActiveVideoPlayback(!wasVisible && isPhoneVisible)
         }
+      }
+
+      if (typeof detail.resultProgress === 'number') {
+        resultProgress = clamp01(detail.resultProgress)
       }
 
       if (typeof detail.screen === 'number') {
@@ -1023,7 +1086,9 @@ export function ProcessPhoneThreeScene({
       sceneState.bezelMaterial.dispose()
       sceneState.haloMaterial.dispose()
       sceneState.notchMaterial.dispose()
+      sceneState.resultMaterial.dispose()
       sceneState.screenMaterial.dispose()
+      sceneState.buttonMaterial.dispose()
       sceneState.refractionLayers.forEach((layer) => {
         layer.material.dispose()
         layer.mesh.geometry.dispose()
@@ -1034,6 +1099,7 @@ export function ProcessPhoneThreeScene({
       disposeMainflowVideo(sceneState.textures.choose)
       disposeMainflowVideo(sceneState.textures.polish)
       disposeMainflowVideo(sceneState.textures.prompt)
+      disposeMainflowVideo(sceneState.textures.result)
       disposeMainflowVideo(sceneState.textures.share)
     }
   }, [])

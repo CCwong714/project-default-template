@@ -37,7 +37,7 @@ declare module 'three' {
     load(
       url: string,
       onLoad?: (texture: Texture) => void,
-      onProgress?: (event: ProgressEvent<EventTarget>) => void,
+      onProgress?: (event: ProgressEvent) => void,
       onError?: (error: unknown) => void,
     ): Texture
   }
@@ -77,6 +77,10 @@ declare module 'three' {
   }
 
   export class ShapeGeometry extends BufferGeometry {
+    constructor(...args: any[])
+  }
+
+  export class PlaneGeometry extends BufferGeometry {
     constructor(...args: any[])
   }
 

@@ -1620,6 +1620,10 @@ a {
   --process-phone-viewport-width: calc(
     (100svh - clamp(8.75rem, 16.2vh, 9.6rem)) * 393 / 790
   );
+  --process-phone-visual-width: min(
+    clamp(24.5625rem, 22vw, 27.25rem),
+    var(--process-phone-viewport-width)
+  );
 
   position: relative;
   min-height: 100vh;
@@ -1866,10 +1870,6 @@ a {
 
 .elva-process-phone {
   --phone-depth: clamp(1.65rem, 1.9vw, 2.55rem);
-  --process-phone-visual-width: min(
-    clamp(24.5625rem, 22vw, 27.25rem),
-    var(--process-phone-viewport-width)
-  );
 
   position: absolute;
   top: calc(50% + var(--process-phone-header-gap));
@@ -1899,6 +1899,51 @@ a {
 .elva-process-phone-three::after {
   display: none;
   content: none;
+}
+
+.elva-process-gallery {
+  --gallery-progress: 0;
+
+  position: absolute;
+  inset: 0;
+  z-index: 12;
+  overflow: hidden;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.elva-process-gallery::before,
+.elva-process-gallery::after {
+  position: absolute;
+  right: -4vw;
+  left: -4vw;
+  z-index: 2;
+  content: '';
+  pointer-events: none;
+}
+
+.elva-process-gallery::before {
+  top: -1px;
+  height: 7.2vh;
+  background: linear-gradient(#030303 0 18%, rgb(3 3 3 / 0.72) 52%, transparent);
+}
+
+.elva-process-gallery::after {
+  bottom: -1px;
+  height: 7.6vh;
+  background: linear-gradient(transparent 0 18%, rgb(3 3 3 / 0.72) 58%, #030303);
+}
+
+.elva-process-gallery-canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.elva-process-gallery-canvas::selection {
+  background: transparent;
 }
 
 .elva-process-phone-face,

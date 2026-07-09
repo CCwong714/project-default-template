@@ -173,6 +173,25 @@ export const flowSteps = [
   },
 ] as const
 
+export const processGallerySprites = [
+  {
+    columns: 4,
+    image: '/assets/elva/gallery/casesprite_003.png',
+    rows: 2,
+  },
+  {
+    columns: 4,
+    image: '/assets/elva/gallery/casesprite_006.png',
+    rows: 2,
+  },
+] as const
+
+export const processGalleryVideoSprite = {
+  columns: 4,
+  rows: 2,
+  video: '/assets/elva/gallery/casesprite.mp4',
+} as const
+
 export const uploadClipTiles = [
   {
     image: 'https://elvalabs.ai/features/0.png',

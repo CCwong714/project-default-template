@@ -54,7 +54,7 @@ function normalizeBubbleImageUrl(image: string | undefined) {
     return ''
   }
 
-  const match = image.match(/features\/([0-4])\.png$/)
+  const match = /features\/([0-4])\.png$/.exec(image)
 
   return match ? `${localFeatureImagePath}${match[1]}.png` : image
 }
@@ -155,7 +155,7 @@ function createLensTexture(index: number) {
     context.globalCompositeOperation = 'screen'
     context.lineWidth = width * 0.009
 
-    const chromaticArcs: Array<readonly [string, number, number]> = [
+    const chromaticArcs: (readonly [string, number, number])[] = [
       ['rgba(93, 230, 255, 0.46)', -3, 2],
       ['rgba(255, 82, 182, 0.32)', 3, -1],
       ['rgba(255, 235, 120, 0.28)', 1, 4],

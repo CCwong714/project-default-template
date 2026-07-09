@@ -13,6 +13,7 @@ import {
   phoneVideos,
 } from 'src/features/home/homePageData'
 import { MemoryBubbleThreeScene } from 'src/features/home/MemoryBubbleThreeScene'
+import { ProcessGalleryCanvasScene } from 'src/features/home/ProcessGalleryCanvasScene'
 import { ProcessPhoneThreeScene } from 'src/features/home/ProcessPhoneThreeScene'
 
 gsap.registerPlugin(ScrollTrigger)
@@ -107,6 +108,7 @@ export function HomePage() {
       const processBackdropText = select('.elva-process-backdrop-text')
       const processCounter = select('.elva-process-counter')
       const processCounterLabels = select('.elva-process-counter-label')
+      const processGallery = select('.elva-process-gallery')
       const phoneElement = phone[0] as HTMLElement | undefined
       const phoneHeight = phoneElement?.offsetHeight ?? 790
       const closeupScale = phoneElement?.offsetHeight
@@ -346,6 +348,10 @@ export function HomePage() {
       if (processCounterLabels.length > 0) {
         gsap.set(processCounterLabels, { autoAlpha: 0, y: 8 })
         gsap.set(processCounterLabels[0], { autoAlpha: 1, y: 0 })
+      }
+
+      if (processGallery.length > 0) {
+        gsap.set(processGallery, { '--gallery-progress': 0, autoAlpha: 0 })
       }
 
       gsap
@@ -944,7 +950,7 @@ export function HomePage() {
         const exitScatterScaleX = Math.max(2.72, cloudClusterScaleX * 5.35)
         const exitScatterScaleY = Math.max(2.42, cloudClusterScaleY * 5.1)
         const getBubbleOffset = (
-          element: Element,
+          element: unknown,
           axis: 'x' | 'y',
           scale: number,
         ) => {
@@ -952,7 +958,7 @@ export function HomePage() {
 
           return Number(bubble.dataset[axis] ?? 0) * scale
         }
-        const getBubbleScale = (element: Element, multiplier: number) => {
+        const getBubbleScale = (element: unknown, multiplier: number) => {
           const bubble = element as HTMLElement
           const baseScale = Number(bubble.dataset.scale ?? 1)
 
@@ -1263,6 +1269,12 @@ export function HomePage() {
         const processStepFourResetAt = 1.92
         const processStepFourProgressStart = 1.98
         const processStepFourProgressDuration = 0.42
+        const processResultSideStart = 2.48
+        const processResultBackStart = 2.68
+        const processResultScreenStart = 2.92
+        const processResultFrontStart = 3.14
+        const processGalleryStart = 4.02
+        const processGalleryProgressDuration = 0.9
         const processRotationStart =
           processStepOneProgressStart + processStepOneProgressDuration * 0.8
         const processRotationEnd =
@@ -1271,9 +1283,19 @@ export function HomePage() {
         const processStepThreeRotationEnd = processStepThreeResetAt + 0.36
         const processStepFourRotationMid = processStepFourResetAt + 0.18
         const processStepFourRotationEnd = processStepFourResetAt + 0.36
-        const processPhone3DState = { rotationY: 0, screen: 0 }
-        let processTimeline: gsap.core.Timeline | undefined
+        const processPhone3DState = {
+          resultProgress: 0,
+          rotationY: 0,
+          screen: 0,
+        }
+        const processGalleryCanvasState = {
+          progress: 0,
+        }
         const getProcessScreenForTime = (time: number) => {
+          if (time >= processResultScreenStart) {
+            return 4
+          }
+
           if (time >= processStepFourRotationMid) {
             return 3
           }
@@ -1289,21 +1311,24 @@ export function HomePage() {
           return 0
         }
         const showProcessStep = (
+          timeline: gsap.core.Timeline,
           previousIndex: number,
           nextIndex: number,
           at: number,
         ) => {
-          if (!processTimeline) {
-            return
-          }
-
-          const previousStep = processCopySteps[previousIndex]
-          const nextStep = processCopySteps[nextIndex]
-          const previousLabel = processCounterLabels[previousIndex]
-          const nextLabel = processCounterLabels[nextIndex]
+          const previousStep = processCopySteps[previousIndex] as
+            | Element
+            | undefined
+          const nextStep = processCopySteps[nextIndex] as Element | undefined
+          const previousLabel = processCounterLabels[previousIndex] as
+            | Element
+            | undefined
+          const nextLabel = processCounterLabels[nextIndex] as
+            | Element
+            | undefined
 
           if (previousStep && nextStep) {
-            processTimeline
+            timeline
               .to(
                 previousStep,
                 {
@@ -1334,7 +1359,7 @@ export function HomePage() {
           }
 
           if (previousLabel && nextLabel) {
-            processTimeline
+            timeline
               .to(
                 previousLabel,
                 {
@@ -1358,25 +1383,44 @@ export function HomePage() {
           }
         }
         const updateProcessPhone3D = () => {
-          const processTime = processTimeline?.time() ?? 0
+          const processTime = processTimeline.time()
 
           window.dispatchEvent(
             new CustomEvent('elva-process-phone-3d', {
               detail: {
+                resultProgress: processPhone3DState.resultProgress,
                 rotationY: processPhone3DState.rotationY,
                 screen: getProcessScreenForTime(processTime),
-                visible: processTime >= 0.02 && processTime <= 2.62,
+                visible:
+                  processTime >= 0.02 &&
+                  processTime < processGalleryStart + 0.06,
               },
             }),
           )
         }
-        processTimeline = gsap.timeline({
+        const updateProcessGalleryCanvas = () => {
+          const processTime = processTimeline.time()
+
+          window.dispatchEvent(
+            new CustomEvent('elva-process-gallery-canvas', {
+              detail: {
+                progress: processGalleryCanvasState.progress,
+                visible: processTime >= processGalleryStart,
+              },
+            }),
+          )
+        }
+        const updateProcessScenes = () => {
+          updateProcessPhone3D()
+          updateProcessGalleryCanvas()
+        }
+        const processTimeline = gsap.timeline({
           defaults: { duration: 0.08, ease: 'none' },
-          onUpdate: updateProcessPhone3D,
+          onUpdate: updateProcessScenes,
           scrollTrigger: {
             trigger: processTrack[0],
             start: 'top top',
-            end: '+=11200',
+            end: '+=22000',
             scrub: 0.9,
             pin: processStage[0],
             anticipatePin: 1,
@@ -1653,9 +1697,179 @@ export function HomePage() {
             },
             2.4,
           )
-        showProcessStep(0, 1, processStepTwoResetAt)
-        showProcessStep(1, 2, processStepThreeResetAt)
-        showProcessStep(2, 3, processStepFourResetAt)
+          .to(
+            processCopy,
+            {
+              autoAlpha: 0,
+              filter: 'blur(18px)',
+              y: -42,
+              duration: 0.18,
+              ease: 'power2.in',
+            },
+            processResultSideStart - 0.14,
+          )
+          .to(
+            processPhone,
+            {
+              scale: 1.08,
+              duration: 0.44,
+              ease: 'power2.inOut',
+            },
+            processResultSideStart - 0.08,
+          )
+          .to(
+            processPhone3DState,
+            {
+              rotationY: -Math.PI * 6.52,
+              duration: processResultBackStart - processResultSideStart,
+              ease: 'power2.inOut',
+            },
+            processResultSideStart,
+          )
+          .to(
+            processPhone3DState,
+            {
+              resultProgress: 0.5,
+              duration: processResultScreenStart - processResultSideStart,
+              ease: 'power2.out',
+            },
+            processResultSideStart - 0.02,
+          )
+          .to(
+            processPhone3DState,
+            {
+              rotationY: -Math.PI * 7,
+              duration: processResultScreenStart - processResultBackStart,
+              ease: 'power2.inOut',
+            },
+            processResultBackStart,
+          )
+          .to(
+            processCounter,
+            {
+              autoAlpha: 0,
+              filter: 'blur(8px)',
+              duration: 0.18,
+              ease: 'power2.out',
+            },
+            processResultScreenStart - 0.04,
+          )
+          .set(
+            processPhone3DState,
+            {
+              screen: 4,
+            },
+            processResultScreenStart,
+          )
+          .to(
+            processPhone3DState,
+            {
+              rotationY: -Math.PI * 7.52,
+              duration: processResultFrontStart - processResultScreenStart,
+              ease: 'power2.inOut',
+            },
+            processResultScreenStart,
+          )
+          .to(
+            processStage,
+            {
+              '--process-darkness': 0.96,
+              '--process-haze': 0.02,
+              backgroundColor: '#030303',
+              duration: 0.34,
+            },
+            processResultScreenStart,
+          )
+          .to(
+            processBackdropText,
+            {
+              autoAlpha: 0.2,
+              filter: 'blur(24px)',
+              scale: 1.06,
+              y: -72,
+              duration: 0.34,
+              ease: 'sine.inOut',
+            },
+            processResultScreenStart,
+          )
+          .to(
+            processPhone3DState,
+            {
+              rotationY: -Math.PI * 8,
+              duration: 0.34,
+              ease: 'power2.inOut',
+            },
+            processResultFrontStart,
+          )
+          .to(
+            processPhone3DState,
+            {
+              resultProgress: 1,
+              duration: 1.04,
+              ease: 'sine.inOut',
+            },
+            processResultScreenStart,
+          )
+          .to(
+            processPhone,
+            {
+              scale: 1.02,
+              duration: 0.86,
+              ease: 'sine.inOut',
+            },
+            processResultFrontStart + 0.42,
+          )
+          .to(
+            processBackdropText,
+            {
+              autoAlpha: 0,
+              filter: 'blur(30px)',
+              duration: 0.32,
+              ease: 'power2.in',
+            },
+            processResultFrontStart + 0.62,
+          )
+          .to(
+            processGallery,
+            {
+              autoAlpha: 1,
+              duration: 0.16,
+              ease: 'power2.out',
+            },
+            processGalleryStart,
+          )
+          .to(
+            processGalleryCanvasState,
+            {
+              progress: 1,
+              duration: processGalleryProgressDuration,
+              ease: 'power2.out',
+            },
+            processGalleryStart + 0.02,
+          )
+          .to(
+            processGallery,
+            {
+              '--gallery-progress': 1,
+              duration: processGalleryProgressDuration,
+              ease: 'power2.out',
+            },
+            processGalleryStart + 0.02,
+          )
+          .to(
+            processPhone,
+            {
+              autoAlpha: 0,
+              filter: 'blur(4px)',
+              scale: 1,
+              duration: 0.08,
+              ease: 'power2.out',
+            },
+            processGalleryStart + 0.04,
+          )
+        showProcessStep(processTimeline, 0, 1, processStepTwoResetAt)
+        showProcessStep(processTimeline, 1, 2, processStepThreeResetAt)
+        showProcessStep(processTimeline, 2, 3, processStepFourResetAt)
       }
 
       const introVideoElement = introVideoMedia[0] as
@@ -2085,6 +2299,8 @@ export function HomePage() {
             ariaLabel="Choose videos and describe the edit in Elva"
             className="elva-process-phone elva-process-phone-three"
           />
+
+          <ProcessGalleryCanvasScene className="elva-process-gallery" />
         </div>
       </section>
     </main>
