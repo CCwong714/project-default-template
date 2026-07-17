@@ -3,10 +3,8 @@
 @font-face {
   font-family: 'Neue Haas Grotesk Display Pro';
   src:
-    url('https://elvalabs.ai/assets/NeueHaasDisplay-Roman-BFi43h7R.woff2')
-      format('woff2'),
-    url('https://elvalabs.ai/assets/NeueHaasDisplay-Roman-m9XnWHDc.woff')
-      format('woff');
+    url('/assets/elva/fonts/NeueHaasDisplay-Roman.woff2') format('woff2'),
+    url('/assets/elva/fonts/NeueHaasDisplay-Roman.woff') format('woff');
   font-weight: 500;
   font-style: normal;
   font-display: swap;
@@ -150,6 +148,7 @@ a {
   line-height: 1;
   letter-spacing: 0;
   backdrop-filter: blur(14px);
+  mix-blend-mode: difference;
 }
 
 .elva-nav {
@@ -937,36 +936,79 @@ a {
 
 .elva-cloud-backdrop-title {
   position: absolute;
-  top: -6.2vh;
+  top: auto;
+  bottom: -1.5vh;
   left: 50%;
   z-index: 1;
-  display: none;
-  width: min(86rem, 116vw);
-  color: rgb(255 255 255 / 0.32);
-  font-size: clamp(5.5rem, 9.6vw, 11.8rem);
+  display: block;
+  width: min(112rem, 128vw);
+  color: rgb(255 255 255 / 0.28);
+  font-size: clamp(5.8rem, 10.8vw, 13rem);
+  filter: blur(16px);
   font-weight: 400;
   line-height: 0.88;
   text-align: center;
-  text-wrap: balance;
+  text-wrap: wrap;
   transform: translateX(-50%);
   will-change: opacity, transform, filter;
 }
 
 .elva-cloud-title {
-  top: clamp(6.3rem, 10vh, 7.9rem);
+  top: 5.5vh;
   bottom: auto;
-  left: clamp(5.8rem, 9vw, 10.5rem);
+  left: 50%;
   z-index: 5;
-  width: min(32rem, 36vw);
+  width: min(116rem, 90vw);
   color: rgb(255 255 255 / 0.96);
-  font-size: clamp(2.1rem, 2.65vw, 3.45rem);
+  font-size: clamp(4.1rem, 7vw, 9.3rem);
   filter: blur(10px);
   letter-spacing: 0;
-  line-height: 0.96;
-  text-align: left;
+  line-height: 0.88;
+  text-align: center;
+  text-wrap: wrap;
+  text-wrap-style: auto;
   text-shadow: 0 1rem 2.4rem rgb(0 0 0 / 0.32);
-  transform: none;
+  transform: translateX(-50%);
   will-change: opacity, transform, filter;
+}
+
+.elva-cloud-what {
+  position: absolute;
+  top: 56%;
+  left: 5vw;
+  z-index: 5;
+  width: min(25rem, 32vw);
+  text-align: center;
+  will-change: opacity, transform, filter;
+}
+
+.elva-cloud-what span {
+  display: inline-grid;
+  min-height: 2.65rem;
+  align-items: center;
+  margin-bottom: 1rem;
+  padding: 0 1.25rem;
+  border: 1px solid rgb(255 255 255 / 0.5);
+  border-radius: 999px;
+  color: rgb(255 255 255 / 0.92);
+  font-size: 0.82rem;
+  font-weight: 600;
+}
+
+.elva-cloud-what h2 {
+  margin: 0;
+  font-size: clamp(2.6rem, 3.35vw, 4.1rem);
+  font-weight: 400;
+  letter-spacing: 0;
+  line-height: 0.9;
+  text-wrap: balance;
+}
+
+.elva-cloud-what p {
+  margin: 1.15rem auto 0;
+  color: rgb(255 255 255 / 0.82);
+  font-size: 1rem;
+  line-height: 1.1;
 }
 
 .elva-cloud-bubbles {
@@ -1338,9 +1380,9 @@ a {
 }
 
 .elva-cloud-kicker-center {
-  top: clamp(4.2rem, 7.2vh, 5.6rem);
-  left: clamp(5.8rem, 9vw, 10.5rem);
-  transform: none;
+  top: clamp(1.7rem, 3.8vh, 3.4rem);
+  left: 50%;
+  transform: translateX(-50%);
 }
 
 .elva-moments-panel {
@@ -1370,6 +1412,21 @@ a {
   text-align: center;
   text-wrap: balance;
   transform: translate3d(-50%, 0, 0);
+}
+
+.elva-moments-transition-canvas {
+  position: absolute;
+  inset: 0;
+  z-index: 6;
+  contain: strict;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.elva-moments-transition-canvas > canvas {
+  display: block;
+  width: 100%;
+  height: 100%;
 }
 
 .elva-moments-copy {
@@ -1609,6 +1666,7 @@ a {
   position: relative;
   z-index: 4;
   min-height: 100vh;
+  margin-top: -100vh;
   color: #ffffff;
   background: #f7f7f2;
 }
@@ -1910,6 +1968,7 @@ a {
   overflow: hidden;
   opacity: 0;
   pointer-events: none;
+  contain: layout paint;
 }
 
 .elva-process-gallery::before,
@@ -1925,13 +1984,21 @@ a {
 .elva-process-gallery::before {
   top: -1px;
   height: 7.2vh;
-  background: linear-gradient(#030303 0 18%, rgb(3 3 3 / 0.72) 52%, transparent);
+  background: linear-gradient(
+    #030303 0 18%,
+    rgb(3 3 3 / 0.72) 52%,
+    transparent
+  );
 }
 
 .elva-process-gallery::after {
   bottom: -1px;
   height: 7.6vh;
-  background: linear-gradient(transparent 0 18%, rgb(3 3 3 / 0.72) 58%, #030303);
+  background: linear-gradient(
+    transparent 0 18%,
+    rgb(3 3 3 / 0.72) 58%,
+    #030303
+  );
 }
 
 .elva-process-gallery-canvas {
@@ -1940,10 +2007,419 @@ a {
   width: 100%;
   height: 100%;
   display: block;
+  contain: layout paint;
 }
 
 .elva-process-gallery-canvas::selection {
   background: transparent;
+}
+
+.elva-process-finale-three {
+  position: absolute;
+  inset: 0;
+  z-index: 13;
+  overflow: hidden;
+  opacity: 0;
+  pointer-events: none;
+  contain: strict;
+}
+
+.elva-process-finale-three-canvas {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.elva-camera-features {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  z-index: 14;
+  width: max-content;
+  max-width: 94vw;
+  color: #ffffff;
+  text-align: center;
+  translate: -50% 0;
+  transform: translate3d(0, calc(100vh + 100px), 0);
+  will-change: transform;
+}
+
+.elva-camera-features-tag {
+  display: inline-block;
+  margin-bottom: 20px;
+  border: 1px solid rgb(255 255 255 / 0.5);
+  border-radius: 16px;
+  padding: 12px 20px;
+  font-size: 13px;
+  line-height: normal;
+  text-transform: capitalize;
+}
+
+.elva-camera-feature {
+  position: relative;
+  margin-bottom: 35px;
+  cursor: pointer;
+}
+
+.elva-camera-feature h2 {
+  margin: 0 0 20px;
+  font-size: 8vw;
+  font-weight: 400;
+  line-height: 0.9;
+  white-space: nowrap;
+}
+
+.elva-camera-feature p {
+  max-width: 400px;
+  margin: 0 auto 20px;
+  color: #ffffff;
+  font-size: 16px;
+  line-height: normal;
+}
+
+.elva-camera-feature-more {
+  display: inline-block;
+  width: 65px;
+  height: 65px;
+  transition: opacity 0.3s ease-in-out;
+}
+
+.elva-camera-feature-more:hover,
+.elva-camera-feature-more:focus-visible {
+  opacity: 0.2;
+}
+
+.elva-camera-feature-more img {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.elva-camera-feature-hover {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  z-index: 1;
+  display: flex;
+  width: calc(60vh * 234 / 481);
+  height: 60vh;
+  box-sizing: border-box;
+  align-items: center;
+  justify-content: center;
+  padding: 2vh;
+  background-image: url('/assets/elva/phone.png');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+  opacity: 0;
+  pointer-events: none;
+  transform: translate(-50%, -50%);
+  visibility: hidden;
+}
+
+.elva-camera-feature-hover img {
+  width: 100%;
+  height: 100%;
+  border-radius: 31px;
+  object-fit: cover;
+}
+
+.elva-process-finale {
+  position: absolute;
+  inset: 0;
+  z-index: 15;
+  color: #ffffff;
+  pointer-events: none;
+  visibility: hidden;
+}
+
+.elva-process-agency-badge,
+.elva-process-smile-button {
+  z-index: 19;
+}
+
+.elva-process-finale-title {
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  font-weight: 400;
+  text-align: center;
+  white-space: nowrap;
+  will-change: transform;
+}
+
+.elva-process-finale-header {
+  position: relative;
+  display: inline-block;
+  font-size: clamp(5.2rem, 15svh, 10rem);
+  font-weight: 400;
+  line-height: 0.9;
+}
+
+.elva-process-finale-header > div {
+  color: #b3b3b3;
+  font-size: 16px;
+  line-height: 1.3;
+  text-transform: capitalize;
+}
+
+.elva-process-finale-detail {
+  display: block;
+  opacity: 0;
+  filter: blur(20px);
+  will-change: opacity, filter;
+}
+
+.elva-process-finale ul {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+.elva-process-finale p {
+  margin: 0;
+}
+
+.elva-process-finale a {
+  color: #b3b3b3;
+  pointer-events: auto;
+}
+
+.elva-process-finale a:hover,
+.elva-process-finale a:focus-visible {
+  color: #ffffff;
+  text-decoration: underline;
+}
+
+.elva-process-finale-topleft,
+.elva-process-finale-topright,
+.elva-process-finale-topcenter,
+.elva-process-finale-leftcenter,
+.elva-process-finale-rightcenter,
+.elva-process-finale-bottomwrap {
+  position: absolute;
+}
+
+.elva-process-finale-topleft,
+.elva-process-finale-topright,
+.elva-process-finale-topcenter {
+  top: calc(100% + 0.75rem);
+}
+
+.elva-process-finale-topleft {
+  left: 0;
+  text-align: left;
+}
+
+.elva-process-finale-topright {
+  right: 0;
+  text-align: right;
+}
+
+.elva-process-finale-topcenter {
+  left: 50%;
+  width: 500px;
+  transform: translateX(-50%);
+}
+
+.elva-process-finale-topcenter li,
+.elva-process-finale-bottomcenter p {
+  display: flex;
+  gap: 20px;
+}
+
+.elva-process-finale-topcenter span,
+.elva-process-finale-bottomcenter span {
+  width: 50%;
+  text-align: left;
+}
+
+.elva-process-finale-topcenter span:first-child,
+.elva-process-finale-bottomcenter span:first-child {
+  text-align: right;
+}
+
+.elva-process-finale-leftcenter,
+.elva-process-finale-rightcenter {
+  top: 30svh;
+  text-transform: none !important;
+}
+
+.elva-process-finale-leftcenter {
+  left: 0;
+  text-align: left;
+}
+
+.elva-process-finale-rightcenter {
+  right: 0;
+  text-align: right;
+}
+
+.elva-process-finale-leftcenter p,
+.elva-process-finale-rightcenter p {
+  margin-bottom: 1em;
+  color: #b3b3b3;
+}
+
+.elva-process-finale-leftcenter a,
+.elva-process-finale-rightcenter a {
+  color: #ffffff;
+}
+
+.elva-process-finale-socials {
+  display: flex;
+  justify-content: flex-end;
+  gap: 16px;
+  margin-top: 16px;
+}
+
+.elva-process-finale-socials a {
+  color: #ffffff;
+  font-size: 11px;
+  line-height: 1;
+  opacity: 0.72;
+}
+
+.elva-process-finale-bottomwrap {
+  top: calc(100svh - 200px);
+  width: 100%;
+  height: 1px;
+}
+
+.elva-process-finale-bottomleft,
+.elva-process-finale-bottomright,
+.elva-process-finale-bottomcenter {
+  position: absolute;
+  bottom: 0;
+}
+
+.elva-process-finale-bottomleft {
+  left: 0;
+  text-align: left;
+}
+
+.elva-process-finale-bottomright {
+  right: 0;
+  display: grid;
+  text-align: right;
+}
+
+.elva-process-finale-bottomcenter {
+  left: 50%;
+  width: 500px;
+  transform: translateX(-50%);
+}
+
+.elva-process-finale-mobile-break {
+  display: none;
+}
+
+.elva-process-finale-legal {
+  position: absolute;
+  right: 0;
+  bottom: 16px;
+  left: 0;
+  z-index: 2;
+  display: flex;
+  justify-content: center;
+  gap: 1em;
+  color: #ffffff;
+  font-size: 16px;
+  text-align: center;
+  opacity: 0;
+  filter: blur(10px);
+}
+
+.elva-process-finale-legal a {
+  color: #ffffff;
+}
+
+@media (hover: none), (pointer: coarse) {
+  .elva-camera-feature-hover {
+    display: none;
+  }
+}
+
+@media (max-width: 1024px) {
+  .elva-camera-features {
+    width: 90%;
+  }
+
+  .elva-camera-feature {
+    margin-bottom: 50px;
+  }
+
+  .elva-camera-feature h2 {
+    font-size: 48px;
+    white-space: normal;
+  }
+
+  .elva-camera-feature p {
+    max-width: 300px;
+    font-size: 13px;
+  }
+
+  .elva-camera-feature p br,
+  .elva-camera-feature-more {
+    display: none;
+  }
+
+  .elva-process-finale-title {
+    white-space: normal;
+  }
+
+  .elva-process-finale-header {
+    position: static;
+    display: block;
+    padding-top: 0;
+    font-size: 48px;
+    line-height: 0.92;
+  }
+
+  .elva-process-finale-header > div {
+    font-size: 12px;
+  }
+
+  .elva-process-finale-mobile-break {
+    display: block;
+  }
+
+  .elva-process-finale-topleft,
+  .elva-process-finale-topright,
+  .elva-process-finale-topcenter,
+  .elva-process-finale-bottomcenter {
+    display: none;
+  }
+
+  .elva-process-finale-leftcenter {
+    top: 50svh;
+    left: 12px;
+  }
+
+  .elva-process-finale-rightcenter {
+    top: 50svh;
+    right: 12px;
+  }
+
+  .elva-process-finale-bottomwrap {
+    top: calc(100svh - 190px);
+    right: 12px;
+    left: 12px;
+    width: auto;
+  }
+
+  .elva-process-finale-bottomleft,
+  .elva-process-finale-bottomright {
+    font-size: 10px;
+  }
+
+  .elva-process-finale-legal {
+    bottom: 60px;
+    justify-content: space-between;
+    padding: 0 16px;
+    font-size: 12px;
+  }
 }
 
 .elva-process-phone-face,
@@ -2806,11 +3282,19 @@ a {
   }
 
   .elva-cloud-title {
-    top: 6rem;
+    top: 8vh;
     left: 50%;
-    width: min(28rem, 82vw);
-    font-size: clamp(2rem, 6.4vw, 3rem);
+    width: 94vw;
+    font-size: clamp(3.2rem, 13vw, 5.8rem);
+    line-height: 0.9;
     text-align: center;
+    transform: translateX(-50%);
+  }
+
+  .elva-cloud-what {
+    top: 60%;
+    left: 50%;
+    width: min(26rem, 86vw);
     transform: translateX(-50%);
   }
 

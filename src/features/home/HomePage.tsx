@@ -1,18 +1,27 @@
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import Lenis from 'lenis'
-import Matter from 'matter-js'
 import type { CSSProperties } from 'react'
 import { useEffect, useRef, useState } from 'react'
 import {
+  FinaleBubbleThreeScene,
+  memoryBubbleEventName,
+} from 'src/features/home/FinaleBubbleThreeScene'
+import {
   cloudStory,
+  featureCards,
+  finaleCopy,
   flowSteps,
+  footerLinks,
   heroCopy,
-  memoryBubbles,
   phoneMemoryBubbles,
   phoneVideos,
 } from 'src/features/home/homePageData'
 import { MemoryBubbleThreeScene } from 'src/features/home/MemoryBubbleThreeScene'
+import {
+  MomentsTransitionCanvasScene,
+  momentsTransitionEventName,
+} from 'src/features/home/MomentsTransitionCanvasScene'
 import { ProcessGalleryCanvasScene } from 'src/features/home/ProcessGalleryCanvasScene'
 import { ProcessPhoneThreeScene } from 'src/features/home/ProcessPhoneThreeScene'
 
@@ -22,16 +31,17 @@ const flowStart = 0.58
 const flowEnd = 0.8
 const memoryRevealStart = flowEnd + 0.002
 const cloudStart = 0.84
-const cloudTextStart = 0.865
 const momentsStart = 1.16
-const momentsOrbFinalScale = 1.08
+const cloudWhatStart = cloudStart + (momentsStart - cloudStart) * 0.17
+const cloudWhatEnd = cloudStart + (momentsStart - cloudStart) * 0.55
+const cloudTextStart = cloudStart + (momentsStart - cloudStart) * 0.58
+const cloudTextEnd = cloudStart + (momentsStart - cloudStart) * 0.92
+const momentsEnd = 1.852
 const phoneFullState = { y: -4, scale: 1 }
 const phoneMemoryThreeBubbles = phoneMemoryBubbles.map(({ image, size }) => ({
   image,
   size,
 }))
-const momentsThreeBubbles = memoryBubbles.slice(0, 18)
-const momentsOrbBubble = [{ size: 360 }]
 
 function getFlowStep(progress: number) {
   if (progress < flowStart) {
@@ -74,6 +84,10 @@ export function HomePage() {
       const introVideoMedia = select('.video video')
       const mainflow = select('.mainflow-iphone')
       const mainflowVideos = select('.mainflow-video')
+      const introVideoElement = introVideoMedia[0] as
+        | HTMLVideoElement
+        | undefined
+      const mainflowVideoElements = mainflowVideos as HTMLVideoElement[]
       const cardOne = select('.card1')
       const cardTwo = select('.card2')
       const backgroundTitle = select('.elva-background-title')
@@ -85,18 +99,12 @@ export function HomePage() {
       const cloud = select('.elva-memory-cloud')
       const cloudBackdropTitle = select('.elva-cloud-backdrop-title')
       const cloudTitle = select('.elva-cloud-title')
-      const cloudBubbles = select('.elva-cloud-bubble')
-      const cloudBubbleBodies = select('.elva-cloud-bubble-body')
-      const cloudBubbleSurfaces = select('.elva-cloud-bubble-surface')
+      const cloudWhat = select('.elva-cloud-what')
       const cloudKickers = select('.elva-cloud-kicker')
       const momentsPanel = select('.elva-moments-panel')
       const momentsWords = select('.elva-moments-word')
       const momentsTag = select('.elva-moments-tag')
       const momentsBody = select('.elva-moments-body')
-      const momentsOrb = select('.elva-moments-orb')
-      const momentsPulse = select('.elva-moments-pulse')
-      const momentsSeeds = select('.elva-moments-seed')
-      const featureItems = select('.elva-feature')
       const processTrack = select('.elva-process-track')
       const processStage = select('.elva-process-stage')
       const processPhone = select('.elva-process-phone')
@@ -109,6 +117,11 @@ export function HomePage() {
       const processCounter = select('.elva-process-counter')
       const processCounterLabels = select('.elva-process-counter-label')
       const processGallery = select('.elva-process-gallery')
+      const processFeatures = select('.elva-camera-features')
+      const processFinale = select('.elva-process-finale')
+      const processFinaleTitle = select('.elva-process-finale-title')
+      const processFinaleDetails = select('.elva-process-finale-detail')
+      const processFinaleLegal = select('.elva-process-finale-legal')
       const phoneElement = phone[0] as HTMLElement | undefined
       const phoneHeight = phoneElement?.offsetHeight ?? 790
       const closeupScale = phoneElement?.offsetHeight
@@ -128,46 +141,6 @@ export function HomePage() {
           Math.min(1.38, (window.innerHeight / phoneHeight) * 1.15),
         ),
       }
-      const getMomentSeedEntry = (index: number) => {
-        const side = index % 4
-        const lane = (index % 7) - 3
-        const jitter = (index % 5) * 34
-
-        if (side === 0) {
-          return {
-            x: -window.innerWidth * 0.64 - jitter,
-            y: -window.innerHeight * 0.36 + lane * 48,
-          }
-        }
-
-        if (side === 1) {
-          return {
-            x: window.innerWidth * 0.64 + jitter,
-            y: -window.innerHeight * 0.42 + lane * 44,
-          }
-        }
-
-        if (side === 2) {
-          return {
-            x: lane * 88,
-            y: -window.innerHeight * 0.86 - jitter,
-          }
-        }
-
-        return {
-          x: lane * 82,
-          y: window.innerHeight * 0.62 + jitter,
-        }
-      }
-      const getMomentSeedCatch = (index: number) => {
-        const angle = index * 2.399
-        const radius = 14 + (index % 5) * 4.8
-
-        return {
-          x: Math.cos(angle) * radius,
-          y: Math.sin(angle) * radius - 8,
-        }
-      }
       const initiallyHiddenTargets = [
         ...cardTwo,
         ...mainflow,
@@ -179,7 +152,7 @@ export function HomePage() {
         ...cloud,
         ...cloudBackdropTitle,
         ...cloudTitle,
-        ...cloudBubbles,
+        ...cloudWhat,
         ...cloudKickers,
         ...momentsPanel,
       ]
@@ -215,22 +188,12 @@ export function HomePage() {
         gsap.set(storyPanelsEl, { y: 80, filter: 'blur(18px)' })
       }
 
-      if (cloudBubbles.length > 0) {
-        gsap.set(cloudBubbles, {
-          x: 0,
-          y: 0,
-          rotate: 0,
-          scale: 0.24,
-          filter: 'blur(10px)',
-        })
-      }
-
-      if (featureItems.length > 0) {
-        gsap.set(featureItems, { autoAlpha: 0, y: 46 })
-      }
-
       if (cloudTitle.length > 0) {
         gsap.set(cloudTitle, { y: 132, filter: 'blur(16px)' })
+      }
+
+      if (cloudWhat.length > 0) {
+        gsap.set(cloudWhat, { y: 80, filter: 'blur(16px)' })
       }
 
       if (cloudBackdropTitle.length > 0) {
@@ -251,28 +214,6 @@ export function HomePage() {
 
       if (momentsBody.length > 0) {
         gsap.set(momentsBody, { autoAlpha: 0, filter: 'blur(10px)', y: 16 })
-      }
-
-      if (momentsOrb.length > 0) {
-        gsap.set(momentsOrb, {
-          autoAlpha: 0,
-          scale: 0.48,
-          y: 80,
-        })
-      }
-
-      if (momentsSeeds.length > 0) {
-        gsap.set(momentsSeeds, {
-          autoAlpha: 0,
-          filter: 'blur(10px)',
-          scale: (_index, element) => {
-            const seed = element as HTMLElement
-
-            return Number(seed.dataset.scale ?? 0.6) * 1.55
-          },
-          x: (index) => getMomentSeedEntry(index).x,
-          y: (index) => getMomentSeedEntry(index).y,
-        })
       }
 
       if (processStage.length > 0) {
@@ -351,7 +292,33 @@ export function HomePage() {
       }
 
       if (processGallery.length > 0) {
-        gsap.set(processGallery, { '--gallery-progress': 0, autoAlpha: 0 })
+        gsap.set(processGallery, { autoAlpha: 0 })
+      }
+
+      if (processFeatures.length > 0) {
+        gsap.set(processFeatures, { y: window.innerHeight + 100 })
+      }
+
+      if (processFinale.length > 0) {
+        gsap.set(processFinale, { autoAlpha: 0 })
+      }
+
+      if (processFinaleTitle.length > 0) {
+        gsap.set(processFinaleTitle, { y: window.innerHeight + 100 })
+      }
+
+      if (processFinaleDetails.length > 0) {
+        gsap.set(processFinaleDetails, {
+          filter: 'blur(20px)',
+          opacity: 0,
+        })
+      }
+
+      if (processFinaleLegal.length > 0) {
+        gsap.set(processFinaleLegal, {
+          filter: 'blur(10px)',
+          opacity: 0,
+        })
       }
 
       gsap
@@ -367,19 +334,6 @@ export function HomePage() {
         yoyo: true,
         stagger: 0.18,
       })
-
-      if (cloudBubbleSurfaces.length > 0) {
-        gsap.to(cloudBubbleSurfaces, {
-          x: (index) => (index % 2 === 0 ? -2.4 : 2.6),
-          y: (index) => (index % 3 === 0 ? -3.2 : 2.8),
-          scale: (index) => (index % 2 === 0 ? 1.012 : 0.996),
-          duration: 4.2,
-          ease: 'sine.inOut',
-          repeat: -1,
-          yoyo: true,
-          stagger: 0.12,
-        })
-      }
 
       let removeSmoothScroll: (() => void) | undefined
 
@@ -410,311 +364,38 @@ export function HomePage() {
         }
       }
 
-      let removeBubblePhysics: (() => void) | undefined
+      const syncPhoneVideoPlayback = (
+        timelineTime: number,
+        activeStep: number,
+      ) => {
+        const shouldPlayIntro = timelineTime < flowStart
+        const activeMainflowIndex =
+          timelineTime >= flowStart && timelineTime < flowEnd ? activeStep : -1
 
-      if (cloudBubbleBodies.length > 0) {
-        const { Bodies, Body, Composite, Engine } = Matter
-        const engine = Engine.create({ enableSleeping: false })
-        const bubbleBodies = cloudBubbleBodies.map(
-          (element) => element as HTMLElement,
-        )
-        const bubblePhysics = bubbleBodies.map((element, index) => {
-          const anchor = element.parentElement ?? element
-          const rect = anchor.getBoundingClientRect()
-          const radius = Math.max(18, Math.min(rect.width, rect.height) / 2)
-          const body = Bodies.circle(
-            rect.left + rect.width / 2,
-            rect.top + rect.height / 2,
-            radius,
-            {
-              density: 0.00042,
-              friction: 0.02,
-              frictionAir: 0.064,
-              restitution: 0.92,
-            },
-          )
-
-          return {
-            anchor,
-            body,
-            element,
-            impactBoost: 0,
-            idleSeed: index * 1.81 + Math.random() * 4,
-            index,
-            locked: false,
-            originX: body.position.x,
-            originY: body.position.y,
-          }
-        })
-        let latestPointer: {
-          movementX: number
-          movementY: number
-          x: number
-          y: number
-        } | null = null
-        let previousPointer: { x: number; y: number } | null = null
-        let impactFrame: number | undefined
-
-        engine.gravity.x = 0
-        engine.gravity.y = 0
-        Composite.add(
-          engine.world,
-          bubblePhysics.map((bubble) => bubble.body),
-        )
-
-        const syncBubbleOrigin = (
-          bubble: (typeof bubblePhysics)[number],
-          snapToOrigin = false,
-        ) => {
-          const rect = bubble.anchor.getBoundingClientRect()
-
-          bubble.originX = rect.left + rect.width / 2
-          bubble.originY = rect.top + rect.height / 2
-
-          if (snapToOrigin) {
-            Body.setPosition(bubble.body, {
-              x: bubble.originX,
-              y: bubble.originY,
-            })
-            Body.setVelocity(bubble.body, { x: 0, y: 0 })
-            Body.setAngularVelocity(bubble.body, 0)
-            Body.setAngle(bubble.body, 0)
-            bubble.impactBoost = 0
-            bubble.locked = false
+        if (introVideoElement) {
+          if (shouldPlayIntro && introVideoElement.paused) {
+            void introVideoElement.play().catch(() => undefined)
+          } else if (!shouldPlayIntro && !introVideoElement.paused) {
+            introVideoElement.pause()
           }
         }
 
-        const getCloudOpacity = () => {
-          const cloudElement = cloud[0] as HTMLElement | undefined
+        mainflowVideoElements.forEach((video, index) => {
+          if (index === activeMainflowIndex) {
+            if (video.paused) {
+              void video.play().catch(() => undefined)
+            }
 
-          return cloudElement
-            ? Number(gsap.getProperty(cloudElement, 'opacity'))
-            : 0
-        }
-
-        const resetBubbleBodies = () => {
-          latestPointer = null
-          previousPointer = null
-          bubblePhysics.forEach((bubble) => {
-            syncBubbleOrigin(bubble, true)
-            bubble.element.style.zIndex = ''
-            gsap.set(bubble.element, {
-              filter: 'brightness(1) saturate(1)',
-              rotate: 0,
-              scale: 1,
-              x: 0,
-              y: 0,
-            })
-          })
-        }
-
-        const applyBubbleImpact = () => {
-          impactFrame = undefined
-
-          if (!latestPointer || getCloudOpacity() < 0.9) {
             return
           }
 
-          const pointer = latestPointer
-          const pointerSpeed = Math.hypot(pointer.movementX, pointer.movementY)
-          const impactSpeed = Math.min(2.35, Math.max(1.08, pointerSpeed / 16))
-          const impactRadius = Math.min(
-            700,
-            Math.max(430, window.innerWidth * 0.34),
-          )
-          let hitCount = 0
-
-          bubblePhysics.forEach((bubble) => {
-            if (bubble.locked) {
-              return
-            }
-
-            const anchorRect = bubble.anchor.getBoundingClientRect()
-            const bubbleHitRadius = Math.max(
-              46,
-              Math.min(anchorRect.width, anchorRect.height) * 0.58,
-            )
-            const deltaX = bubble.body.position.x - pointer.x
-            const deltaY = bubble.body.position.y - pointer.y
-            const centerDistance = Math.max(Math.hypot(deltaX, deltaY), 1)
-            const distance = Math.max(0, centerDistance - bubbleHitRadius)
-
-            if (distance >= impactRadius) {
-              return
-            }
-
-            hitCount += 1
-            bubble.locked = true
-
-            const force = Math.max(0.32, (1 - distance / impactRadius) ** 0.92)
-            const scatterAngle =
-              Math.atan2(deltaY, deltaX) +
-              gsap.utils.random(-1.15, 1.15) +
-              (bubble.index % 2 === 0 ? 0.34 : -0.34)
-            const burst = (30 + pointerSpeed * 0.46) * force * impactSpeed
-            const velocityX =
-              Math.cos(scatterAngle) * burst + pointer.movementX * 0.34 * force
-            const velocityY =
-              Math.sin(scatterAngle) * burst + pointer.movementY * 0.34 * force
-
-            bubble.impactBoost = Math.max(
-              bubble.impactBoost,
-              0.24 + force * 0.28,
-            )
-            bubble.element.style.zIndex = '8'
-
-            Body.setVelocity(bubble.body, {
-              x: bubble.body.velocity.x + velocityX,
-              y: bubble.body.velocity.y + velocityY,
-            })
-            Body.setAngularVelocity(
-              bubble.body,
-              bubble.body.angularVelocity +
-                gsap.utils.random(-0.42, 0.42) * force * impactSpeed,
-            )
-          })
-
-          if (hitCount === 0) {
-            return
+          if (!video.paused) {
+            video.pause()
           }
-
-          latestPointer = null
-        }
-
-        const updateBubblePhysics = (time: number) => {
-          const cloudReady = getCloudOpacity() >= 0.9
-
-          bubblePhysics.forEach((bubble) => {
-            syncBubbleOrigin(bubble, !cloudReady)
-
-            if (!cloudReady) {
-              return
-            }
-
-            const pullX = bubble.originX - bubble.body.position.x
-            const pullY = bubble.originY - bubble.body.position.y
-            const distance = Math.hypot(pullX, pullY)
-            const speed = Math.hypot(
-              bubble.body.velocity.x,
-              bubble.body.velocity.y,
-            )
-            const spring = bubble.locked ? 0.000026 : 0.000013
-            const idlePulse = Math.sin(time * 0.0012 + bubble.idleSeed)
-            const idleDrift = Math.cos(time * 0.001 + bubble.idleSeed * 1.27)
-
-            Body.applyForce(bubble.body, bubble.body.position, {
-              x: pullX * spring + idlePulse * 0.000006,
-              y: pullY * spring + idleDrift * 0.000006,
-            })
-
-            if (bubble.locked && distance <= 7 && speed <= 0.32) {
-              bubble.locked = false
-            }
-          })
-
-          Engine.update(engine, 1000 / 60)
-
-          bubblePhysics.forEach((bubble) => {
-            const offsetX = bubble.body.position.x - bubble.originX
-            const offsetY = bubble.body.position.y - bubble.originY
-            const speed = Math.hypot(
-              bubble.body.velocity.x,
-              bubble.body.velocity.y,
-            )
-            const glow = Math.min(0.34, speed * 0.018 + bubble.impactBoost)
-
-            bubble.impactBoost *= 0.88
-
-            if (glow <= 0.02) {
-              bubble.element.style.zIndex = ''
-              bubble.impactBoost = 0
-            }
-
-            gsap.set(bubble.element, {
-              filter: `brightness(${1 + glow * 0.48}) saturate(${
-                1 + glow * 0.65
-              })`,
-              rotate: (bubble.body.angle * 180) / Math.PI,
-              scale: 1 + Math.min(0.28, speed * 0.018 + bubble.impactBoost),
-              x: gsap.utils.clamp(-480, 480, offsetX),
-              y: gsap.utils.clamp(-430, 430, offsetY),
-            })
-          })
-        }
-
-        const handlePointerMove = (event: PointerEvent) => {
-          const movementX = previousPointer
-            ? event.clientX - previousPointer.x
-            : event.movementX
-          const movementY = previousPointer
-            ? event.clientY - previousPointer.y
-            : event.movementY
-
-          previousPointer = { x: event.clientX, y: event.clientY }
-
-          if (Math.hypot(movementX, movementY) < 0.8) {
-            return
-          }
-
-          latestPointer = {
-            movementX,
-            movementY,
-            x: event.clientX,
-            y: event.clientY,
-          }
-
-          impactFrame ??= window.requestAnimationFrame(applyBubbleImpact)
-        }
-
-        gsap.ticker.add(updateBubblePhysics)
-        window.addEventListener('pointermove', handlePointerMove, {
-          passive: true,
-        })
-        window.addEventListener('blur', resetBubbleBodies)
-        root.addEventListener('mouseleave', resetBubbleBodies)
-
-        removeBubblePhysics = () => {
-          if (impactFrame) {
-            window.cancelAnimationFrame(impactFrame)
-          }
-
-          gsap.ticker.remove(updateBubblePhysics)
-          window.removeEventListener('pointermove', handlePointerMove)
-          window.removeEventListener('blur', resetBubbleBodies)
-          root.removeEventListener('mouseleave', resetBubbleBodies)
-          Composite.clear(engine.world, false)
-          Engine.clear(engine)
-        }
-      }
-
-      const syncCloudBubbleRotation = (progress: number) => {
-        if (cloudBubbles.length === 0) {
-          return
-        }
-
-        const spinProgress = gsap.utils.clamp(
-          0,
-          1,
-          (progress - cloudStart) / (1 - cloudStart),
-        )
-
-        cloudBubbles.forEach((bubble, index) => {
-          const spinDirection = index % 2 === 0 ? 1 : -1
-          const spinAmount = 14 + (index % 7) * 3.2
-
-          gsap.set(bubble, {
-            rotate: spinProgress * spinDirection * spinAmount,
-          })
         })
       }
 
       const timelineEnd = { progress: 0 }
-      let cloudBubbleBurstTimeline: gsap.core.Timeline | undefined
-      let cloudBubbleExitTimeline: gsap.core.Timeline | undefined
-      let setCloudBubblesClustered: (() => void) | undefined
-      let isCloudBubbleBurstPrimed = true
-      let isCloudBubbleExitPrimed = true
-      let lastHeroProgress = 0
       const heroTimeline = gsap.timeline({
         defaults: { duration: 0.08, ease: 'none' },
         scrollTrigger: {
@@ -726,50 +407,30 @@ export function HomePage() {
           anticipatePin: 1,
           invalidateOnRefresh: true,
           onUpdate: (trigger) => {
-            const nextStep = getFlowStep(trigger.progress)
             const timelineTime = trigger.animation?.time() ?? 0
-            const cloudBurstEnterTime = cloudStart - 0.004
-            const cloudExitTriggerTime = momentsStart - 0.075
-            const cloudBurstExitTime = cloudExitTriggerTime - 0.006
-            const cloudExitProgress = 0.615
-            const isCloudBurstRange =
-              timelineTime >= cloudBurstEnterTime &&
-              timelineTime < cloudBurstExitTime
-            const hasCrossedCloudExit =
-              trigger.progress >= cloudExitProgress &&
-              lastHeroProgress < cloudExitProgress
+            const nextStep = getFlowStep(timelineTime)
+            const memoryBubbleProgress = gsap.utils.clamp(
+              0,
+              1,
+              (timelineTime - cloudStart) / (momentsStart - cloudStart),
+            )
+            const momentsProgress = gsap.utils.clamp(
+              0,
+              1,
+              (timelineTime - momentsStart) / (momentsEnd - momentsStart),
+            )
 
-            syncCloudBubbleRotation(trigger.progress)
-
-            if (timelineTime < cloudBurstEnterTime) {
-              isCloudBubbleBurstPrimed = true
-              cloudBubbleBurstTimeline?.pause(0)
-            } else if (timelineTime >= cloudBurstExitTime) {
-              isCloudBubbleBurstPrimed = false
-            } else if (isCloudBurstRange && trigger.direction < 0) {
-              isCloudBubbleBurstPrimed = true
-              cloudBubbleBurstTimeline?.pause(0)
-            } else if (
-              isCloudBurstRange &&
-              trigger.direction > 0 &&
-              isCloudBubbleBurstPrimed
-            ) {
-              isCloudBubbleBurstPrimed = false
-              cloudBubbleBurstTimeline?.restart()
-            }
-
-            if (trigger.progress < cloudExitProgress - 0.018) {
-              if (!isCloudBubbleExitPrimed) {
-                isCloudBubbleExitPrimed = true
-                cloudBubbleExitTimeline?.pause(0)
-                setCloudBubblesClustered?.()
-              }
-            } else if (hasCrossedCloudExit && isCloudBubbleExitPrimed) {
-              isCloudBubbleExitPrimed = false
-              cloudBubbleExitTimeline?.restart()
-            }
-
-            lastHeroProgress = trigger.progress
+            syncPhoneVideoPlayback(timelineTime, nextStep)
+            window.dispatchEvent(
+              new CustomEvent(memoryBubbleEventName, {
+                detail: { progress: memoryBubbleProgress },
+              }),
+            )
+            window.dispatchEvent(
+              new CustomEvent(momentsTransitionEventName, {
+                detail: { progress: momentsProgress },
+              }),
+            )
 
             if (nextStep !== activeStepRef.current) {
               activeStepRef.current = nextStep
@@ -924,7 +585,7 @@ export function HomePage() {
         heroTimeline.to(
           cloudBackdropTitle,
           { autoAlpha: 1, y: 0, filter: 'blur(8px)', duration: 0.04 },
-          cloudStart + 0.012,
+          cloudWhatEnd - 0.02,
         )
       }
 
@@ -936,138 +597,27 @@ export function HomePage() {
         )
       }
 
-      if (cloudBubbles.length > 0) {
-        const cloudClusterScaleX = Math.min(
-          0.54,
-          Math.max(0.42, window.innerWidth / 2800),
-        )
-        const cloudClusterScaleY = Math.min(
-          0.48,
-          Math.max(0.38, window.innerHeight / 1900),
-        )
-        const burstScaleX = Math.max(2.2, cloudClusterScaleX * 4.55)
-        const burstScaleY = Math.max(2, cloudClusterScaleY * 4.35)
-        const exitScatterScaleX = Math.max(2.72, cloudClusterScaleX * 5.35)
-        const exitScatterScaleY = Math.max(2.42, cloudClusterScaleY * 5.1)
-        const getBubbleOffset = (
-          element: unknown,
-          axis: 'x' | 'y',
-          scale: number,
-        ) => {
-          const bubble = element as HTMLElement
-
-          return Number(bubble.dataset[axis] ?? 0) * scale
-        }
-        const getBubbleScale = (element: unknown, multiplier: number) => {
-          const bubble = element as HTMLElement
-          const baseScale = Number(bubble.dataset.scale ?? 1)
-
-          return baseScale * multiplier
-        }
-        const clusterBubbleScale = 1.94
-
-        setCloudBubblesClustered = () => {
-          gsap.set(cloudBubbles, {
-            autoAlpha: 1,
-            filter: 'blur(0px)',
-            x: (_index, element) =>
-              getBubbleOffset(element, 'x', cloudClusterScaleX),
-            y: (_index, element) =>
-              getBubbleOffset(element, 'y', cloudClusterScaleY),
-            scale: (_index, element) =>
-              getBubbleScale(element, clusterBubbleScale),
-          })
-        }
-
-        cloudBubbleBurstTimeline = gsap
-          .timeline({ paused: true })
-          .set(cloudBubbles, {
-            autoAlpha: 0,
-            filter: 'blur(10px)',
-            scale: 0.24,
-            x: 0,
-            y: 0,
-          })
-          .to(cloudBubbles, {
-            autoAlpha: 1,
-            filter: 'blur(0px)',
-            x: (_index, element) =>
-              getBubbleOffset(element, 'x', cloudClusterScaleX * 0.52),
-            y: (_index, element) =>
-              getBubbleOffset(element, 'y', cloudClusterScaleY * 0.52),
-            scale: (_index, element) => getBubbleScale(element, 1.58),
-            stagger: { each: 0.009, from: 'center' },
-            duration: 0.05,
-            ease: 'power2.out',
-          })
+      if (cloudWhat.length > 0) {
+        heroTimeline
           .to(
-            cloudBubbles,
+            cloudWhat,
             {
-              x: (_index, element) =>
-                getBubbleOffset(element, 'x', burstScaleX),
-              y: (_index, element) =>
-                getBubbleOffset(element, 'y', burstScaleY),
-              scale: (_index, element) => getBubbleScale(element, 1.44),
-              stagger: { each: 0.004, from: 'random' },
-              duration: 0.46,
-              ease: 'power3.out',
+              autoAlpha: 1,
+              filter: 'blur(0px)',
+              y: 0,
+              duration: 0.045,
             },
-            '>-0.04',
+            cloudWhatStart,
           )
           .to(
-            cloudBubbles,
-            {
-              x: (_index, element) =>
-                getBubbleOffset(element, 'x', cloudClusterScaleX),
-              y: (_index, element) =>
-                getBubbleOffset(element, 'y', cloudClusterScaleY),
-              scale: (_index, element) =>
-                getBubbleScale(element, clusterBubbleScale),
-              stagger: { each: 0.0055, from: 'edges' },
-              duration: 0.68,
-              ease: 'power3.inOut',
-            },
-            '>-0.08',
-          )
-
-        cloudBubbleExitTimeline = gsap
-          .timeline({ paused: true })
-          .set(cloudBubbles, {
-            autoAlpha: 1,
-            filter: 'blur(0px)',
-            x: (_index, element) =>
-              getBubbleOffset(element, 'x', cloudClusterScaleX),
-            y: (_index, element) =>
-              getBubbleOffset(element, 'y', cloudClusterScaleY),
-            scale: (_index, element) =>
-              getBubbleScale(element, clusterBubbleScale),
-          })
-          .to(
-            cloudBubbles,
-            {
-              filter: 'blur(2.5px)',
-              x: (_index, element) =>
-                getBubbleOffset(element, 'x', exitScatterScaleX),
-              y: (_index, element) =>
-                getBubbleOffset(element, 'y', exitScatterScaleY),
-              scale: (_index, element) => getBubbleScale(element, 2.08),
-              stagger: { each: 0.006, from: 'random' },
-              duration: 0.26,
-              ease: 'expo.out',
-            },
-            0,
-          )
-          .to(
-            cloudBubbles,
+            cloudWhat,
             {
               autoAlpha: 0,
               filter: 'blur(18px)',
-              scale: (_index, element) => getBubbleScale(element, 1.82),
-              stagger: { each: 0.002, from: 'center' },
-              duration: 0.14,
-              ease: 'power2.in',
+              y: -96,
+              duration: 0.045,
             },
-            0.11,
+            cloudWhatEnd,
           )
       }
 
@@ -1098,7 +648,7 @@ export function HomePage() {
             y: -120,
             duration: 0.04,
           },
-          momentsStart - 0.034,
+          cloudTextEnd,
         )
       }
 
@@ -1130,132 +680,12 @@ export function HomePage() {
             },
             momentsStart + 0.012,
           )
-          .to(
-            momentsOrb,
-            {
-              autoAlpha: 0.5,
-              scale: 0.68,
-              y: 0,
-              duration: 0.035,
-            },
-            momentsStart + 0.018,
-          )
-          .to(
-            momentsOrb,
-            {
-              autoAlpha: 1,
-              y: 0,
-              duration: 0.026,
-              ease: 'power1.inOut',
-            },
-            momentsStart + 0.048,
-          )
-
-        if (momentsSeeds.length > 0) {
-          const seedTravelStart = momentsStart + 0.028
-          const seedTravelSpan = 0.58
-          const seedFlyDuration = 0.032
-          const seedVanishDuration = 0.016
-          const seedInterval =
-            seedTravelSpan / Math.max(1, momentsSeeds.length - 1)
-
-          heroTimeline.to(
-            momentsOrb,
-            {
-              autoAlpha: 1,
-              scale: momentsOrbFinalScale,
-              duration:
-                seedTravelSpan + seedFlyDuration + seedVanishDuration * 0.6,
-              ease: 'sine.inOut',
-            },
-            seedTravelStart + seedFlyDuration * 0.45,
-          )
-
-          momentsSeeds.forEach((seedElement, index) => {
-            const seed = seedElement as HTMLElement
-            const entry = getMomentSeedEntry(index)
-            const catchPoint = getMomentSeedCatch(index)
-            const scale = Number(seed.dataset.scale ?? 0.6)
-            const seedAt = seedTravelStart + index * seedInterval
-            const seedEntryScale = scale * 1.68
-            const seedCatchScale = Math.max(0.42, scale * 0.66)
-
-            heroTimeline
-              .fromTo(
-                seed,
-                {
-                  autoAlpha: 0,
-                  filter: 'blur(10px)',
-                  scale: seedEntryScale,
-                  x: entry.x,
-                  y: entry.y,
-                },
-                {
-                  autoAlpha: 0.94,
-                  filter: 'blur(0px)',
-                  scale: seedCatchScale,
-                  x: catchPoint.x,
-                  y: catchPoint.y,
-                  duration: seedFlyDuration,
-                  ease: 'power3.out',
-                },
-                seedAt,
-              )
-              .to(
-                seed,
-                {
-                  autoAlpha: 0,
-                  filter: 'blur(7px)',
-                  scale: 0.026,
-                  x: 0,
-                  y: 0,
-                  duration: seedVanishDuration,
-                  ease: 'power2.in',
-                },
-                seedAt + seedFlyDuration,
-              )
-          })
-        }
-
-        heroTimeline
-          .to(
-            momentsOrb,
-            {
-              scale: momentsOrbFinalScale,
-              y: 0,
-              duration: 0.001,
-              ease: 'none',
-            },
-            1.83,
-          )
-          .to(
-            momentsPulse,
-            {
-              autoAlpha: 0,
-              scale: 1,
-              duration: 0.001,
-            },
-            1.829,
-          )
-          .to(momentsPanel, { autoAlpha: 0, duration: 0.006 }, 1.852)
+          .to(momentsPanel, { autoAlpha: 0, duration: 0.006 }, momentsEnd)
       }
 
       heroTimeline.to(timelineEnd, { duration: 0.001, progress: 1 }, 1.855)
 
-      if (featureItems.length > 0) {
-        gsap.to(featureItems, {
-          autoAlpha: 1,
-          y: 0,
-          duration: 0.7,
-          ease: 'power3.out',
-          stagger: 0.08,
-          scrollTrigger: {
-            trigger: '.elva-features',
-            start: 'top 62%',
-            toggleActions: 'play none none reverse',
-          },
-        })
-      }
+      let processScenesFrame = 0
 
       if (processTrack.length > 0 && processStage.length > 0) {
         const processStepOneProgressStart = 0.43
@@ -1275,6 +705,18 @@ export function HomePage() {
         const processResultFrontStart = 3.14
         const processGalleryStart = 4.02
         const processGalleryProgressDuration = 0.9
+        const processCameraStart =
+          processGalleryStart + processGalleryProgressDuration
+        const processCameraProgressDuration = 1.48
+        const processCameraEnd =
+          processCameraStart + processCameraProgressDuration
+        const processCameraExitStart = processCameraEnd + 0.1
+        const processCameraExitDuration = 0.72
+        const processFeaturesStart = processCameraEnd + 0.42
+        const processFeaturesDuration = 4
+        const processFinaleStart =
+          processFeaturesStart + processFeaturesDuration - 0.5
+        const processFinaleDuration = 3
         const processRotationStart =
           processStepOneProgressStart + processStepOneProgressDuration * 0.8
         const processRotationEnd =
@@ -1289,6 +731,9 @@ export function HomePage() {
           screen: 0,
         }
         const processGalleryCanvasState = {
+          cameraTransitionProgress: 0,
+          exitTransitionProgress: 0,
+          finaleProgress: 0,
           progress: 0,
         }
         const getProcessScreenForTime = (time: number) => {
@@ -1404,6 +849,11 @@ export function HomePage() {
           window.dispatchEvent(
             new CustomEvent('elva-process-gallery-canvas', {
               detail: {
+                cameraTransitionProgress:
+                  processGalleryCanvasState.cameraTransitionProgress,
+                exitTransitionProgress:
+                  processGalleryCanvasState.exitTransitionProgress,
+                finaleProgress: processGalleryCanvasState.finaleProgress,
                 progress: processGalleryCanvasState.progress,
                 visible: processTime >= processGalleryStart,
               },
@@ -1414,18 +864,31 @@ export function HomePage() {
           updateProcessPhone3D()
           updateProcessGalleryCanvas()
         }
+        const requestProcessScenesUpdate = () => {
+          if (processScenesFrame !== 0) {
+            return
+          }
+
+          processScenesFrame = window.requestAnimationFrame(() => {
+            processScenesFrame = 0
+            updateProcessScenes()
+          })
+        }
         const processTimeline = gsap.timeline({
           defaults: { duration: 0.08, ease: 'none' },
-          onUpdate: updateProcessScenes,
           scrollTrigger: {
             trigger: processTrack[0],
             start: 'top top',
-            end: '+=22000',
+            end: '+=46000',
             scrub: 0.9,
             pin: processStage[0],
             anticipatePin: 1,
             invalidateOnRefresh: true,
           },
+        })
+
+        processTimeline.eventCallback('onUpdate', () => {
+          requestProcessScenesUpdate()
         })
 
         processTimeline
@@ -1848,13 +1311,85 @@ export function HomePage() {
             processGalleryStart + 0.02,
           )
           .to(
-            processGallery,
+            processGalleryCanvasState,
             {
-              '--gallery-progress': 1,
-              duration: processGalleryProgressDuration,
+              cameraTransitionProgress: 1,
+              duration: processCameraProgressDuration,
+              ease: 'none',
+            },
+            processCameraStart,
+          )
+          .to(
+            processGalleryCanvasState,
+            {
+              exitTransitionProgress: 1,
+              duration: processCameraExitDuration,
+              ease: 'none',
+            },
+            processCameraExitStart,
+          )
+          .fromTo(
+            processFeatures,
+            {
+              y: () => window.innerHeight + 100,
+            },
+            {
+              y: () => {
+                const featureHeight =
+                  (processFeatures[0] as HTMLElement | undefined)
+                    ?.offsetHeight ?? window.innerHeight
+
+                return -featureHeight
+              },
+              duration: processFeaturesDuration,
+              ease: 'none',
+              immediateRender: false,
+            },
+            processFeaturesStart,
+          )
+          .set(processFinale, { autoAlpha: 1 }, processFinaleStart)
+          .to(
+            processGalleryCanvasState,
+            {
+              finaleProgress: 1,
+              duration: processFinaleDuration,
+              ease: 'none',
+            },
+            processFinaleStart,
+          )
+          .fromTo(
+            processFinaleTitle,
+            {
+              y: () => window.innerHeight + 100,
+            },
+            {
+              y: () => (window.innerWidth <= 1024 ? 40 : 70),
+              duration: processFinaleDuration,
+              ease: 'none',
+              immediateRender: false,
+            },
+            processFinaleStart,
+          )
+          .to(
+            processFinaleDetails,
+            {
+              filter: 'blur(0px)',
+              opacity: 1,
+              duration: 1.5,
+              ease: 'power2.out',
+              stagger: 0.1,
+            },
+            processFinaleStart + 0.5,
+          )
+          .to(
+            processFinaleLegal,
+            {
+              filter: 'blur(0px)',
+              opacity: 1,
+              duration: 1.5,
               ease: 'power2.out',
             },
-            processGalleryStart + 0.02,
+            processFinaleStart + 0.5,
           )
           .to(
             processPhone,
@@ -1872,16 +1407,15 @@ export function HomePage() {
         showProcessStep(processTimeline, 2, 3, processStepFourResetAt)
       }
 
-      const introVideoElement = introVideoMedia[0] as
-        | HTMLVideoElement
-        | undefined
       let removeIntroVideoCue: (() => void) | undefined
 
       if (introVideoElement) {
         const cueIntroVideo = () => {
           introVideoElement.currentTime = 5.8
           introVideoElement.playbackRate = 0.28
-          void introVideoElement.play().catch(() => undefined)
+          const timelineTime = heroTimeline.time()
+
+          syncPhoneVideoPlayback(timelineTime, getFlowStep(timelineTime))
         }
 
         if (introVideoElement.readyState >= 1) {
@@ -1896,6 +1430,101 @@ export function HomePage() {
               cueIntroVideo,
             )
           }
+        }
+      }
+
+      const cameraFeatureElements = select(
+        '.elva-camera-feature',
+      ) as HTMLElement[]
+      let removeCameraFeatureHover: (() => void) | undefined
+
+      if (
+        cameraFeatureElements.length > 0 &&
+        window.matchMedia('(hover: hover) and (pointer: fine)').matches
+      ) {
+        const featureHoverCleanups = cameraFeatureElements.map((feature) => {
+          const preview = feature.querySelector<HTMLElement>(
+            '.elva-camera-feature-hover',
+          )
+
+          if (!preview) {
+            return () => undefined
+          }
+
+          const moveX = gsap.quickTo(preview, 'left', {
+            duration: 0.34,
+            ease: 'power3.out',
+          })
+          const moveY = gsap.quickTo(preview, 'top', {
+            duration: 0.34,
+            ease: 'power3.out',
+          })
+          let isPreviewActive = false
+          const getLocalPointer = (event: PointerEvent) => {
+            const bounds = feature.getBoundingClientRect()
+
+            return {
+              x: event.clientX - bounds.left,
+              y: event.clientY - bounds.top,
+            }
+          }
+          const revealPreview = (event: PointerEvent) => {
+            const pointer = getLocalPointer(event)
+
+            isPreviewActive = true
+            gsap.killTweensOf(preview, 'opacity,visibility')
+            gsap.set(preview, {
+              left: pointer.x,
+              top: pointer.y,
+            })
+            gsap.to(preview, {
+              autoAlpha: 1,
+              duration: 0.5,
+              ease: 'power2.out',
+            })
+          }
+          const handlePointerEnter = (event: PointerEvent) => {
+            revealPreview(event)
+          }
+          const handlePointerMove = (event: PointerEvent) => {
+            if (!isPreviewActive) {
+              revealPreview(event)
+
+              return
+            }
+
+            const pointer = getLocalPointer(event)
+
+            moveX(pointer.x)
+            moveY(pointer.y)
+          }
+          const hidePreview = () => {
+            isPreviewActive = false
+            gsap.to(preview, {
+              autoAlpha: 0,
+              duration: 0.5,
+              ease: 'power2.out',
+            })
+          }
+
+          feature.addEventListener('pointerenter', handlePointerEnter)
+          feature.addEventListener('pointermove', handlePointerMove)
+          feature.addEventListener('pointerleave', hidePreview)
+          feature.addEventListener('pointercancel', hidePreview)
+
+          return () => {
+            feature.removeEventListener('pointerenter', handlePointerEnter)
+            feature.removeEventListener('pointermove', handlePointerMove)
+            feature.removeEventListener('pointerleave', hidePreview)
+            feature.removeEventListener('pointercancel', hidePreview)
+            gsap.killTweensOf(preview)
+          }
+        })
+
+        removeCameraFeatureHover = () => {
+          featureHoverCleanups.forEach((cleanup) => {
+            cleanup()
+          })
         }
       }
 
@@ -1927,9 +1556,12 @@ export function HomePage() {
 
       return () => {
         removeIntroVideoCue?.()
+        removeCameraFeatureHover?.()
         removeCtaDraw?.()
-        removeBubblePhysics?.()
         removeSmoothScroll?.()
+        if (processScenesFrame !== 0) {
+          window.cancelAnimationFrame(processScenesFrame)
+        }
       }
     }, root)
 
@@ -2034,7 +1666,6 @@ export function HomePage() {
                     index === activeFlowStep ? 'active' : ''
                   }`}
                   data-index={index}
-                  autoPlay={index === activeFlowStep}
                   key={video}
                   loop
                   muted
@@ -2125,40 +1756,14 @@ export function HomePage() {
             <div className="elva-cloud-backdrop-title">
               {cloudStory.backdrop}
             </div>
-            <MemoryBubbleThreeScene
-              bubbles={memoryBubbles}
+            <FinaleBubbleThreeScene
               className="elva-cloud-three"
+              variant="memory"
             />
-            <div className="elva-cloud-bubbles elva-cloud-bubbles--three-anchors">
-              {memoryBubbles.map((bubble, index) => (
-                <span
-                  className="elva-cloud-bubble"
-                  data-scale={index % 4 === 0 ? 1.12 : 1}
-                  data-x={bubble.x}
-                  data-y={bubble.y}
-                  key={`${bubble.image}-${bubble.x}-${bubble.y}`}
-                  style={
-                    {
-                      '--bubble-size': `${bubble.size}px`,
-                      '--bubble-image': `url("${bubble.image}")`,
-                      '--bubble-lens-x': `${28 + (index % 5) * 7}%`,
-                      '--bubble-lens-y': `${18 + (index % 4) * 6}%`,
-                      '--bubble-shadow-x': `${58 + (index % 3) * 6}%`,
-                      '--bubble-shadow-y': `${68 + (index % 4) * 5}%`,
-                    } as CSSProperties
-                  }
-                >
-                  <span className="elva-cloud-bubble-body">
-                    <span className="elva-cloud-bubble-surface">
-                      <img src={bubble.image} alt="" />
-                    </span>
-                    <span className="elva-cloud-bubble-refract" />
-                    <span className="elva-cloud-bubble-shadow" />
-                    <span className="elva-cloud-bubble-rim" />
-                    <span className="elva-cloud-bubble-highlight" />
-                  </span>
-                </span>
-              ))}
+            <div className="elva-cloud-what">
+              <span>{cloudStory.whatKicker}</span>
+              <h2>{cloudStory.whatTitle}</h2>
+              <p>{cloudStory.whatBody}</p>
             </div>
             <span className="elva-cloud-kicker elva-cloud-kicker-center">
               {cloudStory.kicker}
@@ -2167,62 +1772,7 @@ export function HomePage() {
           </div>
 
           <div className="elva-moments-panel" aria-hidden="true">
-            <MemoryBubbleThreeScene
-              anchorSelector=".elva-moments-orb"
-              bodySelector=".elva-moments-orb-shell"
-              bubbles={momentsOrbBubble}
-              canvasClassName="elva-bubble-three-canvas"
-              className="elva-moments-orb-three"
-              fresnelOpacity={0.64}
-              idleMotion={false}
-              lensOpacity={0.42}
-              lensScale={1.48}
-              maxRadius={210}
-              occluderSelector=""
-              opacityMultiplier={0.84}
-              parentSelector=".elva-moments-panel"
-              photoOpacity={0.24}
-              radiusScale={0.44}
-              shellOpacity={0.32}
-            />
-            <MemoryBubbleThreeScene
-              anchorSelector=".elva-moments-seed"
-              bodySelector=".elva-moments-seed span"
-              bubbles={momentsThreeBubbles}
-              canvasClassName="elva-bubble-three-canvas"
-              className="elva-moments-seeds-three"
-              fresnelOpacity={0.72}
-              lensOpacity={0.58}
-              lensScale={1.72}
-              maxRadius={82}
-              occluderSelector=""
-              opacityMultiplier={0.88}
-              parentSelector=".elva-moments-panel"
-              radiusScale={0.48}
-              shellOpacity={0.3}
-            />
-            <div className="elva-moments-seeds elva-moments-seeds--three-anchors">
-              {momentsThreeBubbles.map((bubble, index) => {
-                const seedSize = Math.max(82, Math.round(bubble.size * 1.58))
-
-                return (
-                  <span
-                    className="elva-moments-seed"
-                    data-scale={0.88 + (index % 5) * 0.075}
-                    key={`moments-${bubble.image}-${bubble.x}-${bubble.y}`}
-                    style={
-                      {
-                        '--seed-size': `${seedSize}px`,
-                      } as CSSProperties
-                    }
-                  >
-                    <span>
-                      <img src={bubble.image} alt="" />
-                    </span>
-                  </span>
-                )
-              })}
-            </div>
+            <MomentsTransitionCanvasScene />
             <div className="elva-moments-copy">
               <span className="elva-moments-tag">How Elva Fixes It</span>
               <h2>
@@ -2245,13 +1795,6 @@ export function HomePage() {
                 emotional, and alive
               </p>
             </div>
-            <div className="elva-moments-orb elva-moments-orb--three-anchor">
-              <span className="elva-moments-orb-shell">
-                <span className="elva-moments-pulse" />
-                <span className="elva-moments-light" />
-                <span className="elva-moments-shadow" />
-              </span>
-            </div>
           </div>
         </div>
       </section>
@@ -2262,6 +1805,18 @@ export function HomePage() {
       >
         <div className="elva-process-stage">
           <div className="elva-process-grain" aria-hidden="true" />
+          <div
+            className="elva-agency-badge elva-process-agency-badge"
+            aria-hidden="true"
+          >
+            <span>LAZAREV.AGENCY</span>
+            <span>PRODUCT DESIGN FOR AI</span>
+            <span>SF,CA</span>
+          </div>
+          <div
+            className="elva-smile-button elva-process-smile-button"
+            aria-hidden="true"
+          />
           <div className="elva-process-backdrop-text" aria-hidden="true">
             Start with the videos you already have supports through everything
             builds the foundation for your story.
@@ -2301,6 +1856,175 @@ export function HomePage() {
           />
 
           <ProcessGalleryCanvasScene className="elva-process-gallery" />
+          <FinaleBubbleThreeScene className="elva-process-finale-three" />
+
+          <div
+            aria-label="More inside the camera"
+            className="elva-camera-features"
+          >
+            <span className="elva-camera-features-tag">
+              More Inside The Camera
+            </span>
+
+            {featureCards.map((feature, index) => (
+              <article
+                className="elva-camera-feature"
+                data-image={feature.image}
+                data-index={index}
+                key={feature.title}
+              >
+                <h2>{feature.title}</h2>
+                <p>
+                  {feature.bodyLines.map((line, lineIndex) => (
+                    <span key={line}>
+                      {line}
+                      {lineIndex < feature.bodyLines.length - 1 ? <br /> : null}
+                    </span>
+                  ))}
+                </p>
+                <a
+                  aria-label={`Learn more about ${feature.title}`}
+                  className="elva-camera-feature-more"
+                  href="#try"
+                >
+                  <img alt="" src="/assets/elva/arrowb.svg" />
+                </a>
+                <span aria-hidden="true" className="elva-camera-feature-hover">
+                  <img alt="" src={feature.image} />
+                </span>
+              </article>
+            ))}
+          </div>
+
+          <section
+            aria-label="Elva contact and company information"
+            className="elva-process-finale"
+          >
+            <div className="elva-process-finale-title">
+              <div
+                aria-level={2}
+                className="elva-process-finale-header"
+                role="heading"
+              >
+                Stop editing.
+                <br className="elva-process-finale-mobile-break" /> Keep
+                shooting
+                <div aria-hidden="true" className="elva-process-finale-topleft">
+                  <ul>
+                    {finaleCopy.topLeft.map((phrase) => (
+                      <li key={phrase}>
+                        <span className="elva-process-finale-detail">
+                          {phrase}
+                        </span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+                <div
+                  aria-hidden="true"
+                  className="elva-process-finale-topright"
+                >
+                  <ul>
+                    {finaleCopy.topRight.map((phrase) => (
+                      <li key={phrase}>
+                        <span className="elva-process-finale-detail">
+                          {phrase}
+                        </span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+                <div
+                  aria-hidden="true"
+                  className="elva-process-finale-topcenter"
+                >
+                  <ul>
+                    {finaleCopy.topCenter.map(([left, right]) => (
+                      <li key={`${left}-${right}`}>
+                        <span className="elva-process-finale-detail">
+                          {left}
+                        </span>
+                        <span className="elva-process-finale-detail">
+                          {right}
+                        </span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+                <div className="elva-process-finale-leftcenter">
+                  {footerLinks.slice(0, 2).map(([label, email]) => (
+                    <p className="elva-process-finale-detail" key={label}>
+                      {label}
+                      <br />
+                      <a href={`mailto:${email}`}>{email}</a>
+                    </p>
+                  ))}
+                </div>
+                <div className="elva-process-finale-rightcenter">
+                  {footerLinks.slice(2).map(([label, email]) => (
+                    <p className="elva-process-finale-detail" key={label}>
+                      {label}
+                      <br />
+                      <a href={`mailto:${email}`}>{email}</a>
+                    </p>
+                  ))}
+
+                  <div className="elva-process-finale-socials">
+                    {finaleCopy.socials.map(([shortLabel, label, href]) => (
+                      <a
+                        aria-label={label}
+                        className="elva-process-finale-detail"
+                        href={href}
+                        key={label}
+                        rel="noreferrer"
+                        target="_blank"
+                      >
+                        {shortLabel}
+                      </a>
+                    ))}
+                  </div>
+                </div>
+                <div className="elva-process-finale-bottomwrap">
+                  <div className="elva-process-finale-bottomleft">
+                    <p className="elva-process-finale-detail">
+                      {finaleCopy.company[0]}
+                      <br />
+                      {finaleCopy.company[1]}
+                    </p>
+                  </div>
+
+                  <div className="elva-process-finale-bottomcenter">
+                    {finaleCopy.copyright.map(([left, right]) => (
+                      <p key={`${left}-${right}`}>
+                        <span className="elva-process-finale-detail">
+                          {left}
+                        </span>
+                        <span className="elva-process-finale-detail">
+                          {right}
+                        </span>
+                      </p>
+                    ))}
+                  </div>
+
+                  <div className="elva-process-finale-bottomright">
+                    {finaleCopy.address.map((line) => (
+                      <span className="elva-process-finale-detail" key={line}>
+                        {line}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <nav aria-label="Legal" className="elva-process-finale-legal">
+              {finaleCopy.legal.map(([label, href]) => (
+                <a href={href} key={label}>
+                  {label} <span aria-hidden="true">↗</span>
+                </a>
+              ))}
+            </nav>
+          </section>
         </div>
       </section>
     </main>

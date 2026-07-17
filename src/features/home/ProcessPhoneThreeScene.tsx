@@ -955,7 +955,7 @@ export function ProcessPhoneThreeScene({
       const width = Math.max(1, Math.round(rect.width))
       const height = Math.max(1, Math.round(rect.height))
 
-      sceneState.renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2))
+      sceneState.renderer.setPixelRatio(Math.min(window.devicePixelRatio, 1.25))
       sceneState.renderer.setSize(width, height, false)
       sceneState.camera.aspect = width / height
       sceneState.camera.updateProjectionMatrix()
@@ -983,7 +983,7 @@ export function ProcessPhoneThreeScene({
       const screenOpacity = Math.min(1, Math.max(0, frontVisibility * 1.25))
       const seconds = time * 0.001
 
-      if (activeTexture?.shouldPlay) {
+      if (activeTexture.shouldPlay) {
         activeTexture.texture.needsUpdate = true
       }
 
@@ -1031,8 +1031,18 @@ export function ProcessPhoneThreeScene({
     }
 
     const animate = (time: number) => {
+      rafId = 0
       render(time)
-      rafId = window.requestAnimationFrame(animate)
+
+      if (isPhoneVisible) {
+        rafId = window.requestAnimationFrame(animate)
+      }
+    }
+
+    const requestRender = () => {
+      if (rafId === 0) {
+        rafId = window.requestAnimationFrame(animate)
+      }
     }
 
     const handleMotion = (event: Event) => {
@@ -1069,13 +1079,15 @@ export function ProcessPhoneThreeScene({
           syncActiveVideoPlayback(true)
         }
       }
+
+      requestRender()
     }
 
     const observer = new ResizeObserver(resize)
 
     observer.observe(canvas)
     resize()
-    rafId = window.requestAnimationFrame(animate)
+    requestRender()
     window.addEventListener('elva-process-phone-3d', handleMotion)
 
     return () => {

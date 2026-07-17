@@ -379,17 +379,25 @@ export function MemoryBubbleThreeScene({
     })
     const scene = new THREE.Scene()
     const camera = new THREE.OrthographicCamera(-1, 1, 1, -1, 0.1, 2400)
-    const sphereGeometry = new THREE.SphereGeometry(1, 64, 48)
+    const sphereGeometry = new THREE.SphereGeometry(1, 32, 24)
     const lensTextures = bubbles.map((_bubble, index) =>
       createLensTexture(index),
     )
     const textureLoader = new THREE.TextureLoader()
     const textureCache = new Map<string, THREE.Texture>()
     const renderedBubbles: TRenderedBubble[] = []
+    const bodyElements = Array.from(document.querySelectorAll(bodySelector))
+    const anchorElements = Array.from(document.querySelectorAll(anchorSelector))
+    const parentElement = parentSelector
+      ? document.querySelector(parentSelector)
+      : null
+    const occluderElement = occluderSelector
+      ? document.querySelector(occluderSelector)
+      : null
     let animationFrame = 0
 
     renderer.setClearColor(0x000000, 0)
-    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2))
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 1.25))
     renderer.outputColorSpace = THREE.SRGBColorSpace
     renderer.domElement.className = canvasClassName
     host.append(renderer.domElement)
@@ -489,25 +497,35 @@ export function MemoryBubbleThreeScene({
 
     const render = (time: number) => {
       const hostRect = host.getBoundingClientRect()
-      const bodyElements = Array.from(document.querySelectorAll(bodySelector))
-      const anchorElements = Array.from(
-        document.querySelectorAll(anchorSelector),
-      )
-      const parentOpacity = parentSelector
-        ? getElementOpacity(document.querySelector(parentSelector))
-        : 1
-      const occluderOpacity = occluderSelector
-        ? getElementOpacity(document.querySelector(occluderSelector))
+      const parentOpacity = parentElement ? getElementOpacity(parentElement) : 1
+      const occluderOpacity = occluderElement
+        ? getElementOpacity(occluderElement)
         : 0
+      const sceneOpacity = Math.min(
+        1,
+        Math.max(0, parentOpacity * (1 - occluderOpacity) * opacityMultiplier),
+      )
+      let hasVisibleBubble = false
 
       renderedBubbles.forEach((bubble, index) => {
-        const bodyElement = bodyElements[index]
+        const bodyElement = bodyElements.at(index)
         const anchorElement = anchorElements[index]
-        const rect = bodyElement?.getBoundingClientRect()
-        const anchorOpacity = getElementOpacity(anchorElement)
+        const rect =
+          sceneOpacity > 0.001
+            ? bodyElement?.getBoundingClientRect()
+            : undefined
+        const anchorOpacity =
+          sceneOpacity > 0.001 ? getElementOpacity(anchorElement) : 0
 
         if (!rect || hostRect.width <= 0 || hostRect.height <= 0) {
-          bubble.group.visible = false
+          bubble.opacity += (0 - bubble.opacity) * 0.34
+          bubble.group.visible = bubble.opacity > 0.012
+          bubble.photoMaterial.opacity = bubble.opacity * photoOpacity
+          bubble.shellMaterial.opacity = bubble.opacity * shellOpacity
+          bubble.fresnelMaterial.uniforms.opacity.value =
+            bubble.opacity * fresnelOpacity
+          bubble.lensMaterial.opacity = bubble.opacity * lensOpacity
+          hasVisibleBubble ||= bubble.group.visible
 
           return
         }
@@ -527,13 +545,7 @@ export function MemoryBubbleThreeScene({
             : Math.min(maxRadius, rawTargetRadius)
         const targetOpacity = Math.min(
           1,
-          Math.max(
-            0,
-            anchorOpacity *
-              parentOpacity *
-              (1 - occluderOpacity) *
-              opacityMultiplier,
-          ),
+          Math.max(0, anchorOpacity * sceneOpacity),
         )
         const travel = Math.hypot(targetX - bubble.x, targetY - bubble.y)
         const ease = bubble.initialized
@@ -569,9 +581,17 @@ export function MemoryBubbleThreeScene({
         bubble.fresnelMaterial.uniforms.opacity.value =
           bubble.opacity * fresnelOpacity
         bubble.lensMaterial.opacity = bubble.opacity * lensOpacity
+        hasVisibleBubble ||= bubble.group.visible
       })
 
-      renderer.render(scene, camera)
+      const shouldRender =
+        hasVisibleBubble ||
+        renderedBubbles.some((bubble) => bubble.opacity > 0.001)
+
+      if (shouldRender) {
+        renderer.render(scene, camera)
+      }
+
       animationFrame = window.requestAnimationFrame(render)
     }
 
