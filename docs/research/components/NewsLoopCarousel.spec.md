@@ -1,7 +1,7 @@
 # NewsLoopCarousel Specification
 
 ## Overview
-- **Target files:** `src/components/cocota/NewsSection.tsx`, `src/app/globals.css`
+- **Target files:** `src/components/cocota/NewsSection.tsx`, `src/app/globals.css`, `src/app/layout.tsx`
 - **User reference:** `Screen Recording 2026-07-21 at 15.43.49.mov`
 - **Original section:** `https://cocotastudio.com/` `.home_news`
 - **Interaction model:** button-controlled, infinite-loop carousel
@@ -9,8 +9,9 @@
 ## DOM Structure
 - A clipped section contains the heading row and one non-scrollable carousel viewport.
 - The heading row contains `WHAT'S NEW` plus previous/next buttons.
-- The carousel track contains three copies of the original site's 13-item dataset (39 rendered cards) so either direction can cross the first/last boundary without a visible gap.
-- Duplicate slides are hidden from assistive technology.
+- The carousel is mounted with the same Splide loop engine used by the live site.
+- Render the original 13-item dataset once. Splide creates 13 clones on either side (39 rendered slides total) so either direction can cross the first/last boundary without a visible gap.
+- Splide marks duplicate slides hidden from assistive technology.
 
 ## Computed Styles From Original
 
@@ -31,30 +32,33 @@
 - duration: `400ms`
 - easing: `cubic-bezier(.25, 1, .5, 1)`
 - measured desktop step: `462.438px` (`438.438px` slide + `24px` gap)
+- `waitForTransition: false`, matching the live Splide defaults: every press is accepted while the current transform is still moving.
 
 ## States & Behaviors
 
 ### Horizontal input
 - Horizontal wheel/trackpad input does not change the carousel transform.
 - The rail is not a native horizontal scroll container and has no scroll snapping.
-- Touch action remains vertical-page scrolling only (`pan-y`).
+- Preserve Splide's default pointer/touch drag behavior; horizontal wheel/trackpad input still does not drive the rail.
 
 ### Previous/next buttons
 - Previous moves exactly one slide left.
 - Next moves exactly one slide right.
 - Buttons remain enabled at both ends because the carousel is a loop.
-- Keep accepting presses during the current `400ms` transition. Each press retargets the same transform by one additional slide from its current interpolated position, so rapid clicking stays fluid instead of pausing between cards.
-- Only the transition-free clone reset may temporarily reject input.
+- Keep accepting presses during the current `400ms` transition. Splide interrupts/re-targets the in-flight transition without waiting for `transitionend`, so rapid clicking stays fluid instead of pausing between cards.
 
 ### Infinite loop
-- Render one copy before and one copy after the real slide set.
-- Start on the middle copy.
-- After entering either clone set, reset to the equivalent middle-copy position with transitions disabled, then re-enable transitions on the following frame.
-- The reset must not be visually detectable.
+- Configure Splide with `type: "loop"`, `clones: 13`, `perMove: 1`, `updateOnMove: true`, `pagination: false`, and `arrows: false`.
+- Let Splide own clone creation and transition-free loop correction. Do not run a second React `transitionend` reset layer.
 
 ### Arrow hover/focus
 - Each arrow uses the site's two-copy vertical label pattern.
 - Hover/focus moves the arrow track upward by `1.3em` over `450ms` with `cubic-bezier(.55, 0, .1, 1)`.
+
+### Linked news-card hover/focus
+- Wrap each image in a square, rounded, `overflow: hidden` media container.
+- Only cards rendered as links animate: the image scales from `1` to `1.1` over `450ms` with `cubic-bezier(.55, 0, .1, 1)`.
+- The media frame stays the same size and clips the enlarged image. Non-linked news cards do not scale.
 
 ## Assets
 - All 13 news images are downloaded from the original site and stored locally under `public/assets/cocota/news/`.
@@ -81,3 +85,5 @@ Items 1, 11, 12, and 13 retain their original external links. Original spelling 
 - **Desktop:** `4.1` slides per view; `2.4rem` gap.
 - **Tablet:** `1.6` slides per view; `2.4rem` gap.
 - **Mobile:** `1.1` slides per view; `1.6rem` gap; `13.2rem` image column.
+- **Device logic from the live site:** non-touch portrait viewports below `861px` use touch-device sizing. Touch/mobile widths through `767px` use `1.1`; touch portrait widths above `767px` use `1.6`; touch landscape widths above `767px` use `4.1`.
+- The CSS-only `430px` breakpoint changes the image column but not Splide's `perPage` value.

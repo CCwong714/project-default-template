@@ -10,6 +10,65 @@ export function ArrowIcon({ className }: IconProps) {
   );
 }
 
+export function FooterArrowIcon({ className }: IconProps) {
+  return (
+    <svg
+      className={className}
+      viewBox="0 0 23 24"
+      fill="none"
+      aria-hidden="true"
+    >
+      <path d="M22 23.1831V1.18306H0" />
+      <path d="M22.0001 1.18306 1.15796 22.0252" />
+    </svg>
+  );
+}
+
+export function EuFundingMark({ className }: IconProps) {
+  return (
+    <svg
+      className={className}
+      viewBox="0 0 64 55"
+      fill="none"
+      aria-hidden="true"
+      focusable="false"
+    >
+      <rect y="4.107" width="64" height="42.667" fill="#000" />
+      <rect
+        x="0.464"
+        y="4.571"
+        width="63.072"
+        height="41.739"
+        stroke="#fafafa"
+        strokeWidth="0.928"
+      />
+      <defs>
+        <path
+          id="eu-funding-star"
+          d="M0-2.43.55-.75h1.76L.88.29l.55 1.68L0 .93l-1.43 1.04.55-1.68-1.43-1.04h1.76L0-2.43Z"
+          fill="#fafafa"
+        />
+      </defs>
+      <use href="#eu-funding-star" transform="translate(32 11.22)" />
+      <use href="#eu-funding-star" transform="translate(39.11 13.13)" />
+      <use href="#eu-funding-star" transform="translate(44.32 18.33)" />
+      <use href="#eu-funding-star" transform="translate(46.22 25.44)" />
+      <use href="#eu-funding-star" transform="translate(44.32 32.55)" />
+      <use href="#eu-funding-star" transform="translate(39.11 37.75)" />
+      <use href="#eu-funding-star" transform="translate(32 39.66)" />
+      <use href="#eu-funding-star" transform="translate(24.89 37.75)" />
+      <use href="#eu-funding-star" transform="translate(19.68 32.55)" />
+      <use href="#eu-funding-star" transform="translate(17.78 25.44)" />
+      <use href="#eu-funding-star" transform="translate(19.68 18.33)" />
+      <use href="#eu-funding-star" transform="translate(24.89 13.13)" />
+      <path
+        fill="#fafafa"
+        d="M.39 53.94v-4.16h2.94v.46H.91v1.31h2.2v.44H.91v1.46H3.4v.49H.39Zm5.14.06c-.9 0-1.59-.4-1.59-1.41v-2.81h.52v2.76c0 .71.4 1.01 1.09 1.01.66 0 1.05-.3 1.05-1.01v-2.76h.53v2.81c0 1.01-.71 1.41-1.6 1.41Zm2.31-.06v-4.16h1.94c.73 0 1.23.46 1.23 1.14 0 .5-.22.86-.72 1.03v.02c.42.15.56.44.6 1.05.05.67.11.84.19.9v.02h-.57c-.08-.08-.1-.23-.15-.93-.04-.61-.28-.83-.84-.83H8.36v1.76h-.52Zm.52-3.71v1.53H9.6c.58 0 .87-.3.87-.77 0-.5-.23-.76-.84-.76H8.36Zm5.16 3.8c-1.25 0-2.03-.93-2.03-2.18 0-1.24.78-2.17 2.03-2.17 1.26 0 2.04.93 2.04 2.17 0 1.25-.78 2.18-2.04 2.18Zm0-.46c.98 0 1.51-.74 1.51-1.72 0-.97-.53-1.71-1.51-1.71-.97 0-1.5.74-1.5 1.71 0 .98.53 1.72 1.5 1.72Zm2.67.37v-4.16h1.73c.44 0 .77.14.99.4.17.2.28.48.28.79 0 .76-.44 1.22-1.35 1.22h-1.13v1.75h-.52Zm.52-3.71v1.54h1.09c.59 0 .87-.3.87-.78 0-.5-.31-.76-.84-.76h-1.12Zm2.98 3.71v-4.16h2.94v.46h-2.42v1.31h2.2v.44h-2.2v1.46h2.49v.49h-3.01Zm3.35 0 1.53-4.16h.58l1.54 4.16h-.57l-.44-1.27h-1.66l-.45 1.27h-.53Zm1.62-3.09-.49 1.4h1.36l-.48-1.4-.19-.59h-.01l-.19.59Zm2.48 3.09v-4.16h.55l1.9 2.89.3.54h.01v-3.43h.49v4.16h-.54l-1.9-2.9-.31-.52h-.01v3.42h-.49Zm6.48.06c-.9 0-1.59-.4-1.59-1.41v-2.81h.52v2.76c0 .71.4 1.01 1.09 1.01.66 0 1.05-.3 1.05-1.01v-2.76h.53v2.81c0 1.01-.71 1.41-1.6 1.41Zm2.31-.06v-4.16h.55l1.9 2.89.3.54h.01v-3.43h.49v4.16h-.54l-1.9-2.9-.31-.52h-.01v3.42h-.49Zm4.05 0v-4.16h.52v4.16h-.52Zm3.19.09c-1.26 0-2.04-.93-2.04-2.18 0-1.24.78-2.17 2.04-2.17s2.03.93 2.03 2.17c0 1.25-.77 2.18-2.03 2.18Zm0-.46c.97 0 1.5-.74 1.5-1.72 0-.97-.53-1.71-1.5-1.71-.98 0-1.5.74-1.5 1.71 0 .98.52 1.72 1.5 1.72Zm2.66.37v-4.16h.55l1.9 2.89.3.54h.01v-3.43h.49v4.16h-.54l-1.9-2.9-.31-.52h-.01v3.42h-.49Z"
+      />
+    </svg>
+  );
+}
+
 export function CctMark({ className }: IconProps) {
   return (
     <svg className={className} viewBox="0 0 52 52" aria-label="Cocota">

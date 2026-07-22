@@ -1,4 +1,27 @@
-import { ArrowIcon } from "./icons";
+import { EuFundingMark, FooterArrowIcon } from "./icons";
+
+type CopyLinkProps = {
+  href: string;
+  label: string;
+  target?: "_blank" | "_self";
+};
+
+function CopyLink({ href, label, target }: CopyLinkProps) {
+  return (
+    <a
+      aria-label={label}
+      className="footer-copy-link"
+      href={href}
+      rel={target === "_blank" ? "noreferrer" : undefined}
+      target={target}
+    >
+      <span className="footer-copy-track">
+        <span>{label}</span>
+        <span aria-hidden="true">{label}</span>
+      </span>
+    </a>
+  );
+}
 
 export function Footer() {
   return (
@@ -9,38 +32,46 @@ export function Footer() {
         <div className="footer-links">
           <div>
             <h3>COMPANY</h3>
-            <a href="#home">Home</a>
-            <a href="#work">Work</a>
-            <a href="#about">About</a>
-            <a href="#news">Blog</a>
-            <a href="#contact">Contact</a>
+            <CopyLink href="#home" label="Home" />
+            <CopyLink href="#work" label="Work" />
+            <CopyLink href="#about" label="About" />
+            <CopyLink href="#news" label="Blog" />
+            <CopyLink href="#contact" label="Contact" />
           </div>
           <div>
             <h3>SERVICES</h3>
-            <a href="#services">Brand</a>
-            <a href="#services">Web design</a>
-            <a href="#services">Campaigns</a>
-            <a href="#services">Ongoing Partnership</a>
+            <CopyLink href="#services" label="Brand" />
+            <CopyLink href="#services" label="Web design" />
+            <CopyLink href="#services" label="Campaigns" />
+            <CopyLink href="#services" label="Ongoing Partnership" />
           </div>
         </div>
 
         <div className="footer-ctas">
-          <a className="footer-cta" href="#news">
-            <div>
+          <a
+            aria-label="Newsletter"
+            className="footer-cta"
+            href="https://mailchi.mp/f3f7e4854738/newsletter"
+            rel="noreferrer"
+            target="_blank"
+          >
+            <div className="footer-cta-top">
               <h3>Newsletter</h3>
               <span className="round-arrow dark">
-                <ArrowIcon />
+                <FooterArrowIcon />
               </span>
             </div>
             <p>
-              Subscribe to stay in the know! Discover what we&apos;ve been working on and receive cutting-edge design insights.
+              Subscribe to stay in the know!
+              <br />
+              Discover what we&apos;ve been working on and receive cutting-edge design insights.
             </p>
           </a>
           <a className="footer-cta has-sprite" href="mailto:hola@cocotastudio.com">
-            <div>
+            <div className="footer-cta-top">
               <h3>Let&apos;s talk</h3>
               <span className="round-arrow dark">
-                <ArrowIcon />
+                <FooterArrowIcon />
               </span>
             </div>
             <p>
@@ -60,27 +91,64 @@ export function Footer() {
           <div>
             <h3>MADRID</h3>
             <p>
-              Emilio Muñoz 3, 3 Left
-              <br />
-              28037 Madrid – Spain
+              <a
+                href="https://www.google.es/maps/place/C.+de+Emilio+Mu%C3%B1oz,+3,+San+Blas-Canillejas,+28037+Madrid/@40.4308175,-3.6339092,17z/data=!3m1!4b1!4m10!1m2!2m1!1scalle+emilio+mu%C3%B1oz+3!3m6!1s0xd422f7204b970d3:0xbb6fbb8bf43abde7!8m2!3d40.4308134!4d-3.6313343!15sChVjYWxsZSBlbWlsaW8gbXXDsW96IDOSARFjb21wb3VuZF9idWlsZGluZ-ABAA!16s%2Fg%2F11bw44gn94?entry=ttu&amp;g_ep=EgoyMDI0MDkyNC4wIKXMDSoASAFQAw%3D%3D"
+                rel="noreferrer"
+                target="_blank"
+              >
+                Emilio Muñoz 3, 3 Left
+              </a>
             </p>
-            <a href="mailto:hola@cocotastudio.com">hola@cocotastudio.com</a>
+            <p>28037 Madrid – Spain</p>
+            <p className="footer-contact-spacer" aria-hidden="true">
+              <br />
+            </p>
+            <p>
+              <a href="mailto:hola@cocotastudio.com">hola@cocotastudio.com</a>
+            </p>
           </div>
           <div>
             <h3>LONDON</h3>
             <p>
-              30 Stamford Street
-              <br />
-              London, SE1 9LQ — UK
+              <a
+                href="https://www.google.es/maps/place/30+Stamford+St,+London+SE1+9LQ,+Reino+Unido/@51.507254,-0.1090658,16z/data=!3m1!4b1!4m6!3m5!1s0x487604b1cc6cf941:0x4ffbd3d8fdc30d2a!8m2!3d51.5072507!4d-0.1064909!16s%2Fg%2F11fx2tytf_?entry=ttu&amp;g_ep=EgoyMDI0MDkyNC4wIKXMDSoASAFQAw%3D%3D"
+                rel="noreferrer"
+                target="_blank"
+              >
+                30 Stamford Street
+              </a>
             </p>
-            <span>Coming soon…</span>
+            <p>London, SE1 9LQ — UK</p>
+            <p className="footer-contact-spacer" aria-hidden="true">
+              <br />
+            </p>
+            <p>Coming soon…</p>
+            <p className="footer-contact-spacer" aria-hidden="true">
+              <br />
+            </p>
           </div>
           <div>
             <h3>FOLLOW US</h3>
-            <a href="https://www.instagram.com/cocotastudio/">Instagram</a>
-            <a href="https://www.linkedin.com/company/cocota-studio/">Linkedin</a>
-            <a href="https://clutch.co/profile/cocota">Clutch</a>
-            <a href="https://www.awwwards.com/cocotastudio/">Awwwards</a>
+            <CopyLink
+              href="https://www.instagram.com/cocotastudio/"
+              label="Instagram"
+              target="_blank"
+            />
+            <CopyLink
+              href="https://www.linkedin.com/company/cocota-studio/?originalSubdomain=es"
+              label="Linkedin"
+              target="_blank"
+            />
+            <CopyLink
+              href="https://clutch.co/profile/cocota#highlights"
+              label="Clutch"
+              target="_blank"
+            />
+            <CopyLink
+              href="https://www.awwwards.com/CocotaStudio/"
+              label="Awwwards"
+              target="_blank"
+            />
           </div>
           <div className="women-owned">
             <img src="/assets/cocota/women-owned.webp" alt="Women owned" />
@@ -88,7 +156,7 @@ export function Footer() {
         </div>
 
         <div className="funding-note">
-          <span className="eu-mark">✦ ✦ ✦</span>
+          <EuFundingMark className="eu-mark" />
           <p>
             Cocota Studio, S.L. ha participado en el Programa de Iniciación a la Exportación ICEX-Next, y ha contado con el apoyo de ICEX y con la cofinanciación de Fondos europeos FEDER. La finalidad de este apoyo es contribuir al desarrollo internacional de la empresa y de su entorno.
           </p>
@@ -102,10 +170,10 @@ export function Footer() {
           </div>
           <div className="footer-bottom-right">
             <span>© 2026 Cocota Studio</span>
-            <a href="#contact">Privacy Policy</a>
-            <a href="#contact">Cookies Policy</a>
-            <a href="#contact">Legal Advice</a>
-            <a href="#contact">Accessibility</a>
+            <CopyLink href="#contact" label="Privacy Policy" />
+            <CopyLink href="#contact" label="Cookies Policy" />
+            <CopyLink href="#contact" label="Legal Advice" />
+            <CopyLink href="#contact" label="Accessibility" />
           </div>
         </div>
       </div>

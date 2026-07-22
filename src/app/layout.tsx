@@ -1,4 +1,5 @@
 import type { Metadata, Viewport } from "next";
+import "@splidejs/splide/css/core";
 import "./globals.css";
 
 export const metadata: Metadata = {

@@ -11,6 +11,14 @@ export function useCocotaMotion() {
     const animatedSprites = Array.from(
       document.querySelectorAll<HTMLElement>("[data-animated-sprite]"),
     );
+    const footer = document.querySelector<HTMLElement>(".footer");
+    const footerContent = footer?.querySelector<HTMLElement>(".footer-content");
+
+    const syncFooterHeight = () => {
+      if (!footer || !footerContent) return;
+
+      footer.style.minHeight = `calc(${footerContent.offsetHeight}px + 18rem + 100vh)`;
+    };
 
     const setWordDelays = () => {
       wordRevealTargets.forEach((target) => {
@@ -86,6 +94,7 @@ export function useCocotaMotion() {
     });
 
     setWordDelays();
+    syncFooterHeight();
     targets.forEach((target) => observer.observe(target));
     wordRevealTargets.forEach((target) => wordObserver?.observe(target));
     animatedSprites.forEach((sprite) => spriteObserver.observe(sprite));
@@ -96,6 +105,7 @@ export function useCocotaMotion() {
     };
     const handleResize = () => {
       setWordDelays();
+      syncFooterHeight();
       revealVisibleContent();
     };
     const firstFrame = window.requestAnimationFrame(revealVisibleContent);
@@ -104,9 +114,17 @@ export function useCocotaMotion() {
     void document.fonts.ready.then(() => {
       if (!cancelled) {
         setWordDelays();
+        syncFooterHeight();
         revealVisibleWordTargets();
       }
     });
+
+    const footerResizeObserver = footerContent
+      ? new ResizeObserver(syncFooterHeight)
+      : null;
+    if (footerResizeObserver && footerContent) {
+      footerResizeObserver.observe(footerContent);
+    }
 
     window.addEventListener("scroll", revealVisibleContent, { passive: true });
     window.addEventListener("resize", handleResize);
@@ -116,6 +134,7 @@ export function useCocotaMotion() {
       observer.disconnect();
       wordObserver?.disconnect();
       spriteObserver.disconnect();
+      footerResizeObserver?.disconnect();
       window.cancelAnimationFrame(firstFrame);
       window.removeEventListener("scroll", revealVisibleContent);
       window.removeEventListener("resize", handleResize);
