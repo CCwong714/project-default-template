@@ -1,81 +1,36 @@
-# Project Base
+# Cocota Studio Clone
 
-A clean Vite + React + TypeScript base for starting new frontend projects.
+This repository is now a working Next.js 16 reconstruction of [cocotastudio.com](https://cocotastudio.com/), installed on top of [JCodesMore/ai-website-cloner-template](https://github.com/JCodesMore/ai-website-cloner-template).
 
-## Included
+The page includes the original visual language and public site assets used for the study build: custom type, responsive hero, animated team sprite sheets, sticky showreel, scroll reveals, service cards, news rail, asymmetric work grid, client filtering, awards composition, studio facts, and responsive footer.
 
-- Vite, React, TypeScript, and React Router
-- Tailwind CSS v4 through the Vite plugin
-- Strict TypeScript and ESLint flat config
-- Vitest, Testing Library, and jsdom
-- App shell with providers, routing, `ErrorBoundary`, and 404 page
-- Fixed Node version through `.nvmrc`, `.node-version`, and `package.json#engines`
-- `.editorconfig`, `.env.example`, and GitHub Actions CI
+## Run locally
 
-## Local setup
+Requirements: Node.js 24+ and pnpm 11+.
 
 ```bash
-nvm use
-npm install
-npm run dev
+pnpm install
+pnpm dev
 ```
 
-Create a local `.env` when a project needs environment values:
+Open `http://localhost:3000`.
+
+## Verification
 
 ```bash
-cp .env.example .env
+pnpm lint
+pnpm typecheck
+pnpm build
 ```
 
-## Scripts
+The project scripts use webpack so the build does not depend on Turbopack spawning a separate system Node binary.
 
-```bash
-npm run dev
-npm run check
-npm run build
-npm run lint
-npm run lint:fix
-npm run test
-npm run test:watch
-npm run typecheck
-npm run preview
-```
+## Clone another site later
 
-## Source layout
+The template’s agent instructions and synchronized cloning skill remain installed in this repository. Start a new Codex task and request a clone with a target URL; the globally installed `clone-website`, `playwright`, and `screenshot` skills will be available after Codex restarts the task context.
 
-```text
-src/
-  app/                 # app shell, providers, future routing setup
-  assets/              # static assets imported by the app
-  features/            # feature-first product modules
-  shared/              # reusable cross-feature UI and utilities
-  styles/              # global styles and design tokens
-  main.tsx             # Vite entry
-```
+Research notes are in [`docs/research`](docs/research), and target/local reference screenshots are in [`docs/design-references/cocotastudio.com`](docs/design-references/cocotastudio.com).
 
-Feature modules should own their pages, local components, and static config:
+## Ownership note
 
-```text
-src/features/login/
-  components/          # feature-only UI
-  data/                # optional local static content/config
-  LoginPage.tsx        # feature entry screen
-  index.ts             # public export surface
-```
-
-Use `src/shared` only for code reused across multiple features.
-
-## New Project Checklist
-
-1. Rename `package.json#name`.
-2. Update `<title>` in `index.html`.
-3. Replace `public/favicon.svg`.
-4. Update `VITE_APP_NAME` in `.env.example`.
-5. Replace the neutral home page with the first real feature.
-6. Run `npm run check` before the first commit.
-
-## Notes
-
-- This repo pins Node to `24.14.0`.
-- `.npmrc` enables `engine-strict=true` so mismatched Node versions fail early.
-- `@/` points to `src/` for cleaner imports.
-- If `package-lock.json` is out of sync after dependency changes, run `npm install` once.
+The Cocota name, copy, imagery, video, and design remain the property of their respective owner. This reconstruction is intended as an authorized migration, prototyping, or learning base—not for deceptive impersonation.
