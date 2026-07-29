@@ -67,10 +67,23 @@ const typeAwareRules = {
 }
 
 export default defineConfig([
-  globalIgnores(['dist', 'coverage', 'node_modules', '*.d.ts']),
+  globalIgnores([
+    '.next',
+    'coverage',
+    'dist',
+    'docs/research',
+    'node_modules',
+    '*.d.ts',
+  ]),
   {
     linterOptions: {
       reportUnusedDisableDirectives: 'error',
+    },
+  },
+  {
+    files: ['**/*.{js,jsx,mjs,cjs,ts,tsx,mts,cts}'],
+    rules: {
+      'no-nested-ternary': 'error',
     },
   },
   {

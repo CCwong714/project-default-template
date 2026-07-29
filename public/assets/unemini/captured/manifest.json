@@ -1,0 +1,423 @@
+{
+  "assets": [
+    {
+      "contentType": "",
+      "id": "3ed0bf1620f44b86",
+      "kind": "stylesheet",
+      "name": "uneminiaventure.603946468.min.css",
+      "path": "/var/folders/29/vbrtn0fd4_lb5d7t5zb51d7w0000gn/T/browser-use/assets/55531702-dcd6-4f39-bad6-5ad30a01aa35/3ed0bf1620f44b86.css",
+      "url": "https://cdn.prod.website-files.com/5e90237fd658d47cdc639a3d/css/uneminiaventure.603946468.min.css"
+    },
+    {
+      "contentType": "image/svg+xml",
+      "id": "b4960cdd9f420e69",
+      "kind": "image",
+      "name": "5ef4556e1921ac7d85356238_cssda-monogram-wotd.svg",
+      "path": "/var/folders/29/vbrtn0fd4_lb5d7t5zb51d7w0000gn/T/browser-use/assets/55531702-dcd6-4f39-bad6-5ad30a01aa35/b4960cdd9f420e69.svg",
+      "url": "https://cdn.prod.website-files.com/5e90237fd658d47cdc639a3d/5ef4556e1921ac7d85356238_cssda-monogram-wotd.svg"
+    },
+    {
+      "contentType": "image/svg+xml",
+      "id": "de8598da8a8a79f0",
+      "kind": "image",
+      "name": "5ea879676ac38e069db70311_drapeau-anglais-68.svg",
+      "path": "/var/folders/29/vbrtn0fd4_lb5d7t5zb51d7w0000gn/T/browser-use/assets/55531702-dcd6-4f39-bad6-5ad30a01aa35/de8598da8a8a79f0.svg",
+      "url": "https://cdn.prod.website-files.com/5e90237fd658d47cdc639a3d/5ea879676ac38e069db70311_drapeau-anglais-68.svg"
+    },
+    {
+      "contentType": "image/svg+xml",
+      "id": "5416bf2d84f880c0",
+      "kind": "image",
+      "name": "5ea8795e6ac38e1322b70307_drapeau-fran%C3%A7ais-67.svg",
+      "path": "/var/folders/29/vbrtn0fd4_lb5d7t5zb51d7w0000gn/T/browser-use/assets/55531702-dcd6-4f39-bad6-5ad30a01aa35/5416bf2d84f880c0.svg",
+      "url": "https://cdn.prod.website-files.com/5e90237fd658d47cdc639a3d/5ea8795e6ac38e1322b70307_drapeau-fran%C3%A7ais-67.svg"
+    },
+    {
+      "contentType": "image/svg+xml",
+      "id": "0db6e6810f951787",
+      "kind": "image",
+      "name": "5eb96e445988ec3e04449cbc_logo_en.svg",
+      "path": "/var/folders/29/vbrtn0fd4_lb5d7t5zb51d7w0000gn/T/browser-use/assets/55531702-dcd6-4f39-bad6-5ad30a01aa35/0db6e6810f951787.svg",
+      "url": "https://cdn.prod.website-files.com/5e90237fd658d47cdc639a3d/5eb96e445988ec3e04449cbc_logo_en.svg"
+    },
+    {
+      "contentType": "image/svg+xml",
+      "id": "67214b1720842c0e",
+      "kind": "image",
+      "name": "5ea2a0e5387c008b4670e553_barre-progression.svg",
+      "path": "/var/folders/29/vbrtn0fd4_lb5d7t5zb51d7w0000gn/T/browser-use/assets/55531702-dcd6-4f39-bad6-5ad30a01aa35/67214b1720842c0e.svg",
+      "url": "https://cdn.prod.website-files.com/5e90237fd658d47cdc639a3d/5ea2a0e5387c008b4670e553_barre-progression.svg"
+    },
+    {
+      "contentType": "image/svg+xml",
+      "id": "ccec5f0d12e4ba3a",
+      "kind": "image",
+      "name": "5ea1f7fdda6990fbdc53c3c5_bille.svg",
+      "path": "/var/folders/29/vbrtn0fd4_lb5d7t5zb51d7w0000gn/T/browser-use/assets/55531702-dcd6-4f39-bad6-5ad30a01aa35/ccec5f0d12e4ba3a.svg",
+      "url": "https://cdn.prod.website-files.com/5e90237fd658d47cdc639a3d/5ea1f7fdda6990fbdc53c3c5_bille.svg"
+    },
+    {
+      "contentType": "image/svg+xml",
+      "id": "1bd58aa3f714f2d2",
+      "kind": "image",
+      "name": "5ea1bbf1950eef575236d95e_visage-femme.svg",
+      "path": "/var/folders/29/vbrtn0fd4_lb5d7t5zb51d7w0000gn/T/browser-use/assets/55531702-dcd6-4f39-bad6-5ad30a01aa35/1bd58aa3f714f2d2.svg",
+      "url": "https://cdn.prod.website-files.com/5e90237fd658d47cdc639a3d/5ea1bbf1950eef575236d95e_visage-femme.svg"
+    },
+    {
+      "contentType": "image/svg+xml",
+      "id": "cb6619877c4b206a",
+      "kind": "image",
+      "name": "5ea1bc345b00b83a1264f692_visage_primeo.svg",
+      "path": "/var/folders/29/vbrtn0fd4_lb5d7t5zb51d7w0000gn/T/browser-use/assets/55531702-dcd6-4f39-bad6-5ad30a01aa35/cb6619877c4b206a.svg",
+      "url": "https://cdn.prod.website-files.com/5e90237fd658d47cdc639a3d/5ea1bc345b00b83a1264f692_visage_primeo.svg"
+    },
+    {
+      "contentType": "",
+      "id": "902c964aa2eef062",
+      "kind": "stylesheet",
+      "name": "css",
+      "path": "/var/folders/29/vbrtn0fd4_lb5d7t5zb51d7w0000gn/T/browser-use/assets/55531702-dcd6-4f39-bad6-5ad30a01aa35/902c964aa2eef062",
+      "url": "https://fonts.googleapis.com/css?family=Merriweather:300,300italic,400,400italic,700,700italic,900,900italic%7CMontserrat:100,100italic,200,200italic,300,300italic,400,400italic,500,500italic,600,600italic,700,700italic,800,800italic,900,900italic%7CInter:100,200,300,regular,500,600,700,800,900"
+    },
+    {
+      "contentType": "image/png",
+      "id": "b4660468369d8978",
+      "kind": "image",
+      "name": "5eb5261abde4bb61c8ab7868_rond-hachure-bleu-p-500.png",
+      "path": "/var/folders/29/vbrtn0fd4_lb5d7t5zb51d7w0000gn/T/browser-use/assets/55531702-dcd6-4f39-bad6-5ad30a01aa35/b4660468369d8978.png",
+      "url": "https://cdn.prod.website-files.com/5e90237fd658d47cdc639a3d/5eb5261abde4bb61c8ab7868_rond-hachure-bleu-p-500.png"
+    },
+    {
+      "contentType": "image/svg+xml",
+      "id": "f788bb5acec75a8e",
+      "kind": "image",
+      "name": "5eb530735c02e6df9de47ba3_cercle_triangle.svg",
+      "path": "/var/folders/29/vbrtn0fd4_lb5d7t5zb51d7w0000gn/T/browser-use/assets/55531702-dcd6-4f39-bad6-5ad30a01aa35/f788bb5acec75a8e.svg",
+      "url": "https://cdn.prod.website-files.com/5e90237fd658d47cdc639a3d/5eb530735c02e6df9de47ba3_cercle_triangle.svg"
+    },
+    {
+      "contentType": "image/png",
+      "id": "b86055df43a06fe6",
+      "kind": "image",
+      "name": "5eb2ccf6da3d416359b760e3_wallpaper-header-desktop.png",
+      "path": "/var/folders/29/vbrtn0fd4_lb5d7t5zb51d7w0000gn/T/browser-use/assets/55531702-dcd6-4f39-bad6-5ad30a01aa35/b86055df43a06fe6.png",
+      "url": "https://cdn.prod.website-files.com/5e90237fd658d47cdc639a3d/5eb2ccf6da3d416359b760e3_wallpaper-header-desktop.png"
+    },
+    {
+      "contentType": "image/svg+xml",
+      "id": "969f4be3dde19681",
+      "kind": "image",
+      "name": "svg-1",
+      "path": "/var/folders/29/vbrtn0fd4_lb5d7t5zb51d7w0000gn/T/browser-use/assets/55531702-dcd6-4f39-bad6-5ad30a01aa35/969f4be3dde19681.svg",
+      "url": "inline-svg:969f4be3dde19681"
+    },
+    {
+      "contentType": "image/svg+xml",
+      "id": "3880878667dd4754",
+      "kind": "image",
+      "name": "svg-2",
+      "path": "/var/folders/29/vbrtn0fd4_lb5d7t5zb51d7w0000gn/T/browser-use/assets/55531702-dcd6-4f39-bad6-5ad30a01aa35/3880878667dd4754.svg",
+      "url": "inline-svg:3880878667dd4754"
+    },
+    {
+      "contentType": "image/svg+xml",
+      "id": "8933c1c1fd2eb435",
+      "kind": "image",
+      "name": "svg-3",
+      "path": "/var/folders/29/vbrtn0fd4_lb5d7t5zb51d7w0000gn/T/browser-use/assets/55531702-dcd6-4f39-bad6-5ad30a01aa35/8933c1c1fd2eb435.svg",
+      "url": "inline-svg:8933c1c1fd2eb435"
+    },
+    {
+      "contentType": "image/svg+xml",
+      "id": "c95575927db74eff",
+      "kind": "image",
+      "name": "svg-4",
+      "path": "/var/folders/29/vbrtn0fd4_lb5d7t5zb51d7w0000gn/T/browser-use/assets/55531702-dcd6-4f39-bad6-5ad30a01aa35/c95575927db74eff.svg",
+      "url": "inline-svg:c95575927db74eff"
+    },
+    {
+      "contentType": "image/svg+xml",
+      "id": "f2bfaf83b6649d41",
+      "kind": "image",
+      "name": "svg-5",
+      "path": "/var/folders/29/vbrtn0fd4_lb5d7t5zb51d7w0000gn/T/browser-use/assets/55531702-dcd6-4f39-bad6-5ad30a01aa35/f2bfaf83b6649d41.svg",
+      "url": "inline-svg:f2bfaf83b6649d41"
+    },
+    {
+      "contentType": "image/svg+xml",
+      "id": "0d3b39b03d9eb514",
+      "kind": "image",
+      "name": "svg-6",
+      "path": "/var/folders/29/vbrtn0fd4_lb5d7t5zb51d7w0000gn/T/browser-use/assets/55531702-dcd6-4f39-bad6-5ad30a01aa35/0d3b39b03d9eb514.svg",
+      "url": "inline-svg:0d3b39b03d9eb514"
+    },
+    {
+      "contentType": "image/svg+xml",
+      "id": "b7199fe11aaf6c47",
+      "kind": "image",
+      "name": "svg-7",
+      "path": "/var/folders/29/vbrtn0fd4_lb5d7t5zb51d7w0000gn/T/browser-use/assets/55531702-dcd6-4f39-bad6-5ad30a01aa35/b7199fe11aaf6c47.svg",
+      "url": "inline-svg:b7199fe11aaf6c47"
+    },
+    {
+      "contentType": "image/svg+xml",
+      "id": "c2d761d6b88379d5",
+      "kind": "image",
+      "name": "svg-8",
+      "path": "/var/folders/29/vbrtn0fd4_lb5d7t5zb51d7w0000gn/T/browser-use/assets/55531702-dcd6-4f39-bad6-5ad30a01aa35/c2d761d6b88379d5.svg",
+      "url": "inline-svg:c2d761d6b88379d5"
+    },
+    {
+      "contentType": "image/svg+xml",
+      "id": "888209ee7bd964c4",
+      "kind": "image",
+      "name": "svg-9",
+      "path": "/var/folders/29/vbrtn0fd4_lb5d7t5zb51d7w0000gn/T/browser-use/assets/55531702-dcd6-4f39-bad6-5ad30a01aa35/888209ee7bd964c4.svg",
+      "url": "inline-svg:888209ee7bd964c4"
+    },
+    {
+      "contentType": "image/svg+xml",
+      "id": "8398801e4f560656",
+      "kind": "image",
+      "name": "svg-10",
+      "path": "/var/folders/29/vbrtn0fd4_lb5d7t5zb51d7w0000gn/T/browser-use/assets/55531702-dcd6-4f39-bad6-5ad30a01aa35/8398801e4f560656.svg",
+      "url": "inline-svg:8398801e4f560656"
+    },
+    {
+      "contentType": "image/svg+xml",
+      "id": "a6706e7935dd6b33",
+      "kind": "image",
+      "name": "svg-11",
+      "path": "/var/folders/29/vbrtn0fd4_lb5d7t5zb51d7w0000gn/T/browser-use/assets/55531702-dcd6-4f39-bad6-5ad30a01aa35/a6706e7935dd6b33.svg",
+      "url": "inline-svg:a6706e7935dd6b33"
+    },
+    {
+      "contentType": "image/svg+xml",
+      "id": "608552bac101f471",
+      "kind": "image",
+      "name": "svg-12",
+      "path": "/var/folders/29/vbrtn0fd4_lb5d7t5zb51d7w0000gn/T/browser-use/assets/55531702-dcd6-4f39-bad6-5ad30a01aa35/608552bac101f471.svg",
+      "url": "inline-svg:608552bac101f471"
+    },
+    {
+      "contentType": "image/svg+xml",
+      "id": "fb4f7d519c6e48b2",
+      "kind": "image",
+      "name": "svg-13",
+      "path": "/var/folders/29/vbrtn0fd4_lb5d7t5zb51d7w0000gn/T/browser-use/assets/55531702-dcd6-4f39-bad6-5ad30a01aa35/fb4f7d519c6e48b2.svg",
+      "url": "inline-svg:fb4f7d519c6e48b2"
+    },
+    {
+      "contentType": "image/svg+xml",
+      "id": "c4e007fdcc409693",
+      "kind": "image",
+      "name": "svg-14",
+      "path": "/var/folders/29/vbrtn0fd4_lb5d7t5zb51d7w0000gn/T/browser-use/assets/55531702-dcd6-4f39-bad6-5ad30a01aa35/c4e007fdcc409693.svg",
+      "url": "inline-svg:c4e007fdcc409693"
+    },
+    {
+      "contentType": "image/svg+xml",
+      "id": "7c4b87dfa66e31f4",
+      "kind": "image",
+      "name": "svg-15",
+      "path": "/var/folders/29/vbrtn0fd4_lb5d7t5zb51d7w0000gn/T/browser-use/assets/55531702-dcd6-4f39-bad6-5ad30a01aa35/7c4b87dfa66e31f4.svg",
+      "url": "inline-svg:7c4b87dfa66e31f4"
+    },
+    {
+      "contentType": "image/svg+xml",
+      "id": "d82f6fca0f829ae8",
+      "kind": "image",
+      "name": "svg-16",
+      "path": "/var/folders/29/vbrtn0fd4_lb5d7t5zb51d7w0000gn/T/browser-use/assets/55531702-dcd6-4f39-bad6-5ad30a01aa35/d82f6fca0f829ae8.svg",
+      "url": "inline-svg:d82f6fca0f829ae8"
+    },
+    {
+      "contentType": "image/svg+xml",
+      "id": "2ced9ef6c293c33f",
+      "kind": "image",
+      "name": "svg-17",
+      "path": "/var/folders/29/vbrtn0fd4_lb5d7t5zb51d7w0000gn/T/browser-use/assets/55531702-dcd6-4f39-bad6-5ad30a01aa35/2ced9ef6c293c33f.svg",
+      "url": "inline-svg:2ced9ef6c293c33f"
+    },
+    {
+      "contentType": "image/svg+xml",
+      "id": "539e6dac12a1fd21",
+      "kind": "image",
+      "name": "svg-18",
+      "path": "/var/folders/29/vbrtn0fd4_lb5d7t5zb51d7w0000gn/T/browser-use/assets/55531702-dcd6-4f39-bad6-5ad30a01aa35/539e6dac12a1fd21.svg",
+      "url": "inline-svg:539e6dac12a1fd21"
+    },
+    {
+      "contentType": "image/svg+xml",
+      "id": "cba3f9cb577b063d",
+      "kind": "image",
+      "name": "svg-19",
+      "path": "/var/folders/29/vbrtn0fd4_lb5d7t5zb51d7w0000gn/T/browser-use/assets/55531702-dcd6-4f39-bad6-5ad30a01aa35/cba3f9cb577b063d.svg",
+      "url": "inline-svg:cba3f9cb577b063d"
+    },
+    {
+      "contentType": "image/svg+xml",
+      "id": "5ee28d88248a0399",
+      "kind": "image",
+      "name": "svg-20",
+      "path": "/var/folders/29/vbrtn0fd4_lb5d7t5zb51d7w0000gn/T/browser-use/assets/55531702-dcd6-4f39-bad6-5ad30a01aa35/5ee28d88248a0399.svg",
+      "url": "inline-svg:5ee28d88248a0399"
+    },
+    {
+      "contentType": "image/svg+xml",
+      "id": "4b02a742e69e7d71",
+      "kind": "image",
+      "name": "svg-21",
+      "path": "/var/folders/29/vbrtn0fd4_lb5d7t5zb51d7w0000gn/T/browser-use/assets/55531702-dcd6-4f39-bad6-5ad30a01aa35/4b02a742e69e7d71.svg",
+      "url": "inline-svg:4b02a742e69e7d71"
+    },
+    {
+      "contentType": "image/svg+xml",
+      "id": "6a7cac912fe07e8b",
+      "kind": "image",
+      "name": "svg-22",
+      "path": "/var/folders/29/vbrtn0fd4_lb5d7t5zb51d7w0000gn/T/browser-use/assets/55531702-dcd6-4f39-bad6-5ad30a01aa35/6a7cac912fe07e8b.svg",
+      "url": "inline-svg:6a7cac912fe07e8b"
+    },
+    {
+      "contentType": "image/svg+xml",
+      "id": "7962b429c608814f",
+      "kind": "image",
+      "name": "svg-23",
+      "path": "/var/folders/29/vbrtn0fd4_lb5d7t5zb51d7w0000gn/T/browser-use/assets/55531702-dcd6-4f39-bad6-5ad30a01aa35/7962b429c608814f.svg",
+      "url": "inline-svg:7962b429c608814f"
+    },
+    {
+      "contentType": "image/svg+xml",
+      "id": "e4ef923ff5853499",
+      "kind": "image",
+      "name": "svg-24",
+      "path": "/var/folders/29/vbrtn0fd4_lb5d7t5zb51d7w0000gn/T/browser-use/assets/55531702-dcd6-4f39-bad6-5ad30a01aa35/e4ef923ff5853499.svg",
+      "url": "inline-svg:e4ef923ff5853499"
+    },
+    {
+      "contentType": "image/svg+xml",
+      "id": "8628d2b0ce77695e",
+      "kind": "image",
+      "name": "svg-25",
+      "path": "/var/folders/29/vbrtn0fd4_lb5d7t5zb51d7w0000gn/T/browser-use/assets/55531702-dcd6-4f39-bad6-5ad30a01aa35/8628d2b0ce77695e.svg",
+      "url": "inline-svg:8628d2b0ce77695e"
+    },
+    {
+      "contentType": "image/svg+xml",
+      "id": "2ef9de9f6c3e5f61",
+      "kind": "image",
+      "name": "svg-26",
+      "path": "/var/folders/29/vbrtn0fd4_lb5d7t5zb51d7w0000gn/T/browser-use/assets/55531702-dcd6-4f39-bad6-5ad30a01aa35/2ef9de9f6c3e5f61.svg",
+      "url": "inline-svg:2ef9de9f6c3e5f61"
+    },
+    {
+      "contentType": "image/svg+xml",
+      "id": "451b5e0dbdeb018b",
+      "kind": "image",
+      "name": "svg-27",
+      "path": "/var/folders/29/vbrtn0fd4_lb5d7t5zb51d7w0000gn/T/browser-use/assets/55531702-dcd6-4f39-bad6-5ad30a01aa35/451b5e0dbdeb018b.svg",
+      "url": "inline-svg:451b5e0dbdeb018b"
+    },
+    {
+      "contentType": "image/svg+xml",
+      "id": "4ce3bb6fd16943e0",
+      "kind": "image",
+      "name": "svg-28",
+      "path": "/var/folders/29/vbrtn0fd4_lb5d7t5zb51d7w0000gn/T/browser-use/assets/55531702-dcd6-4f39-bad6-5ad30a01aa35/4ce3bb6fd16943e0.svg",
+      "url": "inline-svg:4ce3bb6fd16943e0"
+    },
+    {
+      "contentType": "image/svg+xml",
+      "id": "7a244968739754d8",
+      "kind": "image",
+      "name": "svg-29",
+      "path": "/var/folders/29/vbrtn0fd4_lb5d7t5zb51d7w0000gn/T/browser-use/assets/55531702-dcd6-4f39-bad6-5ad30a01aa35/7a244968739754d8.svg",
+      "url": "inline-svg:7a244968739754d8"
+    },
+    {
+      "contentType": "image/svg+xml",
+      "id": "8487418d8c478e39",
+      "kind": "image",
+      "name": "svg-30",
+      "path": "/var/folders/29/vbrtn0fd4_lb5d7t5zb51d7w0000gn/T/browser-use/assets/55531702-dcd6-4f39-bad6-5ad30a01aa35/8487418d8c478e39.svg",
+      "url": "inline-svg:8487418d8c478e39"
+    },
+    {
+      "contentType": "image/svg+xml",
+      "id": "a0bf96b0b11bac88",
+      "kind": "image",
+      "name": "svg-31",
+      "path": "/var/folders/29/vbrtn0fd4_lb5d7t5zb51d7w0000gn/T/browser-use/assets/55531702-dcd6-4f39-bad6-5ad30a01aa35/a0bf96b0b11bac88.svg",
+      "url": "inline-svg:a0bf96b0b11bac88"
+    },
+    {
+      "contentType": "image/svg+xml",
+      "id": "7a91d6f1af603241",
+      "kind": "image",
+      "name": "svg-32",
+      "path": "/var/folders/29/vbrtn0fd4_lb5d7t5zb51d7w0000gn/T/browser-use/assets/55531702-dcd6-4f39-bad6-5ad30a01aa35/7a91d6f1af603241.svg",
+      "url": "inline-svg:7a91d6f1af603241"
+    },
+    {
+      "contentType": "image/svg+xml",
+      "id": "e13a8efe09d74dae",
+      "kind": "image",
+      "name": "svg-33",
+      "path": "/var/folders/29/vbrtn0fd4_lb5d7t5zb51d7w0000gn/T/browser-use/assets/55531702-dcd6-4f39-bad6-5ad30a01aa35/e13a8efe09d74dae.svg",
+      "url": "inline-svg:e13a8efe09d74dae"
+    }
+  ],
+  "failures": [
+    {
+      "contentType": null,
+      "id": "a28b7e319024809f",
+      "name": "UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa1ZL7W0Q5nw.woff2",
+      "reason": "Loaded resource fetch failed: Asset bundling failed; page fetch failed: Browser Use encountered an error interacting with this webpage: TypeError: Failed to fetch\n    at IH (<anonymous>:1:41)\n    at <anonymous>:1:354",
+      "url": "https://fonts.gstatic.com/s/inter/v20/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa1ZL7W0Q5nw.woff2"
+    },
+    {
+      "contentType": null,
+      "id": "a292b3f95db6e7c0",
+      "name": "u-4c0qyriQwlOrhSvowK_l5-eTxCVx0ZbwLvKH2Gk9hLmp0v5yA-xXPqCzLvF-udrHOg7iA.woff2",
+      "reason": "Loaded resource fetch failed: Asset bundling failed; page fetch failed: Browser Use encountered an error interacting with this webpage: TypeError: Failed to fetch\n    at IH (<anonymous>:1:41)\n    at <anonymous>:1:354",
+      "url": "https://fonts.gstatic.com/s/merriweather/v33/u-4c0qyriQwlOrhSvowK_l5-eTxCVx0ZbwLvKH2Gk9hLmp0v5yA-xXPqCzLvF-udrHOg7iA.woff2"
+    },
+    {
+      "contentType": null,
+      "id": "8bef1850e4ab070c",
+      "name": "u-4e0qyriQwlOrhSvowK_l5UcA6zuSYEqOzpPe3HOZJ5eX1WtLaQwmYiSeqqJ-mXq1Gi.woff2",
+      "reason": "Loaded resource fetch failed: Asset bundling failed; page fetch failed: Browser Use encountered an error interacting with this webpage: TypeError: Failed to fetch\n    at IH (<anonymous>:1:41)\n    at <anonymous>:1:354",
+      "url": "https://fonts.gstatic.com/s/merriweather/v33/u-4e0qyriQwlOrhSvowK_l5UcA6zuSYEqOzpPe3HOZJ5eX1WtLaQwmYiSeqqJ-mXq1Gi.woff2"
+    },
+    {
+      "contentType": null,
+      "id": "c8bc5b32b74e6740",
+      "name": "JTUQjIg1_i6t8kCHKm459WxRyS7m0dR9pA.woff2",
+      "reason": "Loaded resource fetch failed: Asset bundling failed; page fetch failed: Browser Use encountered an error interacting with this webpage: TypeError: Failed to fetch\n    at IH (<anonymous>:1:41)\n    at <anonymous>:1:354",
+      "url": "https://fonts.gstatic.com/s/montserrat/v31/JTUQjIg1_i6t8kCHKm459WxRyS7m0dR9pA.woff2"
+    },
+    {
+      "contentType": null,
+      "id": "c4f4a8cd0b92a14a",
+      "name": "JTUSjIg1_i6t8kCHKm459WlhyyTh89Y.woff2",
+      "reason": "Loaded resource fetch failed: Asset bundling failed; page fetch failed: Browser Use encountered an error interacting with this webpage: TypeError: Failed to fetch\n    at IH (<anonymous>:1:41)\n    at <anonymous>:1:354",
+      "url": "https://fonts.gstatic.com/s/montserrat/v31/JTUSjIg1_i6t8kCHKm459WlhyyTh89Y.woff2"
+    },
+    {
+      "contentType": null,
+      "id": "4f3fc00787c999f3",
+      "name": "5eb954a0b85fe700dc5c2faf_32x32_V4.png",
+      "reason": "Loaded resource fetch failed: Asset bundling failed; page fetch failed: Browser Use encountered an error interacting with this webpage: TypeError: Failed to fetch\n    at IH (<anonymous>:1:41)\n    at <anonymous>:1:354",
+      "url": "https://cdn.prod.website-files.com/5e90237fd658d47cdc639a3d/5eb954a0b85fe700dc5c2faf_32x32_V4.png"
+    },
+    {
+      "contentType": null,
+      "id": "746283b70a69223c",
+      "name": "favicon.ico",
+      "reason": "Loaded resource fetch failed: Asset bundling failed; page fetch failed: Browser Use encountered an error interacting with this webpage: Error: Asset request failed with HTTP 404\n    at IH (<anonymous>:1:102)",
+      "url": "https://uneminiaventure.webflow.io/favicon.ico"
+    }
+  ]
+}

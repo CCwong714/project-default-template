@@ -11,7 +11,7 @@
     "build": "tsc -b && vite build",
     "check": "npm run format && npm run lint && npm run typecheck && npm run test && tsc -b && vite build",
     "format": "npx prettier --write .",
-    "lint": "npx eslint --ext .tsx --ext .ts src --fix",
+    "lint": "npx eslint . --fix",
     "lint:fix": "npm run lint",
     "test": "vitest run",
     "test:watch": "vitest",
@@ -19,6 +19,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "lottie-react": "^2.4.1",
     "react": "^19.2.6",
     "react-dom": "^19.2.6",
     "react-router-dom": "^7.17.0"

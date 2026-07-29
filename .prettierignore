@@ -1,0 +1,12 @@
+.next
+dist
+node_modules
+next-env.d.ts
+public/assets
+docs/design-references
+docs/research/live-extraction.json
+docs/research/original.html
+docs/research/original-webflow.css
+docs/research/original-webflow.js
+scripts/extract-video-frames.swift
+tsconfig.tsbuildinfo
