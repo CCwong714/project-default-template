@@ -1,0 +1,4 @@
+interface:
+  display_name: "Clone Website Workflow"
+  short_description: "Orchestrate faithful website cloning and QA"
+  default_prompt: "Use $clone-website-workflow to recreate this website in the existing project with responsive and visual QA."

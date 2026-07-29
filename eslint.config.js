@@ -1,28 +1,62 @@
 import js from '@eslint/js'
+import vitest from '@vitest/eslint-plugin'
+import eslintConfigPrettier from 'eslint-config-prettier/flat'
 import importPlugin from 'eslint-plugin-import'
+import jestDom from 'eslint-plugin-jest-dom'
+import jsxA11y from 'eslint-plugin-jsx-a11y'
 import promisePlugin from 'eslint-plugin-promise'
 import globals from 'globals'
+import reactPlugin from 'eslint-plugin-react'
 import reactHooks from 'eslint-plugin-react-hooks'
 import reactRefresh from 'eslint-plugin-react-refresh'
 import simpleImportSort from 'eslint-plugin-simple-import-sort'
+import sonarjs from 'eslint-plugin-sonarjs'
+import testingLibrary from 'eslint-plugin-testing-library'
 import tseslint from 'typescript-eslint'
 import unusedImports from 'eslint-plugin-unused-imports'
 import { defineConfig, globalIgnores } from 'eslint/config'
 
-const restrictedInternalImportsRule = [
+const restrictedRelativeImportsPattern = {
+  group: ['./*', './**', '../*', '../**', '@/*', '@/**'],
+  message:
+    'Use imports rooted at src/... instead of relative paths or aliases.',
+}
+
+const createRestrictedImportsRule = (additionalPatterns = []) => [
   'error',
   {
-    patterns: [
-      {
-        group: ['./*', './**', '../*', '../**', '@/*', '@/**'],
-        message:
-          'Use imports rooted at src/... instead of relative paths or aliases.',
-      },
-    ],
+    patterns: [restrictedRelativeImportsPattern, ...additionalPatterns],
   },
 ]
 
+const codeQualityRules = {
+  'array-callback-return': 'error',
+  complexity: ['error', { max: 15, variant: 'modified' }],
+  curly: ['error', 'all'],
+  eqeqeq: ['error', 'always', { null: 'ignore' }],
+  'max-depth': ['error', 4],
+  'max-params': ['error', 4],
+  'no-alert': 'error',
+  'no-console': ['error', { allow: ['warn', 'error'] }],
+  'no-eval': 'error',
+  'no-implied-eval': 'error',
+  'no-multi-assign': 'error',
+  'no-nested-ternary': 'error',
+  'no-new-func': 'error',
+  'no-unneeded-ternary': 'error',
+  'object-shorthand': 'error',
+  'prefer-object-spread': 'error',
+  radix: 'error',
+  'sonarjs/cognitive-complexity': ['error', 15],
+  'sonarjs/no-collapsible-if': 'error',
+  'sonarjs/no-duplicated-branches': 'error',
+  'sonarjs/no-identical-expressions': 'error',
+  'sonarjs/no-identical-functions': 'error',
+  'sonarjs/no-nested-template-literals': 'error',
+}
+
 const typeAwareRules = {
+  ...codeQualityRules,
   '@typescript-eslint/await-thenable': 'error',
   '@typescript-eslint/consistent-type-imports': [
     'error',
@@ -67,7 +101,15 @@ const typeAwareRules = {
 }
 
 export default defineConfig([
-  globalIgnores(['dist', 'coverage', 'node_modules', '*.d.ts']),
+  globalIgnores([
+    '.agents',
+    '.next',
+    'coverage',
+    'dist',
+    'node_modules',
+    'output',
+    '**/*.d.ts',
+  ]),
   {
     linterOptions: {
       reportUnusedDisableDirectives: 'error',
@@ -82,11 +124,15 @@ export default defineConfig([
       tseslint.configs.stylisticTypeChecked,
       importPlugin.flatConfigs.recommended,
       promisePlugin.configs['flat/recommended'],
+      reactPlugin.configs.flat.recommended,
+      reactPlugin.configs.flat['jsx-runtime'],
+      jsxA11y.flatConfigs.recommended,
       reactHooks.configs.flat.recommended,
       reactRefresh.configs.vite,
     ],
     plugins: {
       'simple-import-sort': simpleImportSort,
+      sonarjs,
       'unused-imports': unusedImports,
     },
     languageOptions: {
@@ -119,7 +165,8 @@ export default defineConfig([
       'import/no-duplicates': 'error',
       'import/order': 'off',
       'import/no-unresolved': 'off',
-      'no-restricted-imports': restrictedInternalImportsRule,
+      'no-restricted-imports': createRestrictedImportsRule(),
+      'react/prop-types': 'off',
       'react-refresh/only-export-components': [
         'warn',
         { allowConstantExport: true },
@@ -139,6 +186,11 @@ export default defineConfig([
         },
       ],
     },
+    settings: {
+      react: {
+        version: 'detect',
+      },
+    },
   },
   {
     files: ['*.{ts,mts,cts}', 'scripts/**/*.{ts,mts,cts}'],
@@ -152,6 +204,7 @@ export default defineConfig([
     ],
     plugins: {
       'simple-import-sort': simpleImportSort,
+      sonarjs,
       'unused-imports': unusedImports,
     },
     languageOptions: {
@@ -182,7 +235,7 @@ export default defineConfig([
       'import/no-duplicates': 'error',
       'import/order': 'off',
       'import/no-unresolved': 'off',
-      'no-restricted-imports': restrictedInternalImportsRule,
+      'no-restricted-imports': createRestrictedImportsRule(),
       'simple-import-sort/exports': 'error',
       'simple-import-sort/imports': 'error',
       'sort-imports': 'off',
@@ -200,24 +253,51 @@ export default defineConfig([
     },
   },
   {
-    files: ['**/*.d.ts'],
+    files: ['src/**/*.{test,spec}.{ts,tsx}', 'src/**/__tests__/**/*.{ts,tsx}'],
+    extends: [
+      vitest.configs.recommended,
+      testingLibrary.configs['flat/react'],
+      jestDom.configs['flat/recommended'],
+    ],
+  },
+  {
+    files: ['src/features/**/*.{ts,tsx}'],
     rules: {
-      'import/no-duplicates': 'off',
-      'simple-import-sort/exports': 'off',
-      'simple-import-sort/imports': 'off',
-      'unused-imports/no-unused-imports': 'off',
-      'unused-imports/no-unused-vars': 'off',
+      'no-restricted-imports': createRestrictedImportsRule([
+        {
+          group: ['src/app', 'src/app/**'],
+          message:
+            'Feature modules must not depend on the app composition layer.',
+        },
+      ]),
+    },
+  },
+  {
+    files: ['src/shared/**/*.{ts,tsx}'],
+    rules: {
+      'no-restricted-imports': createRestrictedImportsRule([
+        {
+          group: ['src/app', 'src/app/**', 'src/features', 'src/features/**'],
+          message: 'Shared modules must not depend on app or feature modules.',
+        },
+      ]),
     },
   },
   {
     files: ['eslint.config.js'],
+    extends: [js.configs.recommended],
+    plugins: {
+      sonarjs,
+    },
     languageOptions: {
       ecmaVersion: 'latest',
       sourceType: 'module',
       globals: globals.node,
     },
     rules: {
+      ...codeQualityRules,
       'import/no-default-export': 'off',
     },
   },
+  eslintConfigPrettier,
 ])

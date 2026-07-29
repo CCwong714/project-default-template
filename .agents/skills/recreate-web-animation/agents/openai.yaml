@@ -1,0 +1,4 @@
+interface:
+  display_name: "Recreate Web Animation"
+  short_description: "Detect and reproduce web motion technologies"
+  default_prompt: "Use $recreate-web-animation to inspect and faithfully reproduce this website motion in the current stack."

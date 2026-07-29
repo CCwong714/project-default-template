@@ -1,0 +1,6 @@
+.agents
+.next
+coverage
+dist
+node_modules
+output
