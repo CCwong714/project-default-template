@@ -65,11 +65,23 @@ const typeAwareRules = {
   '@typescript-eslint/consistent-type-exports': 'error',
   '@typescript-eslint/no-confusing-void-expression': 'error',
   '@typescript-eslint/no-deprecated': 'warn',
+  '@typescript-eslint/no-explicit-any': 'error',
   '@typescript-eslint/no-floating-promises': 'error',
   '@typescript-eslint/no-import-type-side-effects': 'error',
   '@typescript-eslint/no-misused-promises': [
     'error',
     { checksVoidReturn: { attributes: false } },
+  ],
+  '@typescript-eslint/no-restricted-types': [
+    'error',
+    {
+      types: {
+        unknown: {
+          message:
+            'Use a concrete domain type, generic constraint, or validated union instead.',
+        },
+      },
+    },
   ],
   '@typescript-eslint/no-unnecessary-condition': 'warn',
   '@typescript-eslint/no-unnecessary-type-assertion': 'error',
@@ -93,6 +105,7 @@ const typeAwareRules = {
   ],
   '@typescript-eslint/return-await': ['error', 'always'],
   '@typescript-eslint/switch-exhaustiveness-check': 'error',
+  '@typescript-eslint/use-unknown-in-catch-callback-variable': 'off',
   'no-void': ['error', { allowAsStatement: true }],
   'promise/always-return': 'off',
   'promise/catch-or-return': 'error',
@@ -160,7 +173,6 @@ export default defineConfig([
         },
       ],
       '@typescript-eslint/no-unused-vars': 'off',
-      '@typescript-eslint/use-unknown-in-catch-callback-variable': 'error',
       'import/no-default-export': 'off',
       'import/no-duplicates': 'error',
       'import/order': 'off',

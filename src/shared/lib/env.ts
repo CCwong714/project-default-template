@@ -1,9 +1,11 @@
-const viteEnv = import.meta.env as Record<string, unknown>
+type TAppEnv = {
+  readonly VITE_APP_NAME?: string
+}
 
-function readStringEnv(key: string, fallback: string) {
-  const value = viteEnv[key]
+const viteEnv = import.meta.env as TAppEnv
 
-  if (typeof value === 'string' && value.trim().length > 0) {
+function readStringEnv(value: string | undefined, fallback: string) {
+  if (value !== undefined && value.trim().length > 0) {
     return value
   }
 
@@ -11,5 +13,5 @@ function readStringEnv(key: string, fallback: string) {
 }
 
 export const env = {
-  appName: readStringEnv('VITE_APP_NAME', 'Project Base'),
+  appName: readStringEnv(viteEnv.VITE_APP_NAME, 'Project Base'),
 } as const
