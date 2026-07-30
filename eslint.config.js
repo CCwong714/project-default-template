@@ -116,11 +116,14 @@ const typeAwareRules = {
 export default defineConfig([
   globalIgnores([
     '.agents',
+    '.clone-ui/qa',
+    '.clone-ui/source',
     '.next',
     'coverage',
     'dist',
     'node_modules',
     'output',
+    'public',
     '**/*.d.ts',
   ]),
   {
@@ -251,6 +254,44 @@ export default defineConfig([
       'simple-import-sort/exports': 'error',
       'simple-import-sort/imports': 'error',
       'sort-imports': 'off',
+      'unused-imports/no-unused-imports': 'error',
+      'unused-imports/no-unused-vars': [
+        'warn',
+        {
+          args: 'after-used',
+          argsIgnorePattern: '^_',
+          destructuredArrayIgnorePattern: '^_',
+          ignoreRestSiblings: true,
+          varsIgnorePattern: '^_',
+        },
+      ],
+    },
+  },
+  {
+    files: ['scripts/**/*.{js,mjs,cjs}'],
+    extends: [
+      js.configs.recommended,
+      importPlugin.flatConfigs.recommended,
+      promisePlugin.configs['flat/recommended'],
+    ],
+    plugins: {
+      'simple-import-sort': simpleImportSort,
+      sonarjs,
+      'unused-imports': unusedImports,
+    },
+    languageOptions: {
+      ecmaVersion: 'latest',
+      sourceType: 'module',
+      globals: globals.node,
+    },
+    rules: {
+      ...codeQualityRules,
+      'import/no-default-export': 'off',
+      'import/no-duplicates': 'error',
+      'import/no-unresolved': 'off',
+      'promise/always-return': 'off',
+      'simple-import-sort/exports': 'error',
+      'simple-import-sort/imports': 'error',
       'unused-imports/no-unused-imports': 'error',
       'unused-imports/no-unused-vars': [
         'warn',

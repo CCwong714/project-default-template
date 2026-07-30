@@ -1,0 +1,37 @@
+[
+  {
+    "progress": 0,
+    "canvasCount": 1,
+    "horizontalOverflow": false,
+    "maxScroll": 35701,
+    "scrollY": 0
+  },
+  {
+    "progress": 0.25,
+    "canvasCount": 1,
+    "horizontalOverflow": false,
+    "maxScroll": 35701,
+    "scrollY": 8925
+  },
+  {
+    "progress": 0.5,
+    "canvasCount": 1,
+    "horizontalOverflow": false,
+    "maxScroll": 35701,
+    "scrollY": 17851
+  },
+  {
+    "progress": 0.75,
+    "canvasCount": 1,
+    "horizontalOverflow": false,
+    "maxScroll": 35701,
+    "scrollY": 26776
+  },
+  {
+    "progress": 1,
+    "canvasCount": 1,
+    "horizontalOverflow": false,
+    "maxScroll": 35701,
+    "scrollY": 35701
+  }
+]

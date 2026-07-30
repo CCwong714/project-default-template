@@ -1,6 +1,17 @@
 .agents
+.clone-ui/qa
+.clone-ui/source
 .next
 coverage
 dist
+index.html
 node_modules
 output
+public/_nuxt
+public/audio
+public/assets/noomo
+public/images
+public/libs
+public/models
+public/textures
+public/timelines

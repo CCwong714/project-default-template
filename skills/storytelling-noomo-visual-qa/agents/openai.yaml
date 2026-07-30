@@ -1,0 +1,4 @@
+interface:
+  display_name: 'Noomo Visual QA'
+  short_description: 'Diff the clone at desktop and mobile sizes'
+  default_prompt: 'Use $storytelling-noomo-visual-qa to compare the clone with the source site.'

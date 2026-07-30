@@ -1,0 +1,86 @@
+[
+  {
+    "progress": 0,
+    "canvasCount": 1,
+    "horizontalOverflow": false,
+    "maxScroll": 36928,
+    "scrollY": 0
+  },
+  {
+    "progress": 0.05,
+    "canvasCount": 1,
+    "horizontalOverflow": false,
+    "maxScroll": 36928,
+    "scrollY": 1846.5
+  },
+  {
+    "progress": 0.1,
+    "canvasCount": 1,
+    "horizontalOverflow": false,
+    "maxScroll": 36928,
+    "scrollY": 3693
+  },
+  {
+    "progress": 0.2,
+    "canvasCount": 1,
+    "horizontalOverflow": false,
+    "maxScroll": 36928,
+    "scrollY": 7385.5
+  },
+  {
+    "progress": 0.3,
+    "canvasCount": 1,
+    "horizontalOverflow": false,
+    "maxScroll": 36928,
+    "scrollY": 11078.5
+  },
+  {
+    "progress": 0.4,
+    "canvasCount": 1,
+    "horizontalOverflow": false,
+    "maxScroll": 36928,
+    "scrollY": 14771
+  },
+  {
+    "progress": 0.5,
+    "canvasCount": 1,
+    "horizontalOverflow": false,
+    "maxScroll": 36928,
+    "scrollY": 18464
+  },
+  {
+    "progress": 0.6,
+    "canvasCount": 1,
+    "horizontalOverflow": false,
+    "maxScroll": 36928,
+    "scrollY": 22157
+  },
+  {
+    "progress": 0.7,
+    "canvasCount": 1,
+    "horizontalOverflow": false,
+    "maxScroll": 36928,
+    "scrollY": 25849.5
+  },
+  {
+    "progress": 0.8,
+    "canvasCount": 1,
+    "horizontalOverflow": false,
+    "maxScroll": 36928,
+    "scrollY": 29542.5
+  },
+  {
+    "progress": 0.9,
+    "canvasCount": 1,
+    "horizontalOverflow": false,
+    "maxScroll": 36928,
+    "scrollY": 33235
+  },
+  {
+    "progress": 1,
+    "canvasCount": 1,
+    "horizontalOverflow": false,
+    "maxScroll": 36928,
+    "scrollY": 36928
+  }
+]

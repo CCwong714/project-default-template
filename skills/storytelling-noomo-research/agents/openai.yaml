@@ -1,0 +1,4 @@
+interface:
+  display_name: 'Noomo Story Research'
+  short_description: 'Extract the Noomo storytelling site evidence'
+  default_prompt: 'Use $storytelling-noomo-research to update the clone research evidence.'

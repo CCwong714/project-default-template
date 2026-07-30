@@ -1,0 +1,4 @@
+interface:
+  display_name: 'Noomo WebGL Experience'
+  short_description: 'Build the Phoenix WebGL storytelling scene'
+  default_prompt: 'Use $storytelling-noomo-webgl to implement or tune the Phoenix scene.'

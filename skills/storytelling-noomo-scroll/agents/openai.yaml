@@ -1,0 +1,4 @@
+interface:
+  display_name: 'Noomo Scroll Storytelling'
+  short_description: 'Synchronize scroll, scenes, copy, and audio'
+  default_prompt: 'Use $storytelling-noomo-scroll to reproduce the Noomo scroll choreography.'

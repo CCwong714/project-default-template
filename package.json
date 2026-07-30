@@ -1,5 +1,5 @@
 {
-  "name": "project-default-template",
+  "name": "noomo-storytelling-clone",
   "private": true,
   "version": "0.0.0",
   "type": "module",
@@ -7,9 +7,10 @@
     "node": "24.14.0"
   },
   "scripts": {
-    "dev": "vite --host",
-    "build": "tsc -b && vite build",
-    "check": "npm run format:check && npm run lint && npm run typecheck && npm run test && npm run build",
+    "prepare:mirror": "node scripts/prepare-exact-mirror.mjs",
+    "dev": "npm run prepare:mirror && vite --host",
+    "build": "npm run prepare:mirror && tsc -b && vite build",
+    "check": "npm run prepare:mirror && npm run format:check && npm run lint && npm run typecheck && npm run test && npm run verify:mirror && npm run build",
     "format": "prettier --write .",
     "format:check": "prettier --check .",
     "lint": "eslint . --max-warnings 0",
@@ -17,12 +18,15 @@
     "test": "vitest run",
     "test:watch": "vitest",
     "typecheck": "tsc --noEmit",
+    "verify:mirror": "node scripts/verify-exact-mirror.mjs",
     "preview": "vite preview"
   },
   "dependencies": {
+    "gsap": "^3.13.0",
     "react": "^19.2.6",
     "react-dom": "^19.2.6",
-    "react-router-dom": "^7.17.0"
+    "react-router-dom": "^7.17.0",
+    "three": "^0.179.0"
   },
   "devDependencies": {
     "@eslint/js": "^9.39.4",
@@ -33,6 +37,7 @@
     "@types/node": "^24.12.3",
     "@types/react": "^19.2.14",
     "@types/react-dom": "^19.2.3",
+    "@types/three": "^0.179.0",
     "@vitejs/plugin-react": "^5.2.0",
     "@vitest/eslint-plugin": "^1.6.24",
     "eslint": "^9.39.1",
@@ -50,6 +55,7 @@
     "eslint-plugin-unused-imports": "^4.3.0",
     "globals": "^17.6.0",
     "jsdom": "^27.2.0",
+    "playwright": "^1.62.0",
     "prettier": "^3.8.4",
     "tailwindcss": "^4.3.0",
     "typescript": "~6.0.2",

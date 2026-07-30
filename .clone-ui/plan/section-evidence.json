@@ -1,0 +1,44 @@
+{
+  "architecture": [
+    {
+      "feature": "one WebGL canvas drives the full experience",
+      "evidence": ".clone-ui/source/.captures/live-2026-07-30/states.json and live DOM inventory"
+    },
+    {
+      "feature": "20 source scroll sections totaling 4230 logical units",
+      "evidence": ".clone-ui/source/raw-2026-07-30.html#__NUXT_DATA__"
+    },
+    {
+      "feature": "desktop and mobile use dedicated camera timelines",
+      "evidence": ".clone-ui/source/CbdjwYMp.js asset strings and /timelines/cam*.glb"
+    }
+  ],
+  "visual": [
+    {
+      "feature": "hero Phoenix is oversized and cropped behind the title",
+      "evidence": ".clone-ui/source/.captures/video-1520/frames-4fps/frame-0001.jpg"
+    },
+    {
+      "feature": "lavender halo sequence precedes night, crystal and fire acts",
+      "evidence": ".clone-ui/source/.captures/video-1520/contact/contact-time-01.jpg and contact-time-02.jpg"
+    },
+    {
+      "feature": "contact footer sits over the final ember Phoenix",
+      "evidence": ".clone-ui/source/.captures/video-1520/frames-4fps/frame-0097.jpg"
+    }
+  ],
+  "interaction": [
+    {
+      "feature": "Reimagine Phoenix is a repeatable, non-navigating palette command",
+      "evidence": ".clone-ui/qa/exact-mirror/interactions/palette-after-1.jpg and palette-after-2.jpg"
+    },
+    {
+      "feature": "pointer movement creates the source liquid lens and WebGL spirit trail",
+      "evidence": ".clone-ui/qa/exact-mirror/interactions/pointer-trail.jpg"
+    },
+    {
+      "feature": "mobile Menu opens the original full-screen scene-backed navigation",
+      "evidence": "Browser QA at 390x844 on 2026-07-30"
+    }
+  ]
+}

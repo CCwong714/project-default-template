@@ -1,0 +1,76 @@
+{
+  "sourceOrigin": "https://storytelling.noomoagency.com/",
+  "runtime": {
+    "entry": "/_nuxt/CbdjwYMp.js",
+    "styles": ["/_nuxt/entry.BEbxiOYI.css", "/_nuxt/index.CeGRoErV.css"],
+    "chunks": [
+      "/_nuxt/FZFS71Nt.js",
+      "/_nuxt/CoNJmAYZ.js",
+      "/_nuxt/N9wcHCtb.js",
+      "/_nuxt/B1pKjyE0.js"
+    ]
+  },
+  "models": [
+    "/models/v20.glb",
+    "/models/feather.glb",
+    "/models/crystal0.glb",
+    "/models/crystal1.glb",
+    "/models/crystal2.glb",
+    "/models/crystal3.glb",
+    "/models/crystal4.glb",
+    "/models/crystal5.glb",
+    "/models/crystal6.glb"
+  ],
+  "timelines": [
+    "/timelines/cam.glb",
+    "/timelines/cam-mob.glb",
+    "/timelines/dev.glb"
+  ],
+  "textures": [
+    "/textures/wooden_studio_19_1k.hdr",
+    "/textures/LDR_RG01_0.png",
+    "/textures/404.jpg",
+    "/textures/ftrail.jpg",
+    "/textures/contact.jpg",
+    "/textures/noises.jpg",
+    "/textures/mountains.png",
+    "/textures/waves.jpg",
+    "/textures/ice.jpg",
+    "/textures/icen.jpg",
+    "/textures/iced.jpg",
+    "/textures/sprite.png",
+    "/textures/icon.png",
+    "/textures/crystals/0.jpg",
+    "/textures/crystals/1.jpg",
+    "/textures/crystals/2.jpg",
+    "/textures/crystals/3.jpg",
+    "/textures/crystals/4.jpg",
+    "/textures/crystals/5.jpg",
+    "/textures/crystals/6.jpg"
+  ],
+  "audio": [
+    "/audio/BG_music_ST.mp3",
+    "/audio/ReleaseSpirit.mp3",
+    "/audio/hover1.mp3",
+    "/audio/hover2.mp3",
+    "/audio/hover3.mp3",
+    "/audio/hover4.mp3",
+    "/audio/hover5.mp3"
+  ],
+  "decoders": [
+    "/libs/draco/draco_wasm_wrapper.js",
+    "/libs/draco/draco_decoder.wasm",
+    "/libs/draco/draco_decoder.js",
+    "/libs/basis/basis_transcoder.js",
+    "/libs/basis/basis_transcoder.wasm"
+  ],
+  "fonts": [
+    "/_nuxt/TTNeorisTrialRegular.CykOY4gR.ttf",
+    "/_nuxt/fonnts.com-theseasons-it.CUCq9ttA.otf"
+  ],
+  "tracking": {
+    "source": "Google Tag Manager",
+    "localPolicy": "disabled",
+    "replacement": "/analytics-disabled.js"
+  }
+}

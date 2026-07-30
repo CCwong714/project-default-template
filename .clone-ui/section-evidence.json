@@ -1,0 +1,77 @@
+[
+  {
+    "id": "hero",
+    "evidence": [
+      ".clone-ui/source/.captures/video-250ms/frame-0000-t0000.00.png"
+    ]
+  },
+  {
+    "id": "shifting",
+    "evidence": [
+      ".clone-ui/source/.captures/video-250ms/frame-0018-t0004.50.png",
+      ".clone-ui/source/.captures/video-250ms/frame-0026-t0006.50.png"
+    ]
+  },
+  {
+    "id": "narrative",
+    "evidence": [
+      ".clone-ui/source/.captures/video-250ms/frame-0032-t0008.00.png"
+    ]
+  },
+  {
+    "id": "emergence",
+    "evidence": [
+      ".clone-ui/source/.captures/video-250ms/frame-0036-t0009.00.png",
+      ".clone-ui/source/.captures/video-250ms/frame-0038-t0009.50.png",
+      ".clone-ui/source/.captures/video-250ms/frame-0040-t0010.00.png"
+    ]
+  },
+  {
+    "id": "invitation",
+    "evidence": [
+      ".clone-ui/source/.captures/video-250ms/frame-0042-t0010.50.png"
+    ]
+  },
+  {
+    "id": "principles",
+    "evidence": [
+      ".clone-ui/source/.captures/video-250ms/frame-0044-t0011.00.png",
+      ".clone-ui/source/.captures/video-250ms/frame-0045-t0011.25.png",
+      ".clone-ui/source/.captures/video-250ms/frame-0046-t0011.50.png"
+    ]
+  },
+  {
+    "id": "experiences",
+    "evidence": [
+      ".clone-ui/source/.captures/video-250ms/frame-0047-t0011.75.png"
+    ]
+  },
+  {
+    "id": "crystals",
+    "evidence": [
+      ".clone-ui/source/.captures/video-250ms/frame-0049-t0012.25.png"
+    ]
+  },
+  {
+    "id": "spark",
+    "evidence": [
+      ".clone-ui/source/.captures/video-250ms/frame-0051-t0012.75.png",
+      ".clone-ui/source/.captures/video-250ms/frame-0052-t0013.00.png"
+    ]
+  },
+  {
+    "id": "fire",
+    "evidence": [
+      ".clone-ui/source/.captures/video-250ms/frame-0053-t0013.25.png",
+      ".clone-ui/source/.captures/video-250ms/frame-0054-t0013.50.png",
+      ".clone-ui/source/.captures/video-250ms/frame-0055-t0013.75.png"
+    ]
+  },
+  {
+    "id": "contact",
+    "evidence": [
+      ".clone-ui/source/.captures/video-250ms/frame-0057-t0014.25.png",
+      ".clone-ui/source/.captures/video-250ms/frame-0060-t0015.00.png"
+    ]
+  }
+]
