@@ -1,0 +1,21 @@
+{
+  "localRoot": "public/",
+  "groups": {
+    "_astro": "production JavaScript, CSS, worker and WASM",
+    "fonts": "MSDF font atlases and metrics",
+    "images": "desktop/mobile content images and gallery video",
+    "meta": "favicons, PWA manifest and social image",
+    "models": "proprietary scene buffers and public-facing model payloads",
+    "textures": "WebGL textures grouped by scene",
+    "rive": "Rive animation payloads",
+    "splats": "Gaussian splatting payloads",
+    "documents": "terms, privacy policy and project documents"
+  },
+  "fileCountAtCapture": 158,
+  "approximateSize": "25 MB",
+  "externalLicensedDependency": {
+    "name": "Adobe Typekit Halyard",
+    "reason": "The original CSS loads the licensed webfont remotely; the font binary is not repackaged."
+  },
+  "validation": "All directly referenced local asset paths from captured HTML, CSS and JavaScript resolved after import."
+}

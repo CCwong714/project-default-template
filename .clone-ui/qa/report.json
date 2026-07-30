@@ -1,0 +1,676 @@
+{
+  "generatedAt": "2026-07-29T10:53:40.467Z",
+  "sourceUrl": "https://oryzo.ai/",
+  "localUrl": "http://127.0.0.1:4173/",
+  "viewports": [
+    {
+      "name": "desktop",
+      "screenshotPath": ".clone-ui/qa/local-1440x1000.png",
+      "metrics": {
+        "viewport": {
+          "innerWidth": 1440,
+          "innerHeight": 1000,
+          "devicePixelRatio": 1
+        },
+        "document": {
+          "clientWidth": 1440,
+          "scrollWidth": 1440,
+          "scrollHeight": 62598,
+          "canScrollX": false
+        },
+        "title": "ORYZO AI",
+        "sectionIds": [
+          "hero",
+          "ai",
+          "wearable",
+          "features",
+          "encryption",
+          "grip",
+          "sustainability",
+          "testimonies",
+          "social-content",
+          "product",
+          "open-weight",
+          "footer"
+        ],
+        "canvasCount": 6,
+        "heroText": "Made for mugs. Built for tables. Designed to lift, insulate, and grip in all the right ways. Oryzo makes the simplest moment feel considered. Designed by Lusion, the award-winning design studio. The world's most unnecessarily sophisticated cork coaster. PLAY",
+        "preloader": {
+          "display": "none",
+          "opacity": "1",
+          "pointerEvents": "auto",
+          "transform": "none",
+          "visibility": "visible"
+        },
+        "mobileMenuButton": {
+          "display": "none",
+          "opacity": "1",
+          "pointerEvents": "auto",
+          "transform": "none",
+          "visibility": "visible"
+        },
+        "desktopNav": {
+          "display": "block",
+          "opacity": "1",
+          "pointerEvents": "auto",
+          "transform": "matrix(1, 0, 0, 1, -24, 0)",
+          "visibility": "visible"
+        }
+      },
+      "consoleErrors": [],
+      "failedRequests": [
+        {
+          "url": "http://127.0.0.1:4173/images/wearable-gallery/yoga.mp4",
+          "reason": "net::ERR_ABORTED"
+        },
+        {
+          "url": "http://127.0.0.1:4173/images/wearable-gallery/bite.mp4",
+          "reason": "net::ERR_ABORTED"
+        }
+      ],
+      "badResponses": []
+    },
+    {
+      "name": "tablet",
+      "screenshotPath": ".clone-ui/qa/local-768x1024.png",
+      "metrics": {
+        "viewport": {
+          "innerWidth": 768,
+          "innerHeight": 1024,
+          "devicePixelRatio": 1
+        },
+        "document": {
+          "clientWidth": 768,
+          "scrollWidth": 768,
+          "scrollHeight": 62425,
+          "canScrollX": false
+        },
+        "title": "ORYZO AI",
+        "sectionIds": [
+          "hero",
+          "ai",
+          "wearable",
+          "features",
+          "encryption",
+          "grip",
+          "sustainability",
+          "testimonies",
+          "social-content",
+          "product",
+          "open-weight",
+          "footer"
+        ],
+        "canvasCount": 6,
+        "heroText": "Made for mugs. Built for tables. Designed to lift, insulate, and grip in all the right ways. Oryzo makes the simplest moment feel considered. Designed by Lusion, the award-winning design studio. The world's most unnecessarily sophisticated cork coaster. PLAY",
+        "preloader": {
+          "display": "none",
+          "opacity": "1",
+          "pointerEvents": "auto",
+          "transform": "none",
+          "visibility": "visible"
+        },
+        "mobileMenuButton": {
+          "display": "none",
+          "opacity": "1",
+          "pointerEvents": "auto",
+          "transform": "none",
+          "visibility": "visible"
+        },
+        "desktopNav": {
+          "display": "block",
+          "opacity": "1",
+          "pointerEvents": "auto",
+          "transform": "matrix(1, 0, 0, 1, -40.8, 0)",
+          "visibility": "visible"
+        }
+      },
+      "consoleErrors": [],
+      "failedRequests": [
+        {
+          "url": "http://127.0.0.1:4173/images/wearable-gallery/yoga.mp4",
+          "reason": "net::ERR_ABORTED"
+        },
+        {
+          "url": "http://127.0.0.1:4173/images/wearable-gallery/bite.mp4",
+          "reason": "net::ERR_ABORTED"
+        }
+      ],
+      "badResponses": []
+    },
+    {
+      "name": "mobile",
+      "screenshotPath": ".clone-ui/qa/local-375x812.png",
+      "metrics": {
+        "viewport": {
+          "innerWidth": 375,
+          "innerHeight": 812,
+          "devicePixelRatio": 1
+        },
+        "document": {
+          "clientWidth": 375,
+          "scrollWidth": 375,
+          "scrollHeight": 49383,
+          "canScrollX": false
+        },
+        "title": "ORYZO AI",
+        "sectionIds": [
+          "hero",
+          "ai",
+          "wearable",
+          "features",
+          "encryption",
+          "grip",
+          "sustainability",
+          "testimonies",
+          "social-content",
+          "product",
+          "open-weight",
+          "footer"
+        ],
+        "canvasCount": 6,
+        "heroText": "Made for mugs. Built for tables. Designed to lift, insulate, and grip in all the right ways. Oryzo makes the simplest moment feel considered. Designed by Lusion, the award-winning design studio. The world's most unnecessarily sophisticated cork coaster. PLAY",
+        "preloader": {
+          "display": "none",
+          "opacity": "1",
+          "pointerEvents": "auto",
+          "transform": "none",
+          "visibility": "visible"
+        },
+        "mobileMenuButton": {
+          "display": "block",
+          "opacity": "1",
+          "pointerEvents": "auto",
+          "transform": "none",
+          "visibility": "visible"
+        },
+        "desktopNav": {
+          "display": "none",
+          "opacity": "1",
+          "pointerEvents": "auto",
+          "transform": "none",
+          "visibility": "visible"
+        }
+      },
+      "consoleErrors": [],
+      "failedRequests": [
+        {
+          "url": "http://127.0.0.1:4173/images/wearable-gallery/yoga.mp4",
+          "reason": "net::ERR_ABORTED"
+        },
+        {
+          "url": "http://127.0.0.1:4173/images/wearable-gallery/bite.mp4",
+          "reason": "net::ERR_ABORTED"
+        }
+      ],
+      "badResponses": []
+    }
+  ],
+  "sourceViewports": [
+    {
+      "name": "desktop",
+      "screenshotPath": ".clone-ui/qa/source-1440x1000.png",
+      "metrics": {
+        "viewport": {
+          "innerWidth": 1440,
+          "innerHeight": 1000,
+          "devicePixelRatio": 1
+        },
+        "document": {
+          "clientWidth": 1440,
+          "scrollWidth": 1440,
+          "scrollHeight": 62598,
+          "canScrollX": false
+        },
+        "title": "ORYZO AI",
+        "sectionIds": [
+          "hero",
+          "ai",
+          "wearable",
+          "features",
+          "encryption",
+          "grip",
+          "sustainability",
+          "testimonies",
+          "social-content",
+          "product",
+          "open-weight",
+          "footer"
+        ],
+        "canvasCount": 6,
+        "heroText": "Made for mugs. Built for tables. Designed to lift, insulate, and grip in all the right ways. Oryzo makes the simplest moment feel considered. Designed by Lusion, the award-winning design studio. The world's most unnecessarily sophisticated cork coaster. PLAY",
+        "preloader": {
+          "display": "none",
+          "opacity": "1",
+          "pointerEvents": "auto",
+          "transform": "none",
+          "visibility": "visible"
+        },
+        "mobileMenuButton": {
+          "display": "none",
+          "opacity": "1",
+          "pointerEvents": "auto",
+          "transform": "none",
+          "visibility": "visible"
+        },
+        "desktopNav": {
+          "display": "block",
+          "opacity": "1",
+          "pointerEvents": "auto",
+          "transform": "matrix(1, 0, 0, 1, -24, 0)",
+          "visibility": "visible"
+        }
+      },
+      "consoleErrors": [
+        {
+          "message": "Failed to load resource: net::ERR_CONNECTION_REFUSED",
+          "url": "https://static.cloudflareinsights.com/beacon.min.js"
+        }
+      ],
+      "failedRequests": [
+        {
+          "url": "https://static.cloudflareinsights.com/beacon.min.js",
+          "reason": "net::ERR_CONNECTION_REFUSED"
+        },
+        {
+          "url": "https://oryzo.ai/images/wearable-gallery/yoga.mp4",
+          "reason": "net::ERR_ABORTED"
+        },
+        {
+          "url": "https://oryzo.ai/images/wearable-gallery/bite.mp4",
+          "reason": "net::ERR_ABORTED"
+        }
+      ],
+      "badResponses": []
+    },
+    {
+      "name": "tablet",
+      "screenshotPath": ".clone-ui/qa/source-768x1024.png",
+      "metrics": {
+        "viewport": {
+          "innerWidth": 768,
+          "innerHeight": 1024,
+          "devicePixelRatio": 1
+        },
+        "document": {
+          "clientWidth": 768,
+          "scrollWidth": 768,
+          "scrollHeight": 62425,
+          "canScrollX": false
+        },
+        "title": "ORYZO AI",
+        "sectionIds": [
+          "hero",
+          "ai",
+          "wearable",
+          "features",
+          "encryption",
+          "grip",
+          "sustainability",
+          "testimonies",
+          "social-content",
+          "product",
+          "open-weight",
+          "footer"
+        ],
+        "canvasCount": 6,
+        "heroText": "Made for mugs. Built for tables. Designed to lift, insulate, and grip in all the right ways. Oryzo makes the simplest moment feel considered. Designed by Lusion, the award-winning design studio. The world's most unnecessarily sophisticated cork coaster. PLAY",
+        "preloader": {
+          "display": "none",
+          "opacity": "1",
+          "pointerEvents": "auto",
+          "transform": "none",
+          "visibility": "visible"
+        },
+        "mobileMenuButton": {
+          "display": "none",
+          "opacity": "1",
+          "pointerEvents": "auto",
+          "transform": "none",
+          "visibility": "visible"
+        },
+        "desktopNav": {
+          "display": "block",
+          "opacity": "1",
+          "pointerEvents": "auto",
+          "transform": "matrix(1, 0, 0, 1, -40.8, 0)",
+          "visibility": "visible"
+        }
+      },
+      "consoleErrors": [
+        {
+          "message": "Failed to load resource: net::ERR_CONNECTION_REFUSED",
+          "url": "https://static.cloudflareinsights.com/beacon.min.js"
+        }
+      ],
+      "failedRequests": [
+        {
+          "url": "https://static.cloudflareinsights.com/beacon.min.js",
+          "reason": "net::ERR_CONNECTION_REFUSED"
+        },
+        {
+          "url": "https://oryzo.ai/images/wearable-gallery/yoga.mp4",
+          "reason": "net::ERR_ABORTED"
+        },
+        {
+          "url": "https://oryzo.ai/images/wearable-gallery/bite.mp4",
+          "reason": "net::ERR_ABORTED"
+        }
+      ],
+      "badResponses": []
+    },
+    {
+      "name": "mobile",
+      "screenshotPath": ".clone-ui/qa/source-375x812.png",
+      "metrics": {
+        "viewport": {
+          "innerWidth": 375,
+          "innerHeight": 812,
+          "devicePixelRatio": 1
+        },
+        "document": {
+          "clientWidth": 375,
+          "scrollWidth": 375,
+          "scrollHeight": 49383,
+          "canScrollX": false
+        },
+        "title": "ORYZO AI",
+        "sectionIds": [
+          "hero",
+          "ai",
+          "wearable",
+          "features",
+          "encryption",
+          "grip",
+          "sustainability",
+          "testimonies",
+          "social-content",
+          "product",
+          "open-weight",
+          "footer"
+        ],
+        "canvasCount": 6,
+        "heroText": "Made for mugs. Built for tables. Designed to lift, insulate, and grip in all the right ways. Oryzo makes the simplest moment feel considered. Designed by Lusion, the award-winning design studio. The world's most unnecessarily sophisticated cork coaster. PLAY",
+        "preloader": {
+          "display": "none",
+          "opacity": "1",
+          "pointerEvents": "auto",
+          "transform": "none",
+          "visibility": "visible"
+        },
+        "mobileMenuButton": {
+          "display": "block",
+          "opacity": "1",
+          "pointerEvents": "auto",
+          "transform": "none",
+          "visibility": "visible"
+        },
+        "desktopNav": {
+          "display": "none",
+          "opacity": "1",
+          "pointerEvents": "auto",
+          "transform": "none",
+          "visibility": "visible"
+        }
+      },
+      "consoleErrors": [
+        {
+          "message": "Failed to load resource: net::ERR_CONNECTION_REFUSED",
+          "url": "https://static.cloudflareinsights.com/beacon.min.js"
+        }
+      ],
+      "failedRequests": [
+        {
+          "url": "https://static.cloudflareinsights.com/beacon.min.js",
+          "reason": "net::ERR_CONNECTION_REFUSED"
+        },
+        {
+          "url": "https://oryzo.ai/images/wearable-gallery/yoga.mp4",
+          "reason": "net::ERR_ABORTED"
+        },
+        {
+          "url": "https://oryzo.ai/images/wearable-gallery/bite.mp4",
+          "reason": "net::ERR_ABORTED"
+        }
+      ],
+      "badResponses": []
+    }
+  ],
+  "sections": [
+    {
+      "id": "hero",
+      "localOffset": 0,
+      "sourceOffset": 0,
+      "localScreenshotPath": ".clone-ui/qa/sections/local-hero.png",
+      "sourceScreenshotPath": ".clone-ui/qa/sections/source-hero.png",
+      "copyMatches": true
+    },
+    {
+      "id": "ai",
+      "localOffset": 1000,
+      "sourceOffset": 1000,
+      "localScreenshotPath": ".clone-ui/qa/sections/local-ai.png",
+      "sourceScreenshotPath": ".clone-ui/qa/sections/source-ai.png",
+      "copyMatches": true
+    },
+    {
+      "id": "wearable",
+      "localOffset": 9000,
+      "sourceOffset": 9000,
+      "localScreenshotPath": ".clone-ui/qa/sections/local-wearable.png",
+      "sourceScreenshotPath": ".clone-ui/qa/sections/source-wearable.png",
+      "copyMatches": true
+    },
+    {
+      "id": "features",
+      "localOffset": 22250,
+      "sourceOffset": 22250,
+      "localScreenshotPath": ".clone-ui/qa/sections/local-features.png",
+      "sourceScreenshotPath": ".clone-ui/qa/sections/source-features.png",
+      "copyMatches": true
+    },
+    {
+      "id": "encryption",
+      "localOffset": 32750,
+      "sourceOffset": 32750,
+      "localScreenshotPath": ".clone-ui/qa/sections/local-encryption.png",
+      "sourceScreenshotPath": ".clone-ui/qa/sections/source-encryption.png",
+      "copyMatches": true
+    },
+    {
+      "id": "grip",
+      "localOffset": 36750,
+      "sourceOffset": 36750,
+      "localScreenshotPath": ".clone-ui/qa/sections/local-grip.png",
+      "sourceScreenshotPath": ".clone-ui/qa/sections/source-grip.png",
+      "copyMatches": true
+    },
+    {
+      "id": "sustainability",
+      "localOffset": 40750,
+      "sourceOffset": 40750,
+      "localScreenshotPath": ".clone-ui/qa/sections/local-sustainability.png",
+      "sourceScreenshotPath": ".clone-ui/qa/sections/source-sustainability.png",
+      "copyMatches": true
+    },
+    {
+      "id": "testimonies",
+      "localOffset": 46341,
+      "sourceOffset": 46341,
+      "localScreenshotPath": ".clone-ui/qa/sections/local-testimonies.png",
+      "sourceScreenshotPath": ".clone-ui/qa/sections/source-testimonies.png",
+      "copyMatches": true
+    },
+    {
+      "id": "social-content",
+      "localOffset": 48733,
+      "sourceOffset": 48733,
+      "localScreenshotPath": ".clone-ui/qa/sections/local-social-content.png",
+      "sourceScreenshotPath": ".clone-ui/qa/sections/source-social-content.png",
+      "copyMatches": true
+    },
+    {
+      "id": "product",
+      "localOffset": 57365,
+      "sourceOffset": 57365,
+      "localScreenshotPath": ".clone-ui/qa/sections/local-product.png",
+      "sourceScreenshotPath": ".clone-ui/qa/sections/source-product.png",
+      "copyMatches": true
+    },
+    {
+      "id": "open-weight",
+      "localOffset": 60508,
+      "sourceOffset": 60508,
+      "localScreenshotPath": ".clone-ui/qa/sections/local-open-weight.png",
+      "sourceScreenshotPath": ".clone-ui/qa/sections/source-open-weight.png",
+      "copyMatches": true
+    },
+    {
+      "id": "footer",
+      "localOffset": 61617,
+      "sourceOffset": 61617,
+      "localScreenshotPath": ".clone-ui/qa/sections/local-footer.png",
+      "sourceScreenshotPath": ".clone-ui/qa/sections/source-footer.png",
+      "copyMatches": true
+    }
+  ],
+  "sectionScreenshotsReused": true,
+  "interactions": {
+    "videoOverlay": {
+      "opacity": 0.02,
+      "pointerEvents": "auto"
+    },
+    "videoOverlayClosed": 1.54074e-33,
+    "featuresNavigation": {
+      "featureBounds": {
+        "x": 0,
+        "y": 608,
+        "width": 1440,
+        "height": 10500
+      },
+      "headerFeaturesClass": "is-flipper is-active"
+    },
+    "productSelector": {
+      "selectedClass": "product-hero-option-item btn is-large is-dark is-flipper is-active"
+    },
+    "copyUrl": {
+      "clipboardText": "https://oryzo.ai/"
+    },
+    "newsletterValidation": {
+      "invalid": true,
+      "validationMessage": "Please include an '@' in the email address. 'not-an-email' is missing an '@'."
+    },
+    "mobileMenuOpen": "matrix(1, 0, 0, 1, 0, 0)",
+    "mobileMenuClosed": "matrix(1, 0, 0, 1, 271.169, 0)"
+  },
+  "exploratory": {
+    "mobileReload": {
+      "viewport": {
+        "innerWidth": 375,
+        "innerHeight": 812,
+        "devicePixelRatio": 1
+      },
+      "document": {
+        "clientWidth": 375,
+        "scrollWidth": 375,
+        "scrollHeight": 49383,
+        "canScrollX": false
+      },
+      "title": "ORYZO AI",
+      "sectionIds": [
+        "hero",
+        "ai",
+        "wearable",
+        "features",
+        "encryption",
+        "grip",
+        "sustainability",
+        "testimonies",
+        "social-content",
+        "product",
+        "open-weight",
+        "footer"
+      ],
+      "canvasCount": 6,
+      "heroText": "Made for mugs. Built for tables. Designed to lift, insulate, and grip in all the right ways. Oryzo makes the simplest moment feel considered. Designed by Lusion, the award-winning design studio. The world's most unnecessarily sophisticated cork coaster. PLAY",
+      "preloader": {
+        "display": "none",
+        "opacity": "1",
+        "pointerEvents": "auto",
+        "transform": "none",
+        "visibility": "visible"
+      },
+      "mobileMenuButton": {
+        "display": "block",
+        "opacity": "1",
+        "pointerEvents": "auto",
+        "transform": "none",
+        "visibility": "visible"
+      },
+      "desktopNav": {
+        "display": "none",
+        "opacity": "1",
+        "pointerEvents": "auto",
+        "transform": "none",
+        "visibility": "visible"
+      }
+    },
+    "hashDirect": {
+      "url": "http://127.0.0.1:4173/#features",
+      "metrics": {
+        "viewport": {
+          "innerWidth": 1440,
+          "innerHeight": 1000,
+          "devicePixelRatio": 1
+        },
+        "document": {
+          "clientWidth": 1440,
+          "scrollWidth": 1440,
+          "scrollHeight": 62598,
+          "canScrollX": false
+        },
+        "title": "ORYZO AI",
+        "sectionIds": [
+          "hero",
+          "ai",
+          "wearable",
+          "features",
+          "encryption",
+          "grip",
+          "sustainability",
+          "testimonies",
+          "social-content",
+          "product",
+          "open-weight",
+          "footer"
+        ],
+        "canvasCount": 6,
+        "heroText": "Made for mugs. Built for tables. Designed to lift, insulate, and grip in all the right ways. Oryzo makes the simplest moment feel considered. Designed by Lusion, the award-winning design studio. The world's most unnecessarily sophisticated cork coaster. PLAY",
+        "preloader": {
+          "display": "none",
+          "opacity": "1",
+          "pointerEvents": "auto",
+          "transform": "none",
+          "visibility": "visible"
+        },
+        "mobileMenuButton": {
+          "display": "none",
+          "opacity": "1",
+          "pointerEvents": "auto",
+          "transform": "none",
+          "visibility": "visible"
+        },
+        "desktopNav": {
+          "display": "block",
+          "opacity": "1",
+          "pointerEvents": "auto",
+          "transform": "matrix(1, 0, 0, 1, -24, 0)",
+          "visibility": "visible"
+        }
+      }
+    }
+  },
+  "failures": [],
+  "assertionNotes": [
+    "The video overlay closed to opacity 1.54074e-33, which passes the corrected <= 0.001 settled-animation threshold."
+  ]
+}

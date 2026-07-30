@@ -1,0 +1,4 @@
+interface:
+  display_name: 'Oryzo WebGL Clone'
+  short_description: 'Mirror and verify motion-heavy WebGL showcase sites'
+  default_prompt: 'Use $oryzo-webgl-clone to reproduce this motion-heavy WebGL website with source-backed fidelity.'

@@ -1,0 +1,25 @@
+{
+  "route": "/",
+  "sections": [
+    { "id": "hero", "label": "Intro", "primaryEvidence": "WebGL desk, Oryzo coaster, oversized ORYZO wordmark, product card, video thumbnail" },
+    { "id": "ai", "label": "Powered by AI", "primaryEvidence": "Interactive six-finger hand and Oryzo-1 copy" },
+    { "id": "wearable", "label": "Wearable", "primaryEvidence": "Canvas-led wearable gallery with image and video cards" },
+    { "id": "features", "label": "Features", "primaryEvidence": "Three feature stories, temperature slider, circular logo and equations" },
+    { "id": "encryption", "label": "Encryption", "primaryEvidence": "Encryption-themed product sequence" },
+    { "id": "grip", "label": "Grip", "primaryEvidence": "Smart-flip interaction and surface grip sequence" },
+    { "id": "sustainability", "label": "Sustainability", "primaryEvidence": "Cork material and environmental storytelling" },
+    { "id": "testimonies", "label": "Testimonials", "primaryEvidence": "Customer quotation carousel" },
+    { "id": "social-content", "label": "Social", "primaryEvidence": "Horizontal editorial/social card gallery" },
+    { "id": "product", "label": "Product", "primaryEvidence": "Oryzo, Pro and Pro Max selector, details and comparison table" },
+    { "id": "open-weight", "label": "Open Weight", "primaryEvidence": "Paper/model/code links, abstract, acknowledgements and BibTeX" },
+    { "id": "footer", "label": "Contact", "primaryEvidence": "Lusion CTA, newsletter, contact and policy links" }
+  ],
+  "persistentUi": [
+    "desktop header navigation",
+    "mobile menu",
+    "scroll-to-continue footer",
+    "section progress indicator",
+    "video overlay",
+    "preloader"
+  ]
+}

@@ -1,0 +1,41 @@
+{
+  "sourceUrl": "https://oryzo.ai/",
+  "sharedAnalysisUrl": "https://chatgpt.com/share/6a69c75b-b42c-83ee-b954-4cb726e9f1a6",
+  "capturedAt": "2026-07-29",
+  "captureMethod": "Public production HTML, stylesheets, scripts, fonts, images, video, WebGL models, textures, Rive files, splats, workers, and WASM were inventoried and mirrored locally.",
+  "sourceStatus": {
+    "websiteRepositoryPublic": false,
+    "publicModelRepository": "https://github.com/lusionltd/ORYZO-1",
+    "publicModelRepositoryContents": [
+      "MIT-licensed OBJ checkpoints",
+      "README",
+      "paper.pdf"
+    ],
+    "websiteCodeNotice": "The live page labels its GitHub code action as “Code coming soon”."
+  },
+  "technology": {
+    "framework": "Astro static output",
+    "runtime": "Vanilla JavaScript/TypeScript production bundle",
+    "graphics": [
+      "Three.js r178",
+      "WebGL2",
+      "GLSL3",
+      "Gaussian splatting",
+      "Web Worker/WASM"
+    ],
+    "motion": [
+      "GSAP 3.14.2",
+      "GSAP SplitText",
+      "custom ScrollManager"
+    ],
+    "media": [
+      "Rive Canvas 2.37",
+      "Vimeo"
+    ]
+  },
+  "localChanges": [
+    "Removed the Cloudflare Insights analytics beacon.",
+    "Kept the original canonical and social metadata.",
+    "Kept Adobe Typekit, Vimeo, Mailchimp, and external Lusion/GitHub links as source dependencies."
+  ]
+}

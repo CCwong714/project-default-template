@@ -1,0 +1,26 @@
+{
+  "embeds": [
+    {
+      "provider": "Adobe Typekit",
+      "purpose": "Halyard display/text webfonts",
+      "localReplacement": false
+    },
+    {
+      "provider": "Vimeo",
+      "purpose": "Hero video overlay",
+      "localReplacement": false
+    },
+    {
+      "provider": "Mailchimp",
+      "purpose": "Newsletter submission",
+      "localReplacement": false
+    }
+  ],
+  "removed": [
+    {
+      "provider": "Cloudflare Insights",
+      "purpose": "analytics beacon",
+      "reason": "Tracking is unnecessary for a local fidelity reference."
+    }
+  ]
+}

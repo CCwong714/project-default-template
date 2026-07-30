@@ -1,6 +1,10 @@
 .agents
+.clone-ui/qa
+.clone-ui/source
 .next
 coverage
 dist
+index.html
 node_modules
 output
+public

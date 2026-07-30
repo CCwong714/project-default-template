@@ -1,0 +1,21 @@
+{
+  "implementation": "exact-production-mirror",
+  "entry": "index.html",
+  "stylesheet": "public/_astro/index.TL6TuoJb.css",
+  "runtime": "public/_astro/hoisted.CRsATKbF.js",
+  "sections": [
+    "hero",
+    "ai",
+    "wearable",
+    "features",
+    "encryption",
+    "grip",
+    "sustainability",
+    "testimonies",
+    "social-content",
+    "product",
+    "open-weight",
+    "footer"
+  ],
+  "routingConstraint": "The production route manager expects the home experience at pathname /. Serving it from a nested iframe path causes a route-not-found failure, so the mirror is mounted at the project root."
+}

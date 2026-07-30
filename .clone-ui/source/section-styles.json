@@ -1,0 +1,32 @@
+{
+  "global": {
+    "desktopGridColumns": 16,
+    "mobileGridColumns": 4,
+    "desktopSidePadding": "3.125vw",
+    "mobileSidePadding": "16/375 viewport width",
+    "desktopReference": "1920 × 1024",
+    "mobileReference": "375px wide",
+    "displayFont": "halyard-display-variable",
+    "textFont": "halyard-text-variable"
+  },
+  "palette": {
+    "cream": "#ffedd7",
+    "ink": "#100904",
+    "brown": "#382416",
+    "greyBrown": "#6c5f51",
+    "green": "#445231",
+    "lightGreen": "#5d6c49",
+    "orange": "#dc5000"
+  },
+  "responsive": {
+    "breakpoint": "768px",
+    "desktop": "16-column fluid grid with WebGL-first scenes and desktop-only detail overlays",
+    "mobile": "4-column layout with dedicated MOBILE image sources, touch controls, menu drawer and gallery progress"
+  },
+  "motion": {
+    "scrollModel": "custom smoothed scroll progress drives DOM, Canvas and WebGL timelines",
+    "text": "GSAP SplitText character/line reveals",
+    "graphics": "Three.js scene interpolation, post-processing and Gaussian splats",
+    "microInteractions": "button flippers, hover hand, product selection, mobile menu, video overlay and copy action"
+  }
+}

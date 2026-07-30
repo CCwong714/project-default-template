@@ -116,11 +116,14 @@ const typeAwareRules = {
 export default defineConfig([
   globalIgnores([
     '.agents',
+    '.clone-ui/qa',
+    '.clone-ui/source',
     '.next',
     'coverage',
     'dist',
     'node_modules',
     'output',
+    'public',
     '**/*.d.ts',
   ]),
   {
@@ -293,6 +296,22 @@ export default defineConfig([
           message: 'Shared modules must not depend on app or feature modules.',
         },
       ]),
+    },
+  },
+  {
+    files: ['scripts/**/*.mjs'],
+    extends: [js.configs.recommended],
+    languageOptions: {
+      ecmaVersion: 'latest',
+      sourceType: 'module',
+      globals: {
+        ...globals.browser,
+        ...globals.node,
+      },
+    },
+    rules: {
+      'no-nested-ternary': 'error',
+      'no-unneeded-ternary': 'error',
     },
   },
   {

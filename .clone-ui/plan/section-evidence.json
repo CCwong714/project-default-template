@@ -1,0 +1,32 @@
+{
+  "sourceEvidence": {
+    "desktopViewport": ".clone-ui/source/.captures/source-1440-viewport.png",
+    "tabletViewport": ".clone-ui/source/.captures/source-768-viewport.png",
+    "mobileViewport": ".clone-ui/source/.captures/source-375-viewport.png",
+    "rawHtml": ".clone-ui/source/raw.html",
+    "productionCss": ".clone-ui/source/index.TL6TuoJb.css",
+    "productionRuntime": ".clone-ui/source/hoisted.CRsATKbF.js",
+    "worker": ".clone-ui/source/SplatsWorker-DSMxtdkh.js"
+  },
+  "acceptance": {
+    "desktop": [
+      "Preloader resolves into the desk/coaster hero.",
+      "Header, oversized wordmark, body copy, product card, video thumbnail and scroll affordance match the source composition.",
+      "Section navigation and scroll-driven WebGL transitions run without route or asset errors."
+    ],
+    "mobile": [
+      "Dedicated mobile imagery and 4-column layout activate below 768px.",
+      "Menu opens and closes through touch input.",
+      "No unintended horizontal overflow or clipped primary controls."
+    ],
+    "interaction": [
+      "Hero video overlay opens and closes.",
+      "Product selector changes among Oryzo, Pro and Pro Max.",
+      "Copy URL and newsletter form expose visible feedback states."
+    ]
+  },
+  "exploratory": [
+    "Reload while the viewport is mobile and confirm the preloader resolves.",
+    "Navigate directly by a hash link and confirm the custom route/scroll manager stays healthy."
+  ]
+}
