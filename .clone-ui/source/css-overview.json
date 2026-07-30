@@ -1,0 +1,17 @@
+{
+  "colors": {
+    "page": "#101014",
+    "text": "#ffffff",
+    "primary": "#26bbff",
+    "buttonText": "#101014"
+  },
+  "fonts": [
+    "Inter, arial",
+    "Brutal, sans-serif"
+  ],
+  "targetViewport": {
+    "width": 1600,
+    "height": 900
+  },
+  "targetVideoFrame": ".clone-ui/source/.captures/video-reference.png"
+}

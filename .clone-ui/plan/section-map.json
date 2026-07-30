@@ -1,0 +1,14 @@
+[
+  {
+    "name": "global-header",
+    "sourceSelector": "unrealengine-navigation > header.global-header",
+    "cloneSelector": "header.ue-topbar",
+    "type": "responsive-navigation"
+  },
+  {
+    "name": "hero-body",
+    "sourceSelector": "div.masked-video, div.ue-grid-container",
+    "cloneSelector": "section.ue-hero",
+    "type": "scroll-cinematic"
+  }
+]

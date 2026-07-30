@@ -1,0 +1,37 @@
+{
+  "capture": {
+    "reference": ".clone-ui/source/.captures/video-reference.png",
+    "clone": ".clone-ui/source/.captures/sections/clone-final-hero-body-1600.png",
+    "comparison": ".clone-ui/source/.captures/hero-comparison-final-side-by-side.png"
+  },
+  "whiteCopyPixels": {
+    "reference": {
+      "left": 463,
+      "top": 447,
+      "right": 1140,
+      "bottom": 606
+    },
+    "clone": {
+      "left": 463,
+      "top": 447,
+      "right": 1136,
+      "bottom": 607
+    },
+    "maximumEdgeDeltaPx": 4
+  },
+  "blueCtaPixels": {
+    "reference": {
+      "left": 746,
+      "top": 642,
+      "right": 856,
+      "bottom": 673
+    },
+    "clone": {
+      "left": 744,
+      "top": 643,
+      "right": 855,
+      "bottom": 674
+    },
+    "maximumEdgeDeltaPx": 2
+  }
+}

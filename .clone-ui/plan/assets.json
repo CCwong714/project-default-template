@@ -1,0 +1,50 @@
+{
+  "hero": {
+    "type": "video",
+    "sourceUrl": "https://cdn2.unrealengine.com/unreal-engine-5-bigger-worlds-intro-1b3ac82d178e.mp4",
+    "localPath": "public/assets/ue5/hero-intro.mp4",
+    "sourceMedia": {
+      "duration": 9.708333,
+      "width": 1920,
+      "height": 1080
+    },
+    "localMedia": {
+      "duration": 9.708333,
+      "width": 1920,
+      "height": 1080
+    },
+    "playback": {
+      "autoplay": false,
+      "loop": false,
+      "preload": "auto",
+      "startsOnFirstScroll": true,
+      "resetsAtScrollTop": true
+    },
+    "posterSourceUrl": "https://cdn2.unrealengine.com/ue5-bigger-worlds-placeholder-1920x1080-b8ddb42726e1.png",
+    "posterLocalPath": "public/assets/ue5/hero-poster.png"
+  },
+  "heroReferenceVideo": {
+    "sourcePath": "/var/folders/29/vbrtn0fd4_lb5d7t5zb51d7w0000gn/T/TemporaryItems/NSIRD_screencaptureui_3hkZ7U/Screen Recording 2026-07-30 at 16.09.50.mov",
+    "capturePath": ".clone-ui/source/.captures/video-reference.png"
+  },
+  "header": {
+    "unrealEngineLogo": {
+      "type": "svg",
+      "sourceUrl": "https://cms-assets.unrealengine.com/AVzjeqAbLRKi3W5jq0CAvz/cmb81xhrx3tsh07mzz3amnbyl",
+      "localPath": "public/assets/ue5/header/unreal-engine-logo.svg",
+      "intrinsicSize": {
+        "width": 218,
+        "height": 32
+      }
+    }
+  },
+  "headerReferenceVideo": {
+    "sourcePath": "/var/folders/29/vbrtn0fd4_lb5d7t5zb51d7w0000gn/T/TemporaryItems/NSIRD_screencaptureui_P9Zbuq/Screen Recording 2026-07-30 at 17.03.11.mov",
+    "capturePath": ".clone-ui/source/.captures/header/video-reference.png",
+    "durationSeconds": 9.2916667,
+    "devicePixelSize": {
+      "width": 2940,
+      "height": 1600
+    }
+  }
+}

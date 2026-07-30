@@ -1,0 +1,27 @@
+{
+  "scope": "global-header",
+  "keep": [
+    "completed Hero scroll behavior and all Hero assets",
+    "all Overview and later page sections",
+    "existing Epic, language, sign-in, and download interactions",
+    "responsive mobile navigation"
+  ],
+  "fix": [
+    "the desktop header exposes all eight menu items at the recording width",
+    "the Unreal Engine wordmark is reconstructed from a separate icon and text",
+    "header spacing, search width, translucent background, and desktop action geometry differ",
+    "the More menu is missing at the 1470px source breakpoint",
+    "the More flyout dimensions, blur, row spacing, and submenu arrows do not match the source"
+  ],
+  "resolved": [
+    "the official Unreal Engine horizontal SVG is used directly",
+    "the 1470px breakpoint now shows Overview, Uses, News, Forums, and More",
+    "header, brand, navigation, search, globe, sign-in, and download bounds match source geometry",
+    "the More flyout matches the source 202x182px frame and four 41px rows",
+    "the source rgba backgrounds, 50px backdrop blur, borders, radii, and layered shadow are reproduced",
+    "header, More, and nested flyouts use independent backdrop layers so each panel samples the page like the source",
+    "More, Learning, and Connect expose menu relationships and live aria-expanded state",
+    "the 1600px breakpoint keeps Documentation visible and moves Learning, Connect, and Fab into More",
+    "the existing mobile drawer remains available below the desktop-navigation breakpoint"
+  ]
+}

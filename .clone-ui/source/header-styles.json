@@ -1,0 +1,141 @@
+{
+  "recording": {
+    "devicePixelSize": {
+      "width": 2940,
+      "height": 1600
+    },
+    "retinaScale": 2,
+    "cssViewport": {
+      "width": 1470,
+      "height": 800
+    }
+  },
+  "header": {
+    "height": 72,
+    "paddingInline": 24,
+    "background": "rgba(16, 16, 20, 0.7)",
+    "backdropFilter": "blur(50px)"
+  },
+  "source1470": {
+    "epic": {
+      "x": 24,
+      "y": 20,
+      "width": 50,
+      "height": 32
+    },
+    "propertyLogo": {
+      "x": 102,
+      "y": 20,
+      "width": 233,
+      "height": 32
+    },
+    "navigation": {
+      "x": 359,
+      "y": 0,
+      "width": 431.039,
+      "height": 72
+    },
+    "navigationItemWidths": [
+      112.664,
+      82.297,
+      70.508,
+      82.523,
+      83.047
+    ],
+    "actions": {
+      "x": 802.039,
+      "y": 15,
+      "width": 643.961,
+      "height": 42
+    },
+    "search": {
+      "x": 802.039,
+      "y": 15,
+      "width": 403.844,
+      "height": 42
+    },
+    "globe": {
+      "x": 1221.883,
+      "y": 20,
+      "width": 32,
+      "height": 32
+    },
+    "signIn": {
+      "x": 1269.883,
+      "y": 20,
+      "width": 71.016,
+      "height": 32
+    },
+    "download": {
+      "x": 1352.898,
+      "y": 20,
+      "width": 93.102,
+      "height": 32
+    }
+  },
+  "moreFlyout": {
+    "frame": {
+      "x": 646,
+      "y": 60,
+      "width": 202,
+      "height": 182
+    },
+    "padding": 8,
+    "row": {
+      "width": 184,
+      "height": 41,
+      "padding": "10px 16px",
+      "borderRadius": 8
+    },
+    "background": "rgba(48, 48, 52, 0.7)",
+    "border": "1px solid rgba(255, 255, 255, 0.1)",
+    "borderRadius": 16,
+    "backdropFilter": "blur(50px)",
+    "items": [
+      "Documentation",
+      "Learning",
+      "Connect",
+      "Fab"
+    ]
+  },
+  "nestedFlyout": {
+    "learningFrame": {
+      "x": 839,
+      "y": 102,
+      "width": 240,
+      "height": 141
+    },
+    "padding": 8,
+    "rowHeight": 41,
+    "background": "rgba(48, 48, 52, 0.7)",
+    "border": "1px solid rgba(255, 255, 255, 0.1)",
+    "borderRadius": 16,
+    "backdropFilter": "blur(50px)"
+  },
+  "comparison1470": {
+    "cloneNavigation": {
+      "x": 359,
+      "width": 431.078
+    },
+    "cloneActions": {
+      "x": 802.078,
+      "width": 643.922
+    },
+    "cloneSearch": {
+      "x": 802.078,
+      "width": 403.805
+    },
+    "cloneMoreFlyout": {
+      "x": 646.914,
+      "y": 60,
+      "width": 202,
+      "height": 182
+    },
+    "cloneLearningFlyout": {
+      "x": 838.914,
+      "y": 102,
+      "width": 240,
+      "height": 141
+    }
+  }
+}

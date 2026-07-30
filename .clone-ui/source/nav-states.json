@@ -1,0 +1,37 @@
+{
+  "sourceStates": {
+    "1470": {
+      "visiblePrimaryItems": [
+        "Overview",
+        "Uses",
+        "News",
+        "Forums"
+      ],
+      "moreItems": [
+        "Documentation",
+        "Learning",
+        "Connect",
+        "Fab"
+      ]
+    },
+    "1600": {
+      "visiblePrimaryItems": [
+        "Overview",
+        "Uses",
+        "News",
+        "Forums",
+        "Documentation"
+      ],
+      "moreItems": [
+        "Learning",
+        "Connect",
+        "Fab"
+      ]
+    }
+  },
+  "interaction": {
+    "moreTrigger": "hover or keyboard focus",
+    "learningHasNestedMenu": true,
+    "connectHasNestedMenu": true
+  }
+}

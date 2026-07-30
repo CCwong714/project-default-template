@@ -1,0 +1,7 @@
+[
+  {
+    "name": "hero-body",
+    "selector": "div.masked-video + div.above-fold-heading, div.ue-grid-container",
+    "type": "scroll-cinematic"
+  }
+]

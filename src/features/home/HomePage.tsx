@@ -38,6 +38,24 @@ function easeInOutCubic(value: number): number {
     : 1 - Math.pow(-2 * value + 2, 3) / 2;
 }
 
+type THeroPhase = "intro" | "headline" | "cinematic" | "body";
+
+function resolveHeroPhase(progress: number): THeroPhase {
+  if (progress < 0.22) {
+    return "intro";
+  }
+
+  if (progress < 0.58) {
+    return "headline";
+  }
+
+  if (progress < 0.82) {
+    return "cinematic";
+  }
+
+  return "body";
+}
+
 type TFooterSocialIconProps = {
   label: string;
 };
@@ -97,11 +115,16 @@ function FooterBackIcon() {
 
 export function HomePage() {
   const pageRef = useRef<HTMLElement>(null);
+  const heroVideoRef = useRef<HTMLVideoElement>(null);
   const [activeSectionHref, setActiveSectionHref] = useState<TPageNavHref>(
     pageNav[0][2],
   );
   const [isLanguageOpen, setIsLanguageOpen] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isMoreOpen, setIsMoreOpen] = useState(false);
+  const [openCondensedMenu, setOpenCondensedMenu] = useState<string | null>(
+    null,
+  );
 
   useEffect(() => {
     const page = pageRef.current;
@@ -119,21 +142,25 @@ export function HomePage() {
         0,
         Math.min(window.scrollY / Math.max(heroHeight, 1), 1),
       );
+      const viewportHeight = Math.max(window.innerHeight, 1);
+      const cinematicProgress = clampProgress(
+        (window.scrollY - viewportHeight * 2) / viewportHeight,
+      );
+      const cinematicScale = 1 - cinematicProgress * 0.5;
+      const cinematicBlur = cinematicProgress * 30;
+      const cinematicTilt = cinematicProgress * -40;
+      const cinematicOpacityProgress = clampProgress(
+        (window.scrollY - viewportHeight * (22 / 9)) /
+          (viewportHeight * (10 / 9)),
+      );
+      const cinematicOpacity =
+        1 - Math.min(cinematicOpacityProgress, 0.5);
       const revealRaw = Math.min(progress / 0.42, 1);
       const reveal = easeInOutCubic(revealRaw);
       const logoProgress = Math.min(progress / 0.28, 1);
       const headlineExitProgress = easeInOutCubic(
         clampProgress((progress - 0.52) / 0.28),
       );
-      const cinematicProgress = easeInOutCubic(
-        clampProgress((progress - 0.54) / 0.34),
-      );
-      const frameDropProgress = easeInOutCubic(
-        clampProgress((progress - 0.8) / 0.2),
-      );
-      const bodyRaw = clampProgress((progress - 0.78) / 0.22);
-      const bodyMotionProgress = easeInOutCubic(bodyRaw);
-      const bodyProgress = easeInOutCubic(bodyRaw);
 
       page.style.setProperty("--hero-progress", progress.toFixed(4));
       page.style.setProperty("--hero-reveal-radius", `${24 + reveal * 95}vmax`);
@@ -154,22 +181,36 @@ export function HomePage() {
         cinematicProgress.toFixed(4),
       );
       page.style.setProperty(
-        "--hero-frame-drop-progress",
-        frameDropProgress.toFixed(4),
+        "--hero-cinematic-scale",
+        cinematicScale.toFixed(6),
       );
       page.style.setProperty(
-        "--hero-body-motion-progress",
-        bodyMotionProgress.toFixed(4),
+        "--hero-cinematic-blur",
+        `${cinematicBlur.toFixed(4)}px`,
       );
-      page.style.setProperty("--hero-body-progress", bodyProgress.toFixed(4));
-      page.dataset.heroPhase =
-        progress < 0.22
-          ? "intro"
-          : progress < 0.58
-            ? "headline"
-            : progress < 0.82
-              ? "cinematic"
-              : "body";
+      page.style.setProperty(
+        "--hero-cinematic-opacity",
+        cinematicOpacity.toFixed(4),
+      );
+      page.style.setProperty(
+        "--hero-cinematic-tilt",
+        `${cinematicTilt.toFixed(4)}deg`,
+      );
+      page.dataset.heroPhase = resolveHeroPhase(progress);
+
+      const heroVideo = heroVideoRef.current;
+      if (heroVideo) {
+        if (window.scrollY === 0) {
+          if (!heroVideo.paused) {
+            heroVideo.pause();
+          }
+          if (heroVideo.currentTime !== 0) {
+            heroVideo.currentTime = 0;
+          }
+        } else if (heroVideo.paused && !heroVideo.ended) {
+          void heroVideo.play().catch(() => undefined);
+        }
+      }
 
       const uefn = page.querySelector<HTMLElement>(".ue-uefn");
       if (uefn) {
@@ -322,10 +363,15 @@ export function HomePage() {
   const closeMobileMenu = () => {
     setIsMobileMenuOpen(false);
   };
+  const condensedHeaderMenus = headerMenus.slice(4);
+  const activeCondensedMenu = condensedHeaderMenus.find(
+    (menu) => menu.label === openCondensedMenu,
+  );
 
   return (
     <main className="ue-page" data-hero-phase="intro" ref={pageRef}>
       <header className="ue-topbar">
+        <div className="ue-topbar__background" aria-hidden="true" />
         <div className="ue-epic-menu">
           <button className="ue-epic" type="button" aria-label="Epic Games">
             <img src="/assets/ue5/epic-games-logo.svg" alt="" />
@@ -339,15 +385,26 @@ export function HomePage() {
             ))}
           </div>
         </div>
-        <a className="ue-brand" href="#top" aria-label="Unreal Engine">
+        <a
+          className="ue-brand"
+          href="https://www.unrealengine.com/"
+          aria-label="Unreal Engine"
+        >
+          <img
+            className="ue-brand__wordmark"
+            src="/assets/ue5/header/unreal-engine-logo.svg"
+            alt=""
+          />
           <span className="ue-mark" aria-hidden="true">
             <img src="/assets/ue5/unreal-u-logo.svg" alt="" />
           </span>
-          <span>Unreal Engine</span>
         </a>
         <nav className="ue-global-nav" aria-label="Unreal navigation">
-          {headerMenus.map((menu) => (
-            <div className="ue-nav-item" key={menu.label}>
+          {headerMenus.map((menu, menuIndex) => (
+            <div
+              className={`ue-nav-item ue-nav-item--${menuIndex + 1}`}
+              key={menu.label}
+            >
               <a className="ue-nav-trigger" href={menu.href}>
                 {menu.label}
                 {menu.columns.length > 0 ? (
@@ -374,6 +431,105 @@ export function HomePage() {
               ) : null}
             </div>
           ))}
+          <div
+            className={`ue-nav-item ue-nav-more${isMoreOpen ? " is-open" : ""}`}
+            onBlur={(event) => {
+              if (!event.currentTarget.contains(event.relatedTarget)) {
+                setIsMoreOpen(false);
+                setOpenCondensedMenu(null);
+              }
+            }}
+            onFocus={() => {
+              setIsMoreOpen(true);
+            }}
+            onMouseEnter={() => {
+              setIsMoreOpen(true);
+            }}
+            onMouseLeave={() => {
+              setIsMoreOpen(false);
+              setOpenCondensedMenu(null);
+            }}
+          >
+            <button
+              className="ue-nav-trigger"
+              type="button"
+              aria-controls="ue-more-menu"
+              aria-expanded={isMoreOpen}
+              aria-haspopup="menu"
+            >
+              More
+              <span className="ue-chevron" aria-hidden="true" />
+            </button>
+            <div
+              className="ue-flyout ue-flyout--more"
+              id="ue-more-menu"
+              role="menu"
+            >
+              <div className="ue-more-list">
+                {condensedHeaderMenus.map((menu) => {
+                  const hasChildren = menu.columns.length > 0;
+                  const isSubmenuOpen = openCondensedMenu === menu.label;
+                  const submenuId = `ue-more-${menu.label.toLowerCase()}-menu`;
+
+                  return (
+                    <div
+                      className={`ue-more-item ue-more-item--${menu.label.toLowerCase()}${isSubmenuOpen ? " is-open" : ""}`}
+                      key={menu.label}
+                      onFocus={() => {
+                        if (hasChildren) {
+                          setOpenCondensedMenu(menu.label);
+                        }
+                      }}
+                      onMouseEnter={() => {
+                        if (hasChildren) {
+                          setOpenCondensedMenu(menu.label);
+                        }
+                      }}
+                    >
+                      <a
+                        className="ue-more-link"
+                        href={menu.href}
+                        role="menuitem"
+                        aria-controls={hasChildren ? submenuId : undefined}
+                        aria-expanded={
+                          hasChildren ? isSubmenuOpen : undefined
+                        }
+                        aria-haspopup={hasChildren ? "menu" : undefined}
+                        onClick={(event) => {
+                          if (hasChildren) {
+                            event.preventDefault();
+                            setOpenCondensedMenu(menu.label);
+                          }
+                        }}
+                      >
+                        <span>{menu.label}</span>
+                        {hasChildren ? (
+                          <span className="ue-sub-chevron" aria-hidden="true" />
+                        ) : null}
+                      </a>
+                    </div>
+                  );
+                })}
+              </div>
+            </div>
+            {activeCondensedMenu ? (
+              <div
+                className={`ue-subflyout ue-subflyout--standalone ue-subflyout--${activeCondensedMenu.label.toLowerCase()}`}
+                id={`ue-more-${activeCondensedMenu.label.toLowerCase()}-menu`}
+                role="menu"
+              >
+                {activeCondensedMenu.columns.map((column, columnIndex) => (
+                  <div className="ue-flyout__column" key={columnIndex}>
+                    {column.links.map(([label, href]) => (
+                      <a href={href} key={label} role="menuitem">
+                        {label}
+                      </a>
+                    ))}
+                  </div>
+                ))}
+              </div>
+            ) : null}
+          </div>
         </nav>
         <div className="ue-actions">
           <label className="ue-search">
@@ -509,17 +665,24 @@ export function HomePage() {
 
       <section className="ue-hero" id="top">
         <div className="ue-hero__sticky">
-          <video
-            aria-label="Unreal Engine 5 city demo"
-            autoPlay
-            className="ue-hero__video"
-            loop
-            muted
-            playsInline
-            poster="/assets/ue5/hero-poster.png"
-          >
-            <source src="/assets/ue5/hero-intro.mp4" type="video/mp4" />
-          </video>
+          <div className="ue-hero__masked-video">
+            <div className="ue-hero__perspective">
+              <div className="ue-hero__tilt">
+                <video
+                  aria-label="Unreal Engine 5 city demo"
+                  className="ue-hero__video"
+                  disablePictureInPicture
+                  muted
+                  playsInline
+                  poster="/assets/ue5/hero-poster.png"
+                  preload="auto"
+                  ref={heroVideoRef}
+                >
+                  <source src="/assets/ue5/hero-intro.mp4" type="video/mp4" />
+                </video>
+              </div>
+            </div>
+          </div>
           <div className="ue-hero__shade" />
           <img
             className="ue-hero__logo"
@@ -540,16 +703,15 @@ export function HomePage() {
           </div>
 
           <span className="ue-scroll-line" />
+        </div>
 
-          <div className="ue-hero__body">
-            <p>
-              Unreal Engine enables game developers and creators across
-              industries to realize next-generation real-time 3D content and
-              experiences with greater freedom, fidelity, and flexibility than
-              ever before.
-            </p>
-            <a href={homeLinks.download}>Download now</a>
-          </div>
+        <div className="ue-hero__body">
+          <p>
+            Unreal Engine enables game developers and creators across industries
+            to realize next-generation real-time 3D content and experiences with
+            greater freedom, fidelity, and flexibility than ever before.
+          </p>
+          <a href={homeLinks.download}>Download now</a>
         </div>
       </section>
 

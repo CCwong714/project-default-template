@@ -1,0 +1,73 @@
+{
+  "capture": {
+    "url": "https://www.unrealengine.com/unreal-engine-5?lang=en-US",
+    "viewport": {
+      "width": 1600,
+      "height": 900
+    },
+    "scrollY": 2500
+  },
+  "hero-body": {
+    "stage": {
+      "height": 3600,
+      "documentTop": 72,
+      "viewportTop": -2428,
+      "viewportBottom": 1172
+    },
+    "maskedVideo": {
+      "position": "fixed",
+      "x": 311.1111145019531,
+      "y": 175,
+      "width": 977.77783203125,
+      "height": 550,
+      "filter": "blur(23.3333px)",
+      "opacity": "0.7",
+      "transform": "matrix(0.611111, 0, 0, 0.611111, 0, 0)",
+      "perspective": "2700px"
+    },
+    "video": {
+      "objectFit": "cover",
+      "x": 265.04241943359375,
+      "y": 192.36769104003903,
+      "width": 1069.9150390625,
+      "height": 474.4100341796875,
+      "tilt": "rotateX(-31.1111deg)"
+    },
+    "content": {
+      "x": 368,
+      "y": 547,
+      "width": 864,
+      "height": 314,
+      "margin": "0px 232px",
+      "textAlign": "center"
+    },
+    "heading": {
+      "x": 368,
+      "y": 579,
+      "width": 864,
+      "height": 210,
+      "color": "rgb(255, 255, 255)",
+      "fontFamily": "Inter, arial",
+      "fontSize": "34px",
+      "fontWeight": "700",
+      "lineHeight": "42px",
+      "letterSpacing": "normal",
+      "margin": "0px"
+    },
+    "button": {
+      "x": 733.09375,
+      "y": 821,
+      "width": 133.8046875,
+      "height": 40,
+      "backgroundColor": "rgb(38, 187, 255)",
+      "color": "rgb(16, 16, 20)",
+      "borderRadius": "8px",
+      "padding": "8px 16px",
+      "labelFontFamily": "Inter, arial",
+      "labelFontSize": "14px",
+      "labelFontWeight": "500",
+      "labelLineHeight": "16px",
+      "labelLetterSpacing": "0.26px"
+    }
+  }
+}

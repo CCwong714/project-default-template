@@ -1,0 +1,74 @@
+{
+  "global-header": [
+    {
+      "feature": "The recording's 2940x1600 device-pixel track corresponds to a 1470x800 Retina CSS viewport",
+      "evidence": ".clone-ui/source/header-styles.json: recording"
+    },
+    {
+      "feature": "At 1470px the source shows four primary links and a More control",
+      "evidence": ".clone-ui/source/nav-states.json: sourceStates.1470"
+    },
+    {
+      "feature": "The source header is 72px tall with 24px horizontal padding and a rgba(16,16,20,0.7) 50px-blur backdrop",
+      "evidence": ".clone-ui/source/header-styles.json: header"
+    },
+    {
+      "feature": "The source's header component bounds are reproduced to sub-pixel or one-pixel tolerance",
+      "evidence": ".clone-ui/source/header-styles.json: comparison1470"
+    },
+    {
+      "feature": "The source More flyout uses a 202x182px frame, 16px radius, 8px padding, and four 41px rows",
+      "evidence": ".clone-ui/source/header-styles.json: moreFlyout"
+    },
+    {
+      "feature": "The nested Learning flyout uses a 240x141px frame with the same blur contract and three 41px rows",
+      "evidence": ".clone-ui/source/header-styles.json: nestedFlyout"
+    },
+    {
+      "feature": "Header, primary More panel, and nested panels are separate backdrop-filter layers; More and nested triggers expose aria-expanded and aria-controls",
+      "evidence": "src/features/home/HomePage.tsx and src/styles/globals.css"
+    },
+    {
+      "feature": "Initial and expanded desktop states were captured from both source and clone",
+      "evidence": ".clone-ui/source/.captures/header/"
+    }
+  ],
+  "hero-body": [
+    {
+      "feature": "Hero stage is 3600px tall at a 1600x900 viewport",
+      "evidence": ".clone-ui/source/section-styles.json: hero-body.stage"
+    },
+    {
+      "feature": "Video scales from 1 to 0.5 between scrollY 1800 and 2700",
+      "evidence": ".clone-ui/source/hero-scroll-samples.json"
+    },
+    {
+      "feature": "Video blur reaches 23.3333px and rotateX reaches -31.1111deg at scrollY 2500",
+      "evidence": ".clone-ui/source/section-styles.json: hero-body.maskedVideo and hero-body.video"
+    },
+    {
+      "feature": "Body copy remains in normal document flow and moves upward one pixel per scroll pixel",
+      "evidence": ".clone-ui/source/hero-scroll-samples.json: bodyHeadingY"
+    },
+    {
+      "feature": "Recorded body heading is rendered at approximately 80% of the live 34px/42px/864px computed style",
+      "evidence": ".clone-ui/source/.captures/hero-comparison-side-by-side.png"
+    },
+    {
+      "feature": "Recorded CTA is approximately 32px tall with the same #26bbff color contract",
+      "evidence": ".clone-ui/source/.captures/hero-comparison-side-by-side.png"
+    },
+    {
+      "feature": "Above-fold Bigger worlds headline is fully hidden in the body-copy state",
+      "evidence": ".clone-ui/source/rendered.html: title-2 inline opacity 0"
+    },
+    {
+      "feature": "Section navigation is not visible in the supplied target frame",
+      "evidence": ".clone-ui/source/.captures/video-reference.png"
+    },
+    {
+      "feature": "Hero video has no autoplay or loop attribute, starts when scrollY becomes non-zero, and is reset when scrollY returns to zero",
+      "evidence": "Captured production bundle module 5804 and live media-state checks"
+    }
+  ]
+}
