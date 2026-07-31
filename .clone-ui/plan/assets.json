@@ -27,7 +27,54 @@
     "sourcePath": "/var/folders/29/vbrtn0fd4_lb5d7t5zb51d7w0000gn/T/TemporaryItems/NSIRD_screencaptureui_3hkZ7U/Screen Recording 2026-07-30 at 16.09.50.mov",
     "capturePath": ".clone-ui/source/.captures/video-reference.png"
   },
+  "heroInitialState": {
+    "focusGradient": {
+      "type": "png",
+      "sourceUrl": "https://cdn2.unrealengine.com/focus-gradient-2600x1463-20ebd93b51f4.png",
+      "localPath": "public/assets/ue5/focus-gradient.png",
+      "intrinsicSize": {
+        "width": 2600,
+        "height": 1463
+      }
+    },
+    "unrealLogo": {
+      "type": "svg",
+      "localPath": "public/assets/ue5/unreal-u-logo.svg",
+      "renderedSize": {
+        "width": 330,
+        "height": 330
+      }
+    },
+    "sourceScreenshot": ".clone-ui/source/.captures/hero-initial/source-user.png",
+    "cloneBeforeScreenshot": ".clone-ui/source/.captures/hero-initial/local-user-before.png",
+    "liveSourceCapture": ".clone-ui/source/.captures/hero-initial/source-live-1470x801.png",
+    "cloneAfterCapture": ".clone-ui/source/.captures/hero-initial/local-after-1470x801.png",
+    "scrollSamples": ".clone-ui/source/hero-initial-scroll-samples.json"
+  },
   "header": {
+    "epicGamesShield": {
+      "type": "svg",
+      "source": "Inline epic-wf-shield SVG from the production navigation component shadow DOM",
+      "localPath": "public/assets/ue5/epic-games-logo.svg",
+      "intrinsicSize": {
+        "width": 32,
+        "height": 32
+      },
+      "renderedSize": {
+        "width": 32,
+        "height": 32
+      }
+    },
+    "epicChevron": {
+      "type": "inline-svg",
+      "source": "Inline nav-flyout-toggle chevron SVG from the production navigation component shadow DOM",
+      "localComponent": "src/features/home/HomePage.tsx",
+      "viewBox": "0 0 24 24",
+      "renderedSize": {
+        "width": 12,
+        "height": 12
+      }
+    },
     "unrealEngineLogo": {
       "type": "svg",
       "sourceUrl": "https://cms-assets.unrealengine.com/AVzjeqAbLRKi3W5jq0CAvz/cmb81xhrx3tsh07mzz3amnbyl",

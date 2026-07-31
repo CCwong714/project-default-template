@@ -28,28 +28,30 @@ function cssVars(vars: Record<`--${string}`, string>): CSSProperties {
 
 type TPageNavHref = (typeof pageNav)[number][2];
 
+const HERO_GRADIENT_SCALE_SCROLL_END = 200;
+const HERO_GRADIENT_FADE_SCROLL_END = 300;
+const HERO_LOGO_SCALE_SCROLL_END = 500;
+const HERO_MASK_FADE_SCROLL_END = 600;
+const HERO_TITLE_TRANSITION_SCROLL_DISTANCE = 300;
+const HERO_TITLE_EXIT_SCROLL_DISTANCE = 400;
+const HERO_TITLE_TRAVEL_DISTANCE = 80;
+
 function clampProgress(value: number): number {
   return Math.max(0, Math.min(value, 1));
-}
-
-function easeInOutCubic(value: number): number {
-  return value < 0.5
-    ? 4 * value * value * value
-    : 1 - Math.pow(-2 * value + 2, 3) / 2;
 }
 
 type THeroPhase = "intro" | "headline" | "cinematic" | "body";
 
 function resolveHeroPhase(progress: number): THeroPhase {
-  if (progress < 0.22) {
+  if (progress < 1 / 3) {
     return "intro";
   }
 
-  if (progress < 0.58) {
+  if (progress < 2 / 3) {
     return "headline";
   }
 
-  if (progress < 0.82) {
+  if (progress < 5 / 6) {
     return "cinematic";
   }
 
@@ -116,9 +118,8 @@ function FooterBackIcon() {
 export function HomePage() {
   const pageRef = useRef<HTMLElement>(null);
   const heroVideoRef = useRef<HTMLVideoElement>(null);
-  const [activeSectionHref, setActiveSectionHref] = useState<TPageNavHref>(
-    pageNav[0][2],
-  );
+  const [activeSectionHref, setActiveSectionHref] =
+    useState<TPageNavHref | null>(null);
   const [isLanguageOpen, setIsLanguageOpen] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isMoreOpen, setIsMoreOpen] = useState(false);
@@ -150,31 +151,88 @@ export function HomePage() {
       const cinematicBlur = cinematicProgress * 30;
       const cinematicTilt = cinematicProgress * -40;
       const cinematicOpacityProgress = clampProgress(
-        (window.scrollY - viewportHeight * (22 / 9)) /
-          (viewportHeight * (10 / 9)),
+        cinematicProgress - 0.5,
       );
       const cinematicOpacity =
         1 - Math.min(cinematicOpacityProgress, 0.5);
-      const revealRaw = Math.min(progress / 0.42, 1);
-      const reveal = easeInOutCubic(revealRaw);
-      const logoProgress = Math.min(progress / 0.28, 1);
-      const headlineExitProgress = easeInOutCubic(
-        clampProgress((progress - 0.52) / 0.28),
+      const gradientScaleProgress = clampProgress(
+        window.scrollY / HERO_GRADIENT_SCALE_SCROLL_END,
       );
+      const gradientFadeProgress = clampProgress(
+        (window.scrollY - HERO_GRADIENT_SCALE_SCROLL_END) /
+          (HERO_GRADIENT_FADE_SCROLL_END -
+            HERO_GRADIENT_SCALE_SCROLL_END),
+      );
+      const gradientScale = 1 + gradientScaleProgress * 0.3;
+      const gradientOpacity =
+        (1 - gradientScaleProgress * 0.1) * (1 - gradientFadeProgress);
+      const logoScale =
+        1 +
+        clampProgress(window.scrollY / HERO_LOGO_SCALE_SCROLL_END) * 2;
+      const maskOpacity =
+        0.95 *
+        (1 -
+          clampProgress(window.scrollY / HERO_MASK_FADE_SCROLL_END));
+      const titleOneExitStart =
+        viewportHeight - HERO_TITLE_TRANSITION_SCROLL_DISTANCE;
+      const titleOneExitProgress = clampProgress(
+        (window.scrollY - titleOneExitStart) /
+          HERO_TITLE_TRANSITION_SCROLL_DISTANCE,
+      );
+      const titleTwoEnterProgress = clampProgress(
+        (window.scrollY - viewportHeight) /
+          HERO_TITLE_TRANSITION_SCROLL_DISTANCE,
+      );
+      const titleTwoExitProgress = clampProgress(
+        (window.scrollY - viewportHeight * 2) /
+          HERO_TITLE_EXIT_SCROLL_DISTANCE,
+      );
+      const titleTwoOpacity = Math.min(
+        titleTwoEnterProgress,
+        1 - titleTwoExitProgress,
+      );
+      const titleTwoTranslate =
+        -HERO_TITLE_TRAVEL_DISTANCE * (1 - titleTwoEnterProgress) -
+        HERO_TITLE_TRAVEL_DISTANCE * titleTwoExitProgress;
+      const hintTranslate =
+        Math.min(Math.ceil(cinematicProgress), 1) * 72;
 
       page.style.setProperty("--hero-progress", progress.toFixed(4));
-      page.style.setProperty("--hero-reveal-radius", `${24 + reveal * 95}vmax`);
       page.style.setProperty(
-        "--hero-logo-scale",
-        (1 + logoProgress * 2).toFixed(4),
+        "--hero-gradient-scale",
+        gradientScale.toFixed(4),
+      );
+      page.style.setProperty(
+        "--hero-gradient-opacity",
+        gradientOpacity.toFixed(4),
       );
       page.style.setProperty(
         "--hero-logo-opacity",
-        (0.85 * (1 - logoProgress)).toFixed(4),
+        maskOpacity.toFixed(6),
       );
       page.style.setProperty(
-        "--hero-headline-exit-progress",
-        headlineExitProgress.toFixed(4),
+        "--hero-logo-scale",
+        logoScale.toFixed(6),
+      );
+      page.style.setProperty(
+        "--hero-title-1-opacity",
+        (1 - titleOneExitProgress).toFixed(6),
+      );
+      page.style.setProperty(
+        "--hero-title-1-y",
+        `${(titleOneExitProgress * HERO_TITLE_TRAVEL_DISTANCE).toFixed(4)}px`,
+      );
+      page.style.setProperty(
+        "--hero-title-2-opacity",
+        titleTwoOpacity.toFixed(6),
+      );
+      page.style.setProperty(
+        "--hero-title-2-y",
+        `${titleTwoTranslate.toFixed(4)}px`,
+      );
+      page.style.setProperty(
+        "--hero-hint-y",
+        `${hintTranslate.toFixed(4)}px`,
       );
       page.style.setProperty(
         "--hero-cinematic-progress",
@@ -317,7 +375,7 @@ export function HomePage() {
     const updateActiveSection = () => {
       frame = 0;
       const activationY = window.scrollY + window.innerHeight * 0.38;
-      let currentHref: TPageNavHref = pageNav[0][2];
+      let currentHref: TPageNavHref | null = null;
 
       for (const [, , href] of pageNav) {
         const section = document.getElementById(href.slice(1));
@@ -375,7 +433,13 @@ export function HomePage() {
         <div className="ue-epic-menu">
           <button className="ue-epic" type="button" aria-label="Epic Games">
             <img src="/assets/ue5/epic-games-logo.svg" alt="" />
-            <span className="ue-chevron" aria-hidden="true" />
+            <svg
+              className="ue-epic-chevron"
+              viewBox="0 0 24 24"
+              aria-hidden="true"
+            >
+              <path d="M18.47 8.97a.75.75 0 1 1 1.06 1.06L12 17.56l-7.53-7.53a.75.75 0 1 1 1.06-1.06L12 15.44z" />
+            </svg>
           </button>
           <div className="ue-flyout ue-flyout--epic">
             {epicLinks.map(([label, href]) => (
@@ -691,7 +755,9 @@ export function HomePage() {
           />
 
           <div className="ue-hero__intro">
-            <h1>Unreal Engine 5</h1>
+            <h1>
+              <span>Unreal Engine 5</span>
+            </h1>
           </div>
 
           <div className="ue-hero__headline">

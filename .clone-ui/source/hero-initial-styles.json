@@ -1,0 +1,104 @@
+{
+  "viewport": {
+    "width": 1470,
+    "height": 801,
+    "devicePixelRatio": 1
+  },
+  "source": {
+    "title": {
+      "elementRect": {
+        "x": 0,
+        "y": 360.4453125,
+        "width": 1470,
+        "height": 74
+      },
+      "textRect": {
+        "x": 488.625,
+        "y": 357.4453125,
+        "width": 492.75,
+        "height": 80
+      },
+      "fontFamily": "\"Inter Tight\", arial",
+      "fontSize": "66px",
+      "fontWeight": "900",
+      "lineHeight": "74px",
+      "letterSpacing": "normal"
+    },
+    "logo": {
+      "x": 570,
+      "y": 235.5,
+      "width": 330,
+      "height": 330,
+      "opacity": 1,
+      "filter": "none",
+      "objectFit": "contain"
+    },
+    "video": {
+      "x": 0,
+      "y": 0,
+      "width": 1470,
+      "height": 801,
+      "objectFit": "cover"
+    },
+    "gradient": {
+      "sourceUrl": "https://cdn2.unrealengine.com/focus-gradient-2600x1463-20ebd93b51f4.png",
+      "backgroundPosition": "50% 50%",
+      "backgroundRepeat": "repeat",
+      "backgroundSize": "auto",
+      "opacity": 1
+    }
+  },
+  "clone": {
+    "title": {
+      "elementRect": {
+        "x": 24,
+        "y": 360.5,
+        "width": 1422,
+        "height": 74
+      },
+      "textRect": {
+        "x": 488.625,
+        "y": 357.5,
+        "width": 492.75,
+        "height": 80
+      },
+      "fontFamily": "\"Inter Tight\", Arial, sans-serif",
+      "fontSize": "66px",
+      "fontWeight": "900",
+      "lineHeight": "74px",
+      "letterSpacing": "normal"
+    },
+    "logo": {
+      "x": 570,
+      "y": 235.5,
+      "width": 330,
+      "height": 330,
+      "opacity": 1,
+      "filter": "none",
+      "objectFit": "contain"
+    },
+    "video": {
+      "x": 0,
+      "y": 0,
+      "width": 1470,
+      "height": 801,
+      "objectFit": "cover"
+    },
+    "gradient": {
+      "localPath": "public/assets/ue5/focus-gradient.png",
+      "backgroundPosition": "50% 50%",
+      "backgroundRepeat": "repeat",
+      "backgroundSize": "auto",
+      "opacity": 1
+    }
+  },
+  "comparison": {
+    "titleTextWidthDelta": 0,
+    "titleTextHeightDelta": 0,
+    "titleTextYDelta": 0.0546875,
+    "logoXDelta": 0,
+    "logoYDelta": 0,
+    "logoWidthDelta": 0,
+    "logoHeightDelta": 0
+  }
+}

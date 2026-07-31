@@ -6,6 +6,12 @@
     "type": "responsive-navigation"
   },
   {
+    "name": "hero-initial",
+    "sourceSelector": "div.gradient, div.mask-container, img[alt=\"Unreal Engine 5 logo\"], h1",
+    "cloneSelector": ".ue-hero__sticky::before, .ue-hero__logo, .ue-hero__intro h1",
+    "type": "fixed-viewport-intro"
+  },
+  {
     "name": "hero-body",
     "sourceSelector": "div.masked-video, div.ue-grid-container",
     "cloneSelector": "section.ue-hero",

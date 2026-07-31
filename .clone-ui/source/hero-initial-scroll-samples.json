@@ -1,0 +1,70 @@
+{
+  "source": [
+    {
+      "scrollY": 0,
+      "opacity": 1,
+      "scale": 1
+    },
+    {
+      "scrollY": 100,
+      "opacity": 0.95,
+      "scale": 1.15
+    },
+    {
+      "scrollY": 200,
+      "opacity": 0.9,
+      "scale": 1.3
+    },
+    {
+      "scrollY": 250,
+      "opacity": 0.45,
+      "scale": 1.3
+    },
+    {
+      "scrollY": 300,
+      "opacity": 0,
+      "scale": 1.3
+    }
+  ],
+  "clone": [
+    {
+      "scrollY": 0,
+      "opacity": 1,
+      "scale": 1
+    },
+    {
+      "scrollY": 100,
+      "opacity": 0.95,
+      "scale": 1.15
+    },
+    {
+      "scrollY": 200,
+      "opacity": 0.9,
+      "scale": 1.3
+    },
+    {
+      "scrollY": 250,
+      "opacity": 0.45,
+      "scale": 1.3
+    },
+    {
+      "scrollY": 300,
+      "opacity": 0,
+      "scale": 1.3
+    }
+  ],
+  "fixedThresholdCheck": {
+    "viewport1470x801AtScrollY200": {
+      "opacity": 0.9,
+      "scale": 1.3
+    },
+    "viewport1470x900AtScrollY200": {
+      "opacity": 0.9,
+      "scale": 1.3
+    }
+  },
+  "comparison": {
+    "maxOpacityDelta": 0,
+    "maxScaleDelta": 0
+  }
+}

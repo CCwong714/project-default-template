@@ -1,27 +1,29 @@
 {
-  "scope": "global-header",
+  "scope": "hero-scroll-animation",
   "keep": [
-    "completed Hero scroll behavior and all Hero assets",
-    "all Overview and later page sections",
-    "existing Epic, language, sign-in, and download interactions",
-    "responsive mobile navigation"
+    "completed desktop and mobile header geometry, assets, flyouts, and responsive behavior",
+    "the corrected initial Hero focus-gradient, Inter Tight title typography, U logo size and color",
+    "the official Hero video asset, poster, play-on-first-scroll behavior, and reset-at-top behavior",
+    "the official Hero body-copy and CTA content, plus all later page-section content"
   ],
   "fix": [
-    "the desktop header exposes all eight menu items at the recording width",
-    "the Unreal Engine wordmark is reconstructed from a separate icon and text",
-    "header spacing, search width, translucent background, and desktop action geometry differ",
-    "the More menu is missing at the 1470px source breakpoint",
-    "the More flyout dimensions, blur, row spacing, and submenu arrows do not match the source"
+    "the U logo scale and fade were coupled to a stage-percentage timeline; the source scales from 1x to 3x over 500px while its mask independently fades from 0.95 to 0 over 600px",
+    "the initial title faded immediately and moved upward; the source holds it until viewportHeight - 300px, then moves it 80px downward over 300px",
+    "the Bigger worlds title appeared too early, used the wrong font geometry, and continuously drifted upward",
+    "the source title enters from -80px over 300px after one viewport and exits to -80px over 400px after two viewports",
+    "the video perspective was hardcoded to 2700px instead of the source 300vh",
+    "the video opacity fade began before the source's second half of the cinematic transform",
+    "the scroll indicator used the wrong height, placement, duration, easing, and keyframe geometry",
+    "the body-copy conclusion used 28.3328px type in a 720px measure and a 33.33px CTA instead of the source 34px/42px/864px heading and 40px CTA",
+    "the transition to the section navigation started 113px too early, exposed a Back to Top block not present in the source frame, and used smaller navigation typography"
   ],
   "resolved": [
-    "the official Unreal Engine horizontal SVG is used directly",
-    "the 1470px breakpoint now shows Overview, Uses, News, Forums, and More",
-    "header, brand, navigation, search, globe, sign-in, and download bounds match source geometry",
-    "the More flyout matches the source 202x182px frame and four 41px rows",
-    "the source rgba backgrounds, 50px backdrop blur, borders, radii, and layered shadow are reproduced",
-    "header, More, and nested flyouts use independent backdrop layers so each panel samples the page like the source",
-    "More, Learning, and Connect expose menu relationships and live aria-expanded state",
-    "the 1600px breakpoint keeps Documentation visible and moves Learning, Connect, and Fab into More",
-    "the existing mobile drawer remains available below the desktop-navigation breakpoint"
+    "the logo now reproduces the source's independent fixed-pixel scale and mask-opacity timelines at scrollY 0, 100, 200, 300, 400, 500, and 600",
+    "the first title and Bigger worlds title match the source opacity and 80px travel values at scrollY 600, 900, 1200, 1700, and 2200",
+    "the cinematic layer starts at two viewport heights and matches scale, blur, rotateX, perspective, and late opacity fade at the 1470x801 reference viewport",
+    "the 72px scroll indicator sits 24px above the viewport edge and uses the production 2s cubic-bezier top/height animation",
+    "the concluding heading and CTA now match the source geometry at scrollY 2200",
+    "at scrollY 2600 the section navigation now begins at y=557 with a 52px frame, centered production-sized labels, and no premature Back to Top control",
+    "source and clone screenshots were compared at seven matching scroll positions and the full project check passes"
   ]
 }

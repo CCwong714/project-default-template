@@ -31,6 +31,52 @@
     {
       "feature": "Initial and expanded desktop states were captured from both source and clone",
       "evidence": ".clone-ui/source/.captures/header/"
+    },
+    {
+      "feature": "The Epic shield now uses the exact 32x32 single-path SVG exposed by the production epic-wf-shield component",
+      "evidence": ".clone-ui/source/header-epic-styles.json: source.shield and public/assets/ue5/epic-games-logo.svg"
+    },
+    {
+      "feature": "At 1470x801 the source and clone Epic controls both use a 50x32px button, 32x32px shield, 12x12px chevron, 2px gap, and 4px right padding",
+      "evidence": ".clone-ui/source/header-epic-styles.json: comparison"
+    },
+    {
+      "feature": "Source, pre-fix clone, and corrected clone crops document the Epic logo replacement without moving the 233x32px property-logo slot at x=102",
+      "evidence": ".clone-ui/source/.captures/header-epic/ and .clone-ui/source/header-epic-styles.json: cloneAfter.propertyLogo"
+    }
+  ],
+  "hero-initial": [
+    {
+      "feature": "The source uses the official 2600x1463 focus-gradient centered at 50% 50% with its native size",
+      "evidence": ".clone-ui/source/hero-initial-styles.json: source.gradient"
+    },
+    {
+      "feature": "The source title uses Inter Tight at 66px, weight 900, and 74px line height",
+      "evidence": ".clone-ui/source/hero-initial-styles.json: source.title"
+    },
+    {
+      "feature": "The source title text bounds are 492.75x80px and the clone reproduces them exactly",
+      "evidence": ".clone-ui/source/hero-initial-styles.json: comparison"
+    },
+    {
+      "feature": "The source and clone Unreal U logo bounds are both 330x330px at x=570 and y=235.5 in the 1470x801 viewport",
+      "evidence": ".clone-ui/source/hero-initial-styles.json: comparison"
+    },
+    {
+      "feature": "The supplied source edges sample as #0d0f25 while the previous clone sampled near warm black",
+      "evidence": ".clone-ui/source/.captures/hero-initial/source-user.png and local-user-before.png"
+    },
+    {
+      "feature": "Live source and corrected clone were captured at the same 1470x801 CSS viewport",
+      "evidence": ".clone-ui/source/.captures/hero-initial/source-live-1470x801.png and local-after-1470x801.png"
+    },
+    {
+      "feature": "The source gradient scales from 1 to 1.3 and fades from 1 to 0.9 over scrollY 0-200, then fades to 0 by scrollY 300",
+      "evidence": ".clone-ui/source/hero-initial-scroll-samples.json"
+    },
+    {
+      "feature": "The same source values at scrollY 200 were observed at 801px and 900px viewport heights, confirming fixed pixel thresholds",
+      "evidence": ".clone-ui/source/hero-initial-scroll-samples.json: fixedThresholdCheck"
     }
   ],
   "hero-body": [
@@ -51,12 +97,12 @@
       "evidence": ".clone-ui/source/hero-scroll-samples.json: bodyHeadingY"
     },
     {
-      "feature": "Recorded body heading is rendered at approximately 80% of the live 34px/42px/864px computed style",
-      "evidence": ".clone-ui/source/.captures/hero-comparison-side-by-side.png"
+      "feature": "At the 1470x801 reference viewport the source and clone body headings are both 864x210px at x=303/y=483 with Inter 34px/42px weight 700",
+      "evidence": ".clone-ui/source/hero-animation-samples.json: keyframes[5].bodyHeading"
     },
     {
-      "feature": "Recorded CTA is approximately 32px tall with the same #26bbff color contract",
-      "evidence": ".clone-ui/source/.captures/hero-comparison-side-by-side.png"
+      "feature": "The concluding source and clone CTAs are both 40px tall and approximately 134px wide at y=725",
+      "evidence": ".clone-ui/source/hero-animation-samples.json: keyframes[5].cta"
     },
     {
       "feature": "Above-fold Bigger worlds headline is fully hidden in the body-copy state",
@@ -69,6 +115,36 @@
     {
       "feature": "Hero video has no autoplay or loop attribute, starts when scrollY becomes non-zero, and is reset when scrollY returns to zero",
       "evidence": "Captured production bundle module 5804 and live media-state checks"
+    }
+  ],
+  "hero-animation": [
+    {
+      "feature": "The U logo scales from 1x to 3x over the first 500px while its effective opacity independently fades from 0.95 to 0 over 600px",
+      "evidence": ".clone-ui/source/hero-animation-samples.json: sourceContracts.logo"
+    },
+    {
+      "feature": "The initial title holds, then exits 80px downward over 300px beginning at viewportHeight - 300px",
+      "evidence": ".clone-ui/source/hero-animation-samples.json: sourceContracts.titleOne"
+    },
+    {
+      "feature": "The Bigger worlds title enters and exits on separate 300px and 400px fixed-distance timelines with exact 66px/74px Inter Tight typography",
+      "evidence": ".clone-ui/source/hero-animation-samples.json: sourceContracts.titleTwo and keyframes"
+    },
+    {
+      "feature": "The cinematic frame begins at two viewport heights and matches the production 300vh perspective, scale, blur, rotateX, and late opacity fade",
+      "evidence": ".clone-ui/source/hero-animation-samples.json: sourceContracts.cinematic"
+    },
+    {
+      "feature": "The 72px scroll indicator uses the production 24px bottom offset and exact 2-second top/height keyframes",
+      "evidence": ".clone-ui/source/hero-animation-samples.json: sourceContracts.scrollIndicator"
+    },
+    {
+      "feature": "The animation concludes into a 52px section navigation at y=557 in the scrollY 2600 frame, without the Back to Top block",
+      "evidence": ".clone-ui/source/hero-animation-samples.json: sourceContracts.sectionNavigationTransition"
+    },
+    {
+      "feature": "Source and clone keyframes were visually compared at seven matching scroll positions in the 1470x801 reference viewport",
+      "evidence": ".clone-ui/source/.captures/hero-animation/"
     }
   ]
 }

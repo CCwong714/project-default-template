@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Fira+Mono:wght@500&family=Inter:wght@400;500;600;700;800&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Fira+Mono:wght@500&family=Inter+Tight:wght@900&family=Inter:wght@400;500;600;700;800&display=swap");
 @import "tailwindcss";
 
 @theme {
@@ -57,10 +57,15 @@ video {
 
 .ue-page {
   --hero-progress: 0;
-  --hero-reveal-radius: 24vmax;
-  --hero-logo-opacity: 0.85;
+  --hero-gradient-opacity: 1;
+  --hero-gradient-scale: 1;
+  --hero-logo-opacity: 0.95;
   --hero-logo-scale: 1;
-  --hero-headline-exit-progress: 0;
+  --hero-title-1-opacity: 1;
+  --hero-title-1-y: 0px;
+  --hero-title-2-opacity: 0;
+  --hero-title-2-y: -80px;
+  --hero-hint-y: 0px;
   --hero-cinematic-progress: 0;
   --hero-cinematic-scale: 1;
   --hero-cinematic-blur: 0px;
@@ -110,19 +115,27 @@ video {
   width: 3.125rem;
   height: 2rem;
   align-items: center;
-  gap: 0.56rem;
+  gap: 0.125rem;
   min-width: max-content;
   border: 0;
   background: transparent;
   color: #fff;
   cursor: pointer;
-  padding: 0;
+  padding: 0 0.25rem 0 0;
 }
 
 .ue-epic img {
-  width: 1.81rem;
+  width: 2rem;
   height: 2rem;
   object-fit: contain;
+}
+
+.ue-epic-chevron {
+  width: 0.75rem;
+  height: 0.75rem;
+  flex: 0 0 0.75rem;
+  fill: currentColor;
+  transition: transform 120ms ease;
 }
 
 .ue-epic-menu,
@@ -215,11 +228,14 @@ video {
 }
 
 .ue-nav-item:hover .ue-chevron,
-.ue-nav-item:focus-within .ue-chevron,
-.ue-epic-menu:hover .ue-chevron,
-.ue-epic-menu:focus-within .ue-chevron {
+.ue-nav-item:focus-within .ue-chevron {
   opacity: 1;
   transform: translateY(0.08rem) rotate(225deg);
+}
+
+.ue-epic-menu:hover .ue-epic-chevron,
+.ue-epic-menu:focus-within .ue-epic-chevron {
+  transform: rotate(180deg);
 }
 
 .ue-nav-trigger .ue-chevron {
@@ -855,18 +871,16 @@ video {
   position: absolute;
   z-index: -1;
   inset: 0;
-  background: radial-gradient(
-    circle at 50% 50%,
-    transparent 0 calc(var(--hero-reveal-radius) - 1.2vmax),
-    rgb(0 0 0 / 0.28) calc(var(--hero-reveal-radius) + 2vmax),
-    rgb(0 0 0 / 0.72) calc(var(--hero-reveal-radius) + 7vmax),
-    rgb(0 0 0 / 0.92) calc(var(--hero-reveal-radius) + 14vmax),
-    rgb(0 0 0 / 0.97) calc(var(--hero-reveal-radius) + 24vmax)
-  );
+  background-image: url("/assets/ue5/focus-gradient.png");
+  background-position: 50% 50%;
+  background-repeat: repeat;
+  background-size: auto;
   content: "";
-  opacity: calc(1 - min(var(--hero-progress), 0.42) * 0.72);
+  opacity: var(--hero-gradient-opacity);
   pointer-events: none;
-  will-change: background, opacity;
+  transform: scale(var(--hero-gradient-scale));
+  transform-origin: center;
+  will-change: opacity, transform;
 }
 
 .ue-hero__masked-video {
@@ -890,7 +904,7 @@ video {
 }
 
 .ue-hero__perspective {
-  perspective: 2700px;
+  perspective: 300vh;
   perspective-origin: center;
 }
 
@@ -908,32 +922,32 @@ video {
   position: absolute;
   z-index: -3;
   inset: 0;
-  background: linear-gradient(
-    180deg,
-    rgb(0 0 0 / 0.08),
-    transparent 34%,
-    rgb(0 0 0 / 0.28) 100%
-  );
-  opacity: max(
-    0,
-    calc(0.48 * (1 - min(var(--hero-cinematic-progress) * 2, 1)))
-  );
+  background: none;
+  opacity: 0;
   pointer-events: none;
-  will-change: opacity;
 }
 
 .ue-hero__logo {
   position: absolute;
   z-index: -1;
-  width: clamp(14rem, 26vw, 24rem);
+  width: 330px;
+  height: 330px;
+  object-fit: contain;
   opacity: var(--hero-logo-opacity);
-  filter: brightness(0) saturate(1);
+  filter: none;
   transform: scale(var(--hero-logo-scale));
+  transform-origin: center;
   will-change: opacity, transform;
 }
 
 .ue-hero__intro,
-.ue-hero__headline,
+.ue-hero__headline {
+  position: absolute;
+  top: 45%;
+  inset-inline: 0;
+  text-align: center;
+}
+
 .ue-hero__body {
   position: absolute;
   inset-inline: 1.5rem;
@@ -941,101 +955,99 @@ video {
 }
 
 .ue-hero__intro {
-  opacity: calc(1 - min(var(--hero-progress), 0.2) / 0.2);
-  transform: translateY(calc(var(--hero-progress) * -7rem));
+  opacity: var(--hero-title-1-opacity);
+  transform: translateY(var(--hero-title-1-y));
+  will-change: opacity, transform;
 }
 
 .ue-hero__intro h1 {
   margin: 0;
   color: #fff;
-  font-size: clamp(3.3rem, 6.8vw, 5.9rem);
-  font-weight: var(--weight-display);
-  letter-spacing: 0;
-  line-height: 0.96;
+  font-family: "Inter Tight", Arial, sans-serif;
+  font-size: 66px;
+  font-weight: 900;
+  letter-spacing: normal;
+  line-height: 74px;
 }
 
 .ue-hero__headline h2 {
   margin: 0;
   color: rgb(255 255 255);
-  font-family: Inter, Arial, sans-serif;
-  font-size: 65px;
+  font-family: "Inter Tight", Arial, sans-serif;
+  font-size: 66px;
   font-style: normal;
   font-weight: 900;
-  letter-spacing: 0;
-  line-height: normal;
+  letter-spacing: normal;
+  line-height: 74px;
 }
 
 .ue-hero__headline {
-  opacity: 0;
-  transform: translateY(2.4rem);
-  transition:
-    opacity 260ms ease,
-    transform 260ms ease;
-}
-
-.ue-page[data-hero-phase="headline"] .ue-hero__headline,
-.ue-page[data-hero-phase="cinematic"] .ue-hero__headline {
-  opacity: calc(1 - var(--hero-headline-exit-progress));
-  transform: translateY(
-    calc(
-      -0.7rem - var(--hero-progress) * 6rem -
-        var(--hero-headline-exit-progress) * 4rem
-    )
-  );
-}
-
-.ue-page[data-hero-phase="body"] .ue-hero__headline {
-  opacity: 0;
-  transform: translateY(-8rem);
-  transition: none;
-  visibility: hidden;
+  opacity: var(--hero-title-2-opacity);
+  transform: translateY(var(--hero-title-2-y));
+  will-change: opacity, transform;
 }
 
 .ue-scroll-line {
   position: absolute;
   left: 50%;
-  bottom: 0;
+  bottom: 24px;
   z-index: 2;
   display: block;
   width: 2px;
-  height: 5.8rem;
+  height: 72px;
   margin: 0;
-  overflow: hidden;
-  background: rgb(0 0 0 / 0.34);
-  opacity: max(0, calc(1 - max(var(--hero-progress) - 0.52, 0) * 4.5));
-  transform: translateX(-50%);
+  overflow: visible;
+  background: transparent;
+  transform: translate(-50%, var(--hero-hint-y));
+  will-change: transform;
 }
 
 .ue-scroll-line::after {
   position: absolute;
-  inset: 0;
+  top: 0;
+  left: 0;
+  width: 2px;
+  height: 0;
   background: #fff;
-  box-shadow: 0 0 0.55rem rgb(255 255 255 / 0.48);
-  clip-path: inset(0 0 100% 0);
   content: "";
-  animation: ueLineTopWipe 1.55s cubic-bezier(0.77, 0, 0.175, 1) infinite;
-  will-change: clip-path;
+  animation: ueLineTopWipe 2s cubic-bezier(0, 0.42, 0.2, 0.99) infinite;
+  will-change: top, height;
 }
 
 @keyframes ueLineTopWipe {
   0% {
-    clip-path: inset(0 0 100% 0);
+    top: 0;
+    height: 0;
   }
 
-  38% {
-    clip-path: inset(0 0 0 0);
+  40% {
+    top: 0;
+    height: 144px;
   }
 
-  50% {
-    clip-path: inset(0 0 0 0);
-  }
-
-  88% {
-    clip-path: inset(100% 0 0 0);
+  85% {
+    top: 144px;
+    height: 0;
   }
 
   100% {
-    clip-path: inset(100% 0 0 0);
+    top: 144px;
+    height: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ue-scroll-line::after {
+    animation-iteration-count: 1;
+    animation-name: ueLineReducedMotion;
+    animation-fill-mode: forwards;
+  }
+}
+
+@keyframes ueLineReducedMotion {
+  to {
+    top: 0;
+    height: 72px;
   }
 }
 
@@ -1043,37 +1055,40 @@ video {
   top: calc(100% - var(--hero-body-offset));
   z-index: 3;
   box-sizing: border-box;
-  min-height: 16.3542rem;
-  padding-top: 1.6667rem;
+  inset-inline: 0;
+  width: min(864px, calc(100vw - 8rem));
+  min-height: 314px;
+  margin-inline: auto;
+  padding-top: 32px;
   pointer-events: none;
 }
 
 .ue-hero__body p {
-  max-width: min(720px, calc(100vw - 3rem));
-  margin: 0 auto 1.6667rem;
+  max-width: 864px;
+  margin: 0 auto 32px;
   color: #fff;
   font-family: Inter, Arial, sans-serif;
-  font-size: 1.7708rem;
+  font-size: 34px;
   font-weight: var(--weight-heading);
   letter-spacing: 0;
-  line-height: 2.1875rem;
+  line-height: 42px;
   text-wrap: normal;
 }
 
 .ue-hero__body a {
   display: inline-flex;
-  min-height: 2.0833rem;
+  min-height: 40px;
   align-items: center;
   justify-content: center;
-  border-radius: 0.4167rem;
+  border-radius: 8px;
   background: var(--blue);
   color: #101014;
-  padding: 0.4167rem 0.8333rem;
-  font-family: Inter, Arial, sans-serif;
-  font-size: 0.7292rem;
-  font-weight: var(--weight-ui);
-  letter-spacing: 0.0135rem;
-  line-height: 0.8333rem;
+  padding: 8px 16px;
+  font-family: Brutal, Inter, Arial, sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  letter-spacing: -1.13px;
+  line-height: 20px;
   pointer-events: auto;
   transition: background-color 100ms ease;
 }
@@ -1084,8 +1099,12 @@ video {
 }
 
 @media (max-width: 1100px) {
+  .ue-hero__body {
+    width: calc(100vw - 4rem);
+  }
+
   .ue-hero__body p {
-    max-width: min(720px, calc(100vw - 4rem));
+    max-width: 100%;
   }
 }
 
@@ -1094,8 +1113,9 @@ video {
   z-index: 80;
   top: 4.5rem;
   display: grid;
-  grid-template-columns: 9.2rem 1fr;
-  margin-top: clamp(-14.5rem, -31vh, -10rem);
+  grid-template-columns: 1fr;
+  margin-top: -119px;
+  height: 3.25rem;
   min-height: 3.25rem;
   border-bottom: 1px solid rgb(255 255 255 / 0.06);
   background: rgb(32 32 36 / 0.96);
@@ -1106,25 +1126,32 @@ video {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 1.35rem;
+  gap: 0;
   min-width: 0;
 }
 
 .ue-section-nav a {
+  box-sizing: border-box;
+  min-height: 40px;
   color: rgb(255 255 255 / 0.74);
-  font-family: var(--font-inter);
-  font-size: 0.88rem;
-  font-weight: 400;
-  letter-spacing: 0.04em;
+  margin: 7px 0;
+  padding: 10px 16px;
+  font-family: Inter, Arial, sans-serif;
+  font-size: 14px;
+  font-weight: 300;
+  letter-spacing: 1px;
+  line-height: normal;
   transition: color var(--hover-speed) ease;
 }
 
 .ue-section-nav span {
-  margin-right: 0.38rem;
-  color: rgb(255 255 255 / 0.42);
+  margin: 0;
+  padding-right: 8px;
+  color: rgb(219 222 227);
   font-family: var(--font-nav-number);
-  font-weight: 500;
-  letter-spacing: 0;
+  font-size: 14px;
+  font-weight: 300;
+  letter-spacing: 1px;
 }
 
 .ue-section-nav a:hover,
@@ -1134,7 +1161,7 @@ video {
 }
 
 .ue-back-top {
-  display: flex;
+  display: none;
   align-items: center;
   padding-left: 0.9rem;
   background: rgb(255 255 255 / 0.08);
@@ -2990,6 +3017,12 @@ video {
 
   .ue-hero__intro h1 {
     font-size: clamp(3rem, 15vw, 4.2rem);
+    line-height: 1;
+  }
+
+  .ue-hero__logo {
+    width: min(72vw, 330px);
+    height: min(72vw, 330px);
   }
 
   .ue-hero__body {
