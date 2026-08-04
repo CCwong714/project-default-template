@@ -6,6 +6,18 @@ import { defineConfig } from 'vitest/config'
 
 // https://vite.dev/config/
 export default defineConfig({
+  build: {
+    rollupOptions: {
+      output: {
+        manualChunks: {
+          audio: ['howler'],
+          media: ['hls.js'],
+          react: ['react', 'react-dom', 'react-router-dom'],
+          three: ['three'],
+        },
+      },
+    },
+  },
   plugins: [react(), tailwindcss()],
   resolve: {
     alias: {

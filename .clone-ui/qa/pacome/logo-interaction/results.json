@@ -1,0 +1,131 @@
+{
+  "desktop": {
+    "consoleErrors": [],
+    "faceRequests": [
+      {
+        "status": 200,
+        "url": "http://127.0.0.1:5173/assets/pacome/ui/face1.json"
+      },
+      {
+        "status": 200,
+        "url": "http://127.0.0.1:5173/assets/pacome/ui/face1.json"
+      },
+      {
+        "status": 200,
+        "url": "http://127.0.0.1:5173/assets/pacome/ui/face3.json"
+      },
+      {
+        "status": 200,
+        "url": "http://127.0.0.1:5173/assets/pacome/ui/face4.json"
+      },
+      {
+        "status": 200,
+        "url": "http://127.0.0.1:5173/assets/pacome/ui/face5.json"
+      },
+      {
+        "status": 200,
+        "url": "http://127.0.0.1:5173/assets/pacome/ui/face1.json"
+      },
+      {
+        "status": 200,
+        "url": "http://127.0.0.1:5173/assets/pacome/ui/face3.json"
+      },
+      {
+        "status": 200,
+        "url": "http://127.0.0.1:5173/assets/pacome/ui/face4.json"
+      },
+      {
+        "status": 200,
+        "url": "http://127.0.0.1:5173/assets/pacome/ui/face5.json"
+      },
+      {
+        "status": 200,
+        "url": "http://127.0.0.1:5173/assets/pacome/ui/face1.json"
+      },
+      {
+        "status": 200,
+        "url": "http://127.0.0.1:5173/assets/pacome/ui/face3.json"
+      },
+      {
+        "status": 200,
+        "url": "http://127.0.0.1:5173/assets/pacome/ui/face4.json"
+      },
+      {
+        "status": 200,
+        "url": "http://127.0.0.1:5173/assets/pacome/ui/face5.json"
+      },
+      {
+        "status": 200,
+        "url": "http://127.0.0.1:5173/assets/pacome/ui/face1.json"
+      },
+      {
+        "status": 200,
+        "url": "http://127.0.0.1:5173/assets/pacome/ui/face3.json"
+      },
+      {
+        "status": 200,
+        "url": "http://127.0.0.1:5173/assets/pacome/ui/face4.json"
+      }
+    ],
+    "focusOutline": "solid",
+    "inspection": {
+      "animationSvgCount": 1,
+      "ariaLabel": "Change Pacôme logo expression (3 of 4)",
+      "box": {
+        "x": 30,
+        "y": 30,
+        "width": 64,
+        "height": 64
+      },
+      "innerBox": {
+        "x": 30,
+        "y": 30,
+        "width": 64,
+        "height": 64
+      },
+      "style": {
+        "height": "64px",
+        "left": "30px",
+        "position": "absolute",
+        "top": "30px",
+        "width": "64px"
+      }
+    },
+    "labels": [
+      "Change Pacôme logo expression (2 of 4)",
+      "Change Pacôme logo expression (3 of 4)",
+      "Change Pacôme logo expression (4 of 4)",
+      "Change Pacôme logo expression (1 of 4)"
+    ]
+  },
+  "failureFallback": {
+    "recoveredOnNextExpression": true,
+    "staticFallback": true
+  },
+  "mobile": {
+    "animationSvgCount": 1,
+    "ariaLabel": "Change Pacôme logo expression (2 of 4)",
+    "box": {
+      "x": 15,
+      "y": 15,
+      "width": 64,
+      "height": 64
+    },
+    "innerBox": {
+      "x": 15,
+      "y": 15,
+      "width": 64,
+      "height": 64
+    },
+    "style": {
+      "height": "64px",
+      "left": "15px",
+      "position": "absolute",
+      "top": "15px",
+      "width": "64px"
+    }
+  },
+  "reducedMotion": {
+    "stableFrame": true
+  }
+}

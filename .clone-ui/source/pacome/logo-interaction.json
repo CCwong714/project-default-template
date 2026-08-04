@@ -1,0 +1,267 @@
+{
+  "performanceResources": [
+    "https://pacomepertant.com/_payload.json?83d1b544-9334-47ee-824a-ce1a0caeb86e",
+    "https://pacomepertant.com/_nuxt/builds/meta/83d1b544-9334-47ee-824a-ce1a0caeb86e.json",
+    "https://pacomepertant.com/_nuxt/logo-big.elJIbpew.png"
+  ],
+  "responses": [
+    {
+      "contentType": "application/json",
+      "resourceType": "other",
+      "status": 200,
+      "url": "https://pacomepertant.com/_payload.json?83d1b544-9334-47ee-824a-ce1a0caeb86e"
+    },
+    {
+      "contentType": "application/json",
+      "resourceType": "other",
+      "status": 200,
+      "url": "https://pacomepertant.com/_nuxt/builds/meta/83d1b544-9334-47ee-824a-ce1a0caeb86e.json"
+    },
+    {
+      "contentType": "image/png",
+      "resourceType": "other",
+      "status": 200,
+      "url": "https://pacomepertant.com/_nuxt/logo-big.elJIbpew.png"
+    }
+  ],
+  "states": [
+    {
+      "clickIndex": 0,
+      "elapsedMs": 0,
+      "name": "click-0-settled",
+      "path": ".clone-ui/source/pacome/captures/logo-interaction/click-0-settled.png",
+      "svg": {
+        "height": "75",
+        "imageCount": 7,
+        "pathCount": 17,
+        "style": "width: 100%; height: 100%; transform: translate3d(0px, 0px, 0px); content-visibility: visible;",
+        "viewBox": "0 0 75 75",
+        "width": "75"
+      }
+    },
+    {
+      "clickIndex": 1,
+      "elapsedMs": 90,
+      "name": "click-1-0090",
+      "path": ".clone-ui/source/pacome/captures/logo-interaction/click-1-0090.png",
+      "svg": {
+        "height": "75",
+        "imageCount": 8,
+        "pathCount": 17,
+        "style": "width: 100%; height: 100%; transform: translate3d(0px, 0px, 0px); content-visibility: visible;",
+        "viewBox": "0 0 75 75",
+        "width": "75"
+      }
+    },
+    {
+      "clickIndex": 1,
+      "elapsedMs": 240,
+      "name": "click-1-0240",
+      "path": ".clone-ui/source/pacome/captures/logo-interaction/click-1-0240.png",
+      "svg": {
+        "height": "75",
+        "imageCount": 8,
+        "pathCount": 17,
+        "style": "width: 100%; height: 100%; transform: translate3d(0px, 0px, 0px); content-visibility: visible;",
+        "viewBox": "0 0 75 75",
+        "width": "75"
+      }
+    },
+    {
+      "clickIndex": 1,
+      "elapsedMs": 750,
+      "name": "click-1-0750",
+      "path": ".clone-ui/source/pacome/captures/logo-interaction/click-1-0750.png",
+      "svg": {
+        "height": "75",
+        "imageCount": 8,
+        "pathCount": 17,
+        "style": "width: 100%; height: 100%; transform: translate3d(0px, 0px, 0px); content-visibility: visible;",
+        "viewBox": "0 0 75 75",
+        "width": "75"
+      }
+    },
+    {
+      "clickIndex": 1,
+      "elapsedMs": 2000,
+      "name": "click-1-2000",
+      "path": ".clone-ui/source/pacome/captures/logo-interaction/click-1-2000.png",
+      "svg": {
+        "height": "75",
+        "imageCount": 8,
+        "pathCount": 17,
+        "style": "width: 100%; height: 100%; transform: translate3d(0px, 0px, 0px); content-visibility: visible;",
+        "viewBox": "0 0 75 75",
+        "width": "75"
+      }
+    },
+    {
+      "clickIndex": 2,
+      "elapsedMs": 90,
+      "name": "click-2-0090",
+      "path": ".clone-ui/source/pacome/captures/logo-interaction/click-2-0090.png",
+      "svg": {
+        "height": "75",
+        "imageCount": 8,
+        "pathCount": 15,
+        "style": "width: 100%; height: 100%; transform: translate3d(0px, 0px, 0px); content-visibility: visible;",
+        "viewBox": "0 0 75 75",
+        "width": "75"
+      }
+    },
+    {
+      "clickIndex": 2,
+      "elapsedMs": 240,
+      "name": "click-2-0240",
+      "path": ".clone-ui/source/pacome/captures/logo-interaction/click-2-0240.png",
+      "svg": {
+        "height": "75",
+        "imageCount": 8,
+        "pathCount": 15,
+        "style": "width: 100%; height: 100%; transform: translate3d(0px, 0px, 0px); content-visibility: visible;",
+        "viewBox": "0 0 75 75",
+        "width": "75"
+      }
+    },
+    {
+      "clickIndex": 2,
+      "elapsedMs": 750,
+      "name": "click-2-0750",
+      "path": ".clone-ui/source/pacome/captures/logo-interaction/click-2-0750.png",
+      "svg": {
+        "height": "75",
+        "imageCount": 8,
+        "pathCount": 15,
+        "style": "width: 100%; height: 100%; transform: translate3d(0px, 0px, 0px); content-visibility: visible;",
+        "viewBox": "0 0 75 75",
+        "width": "75"
+      }
+    },
+    {
+      "clickIndex": 2,
+      "elapsedMs": 2000,
+      "name": "click-2-2000",
+      "path": ".clone-ui/source/pacome/captures/logo-interaction/click-2-2000.png",
+      "svg": {
+        "height": "75",
+        "imageCount": 8,
+        "pathCount": 15,
+        "style": "width: 100%; height: 100%; transform: translate3d(0px, 0px, 0px); content-visibility: visible;",
+        "viewBox": "0 0 75 75",
+        "width": "75"
+      }
+    },
+    {
+      "clickIndex": 3,
+      "elapsedMs": 90,
+      "name": "click-3-0090",
+      "path": ".clone-ui/source/pacome/captures/logo-interaction/click-3-0090.png",
+      "svg": {
+        "height": "75",
+        "imageCount": 8,
+        "pathCount": 16,
+        "style": "width: 100%; height: 100%; transform: translate3d(0px, 0px, 0px); content-visibility: visible;",
+        "viewBox": "0 0 75 75",
+        "width": "75"
+      }
+    },
+    {
+      "clickIndex": 3,
+      "elapsedMs": 240,
+      "name": "click-3-0240",
+      "path": ".clone-ui/source/pacome/captures/logo-interaction/click-3-0240.png",
+      "svg": {
+        "height": "75",
+        "imageCount": 8,
+        "pathCount": 16,
+        "style": "width: 100%; height: 100%; transform: translate3d(0px, 0px, 0px); content-visibility: visible;",
+        "viewBox": "0 0 75 75",
+        "width": "75"
+      }
+    },
+    {
+      "clickIndex": 3,
+      "elapsedMs": 750,
+      "name": "click-3-0750",
+      "path": ".clone-ui/source/pacome/captures/logo-interaction/click-3-0750.png",
+      "svg": {
+        "height": "75",
+        "imageCount": 8,
+        "pathCount": 16,
+        "style": "width: 100%; height: 100%; transform: translate3d(0px, 0px, 0px); content-visibility: visible;",
+        "viewBox": "0 0 75 75",
+        "width": "75"
+      }
+    },
+    {
+      "clickIndex": 3,
+      "elapsedMs": 2000,
+      "name": "click-3-2000",
+      "path": ".clone-ui/source/pacome/captures/logo-interaction/click-3-2000.png",
+      "svg": {
+        "height": "75",
+        "imageCount": 8,
+        "pathCount": 16,
+        "style": "width: 100%; height: 100%; transform: translate3d(0px, 0px, 0px); content-visibility: visible;",
+        "viewBox": "0 0 75 75",
+        "width": "75"
+      }
+    },
+    {
+      "clickIndex": 4,
+      "elapsedMs": 90,
+      "name": "click-4-0090",
+      "path": ".clone-ui/source/pacome/captures/logo-interaction/click-4-0090.png",
+      "svg": {
+        "height": "75",
+        "imageCount": 7,
+        "pathCount": 17,
+        "style": "width: 100%; height: 100%; transform: translate3d(0px, 0px, 0px); content-visibility: visible;",
+        "viewBox": "0 0 75 75",
+        "width": "75"
+      }
+    },
+    {
+      "clickIndex": 4,
+      "elapsedMs": 240,
+      "name": "click-4-0240",
+      "path": ".clone-ui/source/pacome/captures/logo-interaction/click-4-0240.png",
+      "svg": {
+        "height": "75",
+        "imageCount": 7,
+        "pathCount": 17,
+        "style": "width: 100%; height: 100%; transform: translate3d(0px, 0px, 0px); content-visibility: visible;",
+        "viewBox": "0 0 75 75",
+        "width": "75"
+      }
+    },
+    {
+      "clickIndex": 4,
+      "elapsedMs": 750,
+      "name": "click-4-0750",
+      "path": ".clone-ui/source/pacome/captures/logo-interaction/click-4-0750.png",
+      "svg": {
+        "height": "75",
+        "imageCount": 7,
+        "pathCount": 17,
+        "style": "width: 100%; height: 100%; transform: translate3d(0px, 0px, 0px); content-visibility: visible;",
+        "viewBox": "0 0 75 75",
+        "width": "75"
+      }
+    },
+    {
+      "clickIndex": 4,
+      "elapsedMs": 2000,
+      "name": "click-4-2000",
+      "path": ".clone-ui/source/pacome/captures/logo-interaction/click-4-2000.png",
+      "svg": {
+        "height": "75",
+        "imageCount": 7,
+        "pathCount": 17,
+        "style": "width: 100%; height: 100%; transform: translate3d(0px, 0px, 0px); content-visibility: visible;",
+        "viewBox": "0 0 75 75",
+        "width": "75"
+      }
+    }
+  ]
+}

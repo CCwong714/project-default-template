@@ -1,44 +1,92 @@
 {
-  "architecture": [
+  "entry": [
     {
-      "feature": "one WebGL canvas drives the full experience",
-      "evidence": ".clone-ui/source/.captures/live-2026-07-30/states.json and live DOM inventory"
+      "feature": "black full-screen gate",
+      "evidence": ".clone-ui/source/pacome/raw.html: .loader"
     },
     {
-      "feature": "20 source scroll sections totaling 4230 logical units",
-      "evidence": ".clone-ui/source/raw-2026-07-30.html#__NUXT_DATA__"
+      "feature": "67-frame loading sequence: blue dot and hey, colorful Pacôme card, then green smiling orb",
+      "evidence": ".clone-ui/source/pacome/captures/source-desktop-loading-0000.png through source-desktop-loading-3300.png; public/assets/pacome/ui/loader.json"
     },
     {
-      "feature": "desktop and mobile use dedicated camera timelines",
-      "evidence": ".clone-ui/source/CbdjwYMp.js asset strings and /timelines/cam*.glb"
+      "feature": "motion & sound designer based in paris",
+      "evidence": ".clone-ui/source/pacome/rendered.html: .loader .text; measured two-line 600ms reveal with 100ms stagger"
+    },
+    {
+      "feature": "enter with sound and enter without sound",
+      "evidence": ".clone-ui/source/pacome/captures/source-desktop-entry.png and source-mobile-loading-ready-375.png; buttons appear only after loader completion and scene readiness"
     }
   ],
-  "visual": [
+  "chrome": [
     {
-      "feature": "hero Phoenix is oversized and cropped behind the title",
-      "evidence": ".clone-ui/source/.captures/video-1520/frames-4fps/frame-0001.jpg"
+      "feature": "64px logo at top-left",
+      "evidence": ".clone-ui/source/pacome/raw.html: .logo"
     },
     {
-      "feature": "lavender halo sequence precedes night, crystal and fire acts",
-      "evidence": ".clone-ui/source/.captures/video-1520/contact/contact-time-01.jpg and contact-time-02.jpg"
+      "feature": "clicking the logo cycles face1, face3, face4 and face5 as non-looping 25fps Lottie animations",
+      "evidence": ".clone-ui/source/pacome/logo-runtime-evidence.json and .clone-ui/source/pacome/logo-interaction.json"
     },
     {
-      "feature": "contact footer sits over the final ember Phoenix",
-      "evidence": ".clone-ui/source/.captures/video-1520/frames-4fps/frame-0097.jpg"
+      "feature": "logo expressions use the corresponding smiley1 through smiley4 sounds when audio is enabled",
+      "evidence": ".clone-ui/source/pacome/logo-runtime-evidence.json"
+    },
+    {
+      "feature": "logo hover reveals an 80px Click!! tag with a 32px gradient star using a 500ms spring transform",
+      "evidence": ".clone-ui/source/pacome/rendered.html: .wrapper:hover .logo-tag-wrapper and inline .tag/.star SVGs; .clone-ui/source/pacome/entry.css: --ease-spring"
+    },
+    {
+      "feature": "centered spiral/list switch with 8px dot",
+      "evidence": ".clone-ui/source/pacome/raw.html: .switch"
+    },
+    {
+      "feature": "white menu pill at top-right",
+      "evidence": ".clone-ui/source/pacome/raw.html: .button[data-v-cf355cbc]"
+    },
+    {
+      "feature": "tilted showreel thumbnail and circular sound button",
+      "evidence": ".clone-ui/source/pacome/raw.html: .showreel-thumbnail and .sound-button"
     }
   ],
-  "interaction": [
+  "spiral": [
     {
-      "feature": "Reimagine Phoenix is a repeatable, non-navigating palette command",
-      "evidence": ".clone-ui/qa/exact-mirror/interactions/palette-after-1.jpg and palette-after-2.jpg"
+      "feature": "nine textured cards in a vertical helix",
+      "evidence": ".clone-ui/source/pacome/captures/source-desktop-spiral.png"
     },
     {
-      "feature": "pointer movement creates the source liquid lens and WebGL spirit trail",
-      "evidence": ".clone-ui/qa/exact-mirror/interactions/pointer-trail.jpg"
+      "feature": "WebGL canvas at 2x DPR on desktop",
+      "evidence": "browser inventory: canvas 3840x1746 at 1920x873"
     },
     {
-      "feature": "mobile Menu opens the original full-screen scene-backed navigation",
-      "evidence": "Browser QA at 390x844 on 2026-07-30"
+      "feature": "continued motion after wheel input in the final direction",
+      "evidence": ".clone-ui/source/pacome/captures/source-desktop-inertia-0120.png through -4120.png"
+    },
+    {
+      "feature": "mobile uses the same helix with larger screen-relative cards",
+      "evidence": ".clone-ui/source/pacome/captures/source-mobile-spiral.png"
+    }
+  ],
+  "list": [
+    {
+      "feature": "nine exact titles in centered 60px desktop list",
+      "evidence": ".clone-ui/source/pacome/captures/source-desktop-list.png"
+    },
+    {
+      "feature": "40px wrapped mobile titles",
+      "evidence": ".clone-ui/source/pacome/captures/source-mobile-list.png"
+    }
+  ],
+  "menu": [
+    {
+      "feature": "white rounded panel expands from the menu pill",
+      "evidence": ".clone-ui/source/pacome/raw.html: .subwrapper.opened"
+    },
+    {
+      "feature": "desktop panel spans four grid columns; mobile fills viewport minus 15px margins",
+      "evidence": ".clone-ui/source/pacome/captures/source-desktop-menu.png and source-mobile-menu.png"
+    },
+    {
+      "feature": "works/about/contact links and four black circular social buttons",
+      "evidence": ".clone-ui/source/pacome/captures/source-mobile-menu.png"
     }
   ]
 }

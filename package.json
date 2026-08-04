@@ -1,5 +1,5 @@
 {
-  "name": "noomo-storytelling-clone",
+  "name": "pacome-pertant-portfolio-clone",
   "private": true,
   "version": "0.0.0",
   "type": "module",
@@ -8,9 +8,9 @@
   },
   "scripts": {
     "prepare:mirror": "node scripts/prepare-exact-mirror.mjs",
-    "dev": "npm run prepare:mirror && vite --host",
-    "build": "npm run prepare:mirror && tsc -b && vite build",
-    "check": "npm run prepare:mirror && npm run format:check && npm run lint && npm run typecheck && npm run test && npm run verify:mirror && npm run build",
+    "dev": "vite --host",
+    "build": "tsc -b && vite build",
+    "check": "npm run format:check && npm run lint && npm run typecheck && npm run test && npm run build",
     "format": "prettier --write .",
     "format:check": "prettier --check .",
     "lint": "eslint . --max-warnings 0",
@@ -23,6 +23,9 @@
   },
   "dependencies": {
     "gsap": "^3.13.0",
+    "hls.js": "^1.6.16",
+    "howler": "^2.2.4",
+    "lottie-web": "5.12.1",
     "react": "^19.2.6",
     "react-dom": "^19.2.6",
     "react-router-dom": "^7.17.0",
@@ -34,6 +37,7 @@
     "@testing-library/jest-dom": "^6.9.1",
     "@testing-library/react": "^16.3.0",
     "@testing-library/user-event": "^14.6.1",
+    "@types/howler": "^2.2.13",
     "@types/node": "^24.12.3",
     "@types/react": "^19.2.14",
     "@types/react-dom": "^19.2.3",

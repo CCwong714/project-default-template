@@ -1,182 +1,32 @@
 [
   {
-    "id": 1,
-    "name": "hero",
-    "scrollLength": 100,
-    "start": 0,
-    "end": 0.0236,
-    "sourceSelector": "canvas",
-    "cloneSelector": "canvas"
+    "name": "entry",
+    "sourceSelector": ".loader",
+    "cloneSelector": ".entry-overlay",
+    "type": "entry-overlay"
   },
   {
-    "id": 2,
-    "name": "hero-dissolve",
-    "scrollLength": 150,
-    "start": 0.0236,
-    "end": 0.0591,
-    "sourceSelector": "canvas",
-    "cloneSelector": "canvas"
+    "name": "chrome",
+    "sourceSelector": ".home-overlay-wrapper",
+    "cloneSelector": ".portfolio-chrome",
+    "type": "fixed-controls"
   },
   {
-    "id": 3,
-    "name": "shifting",
-    "scrollLength": 300,
-    "start": 0.0591,
-    "end": 0.13,
-    "sourceSelector": "canvas",
-    "cloneSelector": "canvas"
+    "name": "spiral",
+    "sourceSelector": "canvas.webgl",
+    "cloneSelector": "canvas.portfolio-canvas",
+    "type": "webgl-gallery"
   },
   {
-    "id": 4,
-    "name": "guidance",
-    "scrollLength": 300,
-    "start": 0.13,
-    "end": 0.2009,
-    "sourceSelector": "canvas",
-    "cloneSelector": "canvas"
+    "name": "list",
+    "sourceSelector": "main .wrapper",
+    "cloneSelector": ".project-list",
+    "type": "project-list"
   },
   {
-    "id": 5,
-    "name": "guidance-transition",
-    "scrollLength": 200,
-    "start": 0.2009,
-    "end": 0.2482,
-    "sourceSelector": "canvas",
-    "cloneSelector": "canvas"
-  },
-  {
-    "id": 6,
-    "name": "narrative",
-    "scrollLength": 300,
-    "start": 0.2482,
-    "end": 0.3191,
-    "sourceSelector": "canvas",
-    "cloneSelector": "canvas"
-  },
-  {
-    "id": 7,
-    "name": "emergence",
-    "scrollLength": 500,
-    "start": 0.3191,
-    "end": 0.4374,
-    "sourceSelector": "canvas",
-    "cloneSelector": "canvas"
-  },
-  {
-    "id": 8,
-    "name": "light",
-    "scrollLength": 200,
-    "start": 0.4374,
-    "end": 0.4846,
-    "sourceSelector": "canvas",
-    "cloneSelector": "canvas"
-  },
-  {
-    "id": 9,
-    "name": "spirit",
-    "scrollLength": 80,
-    "start": 0.4846,
-    "end": 0.5035,
-    "sourceSelector": "canvas",
-    "cloneSelector": "canvas"
-  },
-  {
-    "id": 10,
-    "name": "sound",
-    "scrollLength": 80,
-    "start": 0.5035,
-    "end": 0.5225,
-    "sourceSelector": "canvas",
-    "cloneSelector": "canvas"
-  },
-  {
-    "id": 11,
-    "name": "invitation",
-    "scrollLength": 170,
-    "start": 0.5225,
-    "end": 0.5626,
-    "sourceSelector": "canvas",
-    "cloneSelector": "canvas"
-  },
-  {
-    "id": 12,
-    "name": "night-transition",
-    "scrollLength": 190,
-    "start": 0.5626,
-    "end": 0.6076,
-    "sourceSelector": "canvas",
-    "cloneSelector": "canvas"
-  },
-  {
-    "id": 13,
-    "name": "principles",
-    "scrollLength": 280,
-    "start": 0.6076,
-    "end": 0.6738,
-    "sourceSelector": "canvas",
-    "cloneSelector": "canvas"
-  },
-  {
-    "id": 14,
-    "name": "principles-continuation",
-    "scrollLength": 50,
-    "start": 0.6738,
-    "end": 0.6856,
-    "sourceSelector": "canvas",
-    "cloneSelector": "canvas"
-  },
-  {
-    "id": 15,
-    "name": "principles-finale",
-    "scrollLength": 50,
-    "start": 0.6856,
-    "end": 0.6974,
-    "sourceSelector": "canvas",
-    "cloneSelector": "canvas"
-  },
-  {
-    "id": 16,
-    "name": "experiences",
-    "scrollLength": 100,
-    "start": 0.6974,
-    "end": 0.721,
-    "sourceSelector": "canvas",
-    "cloneSelector": "canvas"
-  },
-  {
-    "id": 17,
-    "name": "crystals",
-    "scrollLength": 140,
-    "start": 0.721,
-    "end": 0.7541,
-    "sourceSelector": "canvas",
-    "cloneSelector": "canvas"
-  },
-  {
-    "id": 18,
-    "name": "spark-and-fire",
-    "scrollLength": 560,
-    "start": 0.7541,
-    "end": 0.8865,
-    "sourceSelector": "canvas",
-    "cloneSelector": "canvas"
-  },
-  {
-    "id": 19,
-    "name": "ember-phoenix",
-    "scrollLength": 200,
-    "start": 0.8865,
-    "end": 0.9338,
-    "sourceSelector": "canvas",
-    "cloneSelector": "canvas"
-  },
-  {
-    "id": 20,
-    "name": "contact",
-    "scrollLength": 280,
-    "start": 0.9338,
-    "end": 1,
-    "sourceSelector": "footer",
-    "cloneSelector": "footer"
+    "name": "menu",
+    "sourceSelector": "nav .wrapper",
+    "cloneSelector": ".menu-panel",
+    "type": "expanding-menu"
   }
 ]

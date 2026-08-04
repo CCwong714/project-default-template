@@ -1,0 +1,12 @@
+{
+  "sourceUrl": "https://pacomepertant.com/",
+  "capturedAt": "2026-08-04",
+  "component": "OthersHeaderLogo",
+  "renderer": "Lottie SVG",
+  "autoplay": true,
+  "loop": false,
+  "faces": ["face1", "face3", "face4", "face5"],
+  "clickBehavior": "Advance modulo four, replace the active Lottie name, then play the corresponding expression animation.",
+  "sounds": ["smiley1", "smiley2", "smiley3", "smiley4"],
+  "soundBehavior": "After advancing, play the sound whose one-based number matches the new expression index."
+}

@@ -1,76 +1,95 @@
 {
-  "sourceOrigin": "https://storytelling.noomoagency.com/",
-  "runtime": {
-    "entry": "/_nuxt/CbdjwYMp.js",
-    "styles": ["/_nuxt/entry.BEbxiOYI.css", "/_nuxt/index.CeGRoErV.css"],
-    "chunks": [
-      "/_nuxt/FZFS71Nt.js",
-      "/_nuxt/CoNJmAYZ.js",
-      "/_nuxt/N9wcHCtb.js",
-      "/_nuxt/B1pKjyE0.js"
-    ]
+  "logo": {
+    "sourceUrl": "https://pacomepertant.com/_nuxt/logo-big.elJIbpew.png",
+    "localPath": "/assets/pacome/ui/logo.png",
+    "fallbackFor": "interactive Lottie logo"
   },
-  "models": [
-    "/models/v20.glb",
-    "/models/feather.glb",
-    "/models/crystal0.glb",
-    "/models/crystal1.glb",
-    "/models/crystal2.glb",
-    "/models/crystal3.glb",
-    "/models/crystal4.glb",
-    "/models/crystal5.glb",
-    "/models/crystal6.glb"
+  "logoExpressions": {
+    "source": "Pacôme production Lottie payloads embedded in the public Nuxt bundle",
+    "sequence": ["face1", "face3", "face4", "face5"],
+    "frameRate": 25,
+    "localPaths": [
+      "/assets/pacome/ui/face1.json",
+      "/assets/pacome/ui/face3.json",
+      "/assets/pacome/ui/face4.json",
+      "/assets/pacome/ui/face5.json"
+    ],
+    "playback": "SVG, autoplay once; each click immediately advances and plays the next non-looping face"
+  },
+  "showreel": {
+    "sourceUrl": "https://pacomepertant.com/_nuxt/reel-thumbnail.Cx_2hmdl.png",
+    "localPath": "/assets/pacome/ui/showreel.png"
+  },
+  "loader": {
+    "source": "Pacôme production Lottie payload (LOADER, 67 frames at 25fps)",
+    "localPath": "/assets/pacome/ui/loader.json",
+    "playback": "SVG, autoplay once; entry actions wait for both animation completion and WebGL poster readiness"
+  },
+  "aboutArtwork": [
+    "/assets/pacome/ui/about-1.png",
+    "/assets/pacome/ui/about-3.png",
+    "/assets/pacome/ui/about-4.png",
+    "/assets/pacome/ui/about-5.png"
   ],
-  "timelines": [
-    "/timelines/cam.glb",
-    "/timelines/cam-mob.glb",
-    "/timelines/dev.glb"
+  "projects": [
+    {
+      "title": "Paths of life",
+      "localPath": "/assets/pacome/projects/project-01.avif"
+    },
+    {
+      "title": "The disease spread on Tiktok",
+      "localPath": "/assets/pacome/projects/project-03.avif"
+    },
+    {
+      "title": "Ah, Psychedelics",
+      "localPath": "/assets/pacome/projects/project-06.avif"
+    },
+    {
+      "title": "Thought",
+      "localPath": "/assets/pacome/projects/project-02.avif"
+    },
+    {
+      "title": "Jupiter",
+      "localPath": "/assets/pacome/projects/project-04.avif"
+    },
+    {
+      "title": "Chromatik",
+      "localPath": "/assets/pacome/projects/project-05.avif"
+    },
+    {
+      "title": "Digital Travel",
+      "localPath": "/assets/pacome/projects/project-08.avif"
+    },
+    {
+      "title": "Mercedes AMG",
+      "localPath": "/assets/pacome/projects/project-07.avif"
+    },
+    {
+      "title": "The purity revealed",
+      "localPath": "/assets/pacome/projects/project-09.avif"
+    }
   ],
-  "textures": [
-    "/textures/wooden_studio_19_1k.hdr",
-    "/textures/LDR_RG01_0.png",
-    "/textures/404.jpg",
-    "/textures/ftrail.jpg",
-    "/textures/contact.jpg",
-    "/textures/noises.jpg",
-    "/textures/mountains.png",
-    "/textures/waves.jpg",
-    "/textures/ice.jpg",
-    "/textures/icen.jpg",
-    "/textures/iced.jpg",
-    "/textures/sprite.png",
-    "/textures/icon.png",
-    "/textures/crystals/0.jpg",
-    "/textures/crystals/1.jpg",
-    "/textures/crystals/2.jpg",
-    "/textures/crystals/3.jpg",
-    "/textures/crystals/4.jpg",
-    "/textures/crystals/5.jpg",
-    "/textures/crystals/6.jpg"
+  "sounds": [
+    "ambient.ogg",
+    "hover.ogg",
+    "click.ogg",
+    "spiral.ogg",
+    "list.ogg",
+    "switch.ogg",
+    "close.ogg",
+    "smiley1.ogg",
+    "smiley2.ogg",
+    "smiley3.ogg",
+    "smiley4.ogg"
   ],
-  "audio": [
-    "/audio/BG_music_ST.mp3",
-    "/audio/ReleaseSpirit.mp3",
-    "/audio/hover1.mp3",
-    "/audio/hover2.mp3",
-    "/audio/hover3.mp3",
-    "/audio/hover4.mp3",
-    "/audio/hover5.mp3"
-  ],
-  "decoders": [
-    "/libs/draco/draco_wasm_wrapper.js",
-    "/libs/draco/draco_decoder.wasm",
-    "/libs/draco/draco_decoder.js",
-    "/libs/basis/basis_transcoder.js",
-    "/libs/basis/basis_transcoder.wasm"
-  ],
-  "fonts": [
-    "/_nuxt/TTNeorisTrialRegular.CykOY4gR.ttf",
-    "/_nuxt/fonnts.com-theseasons-it.CUCq9ttA.otf"
-  ],
-  "tracking": {
-    "source": "Google Tag Manager",
-    "localPolicy": "disabled",
-    "replacement": "/analytics-disabled.js"
+  "font": {
+    "family": "Indivisible Variable",
+    "fallback": "Helvetica Neue, Arial, sans-serif",
+    "note": "The clone uses the exact source font stack and measured desktop/mobile letter spacing; no third-party font stylesheet is required for the entry gate."
+  },
+  "video": {
+    "delivery": "Mux HLS streams played through hls.js",
+    "fallback": "The nine local AVIF project posters remain visible while streams buffer or if playback is unavailable.",
+    "activation": "Streams start after the entry gesture to respect browser autoplay and bandwidth constraints."
   }
 }

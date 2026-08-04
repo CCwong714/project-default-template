@@ -1,5 +1,5 @@
-import { StorytellingPage } from 'src/features/storytelling'
+import { PortfolioPage } from 'src/features/portfolio'
 
 export function HomePage() {
-  return <StorytellingPage />
+  return <PortfolioPage />
 }
