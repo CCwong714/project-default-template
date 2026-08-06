@@ -1,5 +1,5 @@
-import { Outlet } from 'react-router-dom'
+import type { PropsWithChildren } from 'react'
 
-export function AppShell() {
-  return <Outlet />
+export function AppShell({ children }: PropsWithChildren) {
+  return <>{children}</>
 }

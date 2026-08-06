@@ -1,25 +1,21 @@
-# Noomo Digital Storytelling — exact Canvas mirror
+# Izanami interactive website recreation
 
-This project localizes the public production experience from
-`https://storytelling.noomoagency.com/`. The active page is the captured
-Nuxt/Three.js/GSAP runtime and its original one-canvas asset graph, not the
-earlier React approximation.
+This React and TypeScript project recreates the public Izanami experience at
+`https://izanami-official.com/`, using the supplied recordings, the live public
+site, and captured desktop/mobile reference frames as visual evidence.
 
-## What is reproduced
+## Included behavior
 
-- The original WebGL Phoenix, camera timelines, shaders, particles and all 20
-  scroll-driven acts.
-- Desktop and mobile camera behavior, loading/start sequence, sound controls and
-  full-screen mobile menu.
-- The liquid-glass pointer with WebGL spirit trail.
-- The repeatable, non-navigating `Reimagine Phoenix` palette control.
-- The final crystal, fire, ember and contact sequences.
+- Responsive hero, philosophy, projects, company, and footer layouts.
+- GSAP scroll reveals and image parallax with Lenis smooth scrolling.
+- Liquid-glass pointer droplets that blur the page while the pointer moves and
+  fully decay after it stops.
+- Matched menu open/close choreography and shared hover transitions for links,
+  project calls to action, social links, and footer navigation.
+- Local Izanami imagery, Satoshi font, favicon, and source-matched typography.
+- Reduced-motion and coarse-pointer fallbacks.
 
-The older React implementation remains in `src/features/storytelling/` only as
-unreferenced project history. The browser entry is generated from the captured
-production shell in `.clone-ui/source/` and uses assets under `public/`.
-
-## Setup
+## Run locally
 
 ```bash
 nvm use
@@ -33,19 +29,11 @@ Run all engineering gates with:
 npm run check
 ```
 
-This checks formatting, ESLint, TypeScript, Vitest, the localized asset graph and
-the production Vite build. Google Tag Manager is disabled by the preparation
-script and replaced with a local empty file.
-
-## Evidence
-
-- Source and implementation record: `.clone-ui/plan/provenance.md`
-- Exact section map: `.clone-ui/plan/section-map.json`
-- Desktop/mobile and interaction receipts: `.clone-ui/qa/exact-mirror/`
-- Research notes: `docs/research/`
+The visual evidence, measurements, capture inventory, and implementation notes
+are stored under `.clone-ui/izanami/`.
 
 ## Usage boundary
 
-The mirrored minified runtime, models, textures, fonts, audio and design remain
-material of Noomo/the source owners. Treat this repository as a private local
-fidelity reference unless you have permission to redistribute those files.
+The source site's imagery, typography, copy, and design remain material of
+Izanami and their respective owners. Treat this project as a private fidelity
+reference unless you have permission to redistribute those assets.

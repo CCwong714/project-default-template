@@ -1,0 +1,28 @@
+{
+  "sections": [
+    { "id": "hero", "desktopHeight": "100vw", "mobileHeight": "296.2687vw" },
+    { "id": "philosophy", "desktopHeight": "155vw", "mobileHeight": "335vw" },
+    {
+      "id": "projects-intro",
+      "desktopHeight": "100vw",
+      "mobileHeight": "223.8806vw"
+    },
+    {
+      "id": "project-school",
+      "desktopHeight": "100vh",
+      "mobileHeight": "177vw"
+    },
+    {
+      "id": "project-craft",
+      "desktopHeight": "100vh",
+      "mobileHeight": "177vw"
+    },
+    {
+      "id": "project-retreat",
+      "desktopHeight": "100vh",
+      "mobileHeight": "177vw"
+    },
+    { "id": "company", "desktopHeight": "100vw", "mobileHeight": "175.1244vw" },
+    { "id": "footer", "desktopHeight": "auto", "mobileHeight": "auto" }
+  ]
+}

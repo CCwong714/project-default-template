@@ -13,5 +13,5 @@ function readStringEnv(value: string | undefined, fallback: string) {
 }
 
 export const env = {
-  appName: readStringEnv(viteEnv.VITE_APP_NAME, 'Noomo Storytelling'),
+  appName: readStringEnv(viteEnv.VITE_APP_NAME, 'Izanami'),
 } as const

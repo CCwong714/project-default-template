@@ -5,25 +5,22 @@ import { describe, expect, it } from 'vitest'
 
 const ROOT = process.cwd()
 
-describe('Noomo production mirror', () => {
-  it('boots the captured Nuxt Canvas runtime with analytics disabled', async () => {
+describe('Izanami interactive clone', () => {
+  it('boots the local React entry with Izanami metadata', async () => {
     const html = await readFile(join(ROOT, 'index.html'), 'utf8')
 
-    expect(html).toContain('/_nuxt/CbdjwYMp.js')
-    expect(html).toContain('release-spirit')
-    expect(html).toContain('gtag:{enabled:false')
-    expect(html).toContain('url:"/analytics-disabled.js"')
-    expect(html).not.toContain('url:"https://www.googletagmanager.com/gtag/js"')
+    expect(html).toContain('/src/main.tsx')
+    expect(html).toContain('Izanami | Sharing the Japanese Spirit of Harmony')
+    expect(html).not.toContain('googletagmanager')
   })
 
   it.each([
-    'public/models/v20.glb',
-    'public/models/feather.glb',
-    'public/timelines/cam.glb',
-    'public/timelines/cam-mob.glb',
-    'public/textures/wooden_studio_19_1k.hdr',
-    'public/audio/BG_music_ST.mp3',
-    'public/audio/ReleaseSpirit.mp3',
+    'public/assets/izanami/favicon.svg',
+    'public/assets/izanami/fonts/Satoshi-Regular.woff',
+    'public/assets/izanami/images/home_fv_img.webp',
+    'public/assets/izanami/images/home_philosophy_img01.webp',
+    'public/assets/izanami/images/home_projects_img.webp',
+    'public/assets/izanami/images/home_company_img.webp',
   ])('includes the required local asset %s', async (relativePath) => {
     const assetStats = await stat(join(ROOT, relativePath))
 

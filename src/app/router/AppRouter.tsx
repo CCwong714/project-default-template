@@ -1,6 +1,9 @@
-import { useRoutes } from 'react-router-dom'
-import { appRoutes } from 'src/app/router/appRoutes'
+import { HomePage } from 'src/features/home'
+import { AppShell } from 'src/shared/layouts/AppShell'
+import { NotFoundPage } from 'src/shared/pages/NotFoundPage'
 
 export function AppRouter() {
-  return useRoutes(appRoutes)
+  const page =
+    window.location.pathname === '/' ? <HomePage /> : <NotFoundPage />
+  return <AppShell>{page}</AppShell>
 }

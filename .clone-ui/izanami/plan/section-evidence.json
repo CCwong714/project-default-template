@@ -1,0 +1,15 @@
+{
+  "tier": "A",
+  "sourceUrl": "https://izanami-official.com/",
+  "desktopViewport": "1920x873",
+  "mobileViewport": "390x844",
+  "captures": {
+    "desktop": "../source/captures/source-desktop-scroll-00.png through source-desktop-scroll-09.png",
+    "mobile": "../source/captures/source-mobile-scroll-00.png through source-mobile-scroll-08.png"
+  },
+  "interactiveEvidence": {
+    "menu": "Open reaches a 90% page frame at ~700ms and text settles by ~2.1s; close fades by ~480ms.",
+    "pointer": "A fixed WebGL layer accumulates movement-driven distortion and decays after movement stops.",
+    "hover": "Header, navigation, buttons, footer and social links use paired text/line states."
+  }
+}

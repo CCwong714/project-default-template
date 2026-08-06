@@ -1,0 +1,24 @@
+{
+  "root": "/assets/izanami",
+  "hero": ["images/home_fv_img.webp", "images/sp_home_fv_img.webp"],
+  "philosophy": [
+    "images/home_philosophy_img01.webp",
+    "images/home_philosophy_img02.webp",
+    "images/home_philosophy_img03.webp",
+    "images/sp_home_philosophy_img01.webp",
+    "images/sp_home_philosophy_img02.webp",
+    "images/sp_home_philosophy_img03.webp"
+  ],
+  "projects": [
+    "images/home_projects_img.webp",
+    "images/home_projects_img01.webp",
+    "images/home_projects_img02.webp",
+    "images/home_projects_img03.webp"
+  ],
+  "company": [
+    "images/home_company_img.webp",
+    "images/sp_home_company_img.webp"
+  ],
+  "clouds": ["images/common_fv_cloud01.webp", "images/common_fv_cloud02.webp"],
+  "brand": ["favicon.svg", "fonts/Satoshi-Regular.woff"]
+}

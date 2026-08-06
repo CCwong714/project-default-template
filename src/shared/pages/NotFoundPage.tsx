@@ -1,5 +1,3 @@
-import { Link } from 'react-router-dom'
-
 export function NotFoundPage() {
   return (
     <main className="flex min-h-screen items-center justify-center px-6 py-10 text-slate-950">
@@ -15,12 +13,12 @@ export function NotFoundPage() {
           from the project base.
         </p>
         <div className="mt-6">
-          <Link
-            to="/"
+          <a
+            href="/"
             className="inline-flex rounded-md bg-slate-950 px-5 py-3 text-sm font-medium text-white transition-colors hover:bg-slate-800"
           >
             Back to home
-          </Link>
+          </a>
         </div>
       </section>
     </main>
