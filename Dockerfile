@@ -15,21 +15,11 @@ FROM node:${NODE_VERSION} AS dependencies
 WORKDIR /app
 
 # Copy package-related files first to leverage Docker's caching mechanism
-COPY package.json yarn.lock* package-lock.json* pnpm-lock.yaml* .npmrc* ./
+COPY package.json package-lock.json .npmrc* ./
 
 # Install project dependencies with frozen lockfile for reproducible builds
 RUN --mount=type=cache,target=/root/.npm \
-  --mount=type=cache,target=/usr/local/share/.cache/yarn \
-  --mount=type=cache,target=/root/.local/share/pnpm/store \
-  if [ -f package-lock.json ]; then \
-  npm ci --no-audit --no-fund; \
-  elif [ -f yarn.lock ]; then \
-  corepack enable yarn && yarn install --frozen-lockfile --production=false; \
-  elif [ -f pnpm-lock.yaml ]; then \
-  corepack enable pnpm && pnpm install --frozen-lockfile; \
-  else \
-  echo "No lockfile found." && exit 1; \
-  fi
+  npm ci --no-audit --no-fund
 
 # ============================================
 # Stage 2: Build Next.js application in standalone mode
@@ -59,15 +49,7 @@ ENV NODE_ENV=production
 # This caches the .next/cache directory across builds, but it also prevents
 # .next/cache/fetch-cache from being included in the final image, meaning
 # cached fetch responses from the build won't be available at runtime.
-RUN if [ -f package-lock.json ]; then \
-  npm run build; \
-  elif [ -f yarn.lock ]; then \
-  corepack enable yarn && yarn build; \
-  elif [ -f pnpm-lock.yaml ]; then \
-  corepack enable pnpm && pnpm build; \
-  else \
-  echo "No lockfile found." && exit 1; \
-  fi
+RUN npm run build
 
 # ============================================
 # Stage 3: Run Next.js application

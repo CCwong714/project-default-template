@@ -2,6 +2,7 @@
   "name": "cocota-studio-clone",
   "version": "0.3.1",
   "private": true,
+  "packageManager": "npm@11.9.0",
   "description": "A responsive Next.js reconstruction of cocotastudio.com built with the AI website cloner template",
   "author": "JCodesMore",
   "license": "MIT",

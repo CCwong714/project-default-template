@@ -6,11 +6,11 @@ The page includes the original visual language and public site assets used for t
 
 ## Run locally
 
-Requirements: Node.js 24+ and pnpm 11+.
+Requirements: Node.js 24+ and npm 11+.
 
 ```bash
-pnpm install
-pnpm dev
+npm ci
+npm run dev
 ```
 
 Open `http://localhost:3000`.
@@ -18,9 +18,9 @@ Open `http://localhost:3000`.
 ## Verification
 
 ```bash
-pnpm lint
-pnpm typecheck
-pnpm build
+npm run lint
+npm run typecheck
+npm run build
 ```
 
 The project scripts use webpack so the build does not depend on Turbopack spawning a separate system Node binary.
