@@ -140,6 +140,10 @@ export class StableFluidSimulation {
     this.clearTargets()
   }
 
+  clear() {
+    this.clearTargets()
+  }
+
   splat(point: Vector2, movement: Vector2) {
     const velocityStrength = 5.5
     const velocity = new Vector3(

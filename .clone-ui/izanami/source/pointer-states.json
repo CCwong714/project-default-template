@@ -1,0 +1,68 @@
+{
+  "sourceArchitecture": {
+    "transparentWebglStage": "source-runtime.js:26443-26509 creates an alpha renderer and clears it with alpha 0.",
+    "meshOnlyScene": "source-runtime.js:34025-34172 adds declared image/text/background meshes to the WebGL scene; the project stack's black DOM background is not a mesh.",
+    "postComposite": "source-runtime.js:34931-34964 composites the WebGL scene through the fluid field, leaving non-mesh black areas visually unchanged.",
+    "sourceMarkup": "raw.html:1084-1380 contains the School, Craft, and Retreat sticky stack; only the three project pictures are declared common image meshes."
+  },
+  "runtimeCaveat": "The source runtime globally forwards desktop pointer movement to the stable-fluid controller. The total-stack suppression boundary comes from the supplied recording and the explicit requested behavior, not from the runtime architecture alone.",
+  "requestedBehavior": "The supplied 2026-08-12 recording establishes that pointer movement produces no visible liquid response throughout the black School, Craft, and Retreat sequence.",
+  "cloneVerification1470x802": {
+    "stackDocumentRect": {
+      "top": 4799.25,
+      "bottom": 6525.59375,
+      "height": 1726.34375
+    },
+    "beforeStack": {
+      "scrollY": 3500,
+      "canvasHidden": false
+    },
+    "school": {
+      "scrollY": 5000,
+      "canvasHiddenAfterScroll": true,
+      "canvasHiddenAfterPointerMoves": true
+    },
+    "craft": {
+      "scrollY": 5600,
+      "canvasHiddenAfterPointerMoves": true
+    },
+    "retreat": {
+      "scrollY": 6200,
+      "canvasHiddenAfterPointerMoves": true
+    },
+    "afterStack": {
+      "scrollY": 6800,
+      "canvasHiddenAfterScroll": false,
+      "canvasHiddenAfterPointerMoves": false
+    },
+    "partialViewportBoundary": {
+      "scrollY": 4600,
+      "stackViewportTop": 199.25,
+      "pointerAboveStackHidden": false,
+      "pointerInsideStackHidden": true,
+      "pointerReturnedAboveHidden": false
+    }
+  },
+  "finalBoundaryRegression1920x929": {
+    "stackViewportTop": 199.9140625,
+    "pointerAboveStackHidden": false,
+    "pointerInsideStackHidden": true,
+    "firstPointerOutsideStackHidden": false,
+    "nextPointerOutsideStackHidden": false,
+    "exitBehavior": "The first outside event only rebases the movement origin; the following outside event resumes normal fluid injection without a boundary jump."
+  },
+  "mobileVerification390x844": {
+    "canvasHidden": true,
+    "canvasDisplay": "none",
+    "horizontalOverflow": false
+  },
+  "companyFooterVerification1920x928": {
+    "recording": "captures/reference-164327/",
+    "disabledRegionCount": 3,
+    "regions": ["School/Craft/Retreat stack", "Company/IZANAMI", "Footer"],
+    "companyPointerCanvasHidden": true,
+    "footerPointerCanvasHidden": true,
+    "horizontalOverflow": false,
+    "runtimeErrors": 0
+  }
+}

@@ -1,0 +1,143 @@
+{
+  "loader": {},
+  "headerHover": {},
+  "scrollGeometry": {
+    "viewport": [1470, 802],
+    "projectsBackgroundAtScroll1800": {
+      "sourceFormulaTop": 310.25,
+      "cloneMeasuredTop": 305.25,
+      "absoluteDelta": 5
+    },
+    "projectsBackgroundAtScroll4500": {
+      "cloneMeasuredTop": -234.75,
+      "cloneMeasuredBottom": 1235.25,
+      "cloneMeasuredOpacity": 0.3728,
+      "expectedBehavior": "Architecture remains beneath the entering School foreground while fading."
+    },
+    "projectsBackgroundAtScroll4800": {
+      "source": "black",
+      "clone": "black"
+    }
+  },
+  "mobile729x801": {
+    "pageHeight": { "source": 14243, "clone": 14243 },
+    "heroBackground": "source and clone remain DOM-aligned; no desktop 0.8 translation",
+    "companyBackgroundHeight": { "source": 1276.65625, "clone": 1276.65625 },
+    "companyFirstParagraphHeight": { "source": 261.09375, "clone": 261.09375 },
+    "companyButtonHeight": { "source": 102.984375, "clone": 102.984375 },
+    "maximumMeasuredVerticalDelta": 0.984375,
+    "horizontalOverflow": false
+  },
+  "heroColor1918x930": {
+    "assetSha256Matches": true,
+    "sourceCloudOpacity": 1,
+    "cloneCloudOpacity": 1,
+    "sourceHeroDarkOverlay": false,
+    "cloneHeroDarkOverlay": false,
+    "desktopCloudTopsVw": {
+      "source": [-18.375, 0],
+      "clone": [-18.375, 0]
+    },
+    "mobileCloudTopsVw": {
+      "source": [34.8258706468, 54.7263681592],
+      "clone": [34.8258706468, 54.7263681592]
+    },
+    "topZoneLuma": {
+      "reference": 162.35,
+      "cloneBefore": 141.45,
+      "cloneAfter": 168.19
+    },
+    "middleZoneLuma": {
+      "reference": 153.64,
+      "cloneBefore": 114.7,
+      "cloneAfter": 162.9
+    },
+    "bottomZoneLuma": {
+      "reference": 141.02,
+      "cloneBefore": 82.75,
+      "cloneAfter": 136.54
+    },
+    "note": "The source-authored image, cloud alpha, and effective cloud vertical geometry now match; small remaining luma differences are consistent with independent horizontal cloud phase."
+  },
+  "buttonHover1470x746": {
+    "source": {
+      "buttonWidth": 264.9453125,
+      "lineWidth": 246.5703125,
+      "idleLineX": -173.5,
+      "enterLineXFromRuntimeFormula": 73.5,
+      "textTravelPercent": 130,
+      "enterDurationSeconds": 0.7,
+      "leaveLineDurationSeconds": 1.1,
+      "ease": "quart.out"
+    },
+    "clone": {
+      "buttonWidth": 263.3203125,
+      "lineWidth": 244.9453125,
+      "idleLineX": -171.125,
+      "activeLineX": 73.875,
+      "textTravelPercent": 130,
+      "enterDurationSeconds": 0.7,
+      "leaveLineDurationSeconds": 1.1,
+      "ease": "quart.out"
+    },
+    "interactionChecks": {
+      "enter": true,
+      "leave": true,
+      "rapidReversal": true,
+      "keyboardFocus": true,
+      "focusVisibleOutline": true,
+      "mobileHorizontalOverflow": false
+    }
+  },
+  "projectFluidSuppression1470x802": {
+    "beforeStackCanvasHidden": false,
+    "schoolCanvasHidden": true,
+    "craftCanvasHidden": true,
+    "retreatCanvasHidden": true,
+    "afterStackCanvasHidden": false,
+    "partialViewportBoundaryTracksPointerPosition": true,
+    "fieldClearedOnEntry": true,
+    "mobile390x844RemainsDisabled": true
+  },
+  "comparedProperties": [
+    "backgroundColor",
+    "color",
+    "fontFamily",
+    "fontSize",
+    "lineHeight",
+    "inlinePositionRatio",
+    "progressBottomRatio",
+    "hoverTextOffset",
+    "hoverLineScaleAndOrigin",
+    "hoverDotOffsetAndOpacity",
+    "hoverDurationAndEasing",
+    "menuCloseWidthStability",
+    "wheelDistance",
+    "backgroundParallaxAndFade",
+    "earlyProjectsBackgroundBehindPhilosophy",
+    "projectsBackgroundOpacityThroughSchoolOverlap",
+    "projectBackgroundClipHandoff",
+    "stickySectionCompression",
+    "desktopAndMobileSectionBoundaries",
+    "mobileHeroDomAlignedFade",
+    "heroAssetHashAndCloudOpacity",
+    "heroDarkOverlayAbsence",
+    "heroCloudVerticalGeometry",
+    "mobileCompanyBackgroundTarget",
+    "mobileLatinFontMetricsAndButtonRhythm",
+    "buttonWholeLineTranslation",
+    "buttonText130PercentExchange",
+    "buttonEnterLeaveAsymmetricTiming",
+    "buttonRapidReversalAndFocus",
+    "projectStackFluidSuppression",
+    "projectStackBoundaryRecovery"
+  ],
+  "sourceViewports": {
+    "loader": "1920x873",
+    "headerHover": "1918x928",
+    "scrollGeometry": ["1918x928", "1470x802", "729x801", "390x844"],
+    "heroColor": "1918x930",
+    "buttonHover": "1470x746"
+  },
+  "cloneViewports": ["1918x928", "1470x746", "1470x802", "729x801", "390x844"]
+}

@@ -3,27 +3,82 @@ import 'src/features/izanami/izanami.css'
 import { useGSAP } from '@gsap/react'
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
-import { useEffect, useRef, useState } from 'react'
+import { useCallback, useEffect, useRef, useState } from 'react'
 import { FluidTrail } from 'src/features/izanami/components/FluidTrail'
+import {
+  FooterNextLink,
+  InstagramIcon,
+  WhatsAppIcon,
+} from 'src/features/izanami/components/FooterLinks'
 import {
   HoverLink,
   IzanamiButton,
 } from 'src/features/izanami/components/HoverLink'
 import { LogoMark } from 'src/features/izanami/components/LogoMark'
+import { PageLoader } from 'src/features/izanami/components/PageLoader'
+import { useHeaderHoverMotion } from 'src/features/izanami/hooks/useHeaderHoverMotion'
+import { useHomeScrollMotion } from 'src/features/izanami/hooks/useHomeScrollMotion'
 import { useSmoothScroll } from 'src/features/izanami/hooks/useSmoothScroll'
 import type { TIzanamiProject } from 'src/features/izanami/izanamiData'
 import {
-  COMPANY_COPY,
   LOCATIONS,
   NAV_ITEMS,
-  PHILOSOPHY_COPY,
   PROJECT_SUBNAV,
-  PROJECTS,
 } from 'src/features/izanami/izanamiData'
+import type {
+  TIzanamiCompanyLine,
+  TIzanamiLocale,
+  TIzanamiPageCopy,
+} from 'src/features/izanami/izanamiLocaleData'
+import {
+  getIzanamiLocale,
+  IZANAMI_COPY_BY_LOCALE,
+} from 'src/features/izanami/izanamiLocaleData'
 
 gsap.registerPlugin(ScrollTrigger, useGSAP)
 
 type TLocationName = 'dubai' | 'tokyo'
+type TLoaderPhase = 'complete' | 'loading' | 'revealing'
+
+function getInitialLoaderPhase(): TLoaderPhase {
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    return 'complete'
+  }
+  return 'loading'
+}
+
+function usePrefersReducedMotion() {
+  const [isReduced, setIsReduced] = useState(
+    () => window.matchMedia('(prefers-reduced-motion: reduce)').matches,
+  )
+
+  useEffect(() => {
+    const query = window.matchMedia('(prefers-reduced-motion: reduce)')
+    const handleChange = (event: MediaQueryListEvent) => {
+      setIsReduced(event.matches)
+    }
+    query.addEventListener('change', handleChange)
+    return () => {
+      query.removeEventListener('change', handleChange)
+    }
+  }, [])
+
+  return isReduced
+}
+
+function getSiteClassName(isMenuOpen: boolean, loaderPhase: TLoaderPhase) {
+  const classNames = ['izanami-site']
+  if (isMenuOpen) {
+    classNames.push('is-menu-open')
+  }
+  if (loaderPhase === 'loading') {
+    classNames.push('is-loader-loading')
+  }
+  if (loaderPhase === 'revealing') {
+    classNames.push('is-loader-revealing')
+  }
+  return classNames.join(' ')
+}
 
 function getTime(location: TLocationName) {
   const timeZone = location === 'dubai' ? 'Asia/Dubai' : 'Asia/Tokyo'
@@ -56,12 +111,57 @@ function useWorldTimes() {
 
 type TSiteHeaderProps = {
   isMenuOpen: boolean
+  locale: TIzanamiLocale
   onMenuToggle: () => void
 }
 
-function SiteHeader({ isMenuOpen, onMenuToggle }: TSiteHeaderProps) {
+type THeaderLanguageLinkProps = {
+  href: string
+  isCurrent?: boolean
+  label: string
+}
+
+function HeaderLanguageLink({
+  href,
+  isCurrent = false,
+  label,
+}: THeaderLanguageLinkProps) {
+  const classNames = ['izanami-header__language-link']
+  if (isCurrent) {
+    classNames.push('is-current')
+  }
+
   return (
-    <header className="izanami-header">
+    <a
+      aria-current={isCurrent ? 'page' : undefined}
+      className={classNames.join(' ')}
+      href={href}
+    >
+      <span aria-hidden="true" className="izanami-header__language-head">
+        <span className="izanami-header__language-circle" />
+      </span>
+      <span className="izanami-header__language-body">
+        <span className="izanami-header__language-clip">
+          <span className="izanami-header__language-text">{label}</span>
+          <span
+            aria-hidden="true"
+            className="izanami-header__language-text is-clone"
+          >
+            {label}
+          </span>
+        </span>
+        <span aria-hidden="true" className="izanami-header__language-line" />
+      </span>
+    </a>
+  )
+}
+
+function SiteHeader({ isMenuOpen, locale, onMenuToggle }: TSiteHeaderProps) {
+  const headerRef = useRef<HTMLElement>(null)
+  useHeaderHoverMotion(headerRef)
+
+  return (
+    <header className="izanami-header" ref={headerRef}>
       <a aria-label="Izanami home" className="izanami-header__logo" href="#top">
         <LogoMark compact />
       </a>
@@ -69,25 +169,42 @@ function SiteHeader({ isMenuOpen, onMenuToggle }: TSiteHeaderProps) {
         className="izanami-header__languages"
         aria-label="Language selection"
       >
-        <a aria-current="page" className="is-current" href="#top">
-          <span aria-hidden="true" />
-          EN
-        </a>
-        <HoverLink href="#top">JA</HoverLink>
+        <HeaderLanguageLink href="/" isCurrent={locale === 'en'} label="EN" />
+        <HeaderLanguageLink
+          href="/ja/"
+          isCurrent={locale === 'ja'}
+          label="JA"
+        />
       </div>
       <button
         aria-controls="global-navigation"
         aria-expanded={isMenuOpen}
+        aria-label={isMenuOpen ? 'Close navigation' : 'Open navigation'}
         className="izanami-menu-trigger"
         onClick={onMenuToggle}
         type="button"
       >
-        <span aria-hidden="true" className="izanami-menu-trigger__dots">
-          <span />
-          <span />
+        <span aria-hidden="true" className="izanami-menu-trigger__head">
+          <span className="izanami-menu-trigger__dots">
+            <span />
+            <span />
+          </span>
         </span>
-        <span className="izanami-menu-trigger__label">
-          <span>{isMenuOpen ? 'Close' : 'Menu'}</span>
+        <span className="izanami-menu-trigger__body">
+          <span aria-hidden="true" className="izanami-menu-trigger__label">
+            <span className="izanami-menu-trigger__text">
+              <span className="is-menu">Menu</span>
+              <span className="is-close">Close</span>
+            </span>
+            <span
+              aria-hidden="true"
+              className="izanami-menu-trigger__text is-clone"
+            >
+              <span className="is-menu">Menu</span>
+              <span className="is-close">Close</span>
+            </span>
+          </span>
+          <span aria-hidden="true" className="izanami-menu-trigger__line" />
         </span>
       </button>
     </header>
@@ -195,16 +312,48 @@ function SectionLabel({ children }: { children: string }) {
   return <p className="izanami-section-label">{children}</p>
 }
 
+function TextLines({ lines }: { lines: readonly string[] }) {
+  return lines.map((line, index) => {
+    const isLastLine = index === lines.length - 1
+    return (
+      <span key={`${index}-${line}`}>
+        {line}
+        {!isLastLine && <br aria-hidden="true" />}
+      </span>
+    )
+  })
+}
+
+function CompanyTextLines({
+  lines,
+}: {
+  lines: readonly TIzanamiCompanyLine[]
+}) {
+  return lines.map((line, index) => {
+    const isLastLine = index === lines.length - 1
+    return (
+      <span key={`${index}-${line.text}`}>
+        {line.text}
+        {line.mobileContinuation && (
+          <>
+            <span aria-hidden="true" className="izanami-mobile-break" />
+            {line.mobileContinuation}
+          </>
+        )}
+        {!isLastLine && <br aria-hidden="true" />}
+      </span>
+    )
+  })
+}
+
 function ProjectPanel({ project }: { project: TIzanamiProject }) {
   return (
     <section className="izanami-project-panel" id={project.title.toLowerCase()}>
       <SectionLabel>projects</SectionLabel>
+      <span className="izanami-project-panel__number">{project.number}</span>
       <div className="izanami-project-panel__body" data-reveal>
         <div className="izanami-project-panel__copy">
-          <h3>
-            <span>{project.number}</span>
-            {project.title}
-          </h3>
+          <h3>{project.title}</h3>
           <p className="izanami-project-panel__lead">{project.lead}</p>
           <p className="izanami-project-panel__description">
             {project.description}
@@ -226,18 +375,17 @@ function SiteFooter() {
   const times = useWorldTimes()
 
   return (
-    <footer className="izanami-footer" id="contact">
+    <footer className="izanami-footer" data-fluid-disabled id="contact">
       <p className="izanami-footer__name">izanami</p>
-      <a className="izanami-footer__next" href="#philosophy">
-        <span aria-hidden="true" />
-        <strong>Philosophy</strong>
-      </a>
+      <FooterNextLink />
       <div className="izanami-footer__body">
         <nav aria-label="Footer navigation">
           <ul>
             {NAV_ITEMS.map((item) => (
               <li key={item.label}>
-                <HoverLink href={item.href}>{item.label}</HoverLink>
+                <HoverLink href={item.href} isCurrent={item.label === 'home'}>
+                  {item.label}
+                </HoverLink>
               </li>
             ))}
           </ul>
@@ -253,11 +401,19 @@ function SiteFooter() {
           ))}
         </div>
         <div className="izanami-footer__socials">
-          <HoverLink external href="https://wa.me/817043537325">
-            whatsapp ↗
+          <HoverLink
+            external
+            href="https://wa.me/817043537325"
+            trailing={<WhatsAppIcon />}
+          >
+            whatsapp
           </HoverLink>
-          <HoverLink external href="https://www.instagram.com/moca.o64/">
-            instagram ◎
+          <HoverLink
+            external
+            href="https://www.instagram.com/moca.o64/"
+            trailing={<InstagramIcon />}
+          >
+            Instagram
           </HoverLink>
           <HoverLink href="#contact">privacy policy</HoverLink>
         </div>
@@ -268,13 +424,13 @@ function SiteFooter() {
           <time>{times.dubai}</time> GST, DUBAI UAE
           <time>{times.tokyo}</time> JST, TOKYO JPN
         </div>
-        <a href="#top">TOP</a>
+        <HoverLink href="#top">TOP</HoverLink>
       </div>
     </footer>
   )
 }
 
-function HomeExperience() {
+function HomeExperience({ copy }: { copy: TIzanamiPageCopy }) {
   return (
     <main className="izanami-home">
       <section className="izanami-hero" id="top">
@@ -346,7 +502,9 @@ function HomeExperience() {
             <span>the Japanese Spirit</span>
             <span>of Harmony</span>
           </h2>
-          <p>{PHILOSOPHY_COPY}</p>
+          <p>
+            <TextLines lines={copy.philosophyLines} />
+          </p>
           <IzanamiButton href="#projects">View Philosophy</IzanamiButton>
         </div>
       </section>
@@ -374,29 +532,21 @@ function HomeExperience() {
             <span>of Life</span>
           </h2>
           <p>
-            Through three practices,
-            <br />
-            Izanami designs harmony across life.
-            <br />
-            How life is nurtured, how living is enriched,
-            <br />
-            and how one returns to oneself.
+            <TextLines lines={copy.projectsIntroLines} />
           </p>
           <IzanamiButton href="#school">View Projects</IzanamiButton>
         </div>
       </section>
 
-      <div
-        className="izanami-projects-stack"
-        data-fluid-background="/assets/izanami/images/home_projects_img.webp"
-        data-fluid-background-opacity="0.35"
-      >
-        {PROJECTS.map((project) => (
-          <ProjectPanel key={project.title} project={project} />
-        ))}
+      <div className="izanami-projects-stack" data-fluid-disabled>
+        <div className="izanami-projects-sections">
+          {copy.projects.map((project) => (
+            <ProjectPanel key={project.title} project={project} />
+          ))}
+        </div>
       </div>
 
-      <section className="izanami-company" id="company">
+      <section className="izanami-company" data-fluid-disabled id="company">
         <picture
           className="izanami-company__background"
           data-company-background
@@ -407,7 +557,8 @@ function HomeExperience() {
           />
           <img
             alt="A forest fading into mist"
-            loading="lazy"
+            decoding="async"
+            loading="eager"
             src="/assets/izanami/images/home_company_img.webp"
           />
         </picture>
@@ -418,8 +569,10 @@ function HomeExperience() {
           </div>
           <div className="izanami-company__copy" data-reveal>
             <h2>Who we are</h2>
-            {COMPANY_COPY.map((paragraph) => (
-              <p key={paragraph}>{paragraph}</p>
+            {copy.companyParagraphs.map((paragraph) => (
+              <p key={paragraph.map((line) => line.text).join('')}>
+                <CompanyTextLines lines={paragraph} />
+              </p>
             ))}
             <IzanamiButton href="#contact">View Company</IzanamiButton>
           </div>
@@ -432,9 +585,32 @@ function HomeExperience() {
 
 export function IzanamiPage() {
   const pageRoot = useRef<HTMLDivElement>(null)
+  const locale = getIzanamiLocale(window.location.pathname)
+  const copy = IZANAMI_COPY_BY_LOCALE[locale]
+  const prefersReducedMotion = usePrefersReducedMotion()
   const [isMenuOpen, setIsMenuOpen] = useState(false)
+  const [loaderPhase, setLoaderPhase] = useState<TLoaderPhase>(
+    getInitialLoaderPhase,
+  )
+  const handleLoaderReveal = useCallback(() => {
+    setLoaderPhase('revealing')
+  }, [])
+  const handleLoaderComplete = useCallback(() => {
+    setLoaderPhase('complete')
+  }, [])
 
-  useSmoothScroll()
+  const isLoaderActive = loaderPhase !== 'complete'
+
+  useSmoothScroll(!isLoaderActive && !isMenuOpen && !prefersReducedMotion)
+  useHomeScrollMotion(pageRoot)
+
+  useEffect(() => {
+    const description = document.querySelector<HTMLMetaElement>(
+      'meta[name="description"]',
+    )
+    document.documentElement.lang = locale
+    description?.setAttribute('content', copy.metaDescription)
+  }, [copy.metaDescription, locale])
 
   useEffect(() => {
     document.body.classList.toggle('izanami-menu-locked', isMenuOpen)
@@ -450,20 +626,30 @@ export function IzanamiPage() {
     }
   }, [isMenuOpen])
 
+  useEffect(() => {
+    document.body.classList.toggle('izanami-loading-locked', isLoaderActive)
+    return () => {
+      document.body.classList.remove('izanami-loading-locked')
+    }
+  }, [isLoaderActive])
+
   useGSAP(
     () => {
+      if (prefersReducedMotion) {
+        return
+      }
+
       const revealElements = gsap.utils.toArray<HTMLElement>('[data-reveal]')
       for (const element of revealElements) {
         gsap.fromTo(
           element,
-          { filter: 'blur(16px)', opacity: 0, y: 42 },
+          { opacity: 0, y: 42 },
           {
-            filter: 'blur(0px)',
             opacity: 1,
             scrollTrigger: {
-              end: 'top 34%',
+              end: 'top 80%',
               scrub: 1,
-              start: 'top 82%',
+              start: 'top 100%',
               trigger: element,
             },
             y: 0,
@@ -471,16 +657,6 @@ export function IzanamiPage() {
         )
       }
 
-      gsap.to('[data-hero-background] img', {
-        scale: 1.1,
-        scrollTrigger: {
-          end: 'bottom top',
-          scrub: 1,
-          start: 'top top',
-          trigger: '.izanami-hero',
-        },
-        yPercent: 10,
-      })
       gsap.to('[data-hero-title]', {
         filter: 'blur(12px)',
         opacity: 0,
@@ -512,48 +688,51 @@ export function IzanamiPage() {
           },
         )
       }
-
-      gsap.fromTo(
-        '[data-company-logo]',
-        { filter: 'blur(8px)', opacity: 0, scale: 0.82 },
-        {
-          filter: 'blur(0px)',
-          opacity: 1,
-          scale: 1,
-          scrollTrigger: {
-            end: '48% center',
-            scrub: 1,
-            start: 'top 70%',
-            trigger: '.izanami-company',
-          },
-        },
-      )
     },
-    { scope: pageRoot },
+    {
+      dependencies: [prefersReducedMotion],
+      revertOnUpdate: true,
+      scope: pageRoot,
+    },
   )
 
   return (
     <div
-      className={`izanami-site${isMenuOpen ? ' is-menu-open' : ''}`}
+      aria-busy={isLoaderActive}
+      className={getSiteClassName(isMenuOpen, loaderPhase)}
+      lang={locale}
       ref={pageRoot}
     >
-      <GlobalMenu
-        isOpen={isMenuOpen}
-        onClose={() => {
-          setIsMenuOpen(false)
-        }}
-      />
-      <div className="izanami-page-frame">
-        <HomeExperience />
-        <FluidTrail />
+      {isLoaderActive && (
+        <PageLoader
+          onComplete={handleLoaderComplete}
+          onReveal={handleLoaderReveal}
+        />
+      )}
+      <div
+        aria-hidden={isLoaderActive}
+        className="izanami-shell"
+        inert={isLoaderActive}
+      >
+        <GlobalMenu
+          isOpen={isMenuOpen}
+          onClose={() => {
+            setIsMenuOpen(false)
+          }}
+        />
+        <div className="izanami-page-frame">
+          <HomeExperience copy={copy} />
+          {loaderPhase !== 'loading' && <FluidTrail />}
+        </div>
+        <SiteHeader
+          isMenuOpen={isMenuOpen}
+          locale={locale}
+          onMenuToggle={() => {
+            setIsMenuOpen((isOpen) => !isOpen)
+          }}
+        />
+        <PageAside />
       </div>
-      <SiteHeader
-        isMenuOpen={isMenuOpen}
-        onMenuToggle={() => {
-          setIsMenuOpen((isOpen) => !isOpen)
-        }}
-      />
-      <PageAside />
     </div>
   )
 }

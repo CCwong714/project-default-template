@@ -22,6 +22,7 @@ const FLUID_RESOLUTION_SCALE = 0.46
 const MAX_FLUID_WIDTH = 900
 const DISTORTION_POWER = 0.55
 const ACTIVE_DURATION = 4200
+const DISABLED_REGION_SELECTOR = '[data-fluid-disabled]'
 
 type TPointerSample = {
   movement: Vector2
@@ -33,6 +34,7 @@ export class FluidRenderer {
   private readonly capture: ViewportImageCapture
   private readonly sceneTexture: CanvasTexture
   private readonly fluid: StableFluidSimulation
+  private readonly disabledRegions: HTMLElement[]
   private readonly scene = new Scene()
   private readonly camera = new OrthographicCamera(-1, 1, 1, -1, 0, 1)
   private readonly geometry = new PlaneGeometry(2, 2)
@@ -44,6 +46,7 @@ export class FluidRenderer {
   private isRunning = false
   private pixelRatio = 1
   private activeUntil = 0
+  private isSuppressed = false
 
   constructor(canvas: HTMLCanvasElement, root: HTMLElement) {
     this.renderer = new WebGLRenderer({
@@ -56,6 +59,9 @@ export class FluidRenderer {
     this.renderer.outputColorSpace = LinearSRGBColorSpace
     this.renderer.setClearColor(0x000000, 0)
     this.capture = new ViewportImageCapture(root)
+    this.disabledRegions = Array.from(
+      root.querySelectorAll<HTMLElement>(DISABLED_REGION_SELECTOR),
+    )
     this.sceneTexture = new CanvasTexture(this.capture.canvas)
     this.sceneTexture.magFilter = LinearFilter
     this.sceneTexture.minFilter = LinearFilter
@@ -94,12 +100,16 @@ export class FluidRenderer {
       passive: true,
     })
     window.addEventListener('resize', this.resize)
+    window.addEventListener('scroll', this.syncPointerSuppression, {
+      passive: true,
+    })
   }
 
   dispose() {
     this.isRunning = false
     window.removeEventListener('pointermove', this.handlePointerMove)
     window.removeEventListener('resize', this.resize)
+    window.removeEventListener('scroll', this.syncPointerSuppression)
     if (this.frameId != null) {
       window.cancelAnimationFrame(this.frameId)
     }
@@ -115,7 +125,10 @@ export class FluidRenderer {
     const previous = this.previousPointer
     this.previousPointer = current
 
-    if (previous == null) {
+    const shouldSuppress = this.isPointInDisabledRegion(current)
+    const suppressionChanged = this.setSuppressed(shouldSuppress)
+
+    if (suppressionChanged || shouldSuppress || previous == null) {
       return
     }
 
@@ -145,6 +158,16 @@ export class FluidRenderer {
     this.capture.refreshImages()
     const fluidSize = this.getFluidSize()
     this.fluid.resize(fluidSize.width, fluidSize.height)
+    this.syncPointerSuppression()
+  }
+
+  private readonly syncPointerSuppression = () => {
+    const pointer = this.previousPointer
+    if (pointer == null) {
+      return
+    }
+
+    this.setSuppressed(this.isPointInDisabledRegion(pointer))
   }
 
   private readonly render = () => {
@@ -181,5 +204,40 @@ export class FluidRenderer {
       width * (window.innerHeight / Math.max(1, window.innerWidth)),
     )
     return { height: Math.max(1, height), width: Math.max(1, width) }
+  }
+
+  private isPointInDisabledRegion(point: Vector2) {
+    return this.disabledRegions.some((region) => {
+      const rect = region.getBoundingClientRect()
+      return (
+        point.x >= rect.left &&
+        point.x <= rect.right &&
+        point.y >= rect.top &&
+        point.y <= rect.bottom
+      )
+    })
+  }
+
+  private setSuppressed(shouldSuppress: boolean) {
+    if (shouldSuppress === this.isSuppressed) {
+      return false
+    }
+
+    this.isSuppressed = shouldSuppress
+    this.renderer.domElement.hidden = shouldSuppress
+    if (!shouldSuppress) {
+      return true
+    }
+
+    this.pendingPointer = null
+    this.activeUntil = 0
+    if (this.frameId != null) {
+      window.cancelAnimationFrame(this.frameId)
+      this.frameId = null
+    }
+    this.fluid.clear()
+    this.renderer.setRenderTarget(null)
+    this.renderer.clear()
+    return true
   }
 }

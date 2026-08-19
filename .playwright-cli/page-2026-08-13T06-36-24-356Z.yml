@@ -1,0 +1,255 @@
+- generic [ref=e3]:
+  - status "Loading page" [ref=e4]:
+    - generic [ref=e6]:
+      - paragraph [ref=e7]:
+        - generic [ref=e8]:
+          - generic [ref=e9]: R
+          - generic [ref=e10]: e
+          - generic [ref=e11]: m
+          - generic [ref=e12]: e
+          - generic [ref=e13]: m
+          - generic [ref=e14]: b
+          - generic [ref=e15]: e
+          - generic [ref=e16]: r
+          - generic [ref=e18]: w
+          - generic [ref=e19]: h
+          - generic [ref=e20]: o
+          - generic [ref=e22]: "y"
+          - generic [ref=e23]: o
+          - generic [ref=e24]: u
+          - generic [ref=e26]: a
+          - generic [ref=e27]: r
+          - generic [ref=e28]: e
+      - progressbar "Loading progress" [ref=e29]: "0"
+  - generic [ref=e30]:
+    - main [ref=e32]:
+      - heading [level=1] [ref=e34]: Remember who you are
+      - generic [ref=e35]:
+        - paragraph [ref=e36]: philosophy
+        - generic [ref=e37]:
+          - heading [level=2] [ref=e38]:
+            - generic [ref=e39]: Sharing
+            - generic [ref=e40]: the Japanese Spirit
+            - generic [ref=e41]: of Harmony
+          - paragraph [ref=e42]:
+            - generic [ref=e43]: 調和とは「作り出すもの」ではなく「思い出すもの」。
+            - generic [ref=e44]: Izanamiは日本に受け継がれる和の精神を通して、
+            - generic [ref=e45]: 本来の在り方を思い出し、自分と調和し、
+            - text: 世界と調和する豊かな生き方の指針を届けていきます。
+          - link [ref=e46] [cursor=pointer]:
+            - /url: "#projects"
+            - generic [ref=e49]:
+              - generic [ref=e50]: View Philosophy
+              - generic [ref=e51]: View Philosophy
+      - generic [ref=e52]:
+        - paragraph [ref=e53]: projects
+        - generic [ref=e54]:
+          - heading [level=2] [ref=e55]:
+            - generic [ref=e56]: Designing
+            - generic [ref=e57]: the Dimensions
+            - generic [ref=e58]: of Life
+          - paragraph [ref=e59]:
+            - generic [ref=e60]: Izanamiは、3つの事業を通して、
+            - generic [ref=e61]: 人生における調和をデザインします。
+            - generic [ref=e62]: いかに命を育み、暮らしを輝かせ、
+            - text: そして自分を思い出すか。
+          - link [ref=e63] [cursor=pointer]:
+            - /url: "#school"
+            - generic [ref=e66]:
+              - generic [ref=e67]: View Projects
+              - generic [ref=e68]: View Projects
+      - generic [ref=e70]:
+        - generic [ref=e71]:
+          - paragraph [ref=e72]: projects
+          - generic [ref=e73]: "01"
+          - generic [ref=e75]:
+            - heading [level=3] [ref=e76]: School
+            - paragraph [ref=e77]: 命の土台を、豊かに育む。
+            - paragraph [ref=e78]: 「0歳からのママスクール®」というブランドで日本全国2万人以上の親子をサポート。親と子どもの「願い」が叶う場所として数々の喜びの声が届いています。
+            - link [ref=e79] [cursor=pointer]:
+              - /url: "#school"
+              - generic [ref=e82]:
+                - generic [ref=e83]: View School
+                - generic [ref=e84]: View School
+        - generic [ref=e86]:
+          - paragraph [ref=e87]: projects
+          - generic [ref=e88]: "02"
+          - generic [ref=e90]:
+            - heading [level=3] [ref=e91]: Craft
+            - paragraph [ref=e92]: 日本の美意識で、感覚を呼び戻す。
+            - paragraph [ref=e93]: 日本の美意識を現代のラグジュアリーへと翻訳し、唯一無二のプロダクトや空間をデザイン。ドバイを中心に、和の精神による上質な暮らしを提供しています。
+            - link [ref=e94] [cursor=pointer]:
+              - /url: "#craft"
+              - generic [ref=e97]:
+                - generic [ref=e98]: View Craft
+                - generic [ref=e99]: View Craft
+        - generic [ref=e101]:
+          - paragraph [ref=e102]: projects
+          - generic [ref=e103]: "03"
+          - generic [ref=e105]:
+            - heading [level=3] [ref=e106]: Retreat
+            - paragraph [ref=e107]: 自らの本質へ、還る。
+            - paragraph [ref=e108]: 古代マヤ文明から受け継がれる植物療法で、本来の感覚や在り方を思い出す為のプライベートセレモニーを実施。Izanami創設者のMocaが世界各地で開催しています。
+            - link [ref=e109] [cursor=pointer]:
+              - /url: "#retreat"
+              - generic [ref=e112]:
+                - generic [ref=e113]: View Retreat
+                - generic [ref=e114]: View Retreat
+      - generic [ref=e116]:
+        - paragraph [ref=e119]: company
+        - generic [ref=e120]:
+          - generic [ref=e121]: IZANAMI
+          - generic [ref=e130]:
+            - heading [level=2] [ref=e131]: Who we are
+            - paragraph [ref=e132]:
+              - generic [ref=e133]: 時代がどれほど移り変わろうとも、
+              - text: 人間にとっての本質的な豊かさが変わることはありません。
+            - paragraph [ref=e134]:
+              - generic [ref=e135]: 私たちは日本やドバイをはじめとする世界各地で、
+              - generic [ref=e136]: 命の土台を育む「人間教育」、
+              - generic [ref=e137]: 暮らしの質を高める「伝統工芸」、
+              - text: 本来の自分に還る「植物療法」をデザインします。
+            - paragraph [ref=e138]:
+              - generic [ref=e139]: 文化や常識の壁を超えて。
+              - generic [ref=e140]: 人々の内なる個性が輝き、地球と調和し生きるための、
+              - text: 新しくも普遍的な「在り方」を世界へ広げます。
+            - link [ref=e141] [cursor=pointer]:
+              - /url: "#contact"
+              - generic [ref=e144]:
+                - generic [ref=e145]: View Company
+                - generic [ref=e146]: View Company
+      - generic [ref=e147]:
+        - paragraph [ref=e148]: izanami
+        - link:
+          - /url: "#philosophy"
+          - generic:
+            - generic:
+              - generic:
+                - generic: P
+                - generic: h
+                - generic: i
+                - generic: l
+                - generic: o
+                - generic: s
+                - generic: o
+                - generic: p
+                - generic: h
+                - generic: "y"
+              - generic:
+                - generic: P
+                - generic: h
+                - generic: i
+                - generic: l
+                - generic: o
+                - generic: s
+                - generic: o
+                - generic: p
+                - generic: h
+                - generic: "y"
+        - generic [ref=e149]:
+          - navigation [ref=e150]:
+            - list [ref=e151]:
+              - listitem [ref=e152]:
+                - link:
+                  - /url: "#top"
+                  - generic:
+                    - generic:
+                      - generic: home
+                      - generic: home
+              - listitem [ref=e153]:
+                - link [ref=e154] [cursor=pointer]:
+                  - /url: "#philosophy"
+                  - generic [ref=e156]:
+                    - generic [ref=e157]: philosophy
+                    - generic [ref=e158]: philosophy
+              - listitem [ref=e159]:
+                - link [ref=e160] [cursor=pointer]:
+                  - /url: "#projects"
+                  - generic [ref=e162]:
+                    - generic [ref=e163]: projects
+                    - generic [ref=e164]: projects
+              - listitem [ref=e165]:
+                - link [ref=e166] [cursor=pointer]:
+                  - /url: "#company"
+                  - generic [ref=e168]:
+                    - generic [ref=e169]: company
+                    - generic [ref=e170]: company
+              - listitem [ref=e171]:
+                - link [ref=e172] [cursor=pointer]:
+                  - /url: "#contact"
+                  - generic [ref=e174]:
+                    - generic [ref=e175]: contact
+                    - generic [ref=e176]: contact
+          - generic [ref=e177]:
+            - generic [ref=e178]:
+              - strong [ref=e179]: dubai
+              - generic [ref=e180]: office m2-368
+              - generic [ref=e181]: bn complex,
+              - generic [ref=e182]: al muteena,
+              - generic [ref=e183]: dubai, uae
+            - generic [ref=e184]:
+              - strong [ref=e185]: tokyo
+              - generic [ref=e186]: n&e bldg. 6f,
+              - generic [ref=e187]: 1-12-4 ginza,
+              - generic [ref=e188]: chuo-ku,
+              - generic [ref=e189]: tokyo, jpn
+          - generic [ref=e190]:
+            - link [ref=e191] [cursor=pointer]:
+              - /url: https://wa.me/817043537325
+              - generic [ref=e193]:
+                - generic [ref=e194]: whatsapp
+                - generic [ref=e195]: whatsapp
+            - link [ref=e200] [cursor=pointer]:
+              - /url: https://www.instagram.com/moca.o64/
+              - generic [ref=e202]:
+                - generic [ref=e203]: instagram
+                - generic [ref=e204]: instagram
+            - link [ref=e210] [cursor=pointer]:
+              - /url: "#contact"
+              - generic [ref=e212]:
+                - generic [ref=e213]: privacy policy
+                - generic [ref=e214]: privacy policy
+        - generic [ref=e215]:
+          - generic [ref=e216]: ©2026
+          - generic [ref=e217]:
+            - time [ref=e218]: 10:36:23
+            - text: GST, DUBAI UAE JST, TOKYO JPN
+          - link [ref=e219] [cursor=pointer]:
+            - /url: "#top"
+            - generic [ref=e221]:
+              - generic [ref=e222]: TOP
+              - generic [ref=e223]: TOP
+    - banner:
+      - link [ref=e224] [cursor=pointer]:
+        - /url: "#top"
+        - generic [ref=e225]: IZANAMI
+      - generic:
+        - link [ref=e233] [cursor=pointer]:
+          - /url: /
+          - generic [ref=e237]:
+            - generic [ref=e238]: EN
+            - generic [ref=e239]: EN
+        - link:
+          - /url: /ja/
+          - generic:
+            - generic:
+              - generic: JA
+              - generic: JA
+      - button [ref=e240] [cursor=pointer]:
+        - generic [ref=e246]:
+          - generic [ref=e247]:
+            - generic [ref=e248]: Menu
+            - generic [ref=e249]: Close
+          - generic [ref=e250]:
+            - generic [ref=e251]: Menu
+            - generic [ref=e252]: Close
+    - complementary:
+      - generic: ©2026
+      - generic:
+        - time: 10:36:23
+        - generic: GST, DUBAI UAE
+        - time: 15:36:23
+        - generic: JST, TOKYO JPN
+      - link [ref=e253] [cursor=pointer]:
+        - /url: "#philosophy"
+        - text: SCROLL

@@ -1,0 +1,279 @@
+- generic [active]:
+  - generic:
+    - generic:
+      - generic:
+        - generic:
+          - paragraph:
+            - generic: Remember who you are
+          - generic: "0"
+    - banner:
+      - generic:
+        - generic:
+          - link "IZANAMI":
+            - /url: /
+          - generic:
+            - link "en":
+              - /url: /
+            - link "ja":
+              - /url: /ja/
+          - button "menu close":
+            - generic:
+              - generic:
+                - generic:
+                  - generic: menu
+                  - generic: close
+    - navigation:
+      - generic:
+        - generic:
+          - generic:
+            - generic:
+              - list:
+                - listitem:
+                  - link "home":
+                    - /url: /
+                - listitem:
+                  - link "philosophy":
+                    - /url: /philosophy/
+                - listitem:
+                  - link "projects":
+                    - /url: /projects/
+                  - list:
+                    - listitem:
+                      - link "school":
+                        - /url: /projects/school/
+                    - listitem:
+                      - link "craft":
+                        - /url: /projects/craft/
+                    - listitem:
+                      - link "izanami space":
+                        - /url: /projects/craft-space/
+                    - listitem:
+                      - link "retreat":
+                        - /url: /projects/retreat/
+                - listitem:
+                  - link "company":
+                    - /url: /company/
+                - listitem:
+                  - link "contact":
+                    - /url: /contact/
+              - generic:
+                - link "privacy policy":
+                  - /url: /privacy/
+            - generic:
+              - generic:
+                - generic:
+                  - term: dubai
+                  - definition:
+                    - generic: office m2-368
+                    - generic: bn complex,
+                    - generic: al muteena, dubai, uae
+                - generic:
+                  - term: tokyo
+                  - definition:
+                    - generic: n&e bldg. 6f,
+                    - generic: 1-12-4 ginza,
+                    - generic: chuo-ku, tokyo, jpn
+    - generic:
+      - main:
+        - generic:
+          - generic:
+            - generic:
+              - generic:
+                - heading "Remember who you are" [level=1]
+          - generic:
+            - generic:
+              - generic:
+                - generic:
+                  - heading "philosophy" [level=2]
+                - generic:
+                  - generic:
+                    - generic:
+                      - generic:
+                        - generic:
+                          - paragraph:
+                            - generic: Sharing
+                            - generic: the Japanese Spirit
+                            - generic: of Harmony
+                          - generic:
+                            - paragraph: Harmony is not something to be created. It is something to be remembered. Guided by the ancient spirit of "和" Wa, Izanami opens a quiet path back to oneself into harmony with who you are, and harmony with the world around you.
+                          - generic:
+                            - link "View Philosophy View Philosophy":
+                              - /url: /philosophy/
+                              - generic:
+                                - generic:
+                                  - generic: View Philosophy
+                                  - generic: View Philosophy
+          - generic:
+            - generic:
+              - generic:
+                - generic:
+                  - generic:
+                    - heading "projects" [level=2]
+                  - generic:
+                    - generic:
+                      - paragraph:
+                        - generic: Designing
+                        - generic: the Dimensions
+                        - generic: of Life
+                      - generic:
+                        - paragraph: Through three practices, Izanami designs harmony across life. How life is nurtured, how living is enriched, and how one returns to oneself.
+                      - generic:
+                        - link "View Projects View Projects":
+                          - /url: /projects/
+                          - generic:
+                            - generic:
+                              - generic: View Projects
+                              - generic: View Projects
+            - generic:
+              - generic:
+                - generic:
+                  - generic:
+                    - generic:
+                      - paragraph: projects
+                      - generic:
+                        - generic:
+                          - generic:
+                            - heading "01 School" [level=3]:
+                              - generic: "01"
+                              - text: School
+                          - paragraph: Nurturing the foundations of life.
+                          - paragraph: Through "Mama School" over 20,000 families across Japan have been supported. A place where the wishes of both parent and child are gently met.
+                          - generic:
+                            - link "View School View School":
+                              - /url: /projects/school/
+                              - generic:
+                                - generic:
+                                  - generic: View School
+                                  - generic: View School
+                - generic:
+                  - generic:
+                    - generic:
+                      - paragraph: projects
+                      - generic:
+                        - generic:
+                          - generic:
+                            - heading "02 Craft" [level=3]:
+                              - generic: "02"
+                              - text: Craft
+                          - paragraph: Awakening the senses through Japanese aesthetics.
+                          - paragraph: In Japan, beauty has always been a form of awareness. We carry this into objects and spaces of quiet refinement - rooted in the spirit of harmony, centered in dubai.
+                          - generic:
+                            - link "View Craft View Craft":
+                              - /url: /projects/craft/
+                              - generic:
+                                - generic:
+                                  - generic: View Craft
+                                  - generic: View Craft
+                - generic:
+                  - generic:
+                    - generic:
+                      - paragraph: projects
+                      - generic:
+                        - generic:
+                          - generic:
+                            - heading "03 Retreat" [level=3]:
+                              - generic: "03"
+                              - text: Retreat
+                          - paragraph: Returning to your essence.
+                          - paragraph: Rooted in ancient Mayan plant, Izanami offers private ceremonies for a return to one's original senses and way of being. Guided by founder Moca, unfolding across the world.
+                          - generic:
+                            - link "View Retreat View Retreat":
+                              - /url: /projects/retreat/
+                              - generic:
+                                - generic:
+                                  - generic: View Retreat
+                                  - generic: View Retreat
+          - generic:
+            - generic:
+              - generic:
+                - generic:
+                  - generic:
+                    - generic:
+                      - heading "company" [level=2]
+                  - generic:
+                    - generic:
+                      - generic: IZANAMI
+                      - generic:
+                        - paragraph:
+                          - generic: Who we are
+                        - generic:
+                          - paragraph: No matter how the world changes, what truly enriches human life remains the same. Across Japan, Dubai, and beyond, we nurture life through education, shape daily beauty through craft, and guide a return to oneself through healing.
+                          - paragraph: Across cultures and borders, we carry a way of being — ancient and quietly alive — where one's inner nature is free to unfold.
+                        - generic:
+                          - link "View Company View Company":
+                            - /url: /company/
+                            - generic:
+                              - generic:
+                                - generic: View Company
+                                - generic: View Company
+      - contentinfo:
+        - generic:
+          - generic:
+            - generic: izanami
+            - generic:
+              - link "Philosophy Philosophy":
+                - /url: /
+                - generic:
+                  - generic:
+                    - generic: Philosophy
+                    - generic: Philosophy
+          - generic:
+            - navigation:
+              - list:
+                - listitem:
+                  - link "home":
+                    - /url: /
+                - listitem:
+                  - link "philosophy":
+                    - /url: /philosophy/
+                - listitem:
+                  - link "projects":
+                    - /url: /projects/
+                - listitem:
+                  - link "company":
+                    - /url: /company/
+                - listitem:
+                  - link "contact":
+                    - /url: /contact/
+            - generic:
+              - generic:
+                - list:
+                  - listitem:
+                    - link "whatsapp":
+                      - /url: https://wa.me/817043537325
+                  - listitem:
+                    - link "Instagram":
+                      - /url: https://www.instagram.com/moca.o64/
+                - link "privacy policy":
+                  - /url: /privacy/
+              - generic:
+                - generic:
+                  - term: dubai
+                  - definition: office m2-368 bn complex, al muteena, dubai, uae
+                - generic:
+                  - term: tokyo
+                  - definition: n&e bldg. 6f, 1-12-4 ginza, chuo-ku, tokyo, jpn
+          - generic:
+            - paragraph: ©2026
+            - generic:
+              - time:
+                - generic: 00:00:00
+                - generic: gst, dubai uae
+              - time:
+                - generic: 00:00:00
+                - generic: jst, tokyo jpn
+            - generic:
+              - link "top":
+                - /url: "#top"
+    - complementary:
+      - generic:
+        - generic:
+          - paragraph: ©2026
+          - generic:
+            - time:
+              - generic: 00:00:00
+              - generic: gst, dubai uae
+            - time:
+              - generic: 00:00:00
+              - generic: jst, tokyo jpn
+          - paragraph: scroll

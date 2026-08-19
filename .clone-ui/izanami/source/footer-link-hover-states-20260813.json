@@ -1,0 +1,44 @@
+{
+  "viewport": "1280x720",
+  "source": {
+    "labels": ["whatsapp", "Instagram", "privacy policy"],
+    "clipOverflow": "clip",
+    "clipPaddingBlockPx": 1.28,
+    "clipWidthsPx": [64.609375, 72.0703125, 100.25],
+    "clipHeightPx": 15.34375,
+    "linePlacement": "grid-area 1 / 1, vertically centered through the text clip",
+    "enterAt180ms": {
+      "originalTransform": "matrix(1, 0, 0, 1, 0, -9.88798)",
+      "cloneTransform": "matrix(1, 0, 0, 1, 0, 4.95014)",
+      "lineTransform": "matrix(0.7024, 0, 0, 1, 0, 0)"
+    },
+    "settled": {
+      "originalTransform": "matrix(1, 0, 0, 1, 0, -14.0766)",
+      "cloneTransform": "matrix(1, 0, 0, 1, 0, 0)",
+      "lineTransform": "matrix(1, 0, 0, 1, 0, 0)"
+    }
+  },
+  "cloneBefore": {
+    "labelsRenderedWithTextTransform": [
+      "WHATSAPP",
+      "INSTAGRAM",
+      "PRIVACY POLICY"
+    ],
+    "clipOverflow": "hidden",
+    "clipPaddingBlockPx": 0,
+    "clipWidthsPx": [69.0078125, 76.0625, 105.296875],
+    "clipHeightPx": 12.796875,
+    "linePlacement": "occupied a separate grid row above the text clip"
+  },
+  "cloneAfter": {
+    "labels": ["whatsapp", "Instagram", "privacy policy"],
+    "clipOverflow": "clip",
+    "clipPaddingBlockPx": 1.28,
+    "clipWidthsPx": [64.609375, 72.0703125, 100.25],
+    "clipHeightPx": 15.34375,
+    "linePlacement": "centered through all three clips within 0.02px",
+    "enterAt180msMatchesSource": true,
+    "settledTransformsMatchSource": true,
+    "rapidEnterLeaveReturnsToIdle": true
+  }
+}

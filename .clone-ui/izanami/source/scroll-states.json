@@ -1,0 +1,207 @@
+{
+  "recording": {
+    "path": "/Users/ccwong/Documents/Screen Recording 2026-08-07 at 16.03.11.mov",
+    "durationSeconds": 9.295,
+    "viewport": [1918, 928],
+    "contactSheet": "captures/reference-scroll-contact-sheet.png"
+  },
+  "liveSource": {
+    "scrollHeight": 11499,
+    "sections": {
+      "hero": { "top": 0, "height": 1918 },
+      "philosophy": { "top": 1918, "height": 2389.921875 },
+      "projects": { "top": 4307.921875, "height": 4206.421875 },
+      "projectsBackground": { "top": 4343.875, "height": 1918 },
+      "projectsStickyTarget": { "top": 6261.875, "height": 2252.46875 },
+      "company": { "top": 8514.34375, "height": 1918 },
+      "footer": { "top": 10432.34375, "height": 1066.53125 }
+    },
+    "projectSections": {
+      "naturalHeights": [899.0625, 901.46875, 901.46875],
+      "naturalTotal": 2702,
+      "firstHalf": 449.53125,
+      "compressedTargetHeight": 2252.46875,
+      "scrollRange": 1324.46875,
+      "stickyTops": [0, 227.822, null],
+      "sectionsTranslation": [0, -449.53125]
+    },
+    "backgroundHandoff": {
+      "scrollY": 6262,
+      "projectsBackgroundBottom": -0.125,
+      "stickyTargetTop": -0.125,
+      "description": "The square projects background and the sticky target meet at the same document boundary; the image is fully clipped out as School reaches the viewport top."
+    },
+    "smoothScroll": {
+      "constructor": "new Lenis()",
+      "lerp": 0.1,
+      "smoothWheel": true,
+      "wheelMultiplier": 1
+    },
+    "runtimeEvidence": {
+      "backgroundMesh": "source-runtime.js:32279-32448",
+      "smoothScroll": "source-runtime.js:4120-4136",
+      "stickySections": "source-runtime.js:38933-39062"
+    }
+  },
+  "preFixClone": {
+    "scrollHeight": 11585,
+    "projectsBackgroundTop": 4307.5,
+    "projectsStickyTargetTop": 6225.5,
+    "projectsStickyTargetHeight": 2374.4375,
+    "companyTop": 8599.9375,
+    "wheelInput6262Result": 5323,
+    "drifts": [
+      "Projects background starts 36.375px early.",
+      "A fixed CSS background persists behind School instead of clipping out at the handoff.",
+      "The project sticky range is 121.96875px too tall.",
+      "wheelMultiplier 0.85 reduces identical wheel input from 6262px to 5323px."
+    ]
+  },
+  "postFixClone": {
+    "desktopViewport": [1918, 928],
+    "scrollHeight": 11499,
+    "sections": {
+      "hero": { "top": 0, "height": 1918 },
+      "philosophy": { "top": 1918, "height": 2389.921875 },
+      "projectsBackground": { "top": 4343.875, "height": 1918 },
+      "projectsStickyTarget": { "top": 6261.875, "height": 2252.46875 },
+      "company": { "top": 8514.34375, "height": 1918 },
+      "footer": { "top": 10432.34375, "height": 1066.53125 }
+    },
+    "projectSections": {
+      "naturalHeights": [899.0625, 901.46875, 901.46875],
+      "stickyTops": [0, 227.822, null],
+      "sectionsTranslation": [0, -449.53125]
+    },
+    "backgroundHandoff": {
+      "scrollY": 6262,
+      "projectsBackgroundBottom": -0.125,
+      "stickyTargetTop": -0.125
+    },
+    "sameWheelInput6262Result": 6262
+  },
+  "mobileSourceAndClone": {
+    "viewport": [390, 844],
+    "scrollHeight": 7620,
+    "sectionHeights": {
+      "hero": 1155.4375,
+      "philosophy": 1341.375,
+      "projectsIntro": 931.3125,
+      "projectPanels": [856.09375, 884.015625, 856.09375],
+      "company": 820.84375,
+      "footer": 774.609375
+    },
+    "projectsBackground": {
+      "top": 2652.015625,
+      "height": 776.109375,
+      "bottom": 3428.125
+    }
+  },
+  "transitionVerification20260810": {
+    "recording": {
+      "path": "/var/folders/29/vbrtn0fd4_lb5d7t5zb51d7w0000gn/T/TemporaryItems/NSIRD_screencaptureui_4HtEsb/Screen Recording 2026-08-10 at 15.36.58.mov",
+      "durationSeconds": 7.692,
+      "frameSize": [2940, 1602],
+      "sampleCount": 24,
+      "observedTransitionSeconds": [1.672, 2.005, 2.34, 3.008, 4.012]
+    },
+    "desktopViewport": [1470, 802],
+    "liveSource": {
+      "scrollHeight": 8846,
+      "hero": { "top": 0, "height": 1470 },
+      "philosophy": { "top": 1470, "height": 1853.671875 },
+      "projects": { "top": 3323.671875, "height": 3223.90625 },
+      "projectsBackground": {
+        "top": 3351.234375,
+        "height": 1470,
+        "bottom": 4821.234375
+      }
+    },
+    "runtimeRule": {
+      "desktopTranslation": "screenTop = 0.2 * (targetDocumentTop - scrollY)",
+      "fade": "opacity = clamp(targetRect.bottom / viewportHeight, 0, 1)",
+      "scissor": "Only company meshes are scissored; the Projects mesh is allowed to render above its DOM target.",
+      "mobile": "The WebGL post-effect translation is skipped, so the background remains at its measured DOM position."
+    },
+    "postFixClone": {
+      "scrollHeight": 8813,
+      "scrollY1800": {
+        "projectsBackgroundScreenTop": 305.25,
+        "projectsBackgroundScreenBottom": 1775.25,
+        "expectedSourceScreenTop": 310.25,
+        "horizontalOverflow": false
+      },
+      "scrollY4500": {
+        "projectsBackgroundScreenTop": -234.75,
+        "projectsBackgroundScreenBottom": 1235.25,
+        "opacity": 0.3728,
+        "schoolStackBackground": "transparent",
+        "horizontalOverflow": false
+      },
+      "scrollY4800": {
+        "projectsBackgroundState": "fully faded to black"
+      }
+    }
+  },
+  "mobileTransitionVerification20260810": {
+    "recording": {
+      "path": "/var/folders/29/vbrtn0fd4_lb5d7t5zb51d7w0000gn/T/TemporaryItems/NSIRD_screencaptureui_E180IU/Screen Recording 2026-08-10 at 16.59.29.mov",
+      "durationSeconds": 8.208,
+      "frameSize": [1458, 1602],
+      "cssViewport": [729, 801],
+      "sampleCount": 36,
+      "observedSectionsSeconds": {
+        "heroForest": 0.683,
+        "philosophy": 0.933,
+        "projects": 1.633,
+        "school": 2.333,
+        "craft": 3.283,
+        "retreat": 3.75,
+        "company": 4.917,
+        "footer": 5.367
+      }
+    },
+    "sourceAndCloneAt729x801": {
+      "scrollHeight": 14243,
+      "sourceSections": {
+        "philosophy": { "top": 2159.796875, "height": 2507.5 },
+        "projects": { "top": 4667.296875 },
+        "company": { "top": 11261.7890625, "height": 1532.9453125 },
+        "companyBackground": {
+          "top": 11261.7890625,
+          "height": 1276.65625
+        },
+        "footer": { "top": 12794.734375, "height": 1448.5859375 }
+      },
+      "cloneSections": {
+        "philosophy": { "top": 2159.796875, "height": 2507.3359375 },
+        "projects": { "top": 4667.1328125 },
+        "company": { "top": 11260.859375, "height": 1534.34375 },
+        "companyBackground": {
+          "top": 11260.859375,
+          "height": 1276.65625
+        },
+        "footer": { "top": 12795.203125, "height": 1447.921875 }
+      },
+      "companyTypography": {
+        "sourceFirstParagraph": { "top": 12056.3984375, "height": 261.09375 },
+        "cloneFirstParagraph": { "top": 12055.4140625, "height": 261.09375 },
+        "sourceButton": { "top": 12564.8125, "height": 102.984375 },
+        "cloneButton": { "top": 12563.828125, "height": 102.984375 }
+      }
+    },
+    "responsiveRegression": {
+      "viewport": [390, 844],
+      "scrollHeight": 7620,
+      "horizontalOverflow": false,
+      "company": { "top": 6024.328125, "height": 820.84375 },
+      "companyBackground": { "top": 6024.328125, "height": 682.984375 },
+      "footer": { "top": 6845.171875, "height": 774.609375 }
+    },
+    "motionRule": {
+      "desktop": "translate the background mesh by the 0.8 post-effect ratio, then fade at the target bottom",
+      "mobile": "skip post-effect translation and fade the DOM-aligned image against the real background target",
+      "company": "the mobile image target is 175.1243781095vw while the Company section continues to 210.4727564103vw"
+    }
+  }
+}

@@ -1,0 +1,153 @@
+{
+  "recording": {
+    "path": "/Users/ccwong/Documents/Screen Recording 2026-08-07 at 15.12.48.mov",
+    "durationSeconds": 6.413,
+    "viewport": "1918x928"
+  },
+  "languageLink": {
+    "captures": {
+      "hover": "captures/reference-header-ja-hover.png"
+    },
+    "sourceMarkup": "raw.html:223-273",
+    "sourceRuntime": "source-runtime.js:40891-41020",
+    "text": {
+      "fromYPercent": 0,
+      "toYPercent": -110,
+      "cloneFromYPercent": 130,
+      "cloneToYPercent": 0,
+      "durationSeconds": 0.7,
+      "delaySeconds": 0,
+      "declaredButUnusedDelaySeconds": 0.07,
+      "ease": "quart.out"
+    },
+    "line": {
+      "fromScaleX": 0,
+      "toScaleX": 1,
+      "durationSeconds": 0.7,
+      "ease": "quart.out",
+      "transformOrigin": "left"
+    }
+  },
+  "menuTrigger": {
+    "captures": {
+      "hover": "captures/reference-header-menu-hover.png",
+      "release": "captures/reference-header-hover-release.png"
+    },
+    "sourceMarkup": "raw.html:274-315",
+    "sourceRuntime": "source-runtime.js:41568-41740",
+    "circle": {
+      "beforeYPercent": [0, 300],
+      "afterYPercent": [-300, 0],
+      "opacityDurationSeconds": 0.35,
+      "translateDurationSeconds": 0.7,
+      "translateEase": "quart.out"
+    },
+    "text": {
+      "fromYPercent": 0,
+      "toYPercent": -110,
+      "cloneFromYPercent": 130,
+      "cloneToYPercent": 0,
+      "durationSeconds": 0.7,
+      "delaySeconds": 0,
+      "declaredButUnusedDelaySeconds": 0.07,
+      "ease": "quart.out",
+      "menuCloseCrossfadeSeconds": 0.4
+    },
+    "line": {
+      "fromScaleX": 0,
+      "toScaleX": 1,
+      "durationSeconds": 0.7,
+      "ease": "quart.out",
+      "transformOrigin": "left"
+    }
+  },
+  "buttonHover": {
+    "sourceMarkup": "raw.html:869-907",
+    "sourceStyles": "source.css:778-801, source.css:2019-2027, source.css:3454-3462",
+    "sourceRuntime": "source-runtime.js:40715-40889",
+    "text": {
+      "fromYPercent": 0,
+      "toYPercent": -130,
+      "cloneFromYPercent": 130,
+      "cloneToYPercent": 0,
+      "enterDurationSeconds": 0.7,
+      "leaveDurationSeconds": 0.7,
+      "delaySeconds": 0,
+      "declaredButUnusedDelaySeconds": 0.07,
+      "ease": "quart.out"
+    },
+    "line": {
+      "geometry": "One absolute 1px line spans the button block and translates horizontally through the text, rather than filling a short leading slot.",
+      "bufferFormula": "20 * (window.innerWidth / (desktop ? 1600 : 402))",
+      "idleXFormula": "-(textWidth + remainingLineTail + buffer)",
+      "enterXFormula": "textOffset - buffer",
+      "enterDurationSeconds": 0.7,
+      "leaveDurationSeconds": 1.1,
+      "ease": "quart.out"
+    },
+    "cloneVerification1470x746": {
+      "buttonWidth": 263.3203125,
+      "lineWidth": 244.9453125,
+      "idleLineX": -171.125,
+      "activeLineX": 73.875,
+      "textTravelPx": 23.8875,
+      "settlesAfterRapidReversal": true,
+      "focusVisibleRunsEquivalentMotion": true
+    }
+  },
+  "footerRegularLinkHover": {
+    "recording": "captures/reference-164327/reference-164327-013-006.362.png through reference-164327-017-008.319.png; TOP is captured at reference-164327-021-010.277.png through reference-164327-023-011.256.png",
+    "sourceMarkup": "raw.html:1570-1849",
+    "sourceRuntime": "source-runtime.js:40899-41020",
+    "text": {
+      "originalFromYPercent": 0,
+      "originalToYPercent": -110,
+      "cloneFromYPercent": 130,
+      "cloneToYPercent": 0,
+      "durationSeconds": 0.7,
+      "ease": "quart.out"
+    },
+    "line": {
+      "fromScaleX": 0,
+      "toScaleX": 1,
+      "durationSeconds": 0.7,
+      "ease": "quart.out",
+      "transformOrigin": "left"
+    },
+    "cloneVerification1920x928": {
+      "settledOriginalYPercent": -110,
+      "settledCloneYPercent": 0,
+      "settledLineScaleX": 1,
+      "canvasHiddenInFooter": true
+    }
+  },
+  "footerNextHover": {
+    "recording": "captures/reference-164327/reference-164327-005-002.447.png through reference-164327-008-003.915.png",
+    "sourceMarkup": "raw.html:1518-1560",
+    "sourceRuntime": "source-runtime.js:38469-38625 and 40715-40889",
+    "entry": {
+      "lineDurationSeconds": 0.7,
+      "firstLineExitDelaySeconds": 0.35,
+      "lastLineDelaySeconds": 0.45,
+      "characterDurationSeconds": 1.2,
+      "characterStaggerSeconds": 0.01
+    },
+    "hover": {
+      "textTravelPercent": 130,
+      "enterDurationSeconds": 0.7,
+      "leaveLineDurationSeconds": 1.1,
+      "ease": "quart.out",
+      "desktopBufferDesignPixels": 40,
+      "mobileBufferDesignPixels": 20
+    },
+    "liveAndCloneVerification1389": {
+      "linePhysicalWidth": 1250.09375,
+      "sourceIdleX": -937.483,
+      "cloneIdleX": -937.491,
+      "sourceActiveX": 312.517,
+      "cloneActiveX": 312.509,
+      "cloneLinkWidth": 554.515625,
+      "cloneReducedMotionFirstLineClip": "inset(0% 0% 0% 100%)"
+    }
+  }
+}

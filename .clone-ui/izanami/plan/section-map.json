@@ -1,4 +1,14 @@
 {
+  "overlays": [
+    {
+      "id": "loader",
+      "sourceSelector": "[data-loader]",
+      "cloneSelector": "[data-loader]",
+      "trigger": "initial-load-and-refresh",
+      "desktopHeight": "100svh",
+      "mobileHeight": "100svh"
+    }
+  ],
   "sections": [
     { "id": "hero", "desktopHeight": "100vw", "mobileHeight": "296.2687vw" },
     { "id": "philosophy", "desktopHeight": "155vw", "mobileHeight": "335vw" },

@@ -5,7 +5,7 @@ export type TIzanamiProject = {
   imageMobile: string
   lead: string
   number: string
-  title: string
+  title: 'Craft' | 'Retreat' | 'School'
 }
 
 export const NAV_ITEMS = [

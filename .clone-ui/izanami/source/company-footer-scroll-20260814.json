@@ -1,0 +1,68 @@
+{
+  "referenceVideo": {
+    "path": "Screen Recording 2026-08-14 at 10.17.14.mov",
+    "durationMs": 5368,
+    "frameSize": [1918, 928],
+    "sampleIntervalMs": 250,
+    "sampleCount": 22,
+    "observedContract": "Retreat, Company content, Company background, and Footer continue upward without a pinned Company pause."
+  },
+  "liveSource1280x720": {
+    "company": { "top": 5701.25, "height": 1280 },
+    "content": { "top": 5781.25, "height": 1120 },
+    "footer": { "top": 6981.25, "height": 721.359375 },
+    "logo": { "top": 6012.65625, "height": 121.59375 },
+    "motionSamples": [
+      { "scrollY": 5699, "sectionTop": 2.25, "contentTop": 82.25 },
+      { "scrollY": 6020, "sectionTop": -318.75, "contentTop": -238.75 }
+    ],
+    "scrollDelta": 321,
+    "contentDelta": -321
+  },
+  "clone1470x802": {
+    "motionSamples": [
+      { "offset": 0, "sectionTop": -0.40625, "contentTop": -0.40625 },
+      {
+        "offset": 320.8,
+        "sectionTop": -320.40625,
+        "contentTop": -320.40625
+      },
+      {
+        "offset": 641.6,
+        "sectionTop": -641.40625,
+        "contentTop": -641.40625
+      }
+    ],
+    "performance": {
+      "durationMs": 5368,
+      "frames": 323,
+      "averageFrameMs": 16.662848297211315,
+      "p95FrameMs": 17.399999999999636,
+      "p99FrameMs": 17.600000000000364,
+      "maxFrameMs": 17.700000000000728,
+      "framesOver20Ms": 0,
+      "framesOver32Ms": 0,
+      "longTasks": []
+    },
+    "companyCopyFilter": "none",
+    "companyLogoFilter": "none"
+  },
+  "cloneMobile390x844": {
+    "companyHeight": 820.84375,
+    "backgroundHeight": 682.984375,
+    "footerHeight": 774.609375,
+    "motionSamples": [
+      { "offset": 0, "sectionTop": 0.328125, "contentTop": 0.328125 },
+      { "offset": 160, "sectionTop": -159.671875, "contentTop": -159.671875 },
+      { "offset": 320, "sectionTop": -319.671875, "contentTop": -319.671875 }
+    ]
+  },
+  "captures": [
+    "captures/reference-101714/frame-000-000.000.jpg through frame-021-005.250.jpg",
+    "output/playwright/runtime-audit/company-handoff-after.png",
+    "output/playwright/runtime-audit/company-mid-after.png",
+    "output/playwright/runtime-audit/footer-handoff-after.png",
+    "output/playwright/runtime-audit/company-mobile-after.png",
+    "output/playwright/runtime-audit/footer-mobile-handoff-after.png"
+  ]
+}

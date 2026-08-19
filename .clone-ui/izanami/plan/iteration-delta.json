@@ -1,0 +1,150 @@
+{
+  "keep": [
+    "measured Hero, Philosophy, Projects, School, Company, and Footer geometry",
+    "source-matched Lenis distance and desktop sticky panel compression",
+    "existing collage, project copy, and School foreground reveal motion",
+    "mobile stacked project layout and project background document position"
+  ],
+  "fix": [
+    "desktop Projects background was clipped by its DOM section and left the entering Philosophy collage over black",
+    "Projects image carried a dark CSS gradient that is absent from the source WebGL plane",
+    "School stack used an opaque background before the source background had finished its bottom-driven fade",
+    "desktop and mobile incorrectly shared one project-background translation strategy"
+  ],
+  "result": [
+    "desktop background plane now follows sourceScreenTop = 0.2 * (targetDocumentTop - scrollY)",
+    "opacity now follows clamp(targetRect.bottom / viewportHeight, 0, 1)",
+    "Philosophy collage remains above the early Projects background and School remains above its fading tail",
+    "mobile keeps the source DOM-aligned background and only applies the bottom fade"
+  ],
+  "mobileUpdate20260810": {
+    "keep": [
+      "the measured 729x801 section boundaries and total 14243px page height",
+      "the existing stacked School, Craft, and Retreat panel geometry",
+      "the source-matched footer structure at 729x801 and 390x844"
+    ],
+    "fix": [
+      "Hero and Company inherited the desktop 0.8 background translation on mobile",
+      "Company faded against its 210.4727564103vw section instead of its 175.1243781095vw image target",
+      "the local Shippori face pointed at a Japanese shard without a Latin unicode range, changing English line breaks",
+      "the mobile header gutter and CTA clip height were smaller than the source"
+    ],
+    "result": [
+      "mobile backgrounds stay at their DOM positions and fade against their own target bottoms",
+      "Hero forest and Philosophy black handoff match the supplied recording",
+      "Company copy wraps to the source five lines and its CTA matches within about one vertical pixel",
+      "729x801 and 390x844 both finish without horizontal overflow"
+    ]
+  },
+  "heroColorUpdate20260812": {
+    "keep": [
+      "the original 3200x3200 Hero image, whose SHA-256 matches the live source asset",
+      "the existing square desktop and 296.2686567164vw mobile Hero geometry",
+      "the existing cloud drift timing and responsive layout"
+    ],
+    "fix": [
+      "a local 2%-to-22% black gradient darkened the Hero even though the source has no equivalent overlay",
+      "the source cloud images render at opacity 1 while the clone reduced them to 0.43, suppressing the white-grey mist",
+      "both local cloud images sat 23.631840796vw to 33.0625vw below their source vertical positions"
+    ],
+    "result": [
+      "the Hero now uses the source photograph without a synthetic darkening layer",
+      "clouds retain their authored alpha at opacity 1 and source vertical geometry on desktop and mobile",
+      "desktop top/middle/bottom luma is now 168.19/162.9/136.54 against the supplied reference's 162.35/153.64/141.02"
+    ]
+  },
+  "buttonHoverUpdate20260812": {
+    "keep": [
+      "the shared IzanamiButton component and existing CTA labels/links",
+      "the source-matched desktop and mobile CTA spacing",
+      "the existing visible focus outline"
+    ],
+    "fix": [
+      "the leading line was a short grey slot with a child fill instead of one full-button translating white line",
+      "text travelled 115% with CSS transitions instead of the source's paired 130% GSAP exchange",
+      "enter and leave shared generic transition timing instead of the source's 0.7s enter and 1.1s line return",
+      "rapid reversal could inherit shortened CSS transition progress"
+    ],
+    "result": [
+      "every IzanamiButton now derives its idle and active line offsets from measured button/text geometry",
+      "the line and paired text use quart.out with source-exact 0.7s enter, 0.7s text leave, and 1.1s line leave durations",
+      "in-flight tweens are killed before reversal and the button settles cleanly after interrupted motion",
+      "font completion triggers one final geometry measurement so cold-load font swaps cannot stale the line offsets",
+      "keyboard focus receives the same motion while coarse pointers and reduced-motion keep the static readable state"
+    ]
+  },
+  "projectFluidUpdate20260812": {
+    "keep": [
+      "the existing fluid footprint, velocity response, decay, and image capture outside the project stack",
+      "the source-matched Projects background handoff and sticky School/Craft/Retreat geometry",
+      "the existing mobile, coarse-pointer, menu, and reduced-motion fallbacks"
+    ],
+    "fix": [
+      "pointer movement continued injecting and compositing the liquid field over the black School, Craft, and Retreat sequence",
+      "stopping only new splats would leave the previous field visible for up to 4.2 seconds after entering the black region"
+    ],
+    "result": [
+      "the complete projects stack is now marked as a fluid-disabled region without changing its layout",
+      "entering the region immediately cancels the render frame, clears velocity/dye/pressure targets, and hides the canvas",
+      "scrolling with a stationary pointer also updates suppression at the exact stack boundary",
+      "leaving the stack restores the clean canvas, rebases the first outside pointer event, and resumes the original effect on subsequent movement without a boundary jump"
+    ]
+  },
+  "footerInteractionUpdate20260812": {
+    "keep": [
+      "the measured desktop and mobile Footer container geometry",
+      "the existing navigation, locations, clock, and copyright content",
+      "the verified fluid response in image-led sections before School"
+    ],
+    "fix": [
+      "Company/IZANAMI and Footer still accepted liquid pointer input despite the supplied recording showing no response",
+      "regular Footer links used a 0.65s 115% CSS transition instead of the source 0.7s 110%/130% GSAP exchange",
+      "the large Philosophy link was a full-width grid with a short scale animation and no entry sweep or cloned text",
+      "TOP did not animate, and social links used text symbols instead of the source SVG icons"
+    ],
+    "result": [
+      "Company/IZANAMI, School/Craft/Retreat, and Footer now form contiguous pointer-silent ranges that immediately clear and hide the fluid composite",
+      "regular Footer links and TOP now kill interrupted tweens and reproduce the source 0.7s quart.out text/line motion",
+      "the large Philosophy link is inline-sized, uses the source 90vw translating line and 130% paired text, and reveals with the recorded entry sweep",
+      "desktop line endpoints match the live source within 0.01px, social icons use the source paths, and the 390x844 Footer remains overflow-free with its foot inside the container"
+    ]
+  },
+  "japaneseLocaleUpdate20260813": {
+    "keep": [
+      "the Hero phrase, English section headings, project names, CTA labels, navigation, locations, and clocks that remain English on the source Japanese home page",
+      "the existing loader, scroll, hover, sticky, and fluid behavior",
+      "the source-backed Shippori Mincho face and verified desktop/mobile section geometry"
+    ],
+    "fix": [
+      "the EN and JA controls both pointed to #top and could not change language",
+      "all descriptive copy remained English because the clone exposed no /ja/ home route or locale data",
+      "the Japanese Company opening paragraph needed the source's mobile-only continuation break to avoid an orphaned final character",
+      "the narrow mobile SCROLL label could wrap its last letter"
+    ],
+    "result": [
+      "EN now resolves to / and JA to /ja/, with aria-current, the header dot, document lang, and meta description synchronized to the active route",
+      "Philosophy, Projects intro, School, Craft, Retreat, and Company use the exact copy and authored line breaks from the source /ja/ HTML",
+      "source-retained English UI remains unchanged on /ja/",
+      "Codex in-app Browser verified the full JA-to-EN cycle at 1470x802 and 390x844 with no horizontal overflow or console warnings/errors"
+    ]
+  },
+  "footerSocialHoverUpdate20260813": {
+    "keep": [
+      "the shared 0.7s quart.out regular-link GSAP runtime and rapid-reversal cleanup",
+      "the source WhatsApp and Instagram SVG paths, external destinations, and static icon behavior",
+      "the measured Footer section, navigation, location, clock, and next-link geometry"
+    ],
+    "fix": [
+      "the text clip was auto-placed below the strike line instead of sharing grid-area 1 / 1, so the line sat above the label",
+      "the clip omitted the source 0.1em block padding and used overflow hidden instead of overflow clip",
+      "the social container forced all three labels to uppercase, widening the animated line by roughly 4 to 5px",
+      "the authored source label Instagram lost its capital I in component copy"
+    ],
+    "result": [
+      "all three strike lines now remain vertically centered through the rolling label",
+      "source and clone clip geometry match exactly at 1280x720: 15.34375px high and 64.609375/72.0703125/100.25px wide",
+      "the 180ms and settled GSAP transform matrices match the live source",
+      "whatsapp, Instagram, and privacy policy preserve the source casing and settle cleanly after rapid enter/leave"
+    ]
+  }
+}
