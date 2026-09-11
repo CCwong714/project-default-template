@@ -7,6 +7,7 @@ export type TPortfolioProject = Readonly<{
   image: string
   playbackId: string
   slug: string
+  styleframes: readonly string[]
   title: string
   year: number
 }>

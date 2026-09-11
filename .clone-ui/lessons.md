@@ -119,3 +119,17 @@ would erase the four distinct expressions.
 **Mitigation**: Capture source states on an absolute clock from the click event,
 recreate the source state machine and verify rapid replacement, cleanup,
 keyboard activation, reduced motion and asset-failure recovery.
+
+## 2026-08-20 — Project “infinite scroll” is overscroll-driven route cycling
+
+- Do not clone this sequence as a duplicated long DOM feed. Each route owns one
+  white project panel and one sticky black next-project viewport.
+- Native scrolling ends only after the white panel has fully revealed the
+  sticky preview. Additional downward wheel or touch distance then fills the
+  narrow progress track and replaces the route with the next project at scroll
+  position zero.
+- The nine-project order is circular: The purity revealed returns to Paths of
+  life. Validate that seam explicitly, including title/URL replacement.
+- The site's global chrome still exists underneath project routes, but the
+  project layer covers it. Rendering logo, menu, showreel or sound above the
+  next-project viewport is a visible stacking-order drift.

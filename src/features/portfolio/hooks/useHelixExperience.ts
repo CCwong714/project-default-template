@@ -5,6 +5,7 @@ import { HelixEngine } from 'src/features/portfolio/webgl/HelixEngine'
 
 type TUseHelixExperienceOptions = {
   enabled: boolean
+  onProjectOpen: (slug: string) => void
 }
 
 const initialSnapshot: THelixSnapshot = {
@@ -12,12 +13,20 @@ const initialSnapshot: THelixSnapshot = {
   isMoving: false,
 }
 
-export function useHelixExperience({ enabled }: TUseHelixExperienceOptions) {
+export function useHelixExperience({
+  enabled,
+  onProjectOpen,
+}: TUseHelixExperienceOptions) {
   const canvasRef = useRef<HTMLCanvasElement>(null)
   const engineRef = useRef<HelixEngine | null>(null)
+  const onProjectOpenRef = useRef(onProjectOpen)
   const [loadProgress, setLoadProgress] = useState(0)
   const [ready, setReady] = useState(false)
   const [snapshot, setSnapshot] = useState<THelixSnapshot>(initialSnapshot)
+
+  useEffect(() => {
+    onProjectOpenRef.current = onProjectOpen
+  }, [onProjectOpen])
 
   useEffect(() => {
     const canvas = canvasRef.current
@@ -68,6 +77,7 @@ export function useHelixExperience({ enabled }: TUseHelixExperienceOptions) {
     let draggingTouch = false
     let lastTouchDeltaX = 0
     let pointerStartX = 0
+    let pointerStartY = 0
     let previousPointerX = 0
     let previousPointerY = 0
 
@@ -80,6 +90,7 @@ export function useHelixExperience({ enabled }: TUseHelixExperienceOptions) {
       draggingTouch = false
       lastTouchDeltaX = 0
       pointerStartX = event.clientX
+      pointerStartY = event.clientY
       previousPointerX = event.clientX
       previousPointerY = event.clientY
       canvas.setPointerCapture(event.pointerId)
@@ -112,8 +123,26 @@ export function useHelixExperience({ enabled }: TUseHelixExperienceOptions) {
       if (event.pointerId !== activePointerId) {
         return
       }
+      const movement = Math.hypot(
+        event.clientX - pointerStartX,
+        event.clientY - pointerStartY,
+      )
       if (event.pointerType === 'touch' && draggingTouch) {
         engine.impulse(lastTouchDeltaX * (20 / 3))
+      }
+      if (movement <= 8) {
+        const projectIndex = engine.pickProject(event.clientX, event.clientY)
+        if (projectIndex != null) {
+          onProjectOpenRef.current(portfolioProjects[projectIndex].slug)
+        }
+      }
+      activePointerId = null
+      draggingTouch = false
+      lastTouchDeltaX = 0
+    }
+    const handlePointerCancel = (event: PointerEvent) => {
+      if (event.pointerId !== activePointerId) {
+        return
       }
       activePointerId = null
       draggingTouch = false
@@ -134,7 +163,7 @@ export function useHelixExperience({ enabled }: TUseHelixExperienceOptions) {
     canvas.addEventListener('pointerdown', handlePointerDown)
     canvas.addEventListener('pointermove', handlePointerMove)
     canvas.addEventListener('pointerup', handlePointerEnd)
-    canvas.addEventListener('pointercancel', handlePointerEnd)
+    canvas.addEventListener('pointercancel', handlePointerCancel)
     window.addEventListener('keydown', handleKeyDown)
 
     return () => {
@@ -142,7 +171,7 @@ export function useHelixExperience({ enabled }: TUseHelixExperienceOptions) {
       canvas.removeEventListener('pointerdown', handlePointerDown)
       canvas.removeEventListener('pointermove', handlePointerMove)
       canvas.removeEventListener('pointerup', handlePointerEnd)
-      canvas.removeEventListener('pointercancel', handlePointerEnd)
+      canvas.removeEventListener('pointercancel', handlePointerCancel)
       window.removeEventListener('keydown', handleKeyDown)
     }
   }, [enabled])

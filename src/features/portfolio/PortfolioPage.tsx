@@ -1,6 +1,7 @@
 import 'src/features/portfolio/portfolio.css'
 
-import { useCallback, useRef, useState } from 'react'
+import { useCallback, useEffect, useRef, useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 import { EntryOverlay } from 'src/features/portfolio/components/EntryOverlay'
 import { ExperienceCanvas } from 'src/features/portfolio/components/ExperienceCanvas'
 import { MenuPanel } from 'src/features/portfolio/components/MenuPanel'
@@ -11,18 +12,36 @@ import { useHelixExperience } from 'src/features/portfolio/hooks/useHelixExperie
 import { usePortfolioAudio } from 'src/features/portfolio/hooks/usePortfolioAudio'
 import type { TPortfolioMode } from 'src/features/portfolio/types'
 
+const getStoredPortfolioMode = (): TPortfolioMode => {
+  const storedMode = window.sessionStorage.getItem('pacome-portfolio-mode')
+  if (storedMode === 'list') {
+    return 'list'
+  }
+  return 'spiral'
+}
+
 export function PortfolioPage() {
-  const [entered, setEntered] = useState(false)
+  const [entered, setEntered] = useState(
+    () => window.sessionStorage.getItem('pacome-portfolio-entered') === 'true',
+  )
   const [menuOpen, setMenuOpen] = useState(false)
-  const [mode, setMode] = useState<TPortfolioMode>('spiral')
+  const [mode, setMode] = useState<TPortfolioMode>(getStoredPortfolioMode)
   const [showreelOpen, setShowreelOpen] = useState(false)
   const menuButtonRef = useRef<HTMLButtonElement>(null)
+  const navigate = useNavigate()
   const audio = usePortfolioAudio()
-  const helixEnabled =
-    entered && mode === 'spiral' && !menuOpen && !showreelOpen
+  const helixEnabled = entered && mode === 'spiral' && !menuOpen
   const { canvasRef, loadProgress, ready, snapshot } = useHelixExperience({
     enabled: helixEnabled,
+    onProjectOpen: (projectSlug) => {
+      audio.playInterfaceSound('click')
+      void navigate(`/projects/${projectSlug}`)
+    },
   })
+
+  useEffect(() => {
+    document.title = 'Pacôme Pertant ✲ Portfolio'
+  }, [])
 
   const openMenu = useCallback(() => {
     audio.playInterfaceSound('click')
@@ -45,14 +64,17 @@ export function PortfolioPage() {
       return
     }
     audio.playModeSound(nextMode)
+    window.sessionStorage.setItem('pacome-portfolio-mode', nextMode)
     setMode(nextMode)
   }
   const enterWithSound = () => {
     audio.enableSound()
+    window.sessionStorage.setItem('pacome-portfolio-entered', 'true')
     setEntered(true)
   }
   const enterSilent = () => {
     audio.disableSound()
+    window.sessionStorage.setItem('pacome-portfolio-entered', 'true')
     setEntered(true)
   }
 

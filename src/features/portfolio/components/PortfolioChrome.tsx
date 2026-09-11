@@ -15,6 +15,7 @@ type TPortfolioChromeProps = {
   onModeChange: (mode: TPortfolioMode) => void
   onShowreelOpen: () => void
   onSoundToggle: () => void
+  showMode?: boolean
   soundEnabled: boolean
 }
 
@@ -29,6 +30,7 @@ export function PortfolioChrome({
   onModeChange,
   onShowreelOpen,
   onSoundToggle,
+  showMode = true,
   soundEnabled,
 }: TPortfolioChromeProps) {
   const [logoExpression, setLogoExpression] = useState(0)
@@ -90,7 +92,9 @@ export function PortfolioChrome({
           </span>
         </button>
       )}
-      {!compact && <ModeSwitch mode={mode} onChange={onModeChange} />}
+      {!compact && showMode && (
+        <ModeSwitch mode={mode} onChange={onModeChange} />
+      )}
       <button
         className="menu-button dot-pill"
         onClick={onMenuOpen}

@@ -1,0 +1,41 @@
+{
+  "source": "https://pacomepertant.com/",
+  "capturedAt": "2026-08-20",
+  "viewport": {
+    "width": 1280,
+    "height": 720
+  },
+  "routePattern": "/projects/:slug",
+  "cycle": [
+    "paths-of-life",
+    "the-disease-spread-on-tiktok",
+    "ah-psychedelics",
+    "thought",
+    "jupiter",
+    "chromatik",
+    "digital-travel",
+    "mercedes-amg",
+    "the-purity-revealed"
+  ],
+  "geometry": {
+    "pageMargin": 30,
+    "panelRadius": 16,
+    "heroHeight": "calc(100vh - 30px)",
+    "infoTitleSize": 56,
+    "styleframeGap": 32,
+    "nextCardWidth": 602,
+    "nextCardAspectRatio": "16 / 9",
+    "progressWidth": 6
+  },
+  "behavior": {
+    "nextViewport": "sticky behind the white project panel",
+    "routeAdvance": "additional downward input at native scroll maximum",
+    "urlUpdate": "replace current project route and reset scroll to zero",
+    "finalSeam": "the-purity-revealed -> paths-of-life"
+  },
+  "assets": {
+    "hero": "Mux playback IDs from public project data",
+    "styleframes": "public Sanity CDN renditions in observed DOM order",
+    "nextCard": "the following project's thumbnail"
+  }
+}

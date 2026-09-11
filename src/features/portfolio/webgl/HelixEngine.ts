@@ -22,10 +22,12 @@ import {
   Mesh,
   PerspectiveCamera,
   PlaneGeometry,
+  Raycaster,
   Scene,
   ShaderMaterial,
   SRGBColorSpace,
   TextureLoader,
+  Vector2,
   VideoTexture,
   WebGLRenderer,
 } from 'three'
@@ -123,6 +125,44 @@ export class HelixEngine {
     this.motion.impulse(deltaY)
   }
 
+  pickProject(clientX: number, clientY: number): number | null {
+    const rect = this.canvas.getBoundingClientRect()
+    if (
+      clientX < rect.left ||
+      clientX > rect.right ||
+      clientY < rect.top ||
+      clientY > rect.bottom
+    ) {
+      return null
+    }
+    const pointer = new Vector2(
+      ((clientX - rect.left) / rect.width) * 2 - 1,
+      -((clientY - rect.top) / rect.height) * 2 + 1,
+    )
+    const insideFocusedCardArea =
+      Math.abs(pointer.x) <= 0.55 && Math.abs(pointer.y) <= 0.65
+    if (insideFocusedCardArea && this.activeIndex >= 0) {
+      return this.activeIndex
+    }
+    const raycaster = new Raycaster()
+    raycaster.setFromCamera(pointer, this.camera)
+    const intersections = raycaster.intersectObjects(
+      this.cards.map((card) => card.mesh),
+      false,
+    )
+    const intersection = intersections.at(0)
+    if (intersection == null) {
+      return null
+    }
+    const card = this.cards.find(
+      (candidate) => candidate.mesh === intersection.object,
+    )
+    if (card == null) {
+      return null
+    }
+    return card.projectIndex
+  }
+
   setActive(enabled: boolean) {
     if (enabled && !this.mediaInitialized) {
       this.initializeVideoTextures()
@@ -197,6 +237,7 @@ export class HelixEngine {
         vertexShader: helixVertexShader,
       })
       const mesh = new Mesh(geometry, material)
+      mesh.userData.projectIndex = projectIndex
       this.scene.add(mesh)
       const card: THelixCard = {
         material,

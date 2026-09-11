@@ -18,24 +18,24 @@ type TMenuPanelProps = {
 
 export function MenuPanel({ onClose, open, returnFocusRef }: TMenuPanelProps) {
   const closeRef = useRef<HTMLButtonElement>(null)
-  const panelRef = useRef<HTMLElement>(null)
+  const layerRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
     if (!open) {
       return
     }
-    closeRef.current?.focus()
+    closeRef.current?.focus({ preventScroll: true })
     const handleKeyDown = (event: KeyboardEvent) => {
       if (event.key === 'Escape') {
         onClose()
-        returnFocusRef.current?.focus()
+        returnFocusRef.current?.focus({ preventScroll: true })
         return
       }
       if (event.key !== 'Tab') {
         return
       }
-      const focusable = panelRef.current?.querySelectorAll<HTMLElement>(
-        'a[href], button:not([disabled])',
+      const focusable = layerRef.current?.querySelectorAll<HTMLElement>(
+        'a[href]:not([tabindex="-1"]), button:not([disabled]):not([tabindex="-1"])',
       )
       if (focusable == null || focusable.length === 0) {
         return
@@ -58,75 +58,86 @@ export function MenuPanel({ onClose, open, returnFocusRef }: TMenuPanelProps) {
 
   const closeMenu = () => {
     onClose()
-    returnFocusRef.current?.focus()
+    returnFocusRef.current?.focus({ preventScroll: true })
   }
 
   return (
     <div
+      aria-label="Main menu"
       aria-hidden={!open}
+      aria-modal={open}
       className={`menu-layer ${open ? 'menu-layer--open' : ''}`}
+      ref={layerRef}
+      role="dialog"
     >
       <button
         aria-label="Close menu overlay"
         className="menu-scrim"
         onClick={closeMenu}
-        tabIndex={open ? 0 : -1}
+        tabIndex={-1}
         type="button"
       />
-      <section
-        aria-label="Main menu"
-        aria-modal="true"
-        className="menu-panel"
-        ref={panelRef}
-        role="dialog"
+      <div aria-hidden="true" className="menu-panel-background" />
+      <button
+        aria-label="Close menu"
+        className="menu-close"
+        onClick={closeMenu}
+        ref={closeRef}
+        tabIndex={open ? 0 : -1}
+        type="button"
       >
-        <button
-          aria-label="Close menu"
-          className="menu-close dot-pill"
-          onClick={closeMenu}
-          ref={closeRef}
-          tabIndex={open ? 0 : -1}
-          type="button"
-        >
-          <span>close</span>
+        <span>close</span>
+        <span aria-hidden="true" className="menu-close__icon">
           <CloseIcon />
-        </button>
+        </span>
+      </button>
 
-        <nav aria-label="Portfolio">
-          <Link onClick={closeMenu} tabIndex={open ? 0 : -1} to="/">
-            works
-          </Link>
-          <Link onClick={closeMenu} tabIndex={open ? 0 : -1} to="/about">
-            about
-          </Link>
-          <a href={`mailto:${portfolioEmail}`} tabIndex={open ? 0 : -1}>
-            contact
-          </a>
-        </nav>
-
-        <footer className="menu-footer">
-          <a
-            className="menu-email"
-            href={`mailto:${portfolioEmail}`}
-            tabIndex={open ? 0 : -1}
-          >
-            {portfolioEmail}
-          </a>
-          <div className="social-links">
-            {socialLinks.map((social) => (
-              <a
-                aria-label={social.label}
-                href={social.href}
-                key={social.icon}
-                rel="noreferrer"
-                tabIndex={open ? 0 : -1}
-                target="_blank"
-              >
-                <SocialIcon icon={social.icon} />
+      <section className="menu-panel">
+        <div className="menu-panel__container">
+          <nav aria-label="Portfolio">
+            <div className="menu-link">
+              <Link onClick={closeMenu} tabIndex={open ? 0 : -1} to="/">
+                works
+              </Link>
+            </div>
+            <div className="menu-link">
+              <Link onClick={closeMenu} tabIndex={open ? 0 : -1} to="/about">
+                about
+              </Link>
+            </div>
+            <div className="menu-link">
+              <a href={`mailto:${portfolioEmail}`} tabIndex={open ? 0 : -1}>
+                contact
               </a>
-            ))}
-          </div>
-        </footer>
+            </div>
+          </nav>
+
+          <footer className="menu-footer">
+            <a
+              className="menu-email"
+              href={`mailto:${portfolioEmail}`}
+              tabIndex={open ? 0 : -1}
+            >
+              {portfolioEmail}
+            </a>
+            <div className="social-links">
+              {socialLinks.map((social) => (
+                <a
+                  aria-label={social.label}
+                  href={social.href}
+                  key={social.icon}
+                  rel="noreferrer"
+                  tabIndex={open ? 0 : -1}
+                  target="_blank"
+                >
+                  <span className="social-link__inner">
+                    <SocialIcon icon={social.icon} />
+                  </span>
+                </a>
+              ))}
+            </div>
+          </footer>
+        </div>
       </section>
     </div>
   )
